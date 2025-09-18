@@ -10,6 +10,7 @@ export const navItems = [
   { href: '/career-path', label: 'Career Path' },
   { href: '/peer-to-peer-forum', label: 'Forum' },
   { href: '/college-map', label: 'College Map' },
+  { href: '/news', label: 'News' },
   { href: '/ngo-connection', label: 'NGO Connection' },
   { href: '/feedback-forum', label: 'Feedback' },
 ];
