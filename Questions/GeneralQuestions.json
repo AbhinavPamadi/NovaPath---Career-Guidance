@@ -1168,8 +1168,139 @@
       "b": ["hospitality-management"],
       "c": ["marketing"]
     }
+  },
+  {
+    "question": "Which of these activities sounds most interesting to you?",
+    "options": {
+      "a": "Debating different sides of a topic or issue",
+      "b": "Studying how laws affect people and society",
+      "c": "Thinking through what's right or wrong in tricky situations"
+    },
+    "inference": {
+      "a": ["argumentation", "law"],
+      "b": ["law", "policy-analysis"],
+      "c": ["ethical-reasoning"]
+    }
+  },
+  {
+    "question": "If you had to work on a school project, which would you prefer?",
+    "options": {
+      "a": "Researching laws and writing a report",
+      "b": "Creating a presentation arguing for or against a rule",
+      "c": "Analyzing how a policy impacts different people"
+    },
+    "inference": {
+      "a": ["legal-research", "law"],
+      "b": ["argumentation", "law"],
+      "c": ["policy-analysis", "ethical-reasoning"]
+    }
+  },
+  {
+    "question": "Which skill do you enjoy using the most?",
+    "options": {
+      "a": "Explaining your opinion with facts and logic",
+      "b": "Looking up information to understand a legal topic",
+      "c": "Deciding what's fair in a complex situation"
+    },
+    "inference": {
+      "a": ["argumentation", "ethical-reasoning"],
+      "b": ["legal-research", "law"],
+      "c": ["ethical-reasoning", "policy-analysis"]
+    }
+  },
+  {
+    "question": "What kind of topic would you enjoy exploring?",
+    "options": {
+      "a": "The history of human rights laws",
+      "b": "Whether a law is fair to all groups of people",
+      "c": "How governments make and change policies"
+    },
+    "inference": {
+      "a": ["law", "legal-research"],
+      "b": ["ethical-reasoning", "policy-analysis"],
+      "c": ["policy-analysis", "law"]
+    }
+  },
+  {
+    "question": "Which of these roles do you relate to most?",
+    "options": {
+      "a": "Someone who defends their point in a debate",
+      "b": "Someone who studies policies and their impact",
+      "c": "Someone who guides others in making ethical choices"
+    },
+    "inference": {
+      "a": ["argumentation", "law"],
+      "b": ["policy-analysis", "legal-research"],
+      "c": ["ethical-reasoning"]
+    }
+  },
+  {
+    "question": "What would you find more engaging?",
+    "options": {
+      "a": "Reading about how a law was passed",
+      "b": "Writing a persuasive argument for a mock court",
+      "c": "Evaluating whether a decision was morally right"
+    },
+    "inference": {
+      "a": ["legal-research", "law"],
+      "b": ["argumentation", "law"],
+      "c": ["ethical-reasoning"]
+    }
+  },
+  {
+    "question": "What kind of discussion would you enjoy most?",
+    "options": {
+      "a": "A debate on a controversial topic",
+      "b": "An analysis of how a rule affects different people",
+      "c": "A conversation about what’s fair and just"
+    },
+    "inference": {
+      "a": ["argumentation"],
+      "b": ["policy-analysis", "law"],
+      "c": ["ethical-reasoning"]
+    }
+  },
+  {
+    "question": "Which task would you be most excited to do?",
+    "options": {
+      "a": "Research a real court case",
+      "b": "Write a paper arguing for a new law",
+      "c": "Discuss whether a law is ethically fair"
+    },
+    "inference": {
+      "a": ["legal-research", "law"],
+      "b": ["argumentation", "policy-analysis"],
+      "c": ["ethical-reasoning", "law"]
+    }
+  },
+  {
+    "question": "How do you usually approach problems?",
+    "options": {
+      "a": "By thinking carefully about what’s fair for everyone",
+      "b": "By looking up laws or rules that apply",
+      "c": "By forming strong arguments with evidence"
+    },
+    "inference": {
+      "a": ["ethical-reasoning", "policy-analysis"],
+      "b": ["legal-research", "law"],
+      "c": ["argumentation"]
+    }
+  },
+  {
+    "question": "Which future career sounds most appealing?",
+    "options": {
+      "a": "A lawyer who defends clients in court",
+      "b": "A researcher who studies laws and policies",
+      "c": "An advisor who helps people make ethical choices"
+    },
+    "inference": {
+      "a": ["law", "argumentation"],
+      "b": ["legal-research", "policy-analysis"],
+      "c": ["ethical-reasoning"]
+    }
   }
 ]
+
 
 
 
