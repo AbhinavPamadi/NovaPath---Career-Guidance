@@ -9,6 +9,7 @@ export const navItems = [
   { href: '/timeline', label: 'Timeline' },
   { href: '/career-path', label: 'Career Path' },
   { href: '/peer-to-peer-forum', label: 'Forum' },
+  { href: '/college-map', label: 'College Map' },
   { href: '/ngo-connection', label: 'NGO Connection' },
   { href: '/feedback-forum', label: 'Feedback' },
 ];

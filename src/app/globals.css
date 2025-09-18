@@ -142,3 +142,27 @@ body {
 		transform: translatey(0px);
 	}
 }
+
+/* College Map Specific Styles */
+.college-map-container {
+  @apply flex flex-col lg:flex-row gap-6;
+  min-height: calc(100vh - 200px);
+}
+
+.college-map-wrapper {
+  @apply lg:w-[70%] w-full h-64 lg:h-full;
+}
+
+.college-map-sidebar {
+  @apply lg:w-[30%] w-full;
+}
+
+@media (max-width: 768px) {
+  .college-map-wrapper {
+    height: 400px;
+  }
+  
+  .college-map-container {
+    min-height: auto;
+  }
+}
