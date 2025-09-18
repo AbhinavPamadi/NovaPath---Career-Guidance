@@ -5,6 +5,7 @@ import { ArrowRight, Bot, CalendarCheck, Target, FileQuestion, HeartHandshake, U
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { MessageSquare, ThumbsUp, AlertCircle, User } from 'lucide-react';
+import { QuizWidget } from '@/components/quiz/quiz-widget';
 
 export default function Home() {
   return (
@@ -33,6 +34,18 @@ export default function Home() {
             <Link href="/timeline">Explore Timeline</Link>
           </Button>
         </div>
+      </section>
+
+      <section id="quiz" className="mt-24 md:mt-32 scroll-mt-20">
+        <div className="text-center mb-12">
+          <h2 className="font-headline text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+            Discover Your Path
+          </h2>
+          <p className="mt-2 text-lg text-muted-foreground">
+            Take our interactive quiz to uncover your ideal career direction.
+          </p>
+        </div>
+        <QuizWidget />
       </section>
 
       <section id="features" className="mt-24 md:mt-32 scroll-mt-20">

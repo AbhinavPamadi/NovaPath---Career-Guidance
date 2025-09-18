@@ -1,0 +1,300 @@
+[
+  {
+    "question": "If given a project, which part would you enjoy more?",
+    "options": {
+      "a": "Sketching and modeling the design on software",
+      "b": "Testing how strong and reliable the materials are",
+      "c": "Automating the system to work on its own"
+    },
+    "inference": {
+      "a": ["CAD", "mechanical-design", "engineering-drawing"],
+      "b": ["material-science", "material-testing", "fabrication"],
+      "c": ["automation", "instrumentation", "internet-of-things"]
+    }
+  },
+  {
+    "question": "Which activity sounds the most fun?",
+    "options": {
+      "a": "Building a small robot that moves on commands",
+      "b": "Analyzing how air flows over a car model",
+      "c": "Figuring out how circuits power gadgets"
+    },
+    "inference": {
+      "a": ["automation", "firmware-development", "internet-of-things"],
+      "b": ["aerodynamics", "dynamics", "mechanics"],
+      "c": ["electronics", "circuits", "electrical-systems"]
+    }
+  },
+  {
+    "question": "If you had to choose, what would you rather create?",
+    "options": {
+      "a": "A cool 3D design of a futuristic product",
+      "b": "An efficient process to produce goods faster",
+      "c": "A battery system that lasts longer"
+    },
+    "inference": {
+      "a": ["CAD", "mechanical-design", "engineering-drawing"],
+      "b": ["process-engineering", "fabrication", "automation"],
+      "c": ["battery-power", "electrical-systems", "material-science"]
+    }
+  },
+  {
+    "question": "What kind of problems do you like solving?",
+    "options": {
+      "a": "Why a machine part isn’t moving correctly",
+      "b": "Why an electronic circuit stopped working",
+      "c": "Why the production line is slow"
+    },
+    "inference": {
+      "a": ["mechanics", "motorcycle-mechanics", "dynamics"],
+      "b": ["electronics", "circuits", "electrical-systems"],
+      "c": ["process-engineering", "automation", "instrumentation"]
+    }
+  },
+  {
+    "question": "Imagine working on a team project. Which role attracts you?",
+    "options": {
+      "a": "The designer who creates the look and structure",
+      "b": "The tester who checks if everything works safely",
+      "c": "The coder who programs the system"
+    },
+    "inference": {
+      "a": ["CAD", "engineering-drawing", "mechanical-design"],
+      "b": ["material-testing", "instrumentation", "mechanics"],
+      "c": ["firmware-development", "automation", "internet-of-things"]
+    }
+  },
+  {
+    "question": "Which school activity do you find more interesting?",
+    "options": {
+      "a": "Drawing and sketching in detail",
+      "b": "Doing science experiments in the lab",
+      "c": "Playing with circuits and wires in electronics class"
+    },
+    "inference": {
+      "a": ["engineering-drawing", "CAD", "mechanical-design"],
+      "b": ["material-science", "fabrication", "material-testing"],
+      "c": ["circuits", "electronics", "electrical-systems"]
+    }
+  },
+  {
+    "question": "If you had extra time, what would you explore?",
+    "options": {
+      "a": "Designing your own car or bike model",
+      "b": "Creating a smart device that connects to your phone",
+      "c": "Studying how materials bend, break, or resist stress"
+    },
+    "inference": {
+      "a": ["motorcycle-mechanics", "CAD", "aerodynamics", "mechanical-design"],
+      "b": ["internet-of-things", "firmware-development", "automation"],
+      "c": ["material-science", "material-testing", "mechanics"]
+    }
+  },
+  {
+    "question": "What would you prefer to work with?",
+    "options": {
+      "a": "Machines and gears",
+      "b": "Sensors and instruments",
+      "c": "Software and coding"
+    },
+    "inference": {
+      "a": ["mechanics", "motorcycle-mechanics", "fabrication"],
+      "b": ["instrumentation", "automation", "process-engineering"],
+      "c": ["firmware-development", "internet-of-things", "electronics"]
+    }
+  },
+  {
+    "question": "Which invention do you admire the most?",
+    "options": {
+      "a": "Airplanes and cars",
+      "b": "Smartphones and gadgets",
+      "c": "Factories that can produce thousands of products every day"
+    },
+    "inference": {
+      "a": ["aerodynamics", "dynamics", "mechanics"],
+      "b": ["electronics", "firmware-development", "internet-of-things"],
+      "c": ["process-engineering", "automation", "fabrication"]
+    }
+  },
+{
+  "question": "Which of these sounds most exciting to you?",
+  "options": {
+    "a": "Solving tricky puzzles or logic problems",
+    "b": "Building apps or useful computer tools",
+    "c": "Understanding how data is stored and accessed"
+  },
+  "inference": {
+    "a": ["algorithms", "numerical-reasoning", "data-structures"],
+    "b": ["computer-applications", "informatic-technology", "information-technology"],
+    "c": ["database-management", "information-systems"]
+  }
+},
+{
+  "question": "Which project would you rather take on?",
+  "options": {
+    "a": "Designing a computer network for a school",
+    "b": "Analyzing data to find interesting trends",
+    "c": "Writing a program to sort millions of records quickly"
+  },
+  "inference": {
+    "a": ["networking", "information-technology", "information-systems"],
+    "b": ["data-analysis", "probability", "analysis"],
+    "c": ["algorithms", "data-structures", "computer-applications"]
+  }
+},
+{
+  "question": "What kind of challenge do you enjoy the most?",
+  "options": {
+    "a": "Understanding patterns in data and graphs",
+    "b": "Improving the speed of a program",
+    "c": "Creating websites or software people can use"
+  },
+  "inference": {
+    "a": ["data-analysis", "numerical-reasoning", "fourier-analysis"],
+    "b": ["algorithms", "data-structures", "analysis"],
+    "c": ["computer-applications", "informatic-technology", "information-technology"]
+  }
+},
+{
+  "question": "If you're given a computer, what would you do first?",
+  "options": {
+    "a": "Check out how the network and internet are working",
+    "b": "Install tools to work with data and spreadsheets",
+    "c": "Try writing some code or script"
+  },
+  "inference": {
+    "a": ["networking", "information-systems", "information-technology"],
+    "b": ["computer-applications", "data-analysis", "database-management"],
+    "c": ["algorithms", "data-structures", "informatic-technology"]
+  }
+},
+{
+  "question": "Which topic sounds the most interesting to you?",
+  "options": {
+    "a": "How information is sent through the internet",
+    "b": "How computers make decisions based on data",
+    "c": "How to manage and organize huge amounts of data"
+  },
+  "inference": {
+    "a": ["networking", "information-technology", "informatic-technology"],
+    "b": ["data-analysis", "probability", "algorithms"],
+    "c": ["database-management", "information-systems"]
+  }
+},
+{
+  "question": "If you had to teach something, what would it be?",
+  "options": {
+    "a": "Ways to solve math problems using logic",
+    "b": "How to build and use a database",
+    "c": "How to create useful software or tools"
+  },
+  "inference": {
+    "a": ["numerical-reasoning", "algorithms", "fourier-analysis"],
+    "b": ["database-management", "information-systems", "analysis"],
+    "c": ["computer-applications", "informatic-technology", "information-technology"]
+  }
+},
+{
+  "question": "What do you like most in tech?",
+  "options": {
+    "a": "Finding smart solutions using code",
+    "b": "Understanding how networks and systems connect",
+    "c": "Analyzing data to make better decisions"
+  },
+  "inference": {
+    "a": ["algorithms", "data-structures", "computer-applications"],
+    "b": ["networking", "information-technology", "information-systems"],
+    "c": ["data-analysis", "probability", "analysis"]
+  }
+},
+{
+  "question": "What kind of school project would you enjoy the most?",
+  "options": {
+    "a": "Creating a small software or app",
+    "b": "Collecting and interpreting data from a survey",
+    "c": "Mapping out how computers share information"
+  },
+  "inference": {
+    "a": ["computer-applications", "informatic-technology"],
+    "b": ["data-analysis", "probability", "numerical-reasoning"],
+    "c": ["networking", "information-technology", "information-systems"]
+  }
+},
+{
+  "question": "Which skill would you like to develop?",
+  "options": {
+    "a": "Building smarter algorithms for computers",
+    "b": "Working with data to find patterns and insights",
+    "c": "Managing information across systems and databases"
+  },
+  "inference": {
+    "a": ["algorithms", "data-structures", "analysis"],
+    "b": ["data-analysis", "fourier-analysis", "probability"],
+    "c": ["database-management", "information-systems", "informatic-technology"]
+  }
+},
+{
+  "question": "Which area would you be curious to explore more?",
+  "options": {
+    "a": "How websites store and fetch your data",
+    "b": "How to analyze and visualize data trends",
+    "c": "How computers make predictions or decisions"
+  },
+  "inference": {
+    "a": ["database-management", "information-systems", "networking"],
+    "b": ["data-analysis", "numerical-reasoning", "fourier-analysis"],
+    "c": ["algorithms", "probability", "analysis"]
+  }
+},
+{
+  "question": "Which activity would you enjoy the most?",
+  "options": {
+    "a": "Learning how the human body works",
+    "b": "Studying plants and how they grow",
+    "c": "Exploring bacteria and tiny life forms"
+  },
+  "inference": {
+    "a": ["anatomy", "human-anatomy", "basic-nursing"],
+    "b": ["botany", "plant-biology", "agronomy"],
+    "c": ["microbiology", "molecular-biology", "biochemistry"]
+  }
+},
+{
+  "question": "If you could visit a lab, what would you want to see?",
+  "options": {
+    "a": "Cells and DNA under a microscope",
+    "b": "How medicine is used to care for people",
+    "c": "Experiments with soil and plants"
+  },
+  "inference": {
+    "a": ["molecular-biology", "biotechnology", "microbiology"],
+    "b": ["basic-nursing", "human-anatomy", "anatomy"],
+    "c": ["agronomy", "crop-cultivation", "plant-biology"]
+  }
+},
+{
+  "question": "Which topic sounds most interesting to you?",
+  "options": {
+    "a": "How the heart and lungs work",
+    "b": "How plants make their own food",
+    "c": "How tiny organisms cause disease"
+  },
+  "inference": {
+    "a": ["human-anatomy", "anatomy", "basic-nursing"],
+    "b": ["botany", "plant-biology", "biochemistry"],
+    "c": ["microbiology", "molecular-biology", "biotechnology"]
+  }
+},
+{
+  "question": "What kind of career sounds exciting?",
+  "options": {
+    "a": "Taking care of animals or learning how they live",
+    "b": "Working in a lab to create new medicines or crops",
+    "c": "Helping people stay healthy and recover from illness"
+  },
+  "inference": {
+    "a": ["zoology/animal-care", "biochemistry", "botany"],
+    "b": ["biotechnology", "molecular-biology", "crop-cultivation"],
+    "c": ["basic-nursing", "human-anatomy", "anatomy"]
+  }
+}]
