@@ -1,0 +1,132 @@
+[
+  {
+    "question": "What part of teaching do you find most exciting?",
+    "options": {
+      "a": "Explaining ideas clearly so others understand",
+      "b": "Keeping a group focused and working together",
+      "c": "Creating new ways to help people learn better"
+    },
+    "inference": {
+      "a": ["Communication"],
+      "b": ["Classroom Management"],
+      "c": ["Education Theory"]
+    }
+  },
+  {
+    "question": "If you were teaching a class, what would you enjoy the most?",
+    "options": {
+      "a": "Standing in front of others and delivering a lesson",
+      "b": "Making sure everyone stays respectful and engaged",
+      "c": "Choosing fun activities to match how people learn"
+    },
+    "inference": {
+      "a": ["Public Speaking"],
+      "b": ["Classroom Management"],
+      "c": ["Education Theory"]
+    }
+  },
+  {
+    "question": "What skill would you most like to improve?",
+    "options": {
+      "a": "Speaking confidently in front of groups",
+      "b": "Organizing a classroom and managing behavior",
+      "c": "Understanding how people learn best"
+    },
+    "inference": {
+      "a": ["Public Speaking"],
+      "b": ["Classroom Management"],
+      "c": ["Education Theory"]
+    }
+  },
+  {
+    "question": "When helping others, what comes naturally to you?",
+    "options": {
+      "a": "Explaining things in simple, clear ways",
+      "b": "Getting people to stay focused and work as a team",
+      "c": "Choosing the right words to connect with different people"
+    },
+    "inference": {
+      "a": ["Communication"],
+      "b": ["Classroom Management"],
+      "c": ["Communication"]
+    }
+  },
+  {
+    "question": "Which part of being a teacher sounds most fun?",
+    "options": {
+      "a": "Planning exciting lessons that help students grow",
+      "b": "Speaking confidently and keeping students interested",
+      "c": "Helping students stay respectful and motivated"
+    },
+    "inference": {
+      "a": ["Education Theory"],
+      "b": ["Public Speaking"],
+      "c": ["Classroom Management"]
+    }
+  },
+  {
+    "question": "In a group setting, what role do you often take?",
+    "options": {
+      "a": "I guide the group and make sure people stay on track",
+      "b": "I explain the topic clearly to help everyone understand",
+      "c": "I present ideas and speak up in front of others"
+    },
+    "inference": {
+      "a": ["Classroom Management"],
+      "b": ["Communication"],
+      "c": ["Public Speaking"]
+    }
+  },
+  {
+    "question": "What inspires you most about education?",
+    "options": {
+      "a": "Helping others learn and reach their goals",
+      "b": "Organizing learning spaces that feel positive and safe",
+      "c": "Exploring different teaching styles to reach every student"
+    },
+    "inference": {
+      "a": ["Communication"],
+      "b": ["Classroom Management"],
+      "c": ["Education Theory"]
+    }
+  },
+  {
+    "question": "How do you handle challenges when speaking to a group?",
+    "options": {
+      "a": "I stay calm and speak clearly so everyone follows",
+      "b": "I adjust my words based on how people react",
+      "c": "I make sure the group stays focused and respectful"
+    },
+    "inference": {
+      "a": ["Public Speaking"],
+      "b": ["Communication"],
+      "c": ["Classroom Management"]
+    }
+  },
+  {
+    "question": "If you had to plan a lesson, what would be your focus?",
+    "options": {
+      "a": "Keeping the class organized and disciplined",
+      "b": "Choosing activities that match different learning styles",
+      "c": "Practicing how to speak clearly and confidently"
+    },
+    "inference": {
+      "a": ["Classroom Management"],
+      "b": ["Education Theory"],
+      "c": ["Public Speaking"]
+    }
+  },
+  {
+    "question": "What do you think makes someone a great teacher?",
+    "options": {
+      "a": "Being able to speak in a way that holds attention",
+      "b": "Understanding how students learn differently",
+      "c": "Creating a classroom where everyone feels safe and respected"
+    },
+    "inference": {
+      "a": ["Public Speaking"],
+      "b": ["Education Theory"],
+      "c": ["Classroom Management"]
+    }
+  }
+]
