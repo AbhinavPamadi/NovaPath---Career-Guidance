@@ -15,17 +15,19 @@ interface QuizQuestion {
     a: string;
     b: string;
     c: string;
+    d: string;
   };
   inference: {
     a: string[];
     b: string[];
     c: string[];
+    d: string[];
   };
 }
 
 interface QuizAnswer {
   questionIndex: number;
-  selectedOption: 'a' | 'b' | 'c';
+  selectedOption: 'a' | 'b' | 'c' | 'd';
   inference: string[];
 }
 
@@ -34,7 +36,7 @@ export function QuizWidget() {
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
-  const [selectedOption, setSelectedOption] = useState<'a' | 'b' | 'c' | null>(null);
+  const [selectedOption, setSelectedOption] = useState<'a' | 'b' | 'c' | 'd' | null>(null);
   const [quizStarted, setQuizStarted] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
@@ -66,7 +68,7 @@ export function QuizWidget() {
     setQuizCompleted(false);
   };
 
-  const handleAnswerSelect = (option: 'a' | 'b' | 'c') => {
+  const handleAnswerSelect = (option: 'a' | 'b' | 'c' | 'd') => {
     setSelectedOption(option);
   };
 
@@ -247,7 +249,7 @@ export function QuizWidget() {
           {Object.entries(currentQuestion.options).map(([key, text]) => (
             <button
               key={key}
-              onClick={() => handleAnswerSelect(key as 'a' | 'b' | 'c')}
+              onClick={() => handleAnswerSelect(key as 'a' | 'b' | 'c' | 'd')}
               className={cn(
                 "w-full p-4 text-left rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
                 selectedOption === key
