@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/use-auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
+import { getUserInferredSkills } from '@/lib/firestore-utils';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -17,6 +18,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
+import { RefreshCw } from 'lucide-react';
 
 const profileSchema = z.object({
   fullName: z.string().min(2, "Full name is required."),
@@ -38,6 +42,8 @@ export default function ProfilePage() {
   const router = useRouter();
   const { toast } = useToast();
   const [isSaving, setIsSaving] = useState(false);
+  const [inferredSkills, setInferredSkills] = useState<string[]>([]);
+  const [lastRefresh, setLastRefresh] = useState(Date.now());
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileSchema),
@@ -53,6 +59,7 @@ export default function ProfilePage() {
       age: undefined,
       grade: '',
     },
+    mode: 'onChange',
   });
 
   useEffect(() => {
@@ -64,28 +71,91 @@ export default function ProfilePage() {
   useEffect(() => {
     if (user) {
       const fetchProfile = async () => {
-        const docRef = doc(db, 'users', user.uid);
-        const docSnap = await getDoc(docRef);
+        console.log('Fetching profile for user:', user.uid);
+        try {
+          const docRef = doc(db, 'users', user.uid);
+          const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          form.reset(docSnap.data() as ProfileFormValues);
+          const profileData = docSnap.data() as any;
+          console.log('Profile data loaded:', profileData);
+          
+          // Convert null values to empty strings to prevent React warning
+          const sanitizedData: ProfileFormValues = {
+            fullName: profileData.fullName || '',
+            email: profileData.email || '',
+            gender: profileData.gender || '',
+            address: profileData.address || '',
+            phone: profileData.phone || '',
+            university: profileData.university || '',
+            hobbies: profileData.hobbies || '',
+            skills: profileData.skills || '',
+            age: profileData.age || undefined,
+            grade: profileData.grade || '',
+          };
+          
+          form.reset(sanitizedData);
         } else {
+          console.log('No profile exists, using auth data');
           // Pre-fill from auth if no profile exists
           form.reset({
             fullName: user.displayName || '',
             email: user.email || '',
+            gender: '',
+            address: '',
+            phone: '',
+            university: '',
+            hobbies: '',
+            skills: '',
+            age: undefined,
+            grade: '',
           });
+        }
+          
+          // Fetch inferred skills
+          console.log('Fetching inferred skills...');
+          const skills = await getUserInferredSkills(user.uid);
+          console.log('Inferred skills loaded:', skills);
+          setInferredSkills(skills);
+        } catch (error) {
+          console.error('Error fetching profile:', error);
         }
       };
       fetchProfile();
     }
-  }, [user, form]);
+  }, [user, form, lastRefresh]);
+
+  // Add effect to refresh when coming back from quiz
+  useEffect(() => {
+    const handleFocus = () => {
+      console.log('Window focused, refreshing profile data...');
+      setLastRefresh(Date.now());
+    };
+
+    window.addEventListener('focus', handleFocus);
+    return () => window.removeEventListener('focus', handleFocus);
+  }, []);
 
   const onSubmit = async (data: ProfileFormValues) => {
     if (!user) return;
     setIsSaving(true);
     try {
+      // Sanitize data to prevent null values
+      const sanitizedData = {
+        ...data,
+        fullName: data.fullName || '',
+        email: data.email || '',
+        gender: data.gender || '',
+        address: data.address || '',
+        phone: data.phone || '',
+        university: data.university || '',
+        hobbies: data.hobbies || '',
+        skills: data.skills || '',
+        grade: data.grade || '',
+        lastLogin: new Date(),
+      };
+
       const userRef = doc(db, 'users', user.uid);
-      await setDoc(userRef, data, { merge: true });
+      await setDoc(userRef, sanitizedData, { merge: true });
       toast({
         title: 'Profile Updated',
         description: 'Your profile has been saved successfully.',
@@ -260,6 +330,49 @@ export default function ProfilePage() {
                   </FormItem>
                 )}
               />
+            </CardContent>
+          </Card>
+
+          {/* Inferred Skills Section */}
+          <Card className="glass-card">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle>AI-Inferred Skills</CardTitle>
+                  <CardDescription>
+                    Skills identified from your quiz responses and activities. These are automatically updated when you complete quizzes.
+                  </CardDescription>
+                </div>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => setLastRefresh(Date.now())}
+                  title="Refresh skills from latest quiz results"
+                >
+                  <RefreshCw className="h-4 w-4" />
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent>
+              {inferredSkills.length > 0 ? (
+                <div className="flex flex-wrap gap-2">
+                  {inferredSkills.map((skill, index) => (
+                    <Badge key={index} variant="secondary" className="capitalize">
+                      {skill.replace(/-/g, ' ')}
+                    </Badge>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center p-8 text-muted-foreground">
+                  <p className="mb-4">No inferred skills yet.</p>
+                  <p className="text-sm">
+                    Take the career quiz to automatically discover and add skills to your profile!
+                  </p>
+                  <Button asChild className="mt-4">
+                    <Link href="/quiz">Take Career Quiz</Link>
+                  </Button>
+                </div>
+              )}
             </CardContent>
           </Card>
 

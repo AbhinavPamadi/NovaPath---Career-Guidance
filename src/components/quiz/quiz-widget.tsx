@@ -8,6 +8,7 @@ import { useAuth } from '@/hooks/use-auth';
 import { ArrowRight, Lock, CheckCircle, RotateCcw } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { saveQuizResultsAndUpdateSkills, QuizAnswer, testUserWritePermissions } from '@/lib/firestore-utils';
 
 interface QuizQuestion {
   question: string;
@@ -25,11 +26,7 @@ interface QuizQuestion {
   };
 }
 
-interface QuizAnswer {
-  questionIndex: number;
-  selectedOption: 'a' | 'b' | 'c' | 'd';
-  inference: string[];
-}
+// QuizAnswer interface imported from firestore-utils
 
 export function QuizWidget() {
   const { user, loading } = useAuth();
@@ -40,6 +37,7 @@ export function QuizWidget() {
   const [quizStarted, setQuizStarted] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
+  const [savingResults, setSavingResults] = useState(false);
 
   // Load questions from test.json
   useEffect(() => {
@@ -72,7 +70,7 @@ export function QuizWidget() {
     setSelectedOption(option);
   };
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = async () => {
     if (!selectedOption) return;
 
     const currentQuestion = questions[currentQuestionIndex];
@@ -89,7 +87,43 @@ export function QuizWidget() {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedOption(null);
     } else {
+      // Quiz completed - save results to Firebase
       setQuizCompleted(true);
+      
+      if (user) {
+        setSavingResults(true);
+        console.log('Starting to save quiz results for user:', user.uid);
+        console.log('Quiz answers:', updatedAnswers);
+        
+        try {
+          // First test write permissions
+          console.log('Testing write permissions...');
+          const hasPermissions = await testUserWritePermissions(user.uid);
+          
+          if (!hasPermissions) {
+            throw new Error('User does not have write permissions to their profile. Please check Firebase authentication and rules.');
+          }
+          
+          const success = await saveQuizResultsAndUpdateSkills(user.uid, updatedAnswers);
+          if (success) {
+            console.log('Quiz results saved successfully!');
+          } else {
+            console.error('saveQuizResultsAndUpdateSkills returned false');
+            throw new Error('Failed to save quiz results - function returned false');
+          }
+        } catch (error) {
+          console.error('Failed to save quiz results:', error);
+          
+          // Show user-friendly error message
+          const errorMessage = error.message || 'Unknown error occurred';
+          alert(`Error saving quiz results: ${errorMessage}\n\nPlease try logging out and logging back in, then retake the quiz.`);
+        } finally {
+          setSavingResults(false);
+        }
+      } else {
+        console.error('No user available to save quiz results');
+        alert('No authenticated user found. Please log in and try again.');
+      }
     }
   };
 
@@ -172,6 +206,15 @@ export function QuizWidget() {
           </CardTitle>
         </CardHeader>
         <CardContent className="p-8">
+          {savingResults && (
+            <div className="text-center mb-6 p-4 bg-primary/10 rounded-lg">
+              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary mx-auto mb-2"></div>
+              <p className="text-sm text-muted-foreground">
+                Saving your results and updating your skills profile...
+              </p>
+            </div>
+          )}
+          
           <div className="text-center mb-6">
             <p className="text-muted-foreground mb-4">
               Based on your answers, here are your top career interest areas:
@@ -184,16 +227,30 @@ export function QuizWidget() {
                 </div>
               ))}
             </div>
+            
+            {!savingResults && (
+              <div className="mt-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+                <p className="text-sm text-green-700 dark:text-green-300">
+                  ✅ Your skills have been automatically added to your profile!
+                </p>
+              </div>
+            )}
           </div>
+          
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button onClick={restartQuiz} variant="outline">
               <RotateCcw className="h-4 w-4 mr-2" />
               Retake Quiz
             </Button>
             <Button asChild>
+              <Link href="/profile">
+                View Updated Profile
+                <ArrowRight className="h-4 w-4 ml-2" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline">
               <Link href="/career-path">
                 Explore Career Paths
-                <ArrowRight className="h-4 w-4 ml-2" />
               </Link>
             </Button>
           </div>

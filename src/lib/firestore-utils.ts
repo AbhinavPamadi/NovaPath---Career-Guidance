@@ -8,6 +8,20 @@ export interface UserProfile {
   email: string | null;
   createdAt?: Date;
   lastLogin?: Date;
+  inferredSkills?: string[];
+  quizResults?: QuizResult[];
+}
+
+export interface QuizResult {
+  completedAt: Date;
+  answers: QuizAnswer[];
+  topSkills: string[];
+}
+
+export interface QuizAnswer {
+  questionIndex: number;
+  selectedOption: 'a' | 'b' | 'c' | 'd';
+  inference: string[];
 }
 
 /**
@@ -106,4 +120,165 @@ export async function retryFirestoreOperation<T>(
   }
   
   return null;
+}
+
+/**
+ * Tests if user has write permissions to their profile
+ * @param uid - User ID
+ * @returns Promise<boolean> - Whether user can write to their profile
+ */
+export async function testUserWritePermissions(uid: string): Promise<boolean> {
+  try {
+    console.log('Testing write permissions for user:', uid);
+    const testDoc = doc(db, "users", uid);
+    await setDoc(testDoc, { 
+      lastPermissionTest: new Date(),
+      testField: "permission-test" 
+    }, { merge: true });
+    console.log('Write permission test successful');
+    return true;
+  } catch (error: any) {
+    console.error('Write permission test failed:', error);
+    return false;
+  }
+}
+
+/**
+ * Saves quiz results and updates inferred skills for a user
+ * @param uid - User ID
+ * @param quizAnswers - Array of quiz answers
+ * @returns Promise<boolean> - Success status
+ */
+export async function saveQuizResultsAndUpdateSkills(
+  uid: string,
+  quizAnswers: QuizAnswer[]
+): Promise<boolean> {
+  try {
+    console.log('saveQuizResultsAndUpdateSkills called with:', { uid, answersCount: quizAnswers.length });
+    
+    // Calculate skill frequencies
+    const skillCount: { [key: string]: number } = {};
+    quizAnswers.forEach(answer => {
+      answer.inference.forEach(skill => {
+        skillCount[skill] = (skillCount[skill] || 0) + 1;
+      });
+    });
+
+    console.log('Skill count calculated:', skillCount);
+
+    // Get top skills (most frequent ones)
+    const topSkills = Object.entries(skillCount)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 10) // Keep top 10 skills
+      .map(([skill]) => skill);
+
+    console.log('Top skills identified:', topSkills);
+
+    const quizResult: QuizResult = {
+      completedAt: new Date(),
+      answers: quizAnswers,
+      topSkills
+    };
+
+    console.log('Getting current profile for user:', uid);
+    // Get current profile
+    const userDoc = await getDoc(doc(db, "users", uid));
+    const currentProfile = userDoc.exists() ? userDoc.data() as UserProfile : null;
+    
+    console.log('Current profile exists:', userDoc.exists());
+    console.log('Current profile data:', currentProfile);
+
+    // Merge skills with existing inferred skills
+    const existingSkills = currentProfile?.inferredSkills || [];
+    const allSkills = [...new Set([...existingSkills, ...topSkills])]; // Remove duplicates
+
+    console.log('Existing skills:', existingSkills);
+    console.log('All skills (merged):', allSkills);
+
+    // Update profile with new quiz results and skills
+    const updatedProfile = {
+      uid: uid,
+      fullName: currentProfile?.fullName || '',
+      email: currentProfile?.email || '',
+      createdAt: currentProfile?.createdAt || new Date(),
+      lastLogin: new Date(),
+      inferredSkills: allSkills,
+      quizResults: [
+        ...(currentProfile?.quizResults || []),
+        quizResult
+      ].slice(-5), // Keep only last 5 quiz results
+      // Preserve any other existing fields (sanitized)
+      ...Object.fromEntries(
+        Object.entries(currentProfile || {}).map(([key, value]) => [
+          key, 
+          value === null ? '' : value
+        ])
+      )
+    };
+
+    console.log('About to save updated profile:', updatedProfile);
+
+    await setDoc(doc(db, "users", uid), updatedProfile, { merge: true });
+    
+    console.log(`Quiz results saved and skills updated for user: ${uid}`);
+    console.log(`New inferred skills:`, topSkills);
+    console.log(`All skills in profile:`, allSkills);
+    return true;
+  } catch (error: any) {
+    console.error('Failed to save quiz results and update skills:', error);
+    console.error('Error details:', error.message);
+    console.error('Error stack:', error.stack);
+    return false;
+  }
+}
+
+/**
+ * Gets inferred skills for a user
+ * @param uid - User ID
+ * @returns Promise<string[]>
+ */
+export async function getUserInferredSkills(uid: string): Promise<string[]> {
+  try {
+    console.log('getUserInferredSkills called for user:', uid);
+    const profile = await getUserProfile(uid);
+    console.log('Profile loaded in getUserInferredSkills:', profile);
+    const skills = profile?.inferredSkills || [];
+    console.log('Returning inferred skills:', skills);
+    return skills;
+  } catch (error: any) {
+    console.error('Failed to get user inferred skills:', error);
+    return [];
+  }
+}
+
+/**
+ * Adds manual skills to a user's profile (from profile form)
+ * @param uid - User ID
+ * @param manualSkills - Skills entered manually by user
+ * @returns Promise<boolean>
+ */
+export async function updateManualSkills(
+  uid: string,
+  manualSkills: string
+): Promise<boolean> {
+  try {
+    const profile = await getUserProfile(uid);
+    if (!profile) return false;
+
+    // Parse manual skills (comma-separated)
+    const skillsList = manualSkills
+      .split(',')
+      .map(skill => skill.trim().toLowerCase())
+      .filter(skill => skill.length > 0);
+
+    await setDoc(doc(db, "users", uid), {
+      manualSkills: skillsList,
+      lastLogin: new Date()
+    }, { merge: true });
+
+    return true;
+  } catch (error: any) {
+    console.error('Failed to update manual skills:', error);
+    return false;
+  }
 }
