@@ -1,6 +1,8 @@
 export async function fetchNewsByKeyword(keyword: string) {
   const res = await fetch(
-    `https://newsapi.org/v2/everything?q=${encodeURIComponent(keyword)}&apiKey=${"be76df14099e4cd286edf5e959907809"}`
+    `https://newsapi.org/v2/everything?q=${encodeURIComponent(
+      keyword
+    )}&apiKey=${"be76df14099e4cd286edf5e959907809"}`
   );
   if (!res.ok) throw new Error("Failed to fetch news");
   const data = await res.json();
@@ -19,11 +21,19 @@ export interface NewsArticle {
 }
 
 // Function to fetch the latest education-related news for notifications
-export async function fetchEducationNews(limit: number = 5): Promise<NewsArticle[]> {
+export async function fetchEducationNews(
+  limit: number = 5
+): Promise<NewsArticle[]> {
   try {
-    const keywords = ["NEET", "JEE", "education", "career guidance", "college admission"];
+    const keywords = [
+      "NEET",
+      "JEE",
+      "education",
+      "career guidance",
+      "college admission",
+    ];
     const randomKeyword = keywords[Math.floor(Math.random() * keywords.length)];
-    
+
     const articles = await fetchNewsByKeyword(randomKeyword);
     return articles.slice(0, limit);
   } catch (error) {
