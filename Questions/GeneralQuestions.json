@@ -778,8 +778,139 @@
       "b": ["first-aid", "basic-nursing"],
       "c": ["dentistry"]
     }
+  },
+  {
+    "question": "Which quality do you think is most important in a healthcare worker?",
+    "options": {
+      "a": "Caring deeply about others and helping them feel safe",
+      "b": "Noticing small changes in a patient's condition",
+      "c": "Figuring out what’s wrong when symptoms are confusing"
+    },
+    "inference": {
+      "a": ["compassion"],
+      "b": ["attention-to-detail (medical/clinical use)"],
+      "c": ["critical-thinking (diagnostics)"]
+    }
+  },
+  {
+    "question": "What would you do if a patient said they weren’t feeling well but couldn’t explain why?",
+    "options": {
+      "a": "Talk to them kindly to make them feel comfortable",
+      "b": "Look closely for any physical signs or changes",
+      "c": "Think about possible causes and ask follow-up questions"
+    },
+    "inference": {
+      "a": ["compassion"],
+      "b": ["attention-to-detail (medical/clinical use)"],
+      "c": ["critical-thinking (diagnostics)", "problem-solving"]
+    }
+  },
+  {
+    "question": "What kind of role would suit you best?",
+    "options": {
+      "a": "Supporting patients emotionally during hard times",
+      "b": "Double-checking charts, numbers, and reports for accuracy",
+      "c": "Finding the root cause of a medical problem"
+    },
+    "inference": {
+      "a": ["compassion"],
+      "b": ["attention-to-detail (medical/clinical use)"],
+      "c": ["critical-thinking (diagnostics)", "problem-solving"]
+    }
+  },
+  {
+    "question": "Which task sounds most rewarding to you?",
+    "options": {
+      "a": "Comforting someone who is scared or in pain",
+      "b": "Spotting a small mistake in a lab report that others missed",
+      "c": "Coming up with a new way to treat a tricky health issue"
+    },
+    "inference": {
+      "a": ["compassion"],
+      "b": ["attention-to-detail (medical/clinical use)"],
+      "c": ["problem-solving", "critical-thinking (diagnostics)"]
+    }
+  },
+  {
+    "question": "Which of these would you enjoy the most?",
+    "options": {
+      "a": "Helping a patient feel listened to and understood",
+      "b": "Noticing if a patient’s symptoms change slightly",
+      "c": "Solving a medical mystery based on symptoms and tests"
+    },
+    "inference": {
+      "a": ["compassion"],
+      "b": ["attention-to-detail (medical/clinical use)"],
+      "c": ["critical-thinking (diagnostics)", "problem-solving"]
+    }
+  },
+  {
+    "question": "What kind of healthcare skill would you like to improve?",
+    "options": {
+      "a": "Listening with empathy and showing kindness",
+      "b": "Being extra careful when recording patient data",
+      "c": "Thinking through medical problems step by step"
+    },
+    "inference": {
+      "a": ["compassion"],
+      "b": ["attention-to-detail (medical/clinical use)"],
+      "c": ["critical-thinking (diagnostics)", "problem-solving"]
+    }
+  },
+  {
+    "question": "Which scenario sounds most like you?",
+    "options": {
+      "a": "You comfort someone while they wait for results",
+      "b": "You catch a tiny error that prevents a big problem",
+      "c": "You piece together clues to make a smart decision"
+    },
+    "inference": {
+      "a": ["compassion"],
+      "b": ["attention-to-detail (medical/clinical use)"],
+      "c": ["problem-solving", "critical-thinking (diagnostics)"]
+    }
+  },
+  {
+    "question": "When working in a team, what role do you naturally take?",
+    "options": {
+      "a": "The one who makes sure everyone feels heard and supported",
+      "b": "The one who checks all the little details",
+      "c": "The one who connects ideas to solve the challenge"
+    },
+    "inference": {
+      "a": ["compassion"],
+      "b": ["attention-to-detail (medical/clinical use)"],
+      "c": ["problem-solving", "critical-thinking (diagnostics)"]
+    }
+  },
+  {
+    "question": "What do you value most in medical work?",
+    "options": {
+      "a": "Making patients feel safe and respected",
+      "b": "Ensuring that every record is 100% accurate",
+      "c": "Being able to analyze and solve complex cases"
+    },
+    "inference": {
+      "a": ["compassion"],
+      "b": ["attention-to-detail (medical/clinical use)"],
+      "c": ["critical-thinking (diagnostics)", "problem-solving"]
+    }
+  },
+  {
+    "question": "If you were a healthcare professional, what would motivate you?",
+    "options": {
+      "a": "Helping people feel cared for and less afraid",
+      "b": "Preventing mistakes that could impact someone's health",
+      "c": "Solving difficult health challenges using logic and evidence"
+    },
+    "inference": {
+      "a": ["compassion"],
+      "b": ["attention-to-detail (medical/clinical use)"],
+      "c": ["problem-solving", "critical-thinking (diagnostics)"]
+    }
   }
 ]
+
 
 
 
