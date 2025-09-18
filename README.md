@@ -50,9 +50,20 @@
 Before running the project, create a `.env.local` file in the root of your Next.js project and add the following:
 
 ```dotenv
-# GroQ API 
+# ---------------- AI / LLM ----------------
 GROQ_API_KEY=your_groq_api_key
-NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_api_key
+
+# ---------------- Firebase ----------------
+NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=your_measurement_id
+
+# ---------------- News API ----------------
+NEWS_API_KEY=your_news_api_key
 ```
 
 ### Prerequisites
