@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from 'react';
@@ -28,6 +27,7 @@ type FormValues = z.infer<typeof formSchema>;
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const { toast } = useToast();
   const router = useRouter();
 
@@ -58,8 +58,9 @@ export default function LoginPage() {
 
   const handleGoogleLogin = async () => {
     setIsGoogleLoading(true);
+    setError(null);
+    const provider = new GoogleAuthProvider();
     try {
-      const provider = new GoogleAuthProvider();
       const userCredential = await signInWithPopup(auth, provider);
       const user = userCredential.user;
 
@@ -73,6 +74,7 @@ export default function LoginPage() {
       toast({ title: "Login Successful", description: "Welcome!" });
       router.push('/profile');
     } catch (error: any) {
+      setError(error.message || 'Login failed');
       toast({
         variant: "destructive",
         title: "Google Login Failed",
@@ -150,6 +152,8 @@ export default function LoginPage() {
               </>
             )}
           </Button>
+
+          {error && <p className="mt-4 text-red-500 text-center">{error}</p>}
 
           <p className="mt-6 text-center text-sm text-muted-foreground">
             Don&apos;t have an account?{' '}

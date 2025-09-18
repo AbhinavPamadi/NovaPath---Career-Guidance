@@ -1,20 +1,17 @@
-
-import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore"; // <-- Add this
 
 const firebaseConfig = {
-  "projectId": "novapath-fb8de",
-  "appId": "1:156607849387:web:7bc126b76e24f8c9d9a8ee",
-  "storageBucket": "novapath-fb8de.appspot.com",
-  "apiKey": "AIzaSyD2WKbvNCduCISB5Yjh3TO0qEVBg5326s0",
-  "authDomain": "novapath-fb8de.firebaseapp.com",
-  "messagingSenderId": "156607849387"
+  apiKey: "AIzaSyAfZ9uqDokgHkquGRMz-q7886gsPnYjM9M",
+  authDomain: "novapath2-27234.firebaseapp.com",
+  projectId: "novapath2-27234",
+  storageBucket: "novapath2-27234.firebasestorage.app",
+  messagingSenderId: "610188911834",
+  appId: "1:610188911834:web:d6a2818e45371fd2cab1e3",
+  measurementId: "G-965Q18KL8K"
 };
 
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-export { app, auth, db };
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app); // <-- Add this
