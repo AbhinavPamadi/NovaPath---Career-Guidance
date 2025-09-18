@@ -1,0 +1,132 @@
+[
+  {
+    "question": "How do you feel when you have to learn something new unexpectedly?",
+    "options": {
+      "a": "Excited to try and adapt quickly",
+      "b": "A bit nervous but willing to try",
+      "c": "Uncomfortable and avoid it if possible"
+    },
+    "inference": {
+      "a": ["Adaptability"],
+      "b": ["Adaptability"],
+      "c": []
+    }
+  },
+  {
+    "question": "When plans change suddenly, what’s your usual reaction?",
+    "options": {
+      "a": "Adjust and find a new way forward",
+      "b": "Feel stressed but try to manage",
+      "c": "Struggle and prefer to stick to original plans"
+    },
+    "inference": {
+      "a": ["Adaptability"],
+      "b": ["Adaptability"],
+      "c": []
+    }
+  },
+  {
+    "question": "How do you handle new environments or social groups?",
+    "options": {
+      "a": "Easily connect and fit in",
+      "b": "Take some time but eventually adjust",
+      "c": "Feel out of place and uncomfortable"
+    },
+    "inference": {
+      "a": ["Adaptability"],
+      "b": ["Adaptability"],
+      "c": []
+    }
+  },
+  {
+    "question": "What do you do when you face a problem you haven’t seen before?",
+    "options": {
+      "a": "Look for creative ways to solve it",
+      "b": "Ask for advice or help",
+      "c": "Avoid it or wait for instructions"
+    },
+    "inference": {
+      "a": ["Adaptability"],
+      "b": ["Adaptability"],
+      "c": []
+    }
+  },
+  {
+    "question": "When learning new skills, how do you usually progress?",
+    "options": {
+      "a": "Quickly try different methods until it clicks",
+      "b": "Follow step-by-step guidance carefully",
+      "c": "Feel frustrated and slow to adapt"
+    },
+    "inference": {
+      "a": ["Adaptability"],
+      "b": ["Adaptability"],
+      "c": []
+    }
+  },
+  {
+    "question": "How comfortable are you with technology or trends that change often?",
+    "options": {
+      "a": "I enjoy keeping up and trying new things",
+      "b": "I try to keep up but sometimes feel overwhelmed",
+      "c": "I prefer to stick with what I know"
+    },
+    "inference": {
+      "a": ["Adaptability"],
+      "b": ["Adaptability"],
+      "c": []
+    }
+  },
+  {
+    "question": "What helps you most when adjusting to change?",
+    "options": {
+      "a": "Staying positive and open-minded",
+      "b": "Getting support from others",
+      "c": "Having clear rules and instructions"
+    },
+    "inference": {
+      "a": ["Adaptability"],
+      "b": ["Adaptability"],
+      "c": []
+    }
+  },
+  {
+    "question": "How do you feel about working in different roles or tasks?",
+    "options": {
+      "a": "I like trying new responsibilities",
+      "b": "I prefer to stick to familiar tasks",
+      "c": "I avoid tasks outside my comfort zone"
+    },
+    "inference": {
+      "a": ["Adaptability"],
+      "b": [],
+      "c": []
+    }
+  },
+  {
+    "question": "When a team changes plans or goals, what do you do?",
+    "options": {
+      "a": "Help the team adjust smoothly",
+      "b": "Feel uncertain but try to support",
+      "c": "Prefer to keep the original plan"
+    },
+    "inference": {
+      "a": ["Adaptability"],
+      "b": ["Adaptability"],
+      "c": []
+    }
+  },
+  {
+    "question": "Which best describes your attitude toward challenges?",
+    "options": {
+      "a": "Challenges are opportunities to grow",
+      "b": "Challenges can be tough but manageable",
+      "c": "I try to avoid challenges when possible"
+    },
+    "inference": {
+      "a": ["Adaptability"],
+      "b": ["Adaptability"],
+      "c": []
+    }
+  }
+]
