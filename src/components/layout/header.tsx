@@ -36,7 +36,7 @@ export function Header() {
                 <span className="sr-only">Notifications</span>
               </Button>
             </PopoverTrigger>
-            <PopoverContent align="end" className="p-0 glass-card">
+            <PopoverContent align="end" className="p-0 glass-card w-auto max-w-[calc(100vw-1rem)]">
               <NotificationPanel />
             </PopoverContent>
           </Popover>

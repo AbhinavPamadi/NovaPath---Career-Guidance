@@ -7,41 +7,45 @@ import { Separator } from "@/components/ui/separator";
 import { MapPin, Globe, Calendar, Users, GraduationCap } from "lucide-react";
 
 interface Coordinates {
-  latitude: string;
-  longitude: string;
-}
-
-interface Location {
-  city: string;
-  region: string;
-  postal_code?: string;
-  country: string;
-  coordinates: Coordinates;
-}
-
-interface Admissions {
-  undergraduate?: string;
-  postgraduate?: any;
-  doctoral_programs?: string[];
+  lat: number;
+  long: number;
 }
 
 interface Institute {
   name: string;
-  abbreviation: string;
+  abbreviation?: string;
   type: string;
+  location: string;
+  coordinates?: Coordinates;
+  website?: string;
   established?: number;
-  location: Location;
-  website: string;
-  overview: string;
-  admissions?: Admissions;
-  departments?: any;
+  description?: string;
+  admissions?: {
+    undergraduate?: string;
+    postgraduate?: string;
+  };
+  departments?: {
+    engineering?: string[];
+    physical_sciences?: string[];
+    [key: string]: any;
+  };
   academic_programs?: string[];
-  student_intake?: any;
-  executive_and_certificate_programs?: string[];
-}
-
-interface DirectoryData {
-  institutes: Institute[];
+  degrees_offered?: {
+    btech?: string[];
+    mtech?: string[];
+    mtech_executive?: string[];
+    phd?: string[];
+    [key: string]: any;
+  };
+  courses_offered?: string[] | {
+    undergraduate?: string[];
+    postgraduate?: string[];
+    doctoral?: string[];
+    other?: string[];
+    [key: string]: any;
+  };
+  contact?: any;
+  other_programs?: string[];
 }
 
 export function CollegeMap() {
@@ -60,8 +64,8 @@ export function CollegeMap() {
         if (!response.ok) {
           throw new Error('Failed to load institutes data');
         }
-        const data: DirectoryData = await response.json();
-        setInstitutes(data.institutes);
+        const data: Institute[] = await response.json();
+        setInstitutes(data);
       } catch (err) {
         setError('Failed to load institutes data');
         console.error('Error loading institutes:', err);
@@ -80,11 +84,11 @@ export function CollegeMap() {
     const initMap = () => {
       if (!mapRef.current) return;
 
-      // Default center (India)
-      const center = { lat: 28.6139, lng: 77.2090 };
+      // Default center (Kashmir/Jammu region)
+      const center = { lat: 33.2778, lng: 75.3412 };
       
       const mapInstance = new google.maps.Map(mapRef.current, {
-        zoom: 6,
+        zoom: 8,
         center,
         styles: [
           {
@@ -92,15 +96,25 @@ export function CollegeMap() {
             elementType: "labels",
             stylers: [{ visibility: "off" }]
           }
-        ]
+        ],
+        gestureHandling: 'cooperative',
+        mapTypeControl: false,
+        fullscreenControl: false,
+        streetViewControl: false,
+        zoomControl: true,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.RIGHT_BOTTOM,
+        },
       });
 
       setMap(mapInstance);
 
       // Add markers for each institute
       institutes.forEach((institute) => {
-        const lat = parseFloat(institute.location.coordinates.latitude.replace(/[°′″NSEW]/g, ''));
-        const lng = parseFloat(institute.location.coordinates.longitude.replace(/[°′″NSEW]/g, ''));
+        if (!institute.coordinates) return;
+        
+        const lat = institute.coordinates.lat;
+        const lng = institute.coordinates.long;
 
         if (isNaN(lat) || isNaN(lng)) return;
 
@@ -149,9 +163,6 @@ export function CollegeMap() {
     };
   }, []);
 
-  const parseCoordinate = (coord: string): number => {
-    return parseFloat(coord.replace(/[°′″NSEW]/g, ''));
-  };
 
   if (isLoading) {
     return (
@@ -176,9 +187,9 @@ export function CollegeMap() {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row gap-6 h-[calc(100vh-200px)]">
+    <div className="flex flex-col lg:flex-row gap-6 min-h-[600px] lg:h-[calc(100vh-200px)]">
       {/* Map Container */}
-      <div className="lg:w-[70%] w-full h-64 lg:h-full">
+      <div className="lg:w-[70%] w-full h-[400px] lg:h-full">
         <Card className="h-full">
           <CardContent className="p-0 h-full">
             <div ref={mapRef} className="w-full h-full rounded-lg" />
@@ -187,24 +198,26 @@ export function CollegeMap() {
       </div>
 
       {/* Sidebar */}
-      <div className="lg:w-[30%] w-full">
-        <Card className="h-full">
-          <CardHeader>
+      <div className="lg:w-[30%] w-full h-[500px] lg:h-full">
+        <Card className="h-full flex flex-col">
+          <CardHeader className="flex-shrink-0">
             <CardTitle className="flex items-center gap-2">
               <GraduationCap className="w-5 h-5" />
               Institute Details
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="flex-1 overflow-y-auto space-y-4">
             {selectedInstitute ? (
               <div className="space-y-4">
                 <div>
                   <h3 className="text-xl font-semibold text-purple-600 dark:text-purple-400">
                     {selectedInstitute.name}
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    {selectedInstitute.abbreviation}
-                  </p>
+                  {selectedInstitute.abbreviation && (
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
+                      {selectedInstitute.abbreviation}
+                    </p>
+                  )}
                   <Badge variant="secondary" className="mt-2">
                     {selectedInstitute.type}
                   </Badge>
@@ -216,13 +229,7 @@ export function CollegeMap() {
                   <div className="flex items-start gap-2">
                     <MapPin className="w-4 h-4 mt-1 text-gray-500" />
                     <div className="text-sm">
-                      <p>{selectedInstitute.location.city}, {selectedInstitute.location.region}</p>
-                      <p className="text-gray-600 dark:text-gray-400">{selectedInstitute.location.country}</p>
-                      {selectedInstitute.location.postal_code && (
-                        <p className="text-gray-600 dark:text-gray-400">
-                          {selectedInstitute.location.postal_code}
-                        </p>
-                      )}
+                      <p className="text-gray-600 dark:text-gray-300">{selectedInstitute.location}</p>
                     </div>
                   </div>
 
@@ -233,36 +240,31 @@ export function CollegeMap() {
                     </div>
                   )}
 
-                  <div className="flex items-center gap-2">
-                    <Globe className="w-4 h-4 text-gray-500" />
-                    <a 
-                      href={selectedInstitute.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
-                    >
-                      Visit Website
-                    </a>
-                  </div>
-
-                  {selectedInstitute.student_intake && (
+                  {selectedInstitute.website && (
                     <div className="flex items-center gap-2">
-                      <Users className="w-4 h-4 text-gray-500" />
-                      <span className="text-sm">
-                        MBA Intake: {selectedInstitute.student_intake.MBA} ({selectedInstitute.student_intake.year})
-                      </span>
+                      <Globe className="w-4 h-4 text-gray-500" />
+                      <a 
+                        href={selectedInstitute.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                      >
+                        Visit Website
+                      </a>
                     </div>
                   )}
                 </div>
 
                 <Separator />
 
-                <div>
-                  <h4 className="font-medium mb-2">Overview</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                    {selectedInstitute.overview}
-                  </p>
-                </div>
+                {selectedInstitute.description && (
+                  <div>
+                    <h4 className="font-medium mb-2">Description</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                      {selectedInstitute.description}
+                    </p>
+                  </div>
+                )}
 
                 {selectedInstitute.academic_programs && (
                   <>
@@ -280,35 +282,81 @@ export function CollegeMap() {
                   </>
                 )}
 
+                {selectedInstitute.courses_offered && (
+                  <>
+                    <Separator />
+                    <div>
+                      <h4 className="font-medium mb-2">Courses Offered</h4>
+                      <div className="space-y-1">
+                        {Array.isArray(selectedInstitute.courses_offered) ? (
+                          selectedInstitute.courses_offered.map((course, index) => (
+                            <Badge key={index} variant="outline" className="text-xs mr-1 mb-1">
+                              {course}
+                            </Badge>
+                          ))
+                        ) : (
+                          Object.entries(selectedInstitute.courses_offered).map(([category, courses]) => (
+                            <div key={category} className="mb-3">
+                              <h5 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 capitalize">
+                                {category.replace(/_/g, ' ')}
+                              </h5>
+                              <div className="space-y-1">
+                                {Array.isArray(courses) && courses.map((course: string, index: number) => (
+                                  <Badge key={index} variant="outline" className="text-xs mr-1 mb-1">
+                                    {course}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+                          ))
+                        )}
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {selectedInstitute.degrees_offered && (
+                  <>
+                    <Separator />
+                    <div>
+                      <h4 className="font-medium mb-2">Degrees Offered</h4>
+                      {Object.entries(selectedInstitute.degrees_offered).map(([degreeType, degrees]) => (
+                        <div key={degreeType} className="mb-3">
+                          <h5 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 uppercase">
+                            {degreeType.replace(/_/g, ' ')}
+                          </h5>
+                          <div className="space-y-1">
+                            {Array.isArray(degrees) && degrees.map((degree: string, index: number) => (
+                              <Badge key={index} variant="outline" className="text-xs mr-1 mb-1">
+                                {degree}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+
                 {selectedInstitute.departments && (
                   <>
                     <Separator />
                     <div>
                       <h4 className="font-medium mb-2">Departments</h4>
-                      {selectedInstitute.departments.engineering && (
-                        <div className="mb-3">
-                          <h5 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Engineering</h5>
+                      {Object.entries(selectedInstitute.departments).map(([category, depts]) => (
+                        <div key={category} className="mb-3">
+                          <h5 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 capitalize">
+                            {category.replace(/_/g, ' ')}
+                          </h5>
                           <div className="space-y-1">
-                            {selectedInstitute.departments.engineering.map((dept: string, index: number) => (
+                            {Array.isArray(depts) && depts.map((dept: string, index: number) => (
                               <Badge key={index} variant="outline" className="text-xs mr-1 mb-1">
                                 {dept}
                               </Badge>
                             ))}
                           </div>
                         </div>
-                      )}
-                      {selectedInstitute.departments.sciences_and_humanities && (
-                        <div>
-                          <h5 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Sciences & Humanities</h5>
-                          <div className="space-y-1">
-                            {selectedInstitute.departments.sciences_and_humanities.map((dept: string, index: number) => (
-                              <Badge key={index} variant="outline" className="text-xs mr-1 mb-1">
-                                {dept}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                      )}
+                      ))}
                     </div>
                   </>
                 )}
@@ -320,23 +368,46 @@ export function CollegeMap() {
                       <h4 className="font-medium mb-2">Admissions</h4>
                       <div className="text-sm space-y-1">
                         {selectedInstitute.admissions.undergraduate && (
-                          <p><span className="font-medium">UG:</span> {selectedInstitute.admissions.undergraduate}</p>
+                          <p><span className="font-medium">Undergraduate:</span> {selectedInstitute.admissions.undergraduate}</p>
                         )}
                         {selectedInstitute.admissions.postgraduate && (
-                          <div>
-                            <span className="font-medium">PG:</span>
-                            {typeof selectedInstitute.admissions.postgraduate === 'object' ? (
-                              <ul className="ml-4 mt-1">
-                                {Object.entries(selectedInstitute.admissions.postgraduate).map(([key, value]) => (
-                                  <li key={key} className="text-xs">
-                                    <span className="font-medium">{key}:</span> {value as string}
-                                  </li>
-                                ))}
-                              </ul>
-                            ) : (
-                              <span> {selectedInstitute.admissions.postgraduate}</span>
-                            )}
-                          </div>
+                          <p><span className="font-medium">Postgraduate:</span> {selectedInstitute.admissions.postgraduate}</p>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {selectedInstitute.other_programs && selectedInstitute.other_programs.length > 0 && (
+                  <>
+                    <Separator />
+                    <div>
+                      <h4 className="font-medium mb-2">Other Programs</h4>
+                      <div className="space-y-1">
+                        {selectedInstitute.other_programs.map((program, index) => (
+                          <Badge key={index} variant="outline" className="text-xs mr-1 mb-1">
+                            {program}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {selectedInstitute.contact && (
+                  <>
+                    <Separator />
+                    <div>
+                      <h4 className="font-medium mb-2">Contact Information</h4>
+                      <div className="text-sm space-y-1">
+                        {selectedInstitute.contact.address && (
+                          <p><span className="font-medium">Address:</span> {selectedInstitute.contact.address}</p>
+                        )}
+                        {selectedInstitute.contact.phone && (
+                          <p><span className="font-medium">Phone:</span> {selectedInstitute.contact.phone}</p>
+                        )}
+                        {selectedInstitute.contact.email && (
+                          <p><span className="font-medium">Email:</span> {selectedInstitute.contact.email}</p>
                         )}
                       </div>
                     </div>
@@ -344,11 +415,12 @@ export function CollegeMap() {
                 )}
               </div>
             ) : (
-              <div className="flex items-center justify-center h-40 text-center">
+              <div className="flex items-center justify-center h-40 text-center p-4">
                 <div>
                   <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Click on a college marker to view details.
+                  <p className="text-gray-600 dark:text-gray-300 text-sm lg:text-base">
+                    <span className="hidden lg:inline">Click</span>
+                    <span className="lg:hidden">Tap</span> on a college marker to view details.
                   </p>
                 </div>
               </div>

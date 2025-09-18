@@ -24,6 +24,7 @@ export function AIAvatar() {
     const [isLoading, setIsLoading] = useState(false);
     const [messages, setMessages] = useState<Message[]>([]);
     const [inputValue, setInputValue] = useState('');
+    const [messageCounter, setMessageCounter] = useState(0);
     const pathname = usePathname();
     const { toast } = useToast();
     const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -37,7 +38,9 @@ export function AIAvatar() {
 
     const getHelp = useCallback(async (message: string) => {
         setIsLoading(true);
-        const newMessage: Message = { id: `user-${Date.now()}`, text: message, sender: 'user' };
+        const userMsgId = `user-${messageCounter}`;
+        setMessageCounter(prev => prev + 1);
+        const newMessage: Message = { id: userMsgId, text: message, sender: 'user' };
         setMessages(prev => [...prev, newMessage]);
         setInputValue('');
 
@@ -47,7 +50,9 @@ export function AIAvatar() {
                 pageContent: `The user is on the ${pathname} page.`,
             });
             
-            const aiMessage: Message = { id: `ai-${Date.now()}`, text: result.helpMessage, sender: 'ai' };
+            const aiMsgId = `ai-${messageCounter + 1}`;
+            setMessageCounter(prev => prev + 1);
+            const aiMessage: Message = { id: aiMsgId, text: result.helpMessage, sender: 'ai' };
             setMessages(prev => [...prev, aiMessage]);
 
         } catch (error) {
@@ -57,12 +62,14 @@ export function AIAvatar() {
                 title: "AI Error",
                 description: "Could not get a response from the AI.",
             });
-            const aiErrorMessage: Message = { id: `ai-error-${Date.now()}`, text: "Sorry, I'm having trouble connecting. Please try again later.", sender: 'ai' };
+            const errorMsgId = `ai-error-${messageCounter + 1}`;
+            setMessageCounter(prev => prev + 1);
+            const aiErrorMessage: Message = { id: errorMsgId, text: "Sorry, I'm having trouble connecting. Please try again later.", sender: 'ai' };
             setMessages(prev => [...prev, aiErrorMessage]);
         } finally {
             setIsLoading(false);
         }
-    }, [pathname, toast]);
+    }, [pathname, toast, messageCounter]);
 
     useEffect(() => {
         if (chatContainerRef.current) {

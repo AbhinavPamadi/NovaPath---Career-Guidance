@@ -13,8 +13,10 @@ interface ParticleStyle {
 
 export function BackgroundParticles() {
   const [particleStyles, setParticleStyles] = useState<ParticleStyle[]>([]);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const generateStyles = () => {
       return Array.from({ length: 50 }).map(() => ({
         left: `${Math.random() * 100}%`,
@@ -27,6 +29,11 @@ export function BackgroundParticles() {
     };
     setParticleStyles(generateStyles());
   }, []);
+
+  // Don't render particles until mounted on client
+  if (!isMounted) {
+    return <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none" />;
+  }
 
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">

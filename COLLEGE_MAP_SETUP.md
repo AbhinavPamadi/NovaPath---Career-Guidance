@@ -20,8 +20,9 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_actual_api_key_here
 
 ### 3. Data Management
 - College data is stored in `public/directory.json`
-- Each institute must have coordinates in the format: "latitude": "34°7′30″N", "longitude": "74°50′23″E"
-- The component automatically parses these coordinates for map markers
+- Each institute must have coordinates in the format: `"coordinates": {"lat": 34.125, "long": 74.8397}`
+- The component automatically uses these coordinates for map markers
+- Data structure supports various fields: name, type, location, website, description, courses_offered, departments, admissions, etc.
 
 ## Features
 - Interactive Google Map with custom markers
