@@ -1,0 +1,132 @@
+[
+  {
+    "question": "When sharing your ideas, what’s most important to you?",
+    "options": {
+      "a": "Being clear and easy to understand",
+      "b": "Using stories or examples to explain",
+      "c": "Speaking confidently even if nervous"
+    },
+    "inference": {
+      "a": ["Communication"],
+      "b": ["Communication"],
+      "c": ["Communication"]
+    }
+  },
+  {
+    "question": "How do you prefer to communicate with others?",
+    "options": {
+      "a": "Writing messages or emails",
+      "b": "Talking face-to-face or on the phone",
+      "c": "Using videos or social media"
+    },
+    "inference": {
+      "a": ["Communication"],
+      "b": ["Communication"],
+      "c": ["Communication"]
+    }
+  },
+  {
+    "question": "What helps you get your point across best?",
+    "options": {
+      "a": "Organizing thoughts before speaking or writing",
+      "b": "Using visuals like pictures or charts",
+      "c": "Being enthusiastic and expressive"
+    },
+    "inference": {
+      "a": ["Communication"],
+      "b": ["Communication"],
+      "c": ["Communication"]
+    }
+  },
+  {
+    "question": "In a group discussion, you usually:",
+    "options": {
+      "a": "Listen carefully and respond thoughtfully",
+      "b": "Share ideas clearly and encourage others",
+      "c": "Lead the conversation and keep it lively"
+    },
+    "inference": {
+      "a": ["Communication"],
+      "b": ["Communication"],
+      "c": ["Communication"]
+    }
+  },
+  {
+    "question": "What’s your favorite way to learn new things?",
+    "options": {
+      "a": "Reading or writing about the topic",
+      "b": "Talking with friends or teachers",
+      "c": "Watching videos or presentations"
+    },
+    "inference": {
+      "a": ["Communication"],
+      "b": ["Communication"],
+      "c": ["Communication"]
+    }
+  },
+  {
+    "question": "When you don’t understand something, you:",
+    "options": {
+      "a": "Ask questions to get more details",
+      "b": "Try to explain what you think first",
+      "c": "Look for examples or demonstrations"
+    },
+    "inference": {
+      "a": ["Communication"],
+      "b": ["Communication"],
+      "c": ["Communication"]
+    }
+  },
+  {
+    "question": "Which of these sounds most like you?",
+    "options": {
+      "a": "I’m good at writing clear messages",
+      "b": "I enjoy talking and sharing my thoughts",
+      "c": "I like creating videos or visual content"
+    },
+    "inference": {
+      "a": ["Communication"],
+      "b": ["Communication"],
+      "c": ["Communication"]
+    }
+  },
+  {
+    "question": "How do you handle misunderstandings?",
+    "options": {
+      "a": "Explain things again more simply",
+      "b": "Ask what the other person means",
+      "c": "Use examples or visuals to clarify"
+    },
+    "inference": {
+      "a": ["Communication"],
+      "b": ["Communication"],
+      "c": ["Communication"]
+    }
+  },
+  {
+    "question": "Which setting do you feel most comfortable communicating in?",
+    "options": {
+      "a": "Writing reports or emails",
+      "b": "Speaking in meetings or groups",
+      "c": "Creating content like videos or graphics"
+    },
+    "inference": {
+      "a": ["Communication"],
+      "b": ["Communication"],
+      "c": ["Communication"]
+    }
+  },
+  {
+    "question": "What do you enjoy most about communicating?",
+    "options": {
+      "a": "Organizing my thoughts clearly",
+      "b": "Connecting with others through conversation",
+      "c": "Expressing ideas creatively"
+    },
+    "inference": {
+      "a": ["Communication"],
+      "b": ["Communication"],
+      "c": ["Communication"]
+    }
+  }
+]
