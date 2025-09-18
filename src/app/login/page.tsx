@@ -44,7 +44,7 @@ export default function LoginPage() {
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
       toast({ title: "Login Successful", description: "Welcome back!" });
-      router.push('/profile');
+      router.push('/'); // Only this, remove window.location.href
     } catch (error: any) {
       toast({
         variant: "destructive",
