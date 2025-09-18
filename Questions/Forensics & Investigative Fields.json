@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Which part of a mystery do you enjoy solving?",
+    "options": {
+      "a": "Examining evidence to figure out what happened",
+      "b": "Digging deep into information to uncover the truth"
+    },
+    "inference": {
+      "a": ["Forensic Analysis"],
+      "b": ["Investigative Research"]
+    }
+  },
+  {
+    "question": "What type of task sounds more fun to you?",
+    "options": {
+      "a": "Analyzing fingerprints, blood samples, or DNA",
+      "b": "Researching and connecting clues from different sources"
+    },
+    "inference": {
+      "a": ["Forensic Analysis"],
+      "b": ["Investigative Research"]
+    }
+  },
+  {
+    "question": "In a team solving a crime, what would your role be?",
+    "options": {
+      "a": "Carefully collecting and testing evidence in a lab",
+      "b": "Interviewing people and piecing together their stories"
+    },
+    "inference": {
+      "a": ["Forensic Analysis"],
+      "b": ["Investigative Research"]
+    }
+  },
+  {
+    "question": "What interests you more about crime-solving shows?",
+    "options": {
+      "a": "The science behind how clues are analyzed",
+      "b": "The way detectives build a case through research"
+    },
+    "inference": {
+      "a": ["Forensic Analysis"],
+      "b": ["Investigative Research"]
+    }
+  },
+  {
+    "question": "What kind of challenge excites you most?",
+    "options": {
+      "a": "Using tools and lab techniques to test evidence",
+      "b": "Looking for patterns and leads in complex data"
+    },
+    "inference": {
+      "a": ["Forensic Analysis"],
+      "b": ["Investigative Research"]
+    }
+  },
+  {
+    "question": "If you had to write a report, what would it be on?",
+    "options": {
+      "a": "The results of lab tests in a criminal case",
+      "b": "A timeline built from interviews and documents"
+    },
+    "inference": {
+      "a": ["Forensic Analysis"],
+      "b": ["Investigative Research"]
+    }
+  },
+  {
+    "question": "Which of these skills comes more naturally to you?",
+    "options": {
+      "a": "Paying close attention to physical details",
+      "b": "Asking questions and finding reliable sources"
+    },
+    "inference": {
+      "a": ["Forensic Analysis"],
+      "b": ["Investigative Research"]
+    }
+  },
+  {
+    "question": "What kind of setting appeals to you more?",
+    "options": {
+      "a": "A science lab working with evidence",
+      "b": "A research room full of documents and case files"
+    },
+    "inference": {
+      "a": ["Forensic Analysis"],
+      "b": ["Investigative Research"]
+    }
+  },
+  {
+    "question": "Which phrase describes your style?",
+    "options": {
+      "a": "I like testing and verifying things through science",
+      "b": "I like connecting the dots through logic and research"
+    },
+    "inference": {
+      "a": ["Forensic Analysis"],
+      "b": ["Investigative Research"]
+    }
+  },
+  {
+    "question": "What would you enjoy doing most?",
+    "options": {
+      "a": "Solving crimes by analyzing samples and data",
+      "b": "Building a case by uncovering hidden facts"
+    },
+    "inference": {
+      "a": ["Forensic Analysis"],
+      "b": ["Investigative Research"]
+    }
+  }
+]
