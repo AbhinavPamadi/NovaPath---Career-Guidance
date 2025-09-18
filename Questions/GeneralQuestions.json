@@ -1818,8 +1818,139 @@
       "b": ["probability", "critical-thinking"],
       "c": ["numerical-reasoning", "problem-solving"]
     }
+  },
+  {
+    "question": "Which role do you enjoy the most in a group?",
+    "options": {
+      "a": "Leading the team and making important decisions",
+      "b": "Helping team members work well together",
+      "c": "Talking and listening to customers to help them"
+    },
+    "inference": {
+      "a": ["leadership"],
+      "b": ["leadership-and-teamwork", "communication"],
+      "c": ["customer-service", "communication"]
+    }
+  },
+  {
+    "question": "When working on a project, what do you prefer to do?",
+    "options": {
+      "a": "Take charge and organize tasks for everyone",
+      "b": "Support the team by encouraging and cooperating",
+      "c": "Communicate clearly with others to avoid confusion"
+    },
+    "inference": {
+      "a": ["leadership"],
+      "b": ["leadership-and-teamwork"],
+      "c": ["communication", "customer-service"]
+    }
+  },
+  {
+    "question": "How would you handle a customer who is upset?",
+    "options": {
+      "a": "Listen carefully and try to solve their problem calmly",
+      "b": "Ask your team for advice on the best solution",
+      "c": "Take the lead in finding a quick and fair answer"
+    },
+    "inference": {
+      "a": ["customer-service", "communication"],
+      "b": ["leadership-and-teamwork"],
+      "c": ["leadership"]
+    }
+  },
+  {
+    "question": "What do you think makes a great leader?",
+    "options": {
+      "a": "Being confident and making clear decisions",
+      "b": "Encouraging teamwork and good communication",
+      "c": "Listening carefully and helping customers or team members"
+    },
+    "inference": {
+      "a": ["leadership"],
+      "b": ["leadership-and-teamwork", "communication"],
+      "c": ["customer-service", "communication"]
+    }
+  },
+  {
+    "question": "Which skill would you like to improve?",
+    "options": {
+      "a": "Leading others and taking responsibility",
+      "b": "Working well with a team and supporting each other",
+      "c": "Talking with people and solving their problems"
+    },
+    "inference": {
+      "a": ["leadership"],
+      "b": ["leadership-and-teamwork"],
+      "c": ["customer-service", "communication"]
+    }
+  },
+  {
+    "question": "In a group discussion, what role do you usually take?",
+    "options": {
+      "a": "Guide the conversation and make sure everyone contributes",
+      "b": "Help connect ideas and support others' opinions",
+      "c": "Make sure the needs of others, like customers, are understood"
+    },
+    "inference": {
+      "a": ["leadership"],
+      "b": ["leadership-and-teamwork", "communication"],
+      "c": ["customer-service", "communication"]
+    }
+  },
+  {
+    "question": "What do you enjoy most about working with others?",
+    "options": {
+      "a": "Taking charge and helping the team reach its goals",
+      "b": "Collaborating and sharing ideas with teammates",
+      "c": "Communicating clearly to help solve problems"
+    },
+    "inference": {
+      "a": ["leadership"],
+      "b": ["leadership-and-teamwork"],
+      "c": ["communication", "customer-service"]
+    }
+  },
+  {
+    "question": "How do you prefer to communicate?",
+    "options": {
+      "a": "By giving clear instructions and feedback",
+      "b": "By listening carefully and encouraging others",
+      "c": "By helping customers and responding kindly"
+    },
+    "inference": {
+      "a": ["leadership", "communication"],
+      "b": ["leadership-and-teamwork", "communication"],
+      "c": ["customer-service", "communication"]
+    }
+  },
+  {
+    "question": "If you were part of a team, which would be your ideal role?",
+    "options": {
+      "a": "The leader who guides and motivates everyone",
+      "b": "The team player who supports and collaborates",
+      "c": "The communicator who connects the team with customers"
+    },
+    "inference": {
+      "a": ["leadership"],
+      "b": ["leadership-and-teamwork"],
+      "c": ["customer-service", "communication"]
+    }
+  },
+  {
+    "question": "What do you think is most important for great teamwork?",
+    "options": {
+      "a": "Strong leadership and clear goals",
+      "b": "Good cooperation and trust among members",
+      "c": "Open and friendly communication with customers"
+    },
+    "inference": {
+      "a": ["leadership"],
+      "b": ["leadership-and-teamwork"],
+      "c": ["customer-service", "communication"]
+    }
   }
 ]
+
 
 
 
