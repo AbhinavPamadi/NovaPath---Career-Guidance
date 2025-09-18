@@ -258,7 +258,138 @@
       "b": ["data-analysis", "numerical-reasoning", "fourier-analysis"],
       "c": ["algorithms", "probability", "analysis"]
     }
+  },
+  {
+    "question": "Which activity would you enjoy the most?",
+    "options": {
+      "a": "Learning how the human body works",
+      "b": "Studying plants and how they grow",
+      "c": "Exploring bacteria and tiny life forms"
+    },
+    "inference": {
+      "a": ["anatomy", "human-anatomy", "basic-nursing"],
+      "b": ["botany", "plant-biology", "agronomy"],
+      "c": ["microbiology", "molecular-biology", "biochemistry"]
+    }
+  },
+  {
+    "question": "If you could visit a lab, what would you want to see?",
+    "options": {
+      "a": "Cells and DNA under a microscope",
+      "b": "How medicine is used to care for people",
+      "c": "Experiments with soil and plants"
+    },
+    "inference": {
+      "a": ["molecular-biology", "biotechnology", "microbiology"],
+      "b": ["basic-nursing", "human-anatomy", "anatomy"],
+      "c": ["agronomy", "crop-cultivation", "plant-biology"]
+    }
+  },
+  {
+    "question": "Which topic sounds most interesting to you?",
+    "options": {
+      "a": "How the heart and lungs work",
+      "b": "How plants make their own food",
+      "c": "How tiny organisms cause disease"
+    },
+    "inference": {
+      "a": ["human-anatomy", "anatomy", "basic-nursing"],
+      "b": ["botany", "plant-biology", "biochemistry"],
+      "c": ["microbiology", "molecular-biology", "biotechnology"]
+    }
+  },
+  {
+    "question": "What kind of career sounds exciting?",
+    "options": {
+      "a": "Taking care of animals or learning how they live",
+      "b": "Working in a lab to create new medicines or crops",
+      "c": "Helping people stay healthy and recover from illness"
+    },
+    "inference": {
+      "a": ["zoology/animal-care", "biochemistry", "botany"],
+      "b": ["biotechnology", "molecular-biology", "crop-cultivation"],
+      "c": ["basic-nursing", "human-anatomy", "anatomy"]
+    }
+  },
+  {
+    "question": "If you had to do a science project, what would you choose?",
+    "options": {
+      "a": "Studying how different plants grow in various soils",
+      "b": "Understanding how diseases spread between people",
+      "c": "Examining how organs work in the human body"
+    },
+    "inference": {
+      "a": ["agronomy", "crop-cultivation", "plant-biology"],
+      "b": ["microbiology", "biochemistry", "basic-nursing"],
+      "c": ["anatomy", "human-anatomy", "basic-nursing"]
+    }
+  },
+  {
+    "question": "Which of these would you want to read more about?",
+    "options": {
+      "a": "New discoveries in DNA and genes",
+      "b": "How to grow food more efficiently",
+      "c": "How nurses take care of patients"
+    },
+    "inference": {
+      "a": ["molecular-biology", "biotechnology", "biochemistry"],
+      "b": ["crop-cultivation", "agronomy", "botany"],
+      "c": ["basic-nursing", "human-anatomy", "anatomy"]
+    }
+  },
+  {
+    "question": "Which area would you like to explore?",
+    "options": {
+      "a": "How plants and animals are different",
+      "b": "How bacteria help or harm us",
+      "c": "How the body heals from injuries"
+    },
+    "inference": {
+      "a": ["botany", "zoology/animal-care", "plant-biology"],
+      "b": ["microbiology", "biochemistry", "molecular-biology"],
+      "c": ["basic-nursing", "anatomy", "human-anatomy"]
+    }
+  },
+  {
+    "question": "What kind of experiment sounds fun to you?",
+    "options": {
+      "a": "Testing how fertilizers affect plant growth",
+      "b": "Observing how cells react to medicine",
+      "c": "Practicing how to check a patient’s pulse"
+    },
+    "inference": {
+      "a": ["agronomy", "crop-cultivation", "botany"],
+      "b": ["biochemistry", "molecular-biology", "biotechnology"],
+      "c": ["basic-nursing", "anatomy", "human-anatomy"]
+    }
+  },
+  {
+    "question": "Which science class would you look forward to?",
+    "options": {
+      "a": "Learning about plant life and agriculture",
+      "b": "Studying the structure of the human body",
+      "c": "Discovering how viruses and bacteria work"
+    },
+    "inference": {
+      "a": ["botany", "agronomy", "crop-cultivation"],
+      "b": ["anatomy", "human-anatomy", "basic-nursing"],
+      "c": ["microbiology", "biochemistry", "molecular-biology"]
+    }
+  },
+  {
+    "question": "Which of these real-world problems would you want to help solve?",
+    "options": {
+      "a": "Creating better crops to feed the world",
+      "b": "Finding cures for diseases",
+      "c": "Improving care for patients in hospitals"
+    },
+    "inference": {
+      "a": ["crop-cultivation", "agronomy", "biotechnology"],
+      "b": ["biochemistry", "molecular-biology", "microbiology"],
+      "c": ["basic-nursing", "human-anatomy", "anatomy"]
+    }
   }
 ]
+
 
   
