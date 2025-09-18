@@ -648,8 +648,139 @@
       "b": ["food-safety", "population-and-sustainability"],
       "c": ["landscape-planning", "conservation"]
     }
+  },
+  {
+    "question": "Which activity would you enjoy the most?",
+    "options": {
+      "a": "Learning how to treat cuts, burns, and minor injuries",
+      "b": "Understanding how the heart, lungs, and brain work",
+      "c": "Checking someone's overall health and vital signs"
+    },
+    "inference": {
+      "a": ["first-aid", "basic-nursing"],
+      "b": ["anatomy", "human-anatomy"],
+      "c": ["health-assessment", "basic-nursing"]
+    }
+  },
+  {
+    "question": "Which career sounds the most interesting to you?",
+    "options": {
+      "a": "Helping people take care of their teeth and gums",
+      "b": "Being a nurse and caring for patients daily",
+      "c": "Doing regular check-ups to keep people healthy"
+    },
+    "inference": {
+      "a": ["dentistry"],
+      "b": ["basic-nursing"],
+      "c": ["health-assessment", "basic-nursing"]
+    }
+  },
+  {
+    "question": "What kind of science would you like to learn more about?",
+    "options": {
+      "a": "How different parts of the body are connected",
+      "b": "How to act quickly in an emergency situation",
+      "c": "How to prevent dental problems and tooth decay"
+    },
+    "inference": {
+      "a": ["anatomy", "human-anatomy"],
+      "b": ["first-aid", "basic-nursing"],
+      "c": ["dentistry"]
+    }
+  },
+  {
+    "question": "Which situation would you feel confident handling?",
+    "options": {
+      "a": "Someone fainting or needing basic emergency help",
+      "b": "Helping with a dental check-up or cleaning",
+      "c": "Measuring blood pressure and checking temperature"
+    },
+    "inference": {
+      "a": ["first-aid", "basic-nursing"],
+      "b": ["dentistry"],
+      "c": ["health-assessment", "basic-nursing"]
+    }
+  },
+  {
+    "question": "Which class would you find most interesting?",
+    "options": {
+      "a": "Learning how to assist in a dental clinic",
+      "b": "Studying the structure of muscles and bones",
+      "c": "Practicing how to give basic medical care"
+    },
+    "inference": {
+      "a": ["dentistry"],
+      "b": ["anatomy", "human-anatomy"],
+      "c": ["first-aid", "basic-nursing"]
+    }
+  },
+  {
+    "question": "If you had to choose a health-related role, which would it be?",
+    "options": {
+      "a": "The one who gives first aid during an emergency",
+      "b": "The one who checks and records patients' health details",
+      "c": "The one who educates people about dental hygiene"
+    },
+    "inference": {
+      "a": ["first-aid", "basic-nursing"],
+      "b": ["health-assessment", "basic-nursing"],
+      "c": ["dentistry"]
+    }
+  },
+  {
+    "question": "What kind of medical knowledge interests you the most?",
+    "options": {
+      "a": "How to perform health check-ups and exams",
+      "b": "How the teeth, gums, and mouth work",
+      "c": "How the organs inside our body function"
+    },
+    "inference": {
+      "a": ["health-assessment", "basic-nursing"],
+      "b": ["dentistry"],
+      "c": ["anatomy", "human-anatomy"]
+    }
+  },
+  {
+    "question": "Which healthcare skill would you like to learn?",
+    "options": {
+      "a": "Stopping bleeding and treating wounds",
+      "b": "Identifying signs of illness in patients",
+      "c": "Cleaning and examining teeth"
+    },
+    "inference": {
+      "a": ["first-aid", "basic-nursing"],
+      "b": ["health-assessment", "basic-nursing"],
+      "c": ["dentistry"]
+    }
+  },
+  {
+    "question": "What would you prefer to read about?",
+    "options": {
+      "a": "Tips for keeping your teeth strong and clean",
+      "b": "How to take care of someone who is sick or hurt",
+      "c": "How the body’s systems work together"
+    },
+    "inference": {
+      "a": ["dentistry"],
+      "b": ["first-aid", "basic-nursing"],
+      "c": ["anatomy", "human-anatomy"]
+    }
+  },
+  {
+    "question": "What kind of health science project would you like to do?",
+    "options": {
+      "a": "Making a model of the human skeleton or organs",
+      "b": "Demonstrating how to perform CPR or bandaging",
+      "c": "Creating a poster about dental hygiene tips"
+    },
+    "inference": {
+      "a": ["anatomy", "human-anatomy"],
+      "b": ["first-aid", "basic-nursing"],
+      "c": ["dentistry"]
+    }
   }
 ]
+
 
 
 
