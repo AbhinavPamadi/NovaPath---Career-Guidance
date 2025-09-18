@@ -908,8 +908,139 @@
       "b": ["attention-to-detail (medical/clinical use)"],
       "c": ["problem-solving", "critical-thinking (diagnostics)"]
     }
+  },
+  {
+    "question": "Which of these activities sounds most interesting to you?",
+    "options": {
+      "a": "Tracking income and expenses to keep records organized",
+      "b": "Looking for mistakes or unusual patterns in financial data",
+      "c": "Planning how a business can grow financially in the future"
+    },
+    "inference": {
+      "a": ["accounting", "financial-accounting"],
+      "b": ["auditing", "financial-analysis"],
+      "c": ["financial-planning", "financial-modelling"]
+    }
+  },
+  {
+    "question": "What kind of financial role would suit you best?",
+    "options": {
+      "a": "Recording and organizing financial transactions",
+      "b": "Building models to predict profits and losses",
+      "c": "Helping individuals or businesses plan their budgets"
+    },
+    "inference": {
+      "a": ["accounting", "financial-accounting"],
+      "b": ["financial-modelling", "financial-analysis"],
+      "c": ["financial-planning"]
+    }
+  },
+  {
+    "question": "Which project would you enjoy the most?",
+    "options": {
+      "a": "Checking a company's records for errors or fraud",
+      "b": "Designing a financial forecast for a startup",
+      "c": "Balancing the books at the end of the month"
+    },
+    "inference": {
+      "a": ["auditing", "financial-analysis"],
+      "b": ["financial-modelling", "financial-planning"],
+      "c": ["accounting", "financial-accounting"]
+    }
+  },
+  {
+    "question": "What kind of problem do you like solving?",
+    "options": {
+      "a": "Identifying risks in a company’s spending habits",
+      "b": "Finding the best way to save money and reach financial goals",
+      "c": "Making sure all financial reports are correct and complete"
+    },
+    "inference": {
+      "a": ["financial-analysis", "auditing"],
+      "b": ["financial-planning", "financial-modelling"],
+      "c": ["accounting", "financial-accounting"]
+    }
+  },
+  {
+    "question": "Which task would you feel most confident doing?",
+    "options": {
+      "a": "Entering daily expenses into a system accurately",
+      "b": "Reviewing reports to spot anything unusual",
+      "c": "Creating charts that show future financial trends"
+    },
+    "inference": {
+      "a": ["accounting", "financial-accounting"],
+      "b": ["auditing", "financial-analysis"],
+      "c": ["financial-modelling", "financial-planning"]
+    }
+  },
+  {
+    "question": "Which financial skill do you want to improve the most?",
+    "options": {
+      "a": "Organizing and managing accounts",
+      "b": "Analyzing and interpreting financial data",
+      "c": "Planning for long-term financial success"
+    },
+    "inference": {
+      "a": ["accounting", "financial-accounting"],
+      "b": ["financial-analysis", "auditing"],
+      "c": ["financial-planning", "financial-modelling"]
+    }
+  },
+  {
+    "question": "What motivates you more in a financial setting?",
+    "options": {
+      "a": "Helping people or companies prepare for the future",
+      "b": "Making sure every dollar is accounted for",
+      "c": "Digging deep into numbers to understand patterns"
+    },
+    "inference": {
+      "a": ["financial-planning", "financial-modelling"],
+      "b": ["accounting", "financial-accounting"],
+      "c": ["financial-analysis", "auditing"]
+    }
+  },
+  {
+    "question": "Which type of financial report would you rather work on?",
+    "options": {
+      "a": "A detailed company income and expense report",
+      "b": "A forecast of a company's profits over the next 5 years",
+      "c": "A report that checks for compliance with financial rules"
+    },
+    "inference": {
+      "a": ["financial-accounting", "accounting"],
+      "b": ["financial-modelling", "financial-planning"],
+      "c": ["auditing"]
+    }
+  },
+  {
+    "question": "If you joined a finance team, what role would you prefer?",
+    "options": {
+      "a": "The person who manages spreadsheets and ensures accuracy",
+      "b": "The one who builds scenarios to see what might happen next",
+      "c": "The one who checks reports to make sure they follow the rules"
+    },
+    "inference": {
+      "a": ["accounting", "financial-accounting"],
+      "b": ["financial-modelling", "financial-planning"],
+      "c": ["auditing", "financial-analysis"]
+    }
+  },
+  {
+    "question": "What excites you more about working with numbers?",
+    "options": {
+      "a": "Keeping everything in order and properly documented",
+      "b": "Helping others make smart financial decisions",
+      "c": "Understanding trends to guide important business choices"
+    },
+    "inference": {
+      "a": ["accounting", "financial-accounting"],
+      "b": ["financial-planning"],
+      "c": ["financial-analysis", "financial-modelling"]
+    }
   }
 ]
+
 
 
 
