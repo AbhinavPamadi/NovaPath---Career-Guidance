@@ -518,8 +518,139 @@
       "b": ["physics", "fundamental-science"],
       "c": ["laboratory-technology", "laboratory-experiments"]
     }
+  },
+  {
+    "question": "Which topic would you be most interested in learning more about?",
+    "options": {
+      "a": "Protecting animals and forests from harm",
+      "b": "Keeping our food safe and clean to eat",
+      "c": "How people and cities affect the planet"
+    },
+    "inference": {
+      "a": ["conservation", "environmental-science"],
+      "b": ["food-safety"],
+      "c": ["population-and-sustainability", "environmental-science"]
+    }
+  },
+  {
+    "question": "If you could help with a project, which would you choose?",
+    "options": {
+      "a": "Designing a green park in a city",
+      "b": "Studying pollution in rivers and oceans",
+      "c": "Making sure the food in stores is healthy and safe"
+    },
+    "inference": {
+      "a": ["landscape-planning", "population-and-sustainability"],
+      "b": ["environmental-science", "conservation"],
+      "c": ["food-safety"]
+    }
+  },
+  {
+    "question": "What kind of problem would you like to solve?",
+    "options": {
+      "a": "Helping farmers grow food without harming the planet",
+      "b": "Protecting wild spaces and endangered species",
+      "c": "Planning cities to use fewer natural resources"
+    },
+    "inference": {
+      "a": ["food-safety", "population-and-sustainability", "environmental-science"],
+      "b": ["conservation", "environmental-science"],
+      "c": ["landscape-planning", "population-and-sustainability"]
+    }
+  },
+  {
+    "question": "Which activity sounds more exciting to you?",
+    "options": {
+      "a": "Testing soil and water for pollution",
+      "b": "Designing safer food packaging",
+      "c": "Creating nature-friendly city spaces"
+    },
+    "inference": {
+      "a": ["environmental-science", "conservation"],
+      "b": ["food-safety"],
+      "c": ["landscape-planning", "population-and-sustainability"]
+    }
+  },
+  {
+    "question": "What would you like to see change in the world?",
+    "options": {
+      "a": "Less plastic and waste in nature",
+      "b": "More food grown in safe, healthy ways",
+      "c": "Cities with more trees and open space"
+    },
+    "inference": {
+      "a": ["conservation", "environmental-science"],
+      "b": ["food-safety", "population-and-sustainability"],
+      "c": ["landscape-planning", "environmental-science"]
+    }
+  },
+  {
+    "question": "Which class project would you enjoy the most?",
+    "options": {
+      "a": "Making a plan to reduce pollution at school",
+      "b": "Creating a map for a green, sustainable neighborhood",
+      "c": "Researching how food is kept safe from farm to table"
+    },
+    "inference": {
+      "a": ["environmental-science", "conservation"],
+      "b": ["landscape-planning", "population-and-sustainability"],
+      "c": ["food-safety"]
+    }
+  },
+  {
+    "question": "What kind of future would you want to help build?",
+    "options": {
+      "a": "A world where nature and wildlife are protected",
+      "b": "A system where food is healthy and safe for everyone",
+      "c": "Cities designed to be eco-friendly and sustainable"
+    },
+    "inference": {
+      "a": ["conservation", "environmental-science"],
+      "b": ["food-safety", "population-and-sustainability"],
+      "c": ["landscape-planning", "population-and-sustainability"]
+    }
+  },
+  {
+    "question": "Which issue do you think is most urgent?",
+    "options": {
+      "a": "Climate change and pollution",
+      "b": "Feeding the growing population safely",
+      "c": "Saving land and space for nature in cities"
+    },
+    "inference": {
+      "a": ["environmental-science", "conservation"],
+      "b": ["food-safety", "population-and-sustainability"],
+      "c": ["landscape-planning", "conservation"]
+    }
+  },
+  {
+    "question": "Where would you rather work in the future?",
+    "options": {
+      "a": "An environmental lab testing air and water",
+      "b": "A government office planning city parks",
+      "c": "A food safety lab ensuring quality and hygiene"
+    },
+    "inference": {
+      "a": ["environmental-science", "conservation"],
+      "b": ["landscape-planning", "population-and-sustainability"],
+      "c": ["food-safety"]
+    }
+  },
+  {
+    "question": "What inspires you the most?",
+    "options": {
+      "a": "Clean air, clean water, and a healthy planet",
+      "b": "Making sure everyone has access to safe food",
+      "c": "Designing spaces where people and nature live together"
+    },
+    "inference": {
+      "a": ["environmental-science", "conservation"],
+      "b": ["food-safety", "population-and-sustainability"],
+      "c": ["landscape-planning", "conservation"]
+    }
   }
 ]
+
 
 
 
