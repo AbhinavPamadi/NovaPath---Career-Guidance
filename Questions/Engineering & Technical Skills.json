@@ -1,0 +1,132 @@
+[
+  {
+    "question": "Which task sounds most interesting to you in engineering?",
+    "options": {
+      "a": "Designing and creating detailed 3D models of parts or machines",
+      "b": "Writing step-by-step instructions to solve problems or control devices",
+      "c": "Building and testing electronic circuits and gadgets"
+    },
+    "inference": {
+      "a": ["CAD", "Mechanical Design"],
+      "b": ["Algorithms", "Firmware Development"],
+      "c": ["Circuits & Electronics"]
+    }
+  },
+  {
+    "question": "When you think about technology, what excites you most?",
+    "options": {
+      "a": "Making machines work automatically with minimal human help",
+      "b": "Designing efficient processes to make products faster and better",
+      "c": "Connecting devices and systems so they communicate smoothly"
+    },
+    "inference": {
+      "a": ["Automation"],
+      "b": ["Process Engineering"],
+      "c": ["Networking"]
+    }
+  },
+  {
+    "question": "What type of project would you enjoy working on?",
+    "options": {
+      "a": "Creating a new mechanical part using computer software",
+      "b": "Programming small devices to perform specific tasks",
+      "c": "Designing and testing electronic components and circuits"
+    },
+    "inference": {
+      "a": ["Mechanical Design", "CAD"],
+      "b": ["Firmware Development", "Algorithms"],
+      "c": ["Circuits & Electronics"]
+    }
+  },
+  {
+    "question": "Which skill would you like to improve the most?",
+    "options": {
+      "a": "Using software to design and visualize engineering projects",
+      "b": "Writing efficient code to control hardware and automate tasks",
+      "c": "Understanding how electronic parts work together in circuits"
+    },
+    "inference": {
+      "a": ["CAD"],
+      "b": ["Firmware Development", "Algorithms", "Automation"],
+      "c": ["Circuits & Electronics"]
+    }
+  },
+  {
+    "question": "How do you prefer to solve technical problems?",
+    "options": {
+      "a": "By designing a precise mechanical or electronic solution",
+      "b": "By programming devices or systems to behave as needed",
+      "c": "By optimizing processes or improving system connections"
+    },
+    "inference": {
+      "a": ["Mechanical Design", "Circuits & Electronics"],
+      "b": ["Firmware Development", "Algorithms", "Automation"],
+      "c": ["Process Engineering", "Networking"]
+    }
+  },
+  {
+    "question": "Which statement best matches your interests?",
+    "options": {
+      "a": "I enjoy building things that physically move or perform tasks",
+      "b": "I like writing code that makes machines smarter and more efficient",
+      "c": "I prefer making systems run smoothly and communicate well"
+    },
+    "inference": {
+      "a": ["Mechanical Design", "Automation"],
+      "b": ["Firmware Development", "Algorithms"],
+      "c": ["Networking", "Process Engineering"]
+    }
+  },
+  {
+    "question": "What kind of tools or technology do you like working with?",
+    "options": {
+      "a": "Computer programs for designing parts or machines",
+      "b": "Microcontrollers and programming environments",
+      "c": "Electronic components and wiring setups"
+    },
+    "inference": {
+      "a": ["CAD", "Mechanical Design"],
+      "b": ["Firmware Development", "Algorithms"],
+      "c": ["Circuits & Electronics"]
+    }
+  },
+  {
+    "question": "When you think about industry or factories, what interests you most?",
+    "options": {
+      "a": "Designing machines or tools that improve production",
+      "b": "Creating automated systems that reduce manual work",
+      "c": "Planning and improving processes for better efficiency"
+    },
+    "inference": {
+      "a": ["Mechanical Design"],
+      "b": ["Automation", "Firmware Development"],
+      "c": ["Process Engineering"]
+    }
+  },
+  {
+    "question": "Which challenge would you be most excited to take on?",
+    "options": {
+      "a": "Designing a mechanical system from scratch using CAD software",
+      "b": "Writing algorithms that control how devices behave",
+      "c": "Building and troubleshooting an electronic circuit"
+    },
+    "inference": {
+      "a": ["CAD", "Mechanical Design"],
+      "b": ["Algorithms", "Firmware Development"],
+      "c": ["Circuits & Electronics"]
+    }
+  },
+  {
+    "question": "What do you enjoy most about technology?",
+    "options": {
+      "a": "Seeing how parts fit and work together in machines",
+      "b": "Programming and controlling devices with code",
+      "c": "Ensuring different systems and devices communicate properly"
+    },
+    "inference": {
+      "a": ["Mechanical Design", "CAD"],
+      "b": ["Firmware Development", "Algorithms"],
+      "c": ["Networking"]
+    }
+  }
+]
