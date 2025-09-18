@@ -1,0 +1,132 @@
+[
+  {
+    "question": "Which of these topics sounds most interesting to you?",
+    "options": {
+      "a": "Learning how laws are made and enforced",
+      "b": "Studying real cases to understand legal outcomes",
+      "c": "Thinking about what’s right or wrong in tough situations"
+    },
+    "inference": {
+      "a": ["Law"],
+      "b": ["Legal Research"],
+      "c": ["Ethical Reasoning"]
+    }
+  },
+  {
+    "question": "If you were working on a social issue, how would you help?",
+    "options": {
+      "a": "Advocate for fair and just laws",
+      "b": "Analyze policies and suggest improvements",
+      "c": "Explore the moral side of the issue"
+    },
+    "inference": {
+      "a": ["Law"],
+      "b": ["Policy Analysis"],
+      "c": ["Ethical Reasoning"]
+    }
+  },
+  {
+    "question": "What kind of problem-solving excites you the most?",
+    "options": {
+      "a": "Using legal knowledge to defend or support someone",
+      "b": "Reading and researching laws to understand details",
+      "c": "Discussing different viewpoints to decide what's ethically fair"
+    },
+    "inference": {
+      "a": ["Law"],
+      "b": ["Legal Research"],
+      "c": ["Ethical Reasoning"]
+    }
+  },
+  {
+    "question": "Which of these would you enjoy doing?",
+    "options": {
+      "a": "Debating legal rights and responsibilities",
+      "b": "Reviewing policy impacts on different communities",
+      "c": "Solving ethical dilemmas with careful thought"
+    },
+    "inference": {
+      "a": ["Law"],
+      "b": ["Policy Analysis"],
+      "c": ["Ethical Reasoning"]
+    }
+  },
+  {
+    "question": "In a team project about rules in society, what role would you take?",
+    "options": {
+      "a": "Explaining what the law says about the topic",
+      "b": "Finding out how current policies affect people",
+      "c": "Raising questions about what's fair or unfair"
+    },
+    "inference": {
+      "a": ["Law"],
+      "b": ["Policy Analysis"],
+      "c": ["Ethical Reasoning"]
+    }
+  },
+  {
+    "question": "What kind of reading do you enjoy most?",
+    "options": {
+      "a": "Stories about courtroom cases and legal arguments",
+      "b": "Reports on government programs and policies",
+      "c": "Discussions about moral issues in society"
+    },
+    "inference": {
+      "a": ["Law"],
+      "b": ["Policy Analysis"],
+      "c": ["Ethical Reasoning"]
+    }
+  },
+  {
+    "question": "How would you help solve a conflict between two people?",
+    "options": {
+      "a": "Refer to legal rights and rules",
+      "b": "Look at how policies guide the situation",
+      "c": "Think about what’s fair for everyone involved"
+    },
+    "inference": {
+      "a": ["Law"],
+      "b": ["Policy Analysis"],
+      "c": ["Ethical Reasoning"]
+    }
+  },
+  {
+    "question": "Which kind of career sounds most appealing to you?",
+    "options": {
+      "a": "Lawyer or legal advisor",
+      "b": "Policy researcher or government analyst",
+      "c": "Ethics consultant or advisor"
+    },
+    "inference": {
+      "a": ["Law"],
+      "b": ["Policy Analysis"],
+      "c": ["Ethical Reasoning"]
+    }
+  },
+  {
+    "question": "What do you think is most important in solving social issues?",
+    "options": {
+      "a": "Knowing and applying the law correctly",
+      "b": "Studying how policies affect society",
+      "c": "Understanding what’s morally right and wrong"
+    },
+    "inference": {
+      "a": ["Law"],
+      "b": ["Policy Analysis"],
+      "c": ["Ethical Reasoning"]
+    }
+  },
+  {
+    "question": "Which project would you be most excited about?",
+    "options": {
+      "a": "Researching and writing about legal rights",
+      "b": "Analyzing a public policy and suggesting improvements",
+      "c": "Exploring ethical choices in a real-world situation"
+    },
+    "inference": {
+      "a": ["Legal Research"],
+      "b": ["Policy Analysis"],
+      "c": ["Ethical Reasoning"]
+    }
+  }
+]
