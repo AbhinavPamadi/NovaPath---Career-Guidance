@@ -1,0 +1,133 @@
+[
+    {
+      "question": "When you see a new motorcycle, what excites you the most?",
+      "options": {
+        "a": "Its sleek body design and structure",
+        "b": "How fast and stable it moves",
+        "c": "The electronics and systems inside"
+      },
+      "inference": {
+        "a": ["CAD", "mechanical-design", "engineering-drawing"],
+        "b": ["aerodynamics", "dynamics", "motorcycle-mechanics"],
+        "c": ["electronics", "electrical-systems", "firmware-development"]
+      }
+    },
+    {
+      "question": "If given a project, which part would you enjoy more?",
+      "options": {
+        "a": "Sketching and modeling the design on software",
+        "b": "Testing how strong and reliable the materials are",
+        "c": "Automating the system to work on its own"
+      },
+      "inference": {
+        "a": ["CAD", "mechanical-design", "engineering-drawing"],
+        "b": ["material-science", "material-testing", "fabrication"],
+        "c": ["automation", "instrumentation", "internet-of-things"]
+      }
+    },
+    {
+      "question": "Which activity sounds the most fun?",
+      "options": {
+        "a": "Building a small robot that moves on commands",
+        "b": "Analyzing how air flows over a car model",
+        "c": "Figuring out how circuits power gadgets"
+      },
+      "inference": {
+        "a": ["automation", "firmware-development", "internet-of-things"],
+        "b": ["aerodynamics", "dynamics", "mechanics"],
+        "c": ["electronics", "circuits", "electrical-systems"]
+      }
+    },
+    {
+      "question": "If you had to choose, what would you rather create?",
+      "options": {
+        "a": "A cool 3D design of a futuristic product",
+        "b": "An efficient process to produce goods faster",
+        "c": "A battery system that lasts longer"
+      },
+      "inference": {
+        "a": ["CAD", "mechanical-design", "engineering-drawing"],
+        "b": ["process-engineering", "fabrication", "automation"],
+        "c": ["battery-power", "electrical-systems", "material-science"]
+      }
+    },
+    {
+      "question": "What kind of problems do you like solving?",
+      "options": {
+        "a": "Why a machine part isn’t moving correctly",
+        "b": "Why an electronic circuit stopped working",
+        "c": "Why the production line is slow"
+      },
+      "inference": {
+        "a": ["mechanics", "motorcycle-mechanics", "dynamics"],
+        "b": ["electronics", "circuits", "electrical-systems"],
+        "c": ["process-engineering", "automation", "instrumentation"]
+      }
+    },
+    {
+      "question": "Imagine working on a team project. Which role attracts you?",
+      "options": {
+        "a": "The designer who creates the look and structure",
+        "b": "The tester who checks if everything works safely",
+        "c": "The coder who programs the system"
+      },
+      "inference": {
+        "a": ["CAD", "engineering-drawing", "mechanical-design"],
+        "b": ["material-testing", "instrumentation", "mechanics"],
+        "c": ["firmware-development", "automation", "internet-of-things"]
+      }
+    },
+    {
+      "question": "Which school activity do you find more interesting?",
+      "options": {
+        "a": "Drawing and sketching in detail",
+        "b": "Doing science experiments in the lab",
+        "c": "Playing with circuits and wires in electronics class"
+      },
+      "inference": {
+        "a": ["engineering-drawing", "CAD", "mechanical-design"],
+        "b": ["material-science", "fabrication", "material-testing"],
+        "c": ["circuits", "electronics", "electrical-systems"]
+      }
+    },
+    {
+      "question": "If you had extra time, what would you explore?",
+      "options": {
+        "a": "Designing your own car or bike model",
+        "b": "Creating a smart device that connects to your phone",
+        "c": "Studying how materials bend, break, or resist stress"
+      },
+      "inference": {
+        "a": ["motorcycle-mechanics", "CAD", "aerodynamics", "mechanical-design"],
+        "b": ["internet-of-things", "firmware-development", "automation"],
+        "c": ["material-science", "material-testing", "mechanics"]
+      }
+    },
+    {
+      "question": "What would you prefer to work with?",
+      "options": {
+        "a": "Machines and gears",
+        "b": "Sensors and instruments",
+        "c": "Software and coding"
+      },
+      "inference": {
+        "a": ["mechanics", "motorcycle-mechanics", "fabrication"],
+        "b": ["instrumentation", "automation", "process-engineering"],
+        "c": ["firmware-development", "internet-of-things", "electronics"]
+      }
+    },
+    {
+      "question": "Which invention do you admire the most?",
+      "options": {
+        "a": "Airplanes and cars",
+        "b": "Smartphones and gadgets",
+        "c": "Factories that can produce thousands of products every day"
+      },
+      "inference": {
+        "a": ["aerodynamics", "dynamics", "mechanics"],
+        "b": ["electronics", "firmware-development", "internet-of-things"],
+        "c": ["process-engineering", "automation", "fabrication"]
+      }
+    }
+  ]
+  
