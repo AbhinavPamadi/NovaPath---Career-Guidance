@@ -5,7 +5,7 @@ import { fetchEducationNews, NewsArticle } from "@/lib/news";
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Calendar, Newspaper } from "lucide-react";
-import { ScrollArea } from "@/components/ui/scroll-area";
+// import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
 
 export function NotificationPanel() {
@@ -65,7 +65,7 @@ export function NotificationPanel() {
         </Link>
       </div>
       
-      <ScrollArea className="h-80">
+      <div className="h-80 overflow-y-auto">
         <div className="p-4 pt-0 space-y-3">
           {articles.length > 0 ? (
             articles.map((article, index) => (
@@ -108,7 +108,7 @@ export function NotificationPanel() {
             </div>
           )}
         </div>
-      </ScrollArea>
+      </div>
     </div>
   );
 }
