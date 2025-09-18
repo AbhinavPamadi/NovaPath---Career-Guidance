@@ -1688,8 +1688,139 @@
       "b": ["content-creation"],
       "c": ["innovation"]
     }
+  },
+  {
+    "question": "When faced with a tricky problem, what do you enjoy doing most?",
+    "options": {
+      "a": "Breaking it down into smaller parts to understand it better",
+      "b": "Thinking carefully about all the possible outcomes",
+      "c": "Using numbers and data to find a solution"
+    },
+    "inference": {
+      "a": ["analytical-skills", "problem-solving"],
+      "b": ["critical-thinking", "probability"],
+      "c": ["numerical-reasoning", "problem-solving"]
+    }
+  },
+  {
+    "question": "Which of these activities sounds most fun to you?",
+    "options": {
+      "a": "Solving puzzles that require logic and reasoning",
+      "b": "Figuring out the chance of different events happening",
+      "c": "Analyzing data to spot patterns and trends"
+    },
+    "inference": {
+      "a": ["problem-solving", "critical-thinking"],
+      "b": ["probability", "numerical-reasoning"],
+      "c": ["analytical-skills", "numerical-reasoning"]
+    }
+  },
+  {
+    "question": "What do you like to do when working on math problems?",
+    "options": {
+      "a": "Use step-by-step logic to solve them",
+      "b": "Consider different possibilities and what might happen",
+      "c": "Work with numbers and formulas to find answers"
+    },
+    "inference": {
+      "a": ["analytical-skills", "problem-solving"],
+      "b": ["probability", "critical-thinking"],
+      "c": ["numerical-reasoning"]
+    }
+  },
+  {
+    "question": "Which skill would you most like to improve?",
+    "options": {
+      "a": "Thinking clearly and making good judgments",
+      "b": "Working confidently with numbers and data",
+      "c": "Finding creative solutions to difficult problems"
+    },
+    "inference": {
+      "a": ["critical-thinking"],
+      "b": ["numerical-reasoning"],
+      "c": ["problem-solving", "analytical-skills"]
+    }
+  },
+  {
+    "question": "If you had to explain something complicated, how would you do it?",
+    "options": {
+      "a": "Break it down into simple parts and explain each one",
+      "b": "Show different possible outcomes and what they mean",
+      "c": "Use numbers and examples to support your explanation"
+    },
+    "inference": {
+      "a": ["analytical-skills"],
+      "b": ["probability", "critical-thinking"],
+      "c": ["numerical-reasoning"]
+    }
+  },
+  {
+    "question": "Which of these sounds like your favorite challenge?",
+    "options": {
+      "a": "Finding the best solution by carefully thinking through options",
+      "b": "Calculating the chances of something happening",
+      "c": "Analyzing information to discover hidden patterns"
+    },
+    "inference": {
+      "a": ["problem-solving", "critical-thinking"],
+      "b": ["probability", "numerical-reasoning"],
+      "c": ["analytical-skills"]
+    }
+  },
+  {
+    "question": "When you learn new information, what do you like to do?",
+    "options": {
+      "a": "Question it and think about how it fits with what you know",
+      "b": "Look for data and facts to support it",
+      "c": "Apply it to solve a problem or answer a question"
+    },
+    "inference": {
+      "a": ["critical-thinking"],
+      "b": ["numerical-reasoning", "analytical-skills"],
+      "c": ["problem-solving"]
+    }
+  },
+  {
+    "question": "What type of games or activities do you enjoy?",
+    "options": {
+      "a": "Logic puzzles and brain teasers",
+      "b": "Games that involve chance or probability",
+      "c": "Challenges that require calculations and math"
+    },
+    "inference": {
+      "a": ["critical-thinking", "problem-solving"],
+      "b": ["probability"],
+      "c": ["numerical-reasoning"]
+    }
+  },
+  {
+    "question": "Which do you find most satisfying?",
+    "options": {
+      "a": "Understanding complex problems clearly",
+      "b": "Predicting what might happen next",
+      "c": "Solving problems using numbers and formulas"
+    },
+    "inference": {
+      "a": ["analytical-skills"],
+      "b": ["probability", "critical-thinking"],
+      "c": ["numerical-reasoning", "problem-solving"]
+    }
+  },
+  {
+    "question": "Which statement best describes you?",
+    "options": {
+      "a": "I like to analyze details carefully before making decisions",
+      "b": "I enjoy thinking about all possible outcomes in a situation",
+      "c": "I am comfortable working with numbers to solve problems"
+    },
+    "inference": {
+      "a": ["analytical-skills", "critical-thinking"],
+      "b": ["probability", "critical-thinking"],
+      "c": ["numerical-reasoning", "problem-solving"]
+    }
   }
 ]
+
 
 
 
