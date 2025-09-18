@@ -1428,8 +1428,139 @@
       "b": ["education-theory", "communication"],
       "c": ["public-speking"]
     }
+  },
+  {
+    "question": "Which activity do you enjoy the most?",
+    "options": {
+      "a": "Sketching or drawing with pencils and pens",
+      "b": "Creating digital art or designs on a computer",
+      "c": "Learning about how colors work together and influence feelings"
+    },
+    "inference": {
+      "a": ["drawing", "fine-arts"],
+      "b": ["graphic-design", "design"],
+      "c": ["color-theory", "design-sense"]
+    }
+  },
+  {
+    "question": "If you had free time, what would you like to create?",
+    "options": {
+      "a": "A hand-drawn portrait or landscape",
+      "b": "A logo or poster for a school event",
+      "c": "A colorful painting focusing on how colors blend"
+    },
+    "inference": {
+      "a": ["drawing", "fine-arts"],
+      "b": ["graphic-design", "design"],
+      "c": ["color-theory", "design-sense"]
+    }
+  },
+  {
+    "question": "What do you find most interesting about art and design?",
+    "options": {
+      "a": "Practicing techniques to improve my drawing skills",
+      "b": "Using software to create cool graphics and layouts",
+      "c": "Understanding how colors affect mood and style"
+    },
+    "inference": {
+      "a": ["drawing", "fine-arts"],
+      "b": ["graphic-design", "design"],
+      "c": ["color-theory", "design-sense"]
+    }
+  },
+  {
+    "question": "Which of these would you like to study?",
+    "options": {
+      "a": "Different styles of drawing and painting",
+      "b": "How to design websites and posters",
+      "c": "The science and art of color combinations"
+    },
+    "inference": {
+      "a": ["fine-arts", "drawing"],
+      "b": ["graphic-design", "design"],
+      "c": ["color-theory", "design-sense"]
+    }
+  },
+  {
+    "question": "Which skill do you enjoy practicing?",
+    "options": {
+      "a": "Drawing sketches and fine art",
+      "b": "Creating digital designs and layouts",
+      "c": "Choosing color palettes and mixing colors"
+    },
+    "inference": {
+      "a": ["drawing", "fine-arts"],
+      "b": ["graphic-design", "design"],
+      "c": ["color-theory", "design-sense"]
+    }
+  },
+  {
+    "question": "What inspires you most when creating art?",
+    "options": {
+      "a": "The shapes and lines I can draw",
+      "b": "How to make designs that catch attention",
+      "c": "Using colors that create a certain mood"
+    },
+    "inference": {
+      "a": ["drawing", "fine-arts"],
+      "b": ["graphic-design", "design"],
+      "c": ["color-theory", "design-sense"]
+    }
+  },
+  {
+    "question": "Which project sounds most fun?",
+    "options": {
+      "a": "Drawing a detailed character or scene",
+      "b": "Designing a cool logo for a club or team",
+      "c": "Creating a color guide for a brand or artwork"
+    },
+    "inference": {
+      "a": ["drawing", "fine-arts"],
+      "b": ["graphic-design", "design"],
+      "c": ["color-theory", "design-sense"]
+    }
+  },
+  {
+    "question": "If you were to teach a class, what would it be about?",
+    "options": {
+      "a": "Basic drawing techniques and practice",
+      "b": "Introduction to graphic and digital design",
+      "c": "How to use color theory to improve designs"
+    },
+    "inference": {
+      "a": ["drawing", "fine-arts"],
+      "b": ["graphic-design", "design"],
+      "c": ["color-theory", "design-sense"]
+    }
+  },
+  {
+    "question": "Which description fits you best?",
+    "options": {
+      "a": "I love creating art by hand with pencils or brushes",
+      "b": "I enjoy making digital art and creative designs",
+      "c": "I’m fascinated by how colors work together and impact feelings"
+    },
+    "inference": {
+      "a": ["fine-arts", "drawing"],
+      "b": ["graphic-design", "design"],
+      "c": ["color-theory", "design-sense"]
+    }
+  },
+  {
+    "question": "What kind of art or design do you want to explore more?",
+    "options": {
+      "a": "Traditional drawing and painting",
+      "b": "Graphic design and digital media",
+      "c": "Color theory and design aesthetics"
+    },
+    "inference": {
+      "a": ["fine-arts", "drawing"],
+      "b": ["graphic-design", "design"],
+      "c": ["color-theory", "design-sense"]
+    }
   }
 ]
+
 
 
 
