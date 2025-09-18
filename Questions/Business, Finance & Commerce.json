@@ -1,0 +1,132 @@
+[
+  {
+    "question": "Which business activity sounds most interesting to you?",
+    "options": {
+      "a": "Tracking money going in and out of a company",
+      "b": "Studying numbers to understand how a company is doing financially",
+      "c": "Promoting products and understanding customer needs"
+    },
+    "inference": {
+      "a": ["Accounting & Auditing"],
+      "b": ["Financial Analysis & Planning"],
+      "c": ["Marketing"]
+    }
+  },
+  {
+    "question": "Which skill would you most like to develop?",
+    "options": {
+      "a": "Checking that financial records are correct and follow rules",
+      "b": "Planning for future profits and budgets",
+      "c": "Organizing projects to meet goals on time"
+    },
+    "inference": {
+      "a": ["Accounting & Auditing"],
+      "b": ["Financial Analysis & Planning"],
+      "c": ["Project & Production Management"]
+    }
+  },
+  {
+    "question": "What kind of problem do you like solving?",
+    "options": {
+      "a": "Finding mistakes in financial data",
+      "b": "Figuring out the best way to spend or invest money",
+      "c": "Getting people interested in a new product or service"
+    },
+    "inference": {
+      "a": ["Accounting & Auditing"],
+      "b": ["Financial Analysis & Planning"],
+      "c": ["Marketing"]
+    }
+  },
+  {
+    "question": "Which role would suit you best in a company?",
+    "options": {
+      "a": "Keeping accurate financial records",
+      "b": "Analyzing trends to help with big financial decisions",
+      "c": "Leading teams to complete business projects successfully"
+    },
+    "inference": {
+      "a": ["Accounting & Auditing"],
+      "b": ["Financial Analysis & Planning"],
+      "c": ["Project & Production Management"]
+    }
+  },
+  {
+    "question": "What do you think is most important in running a business?",
+    "options": {
+      "a": "Understanding where every dollar goes",
+      "b": "Planning ahead to avoid losses and grow profits",
+      "c": "Creating messages that reach and excite customers"
+    },
+    "inference": {
+      "a": ["Accounting & Auditing"],
+      "b": ["Financial Analysis & Planning"],
+      "c": ["Marketing"]
+    }
+  },
+  {
+    "question": "Which type of work environment appeals to you most?",
+    "options": {
+      "a": "A quiet space reviewing financial documents and statements",
+      "b": "A fast-paced office analyzing charts and reports",
+      "c": "A creative setting focused on customer campaigns and products"
+    },
+    "inference": {
+      "a": ["Accounting & Auditing"],
+      "b": ["Financial Analysis & Planning"],
+      "c": ["Marketing"]
+    }
+  },
+  {
+    "question": "How do you prefer to contribute to a team?",
+    "options": {
+      "a": "By keeping financial records accurate and organized",
+      "b": "By helping others make smart financial choices",
+      "c": "By making sure tasks are completed on time and goals are met"
+    },
+    "inference": {
+      "a": ["Accounting & Auditing"],
+      "b": ["Financial Analysis & Planning"],
+      "c": ["Project & Production Management"]
+    }
+  },
+  {
+    "question": "What kind of project would excite you the most?",
+    "options": {
+      "a": "Auditing a company to ensure everything follows the rules",
+      "b": "Creating a financial forecast for a new product",
+      "c": "Designing a marketing plan to launch that product"
+    },
+    "inference": {
+      "a": ["Accounting & Auditing"],
+      "b": ["Financial Analysis & Planning"],
+      "c": ["Marketing"]
+    }
+  },
+  {
+    "question": "What’s your favorite way to work with numbers?",
+    "options": {
+      "a": "Recording and verifying business transactions",
+      "b": "Using data to predict trends and outcomes",
+      "c": "Budgeting time and costs for a business project"
+    },
+    "inference": {
+      "a": ["Accounting & Auditing"],
+      "b": ["Financial Analysis & Planning"],
+      "c": ["Project & Production Management"]
+    }
+  },
+  {
+    "question": "Which career path sounds most appealing to you?",
+    "options": {
+      "a": "Becoming an accountant or internal auditor",
+      "b": "Working as a financial planner or analyst",
+      "c": "Managing marketing or business operations"
+    },
+    "inference": {
+      "a": ["Accounting & Auditing"],
+      "b": ["Financial Analysis & Planning"],
+      "c": ["Marketing", "Project & Production Management"]
+    }
+  }
+]
