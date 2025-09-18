@@ -1558,8 +1558,139 @@
       "b": ["graphic-design", "design"],
       "c": ["color-theory", "design-sense"]
     }
+  },
+  {
+    "question": "Which activity sounds most exciting to you?",
+    "options": {
+      "a": "Thinking up new ideas and unique ways to solve problems",
+      "b": "Creating videos, blogs, or social media content to share with others",
+      "c": "Finding new methods or tools to improve everyday tasks"
+    },
+    "inference": {
+      "a": ["creativity", "creative-thinking"],
+      "b": ["content-creation"],
+      "c": ["innovation"]
+    }
+  },
+  {
+    "question": "When faced with a challenge, how do you usually respond?",
+    "options": {
+      "a": "Brainstorm different approaches and ideas",
+      "b": "Make something original like a video or artwork",
+      "c": "Look for ways to improve current systems or products"
+    },
+    "inference": {
+      "a": ["creative-thinking", "creativity"],
+      "b": ["content-creation"],
+      "c": ["innovation"]
+    }
+  },
+  {
+    "question": "What type of project would you enjoy the most?",
+    "options": {
+      "a": "Designing a unique product or invention",
+      "b": "Writing or filming content that shares your ideas",
+      "c": "Coming up with creative solutions to everyday problems"
+    },
+    "inference": {
+      "a": ["innovation", "creativity"],
+      "b": ["content-creation"],
+      "c": ["creative-thinking", "innovation"]
+    }
+  },
+  {
+    "question": "Which statement describes you best?",
+    "options": {
+      "a": "I love imagining new possibilities and ideas",
+      "b": "I enjoy making content that others find interesting or helpful",
+      "c": "I’m always looking for better ways to do things"
+    },
+    "inference": {
+      "a": ["creativity", "creative-thinking"],
+      "b": ["content-creation"],
+      "c": ["innovation"]
+    }
+  },
+  {
+    "question": "What motivates you the most?",
+    "options": {
+      "a": "Bringing fresh ideas to life",
+      "b": "Sharing my work and stories with others",
+      "c": "Improving things to make life easier or more fun"
+    },
+    "inference": {
+      "a": ["creativity"],
+      "b": ["content-creation"],
+      "c": ["innovation"]
+    }
+  },
+  {
+    "question": "If you had free time, what would you choose to do?",
+    "options": {
+      "a": "Brainstorm or sketch new concepts",
+      "b": "Create videos, podcasts, or blog posts",
+      "c": "Invent or tinker with new gadgets or ideas"
+    },
+    "inference": {
+      "a": ["creative-thinking", "creativity"],
+      "b": ["content-creation"],
+      "c": ["innovation"]
+    }
+  },
+  {
+    "question": "How do you prefer to express your ideas?",
+    "options": {
+      "a": "Through original and imaginative thinking",
+      "b": "By creating engaging content like videos or stories",
+      "c": "By developing new inventions or improvements"
+    },
+    "inference": {
+      "a": ["creativity", "creative-thinking"],
+      "b": ["content-creation"],
+      "c": ["innovation"]
+    }
+  },
+  {
+    "question": "What kind of environment helps you do your best work?",
+    "options": {
+      "a": "A space where I can freely think and explore ideas",
+      "b": "A studio or setup to produce videos or write content",
+      "c": "A workshop or lab to experiment and innovate"
+    },
+    "inference": {
+      "a": ["creative-thinking", "creativity"],
+      "b": ["content-creation"],
+      "c": ["innovation"]
+    }
+  },
+  {
+    "question": "Which of these describes your strengths?",
+    "options": {
+      "a": "Coming up with creative and unique ideas",
+      "b": "Making content that entertains or educates",
+      "c": "Finding innovative solutions to problems"
+    },
+    "inference": {
+      "a": ["creativity"],
+      "b": ["content-creation"],
+      "c": ["innovation"]
+    }
+  },
+  {
+    "question": "What would you like to improve most?",
+    "options": {
+      "a": "My ability to think creatively and outside the box",
+      "b": "My skills in creating interesting videos or posts",
+      "c": "My talent for inventing or improving things"
+    },
+    "inference": {
+      "a": ["creative-thinking", "creativity"],
+      "b": ["content-creation"],
+      "c": ["innovation"]
+    }
   }
 ]
+
 
 
 
