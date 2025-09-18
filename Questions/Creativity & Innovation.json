@@ -1,0 +1,132 @@
+[
+  {
+    "question": "When faced with a challenge, how do you usually come up with solutions?",
+    "options": {
+      "a": "Think of new and different ideas",
+      "b": "Use tried-and-true methods",
+      "c": "Ask others for their opinions"
+    },
+    "inference": {
+      "a": ["Creativity", "Innovation"],
+      "b": [],
+      "c": ["Creativity"]
+    }
+  },
+  {
+    "question": "Which activity do you enjoy most?",
+    "options": {
+      "a": "Drawing, painting, or designing",
+      "b": "Building or making something new",
+      "c": "Planning and organizing ideas"
+    },
+    "inference": {
+      "a": ["Creativity"],
+      "b": ["Innovation", "Creativity"],
+      "c": ["Innovation"]
+    }
+  },
+  {
+    "question": "How do you react when your idea is different from others’?",
+    "options": {
+      "a": "Excited to share and explain it",
+      "b": "Careful and try to fit in",
+      "c": "Change it to match the group"
+    },
+    "inference": {
+      "a": ["Creativity", "Innovation"],
+      "b": [],
+      "c": []
+    }
+  },
+  {
+    "question": "What inspires you to be creative?",
+    "options": {
+      "a": "Trying new things and exploring",
+      "b": "Following clear instructions",
+      "c": "Working with others and sharing ideas"
+    },
+    "inference": {
+      "a": ["Creativity", "Innovation"],
+      "b": [],
+      "c": ["Creativity"]
+    }
+  },
+  {
+    "question": "When creating something, you prefer to:",
+    "options": {
+      "a": "Experiment with different styles and ideas",
+      "b": "Stick to proven techniques",
+      "c": "Get feedback and improve gradually"
+    },
+    "inference": {
+      "a": ["Creativity", "Innovation"],
+      "b": [],
+      "c": ["Creativity", "Innovation"]
+    }
+  },
+  {
+    "question": "How do you feel about trying new technologies or tools?",
+    "options": {
+      "a": "Excited and curious to explore",
+      "b": "Hesitant until I see results",
+      "c": "Prefer familiar methods"
+    },
+    "inference": {
+      "a": ["Innovation", "Creativity"],
+      "b": [],
+      "c": []
+    }
+  },
+  {
+    "question": "Which statement best describes you?",
+    "options": {
+      "a": "I enjoy thinking outside the box",
+      "b": "I like following clear plans",
+      "c": "I prefer working with others to create"
+    },
+    "inference": {
+      "a": ["Creativity", "Innovation"],
+      "b": [],
+      "c": ["Creativity"]
+    }
+  },
+  {
+    "question": "When faced with a problem, you:",
+    "options": {
+      "a": "Look for unique or original solutions",
+      "b": "Apply common strategies that work",
+      "c": "Ask for advice and combine ideas"
+    },
+    "inference": {
+      "a": ["Creativity", "Innovation"],
+      "b": [],
+      "c": ["Creativity", "Innovation"]
+    }
+  },
+  {
+    "question": "What motivates you to innovate?",
+    "options": {
+      "a": "Making things better or easier",
+      "b": "Sticking to what’s already proven",
+      "c": "Working with others to improve ideas"
+    },
+    "inference": {
+      "a": ["Innovation"],
+      "b": [],
+      "c": ["Innovation"]
+    }
+  },
+  {
+    "question": "How do you handle failure in creative projects?",
+    "options": {
+      "a": "See it as a chance to learn and try again",
+      "b": "Feel discouraged and avoid risk",
+      "c": "Ask for feedback and adjust accordingly"
+    },
+    "inference": {
+      "a": ["Creativity", "Innovation"],
+      "b": [],
+      "c": ["Creativity", "Innovation"]
+    }
+  }
+]
