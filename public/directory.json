@@ -1,0 +1,960 @@
+[
+  {
+    "name": "National Institute of Technology Srinagar",
+    "abbreviation": "NIT Srinagar",
+    "type": "Engineering / Technical University",
+    "location": "Srinagar, Kashmir, Jammu and Kashmir, 190006, India",
+    "coordinates": {"lat": 34.125, "long": 74.8397},
+    "website": "http://nitsri.ac.in/",
+    "description": "NIT Srinagar is a public technical university located in Srinagar, Jammu and Kashmir, India. It is one of the 31 National Institutes of Technology (NITs) under the Ministry of Education (MoE).",
+    "admissions": {
+      "undergraduate": "Through JEE Mains (previously AIEEE)",
+      "postgraduate": "Through GATE (M.Tech via CCMT) and Joint Admission Test for M.Sc."
+    },
+    "departments": {
+      "engineering": [
+        "Chemical Engineering",
+        "Civil Engineering",
+        "Computer Science and Engineering",
+        "Electrical Engineering",
+        "Electronics and Communication Engineering",
+        "Mechanical Engineering",
+        "Metallurgical and Materials Engineering",
+        "Information Technology"
+      ],
+      "physical_sciences": [
+        "Physics",
+        "Chemistry",
+        "Humanities",
+        "Mathematics"
+      ]
+    }
+  },
+  {
+    "name": "Indian Institute of Management Jammu",
+    "abbreviation": "IIM Jammu",
+    "type": "Management / Business School",
+    "location": "Jammu, Jammu and Kashmir, India",
+    "coordinates": {"lat": 32.8195, "long": 74.8983},
+    "website": "http://www.iimj.ac.in",
+    "established": 2016,
+    "description": "IIM Jammu is a public, autonomous business school and the youngest Indian Institute of Management. It offers various management programs with a student intake of 240 for the MBA programme in 2019.",
+    "academic_programs": [
+      "Master of Business Administration (MBA)",
+      "MBA (Hospital Administration and Healthcare Management)",
+      "Dual Degree (B.Tech + MBA) with IIT Jammu",
+      "IPM (BBA + MBA)",
+      "Executive MBA",
+      "Doctoral Program / PhD"
+    ],
+    "other_programs": [
+      "Executive Programs",
+      "Management Development Programs",
+      "Faculty Development Programs",
+      "Certificate Programs",
+      "Mahatma Gandhi National Fellowship"
+    ]
+  },
+  {
+    "name": "Indian Institute of Technology Jammu",
+    "abbreviation": "IIT Jammu",
+    "type": "Engineering / Technical University",
+    "location": "Jagti, Nagrota Tehsil, Jammu district, Jammu and Kashmir, India",
+    "coordinates": {"lat": 32.8036, "long": 74.8958},
+    "website": "http://www.iitjammu.ac.in/",
+    "established": 2016,
+    "description": "IIT Jammu is a public research university, part of the Indian Institutes of Technology system. The campus is located in Jagti village, Jammu district.",
+    "degrees_offered": {
+      "btech": [
+        "Chemical Engineering",
+        "Mathematics and Computing",
+        "Civil Engineering",
+        "Computer Science and Engineering",
+        "Electrical Engineering",
+        "Materials Engineering",
+        "Mechanical Engineering"
+      ],
+      "mtech": [
+        "Computer Science and Engineering (Data Science & Information Security)",
+        "Electrical Engineering (Communications & Signal Processing)",
+        "Civil Engineering (Tunnel Engineering)",
+        "Thermal Engineering (Mechanical & Chemical combined)",
+        "Computer Technology (CSE & Electrical combined)"
+      ],
+      "mtech_executive": ["Artificial Intelligence and Machine Learning"],
+      "phd": [
+        "Chemistry",
+        "Civil Engineering",
+        "Computer Science and Engineering",
+        "Electrical Engineering",
+        "Humanities and Social Sciences",
+        "Mathematics",
+        "Materials Engineering",
+        "Mechanical Engineering",
+        "Physics"
+      ]
+    }
+  },
+  {
+    "name": "Indian Institute of Mass Communication, Bantalab, Jammu",
+    "abbreviation": "IIMC Jammu",
+    "type": "Media / Mass Communication",
+    "location": "QRQV+67, Nardani Bajwan, Jammu, 181123, Jammu and Kashmir, India",
+    "coordinates": {"lat": 32.75, "long": 74.85},
+    "website": "https://iimc.gov.in/",
+    "established": 2012,
+    "description": "Northern Regional Centre of IIMC, started in 2012, permanently moved to new campus in December 2022. The campus includes administrative block, hostels, faculty quarters, library, computer lab, seminar hall, and TV studio.",
+    "contact": {
+      "regional_director": "Indian Institute of Mass Communication, Northern Regional Centre",
+      "address": "Village Pattian, BSNL Exchange Road, Bantalab, Jammu-181123",
+      "phone": "9419750600",
+      "email": "rd.jammu@iimc.gov.in"
+    }
+  },
+  {
+    "name": "All India Institute of Medical Sciences Jammu",
+    "abbreviation": "AIIMS Jammu",
+    "type": "Medical University",
+    "location": "Vijaypur, Samba, Jammu, Jammu and Kashmir, India",
+    "coordinates": {"lat": 32.564, "long": 75.030},
+    "website": "https://www.aiimsjammu.edu.in",
+    "description": "AIIMS Jammu is a public medical research university and hospital in Vijaypur, Samba district, Jammu division, Jammu and Kashmir, India."
+  },
+  {
+    "name": "Central University of Kashmir",
+    "type": "University",
+    "location": "Ganderbal, Jammu & Kashmir, India",
+    "coordinates": {"lat": 34.234106, "long": 74.725259},
+    "courses_offered": [
+      "Undergraduate (BA-LLB, BSc-MSc in Mathematics, Biology, etc.)",
+      "Postgraduate (MA, MSc, MBA, LLM)",
+      "Doctoral (PhD)",
+      "Vocational programs"
+    ]
+  },
+  {
+    "name": "Government Degree College, Pulwama",
+    "type": "Degree College",
+    "location": "Pulwama, Jammu & Kashmir, India",
+    "coordinates": {"lat": 33.872536, "long": 74.892853},
+    "courses_offered": [
+      "BA, BSc (Medical & Non-Medical), B.Com, BCA, BBA",
+      "Biotechnology, Persian Literature, Environmental Science Education, Accounting & Taxation"
+    ],
+    "website": "https://www.gdcpulwama.edu.in"
+  },
+  {
+    "name": "Government Degree College, Sopore",
+    "type": "Degree College",
+    "location": "Baramulla, Jammu & Kashmir, India",
+    "coordinates": {"lat": 34.298675, "long": 74.470148},
+    "courses_offered": [
+      "BA, BSc, BCom, BBA, BCA",
+      "Certificate / diploma courses in Tourism & Hospitality Management, Retail Management, Information Technology"
+    ]
+  },
+  {
+    "name": "Government Degree College, Anantnag (Boys)",
+    "type": "Degree College",
+    "location": "Anantnag, Jammu & Kashmir, India",
+    "coordinates": {"lat": 33.73528, "long": 75.14778},
+    "courses_offered": [
+      "BA, BSc (with honours in Statistics, Biotechnology, Environmental Science, etc.)",
+      "BCom, BBA, BCA, BMMMC (Mass Communication / Media)"
+    ]
+  },
+  {
+    "name": "Government Degree College for Women, Anantnag",
+    "type": "Degree College",
+    "location": "Anantnag, Jammu & Kashmir, India",
+    "coordinates": {"lat": 33.73, "long": 75.15},
+    "courses_offered": [
+      "Arts, Agriculture, Computer Applications",
+      "Total courses offered: ~21"
+    ]
+  },
+  {
+    "name": "HKM Degree College, Patushay, Bandipora",
+    "type": "Degree College",
+    "location": "Bandipora, Jammu & Kashmir, India",
+    "coordinates": {"lat": 34.42427, "long": 74.59053},
+    "courses_offered": [
+      "BA, BSc (Medical & Non-Medical), BCom",
+      "Departments: Commerce, Chemistry, Botany, Zoology, English, Urdu, Environmental Science, History, Political Science, Kashmiri, Computer Applications"
+    ]
+  },
+  {
+    "name": "Government Degree College, Budgam",
+    "type": "Degree College",
+    "location": "Budgam, Jammu & Kashmir, India",
+    "courses_offered": [
+      "BA, BSc (Medical & Non-Medical), BCA, BCom",
+      "Honours in Anthropology"
+    ]
+  },
+  {
+    "name": "Government Degree College, Beerwah",
+    "type": "Degree College",
+    "location": "Budgam, Jammu & Kashmir, India",
+    "courses_offered": [
+      "BA (History Major), BCom Honours, BSc Biotechnology Major, BSc Water Management, BCA",
+      "Other Arts & Science streams"
+    ]
+  },
+  {
+    "name": "Government Degree College, Magam",
+    "type": "Degree College",
+    "location": "Budgam, Kashmir, India",
+    "courses_offered": [
+      "Commerce, BBA, Computer Applications",
+      "Arts: English, Political Science, Economics, Education, Arabic, Environmental Studies, Physical Education, Tourism Management, Urdu, History, Persian"
+    ]
+  },
+  {
+    "name": "Government Degree College, Kathua",
+    "type": "Degree College",
+    "location": "Kathua, Jammu & Kashmir, India",
+    "coordinates": {"lat": 32.37, "long": 75.52},
+    "courses_offered": [
+      "Science (Medical & Non-Medical), Arts, Commerce, BCA",
+      "Postgraduate in Geography"
+    ]
+  },
+  {
+    "name": "Government Degree College, Shopian",
+    "type": "Degree College",
+    "location": "Shopian, Jammu & Kashmir, India",
+    "courses_offered": [
+      "BA, BSc, BCom, BCA, BBA",
+      "Job-oriented courses: Food Science & Technology, Biotechnology, Biochemistry, Clinical Biochemistry"
+    ]
+  },
+  {
+    "name": "Government Degree College, Uri",
+    "type": "Degree College",
+    "location": "Baramulla district, J&K",
+    "coordinates": {"lat": 34.075882, "long": 74.057649},
+    "courses_offered": [
+      "Science, Humanities, Commerce streams",
+      "Core sciences, arts, commerce subjects"
+    ],
+    "website": "https://www.gdcuri.ac.in"
+  },
+  {
+    "name": "Government Degree College, Handwara",
+    "type": "Degree College",
+    "location": "Kupwara district, J&K, India",
+    "courses_offered": [
+      "BA, BSc (Medical & Non-Medical), BCom, BBA, BCA",
+      "Honours in Education and other major-minor combinations (~21 subjects, 34 combinations)"
+    ]
+  },
+  {
+    "name": "Government Degree College, Doda",
+    "type": "Degree College",
+    "location": "Doda, Jammu & Kashmir, India",
+    "courses_offered": [
+      "Bachelor of Social & Behavioural Sciences (Sociology, Political Science, History, Economics, Education)",
+      "Bachelor of Arts & Humanities with Urdu",
+      "Bachelor of Science (Zoology, Physics, Chemistry, Botany)",
+      "Bachelor of Commerce (Business Studies, Accounting & Finance)"
+    ],
+    "website": "https://www.gdcdoda.in"
+  },
+  {
+    "name": "Government Degree College, Rajouri (GPG College Rajouri)",
+    "type": "Degree College",
+    "location": "Rajouri, Jammu & Kashmir, India",
+    "coordinates": {"lat": 33.05, "long": 74.30},
+    "courses_offered": [
+      "UG and PG courses",
+      "Streams: Arts, Physical Sciences, Bio-Sciences, Computer Sciences",
+      "Distance-education centres (IGNOU, etc.)",
+      "Multiple blocks including PG Urdu, PG Computer Science"
+    ],
+    "website": "https://www.gpgcollegerajouri.ac.in"
+  },
+  {
+    "name": "HKM Degree College, Patushay, Bandipora",
+    "type": "Degree College",
+    "location": "Bandipora, Jammu & Kashmir, India",
+    "coordinates": {"lat": 34.42427, "long": 74.59053},
+    "courses_offered": [
+      "Bachelor’s in Arts, Science (Medical & Non-Medical), Commerce",
+      "Departments: Commerce, Chemistry, Botany, Zoology, English, Urdu, Environmental Science, History, Political Science, Kashmiri, Computer Applications"
+    ]
+  },
+  {
+    "name": "Government Degree College, Budgam (Sheikh-ul-Alam Memorial Degree College)",
+    "type": "Degree College",
+    "location": "Budgam, Jammu & Kashmir, India",
+    "coordinates": null,
+    "courses_offered": [
+      "Bachelor’s in Arts, Science (Medical & Non-Medical), Computer Application, Commerce",
+      "Honors in Anthropology"
+    ]
+  },
+  {
+    "name": "Government Degree College, Beerwah",
+    "type": "Degree College",
+    "location": "Budgam district, Jammu & Kashmir, India",
+    "coordinates": null,
+    "courses_offered": [
+      "BA (History Major), BCom Honours, BSc Biotechnology Major, BSc Water Management, BCA",
+      "Other Arts & Science streams"
+    ]
+  },
+  {
+    "name": "Government Degree College, Magam",
+    "type": "Degree College",
+    "location": "Budgam, Kashmir, India",
+    "coordinates": null,
+    "courses_offered": [
+      "Commerce, BBA, Computer Applications",
+      "Arts: English, Political Science, Economics, Education, Arabic, Environmental Studies, Physical Education, Tourism Management, Urdu, History, Persian"
+    ]
+  },
+  {
+    "name": "Government Degree College, Kathua",
+    "type": "Degree College",
+    "location": "Kathua, Jammu & Kashmir, India",
+    "coordinates": {"lat": 32.37, "long": 75.52},
+    "courses_offered": [
+      "Science (Medical & Non-Medical), Arts, Commerce, BCA",
+      "Postgraduate in Geography"
+    ]
+  },
+  {
+    "name": "Government Degree College, Shopian",
+    "type": "Degree College",
+    "location": "Shopian, Jammu & Kashmir, India",
+    "coordinates": null,
+    "courses_offered": [
+      "BA, BSc, BCom, BCA, BBA",
+      "Job-oriented subjects: Food Science & Technology, Biotechnology, Biochemistry, Clinical Biochemistry",
+      "Many subject combinations (30+ subjects, 146 combinations in total)"
+    ]
+  },
+  {
+    "name": "Government Degree College, Uri",
+    "type": "Degree College",
+    "location": "Baramulla district, Jammu & Kashmir, India",
+    "coordinates": {"lat": 34.075882, "long": 74.057649},
+    "courses_offered": [
+      "Science, Humanities, Commerce streams",
+      "Core sciences, arts subjects, commerce subjects"
+    ],
+    "website": "https://www.gdcuri.ac.in"
+  },
+  {
+    "name": "Government Degree College, Handwara",
+    "type": "Degree College",
+    "location": "Kupwara district, Jammu & Kashmir, India",
+    "coordinates": null,
+    "courses_offered": [
+      "BA, BSc (Medical & Non-Medical), BCom, BBA, BCA",
+      "Honours courses: Education and major-minor combinations (~21 subjects, 34 combinations)"
+    ]
+  },
+  {
+    "name": "Government Degree College, Doda",
+    "type": "Degree College",
+    "location": "Doda, Jammu & Kashmir, India",
+    "coordinates": null,
+    "courses_offered": [
+      "Bachelor of Social & Behavioural Sciences (Sociology, Political Science, History, Economics, Education)",
+      "Bachelor of Arts & Humanities with Urdu",
+      "Bachelor of Science (Zoology, Physics, Chemistry, Botany)",
+      "Bachelor of Commerce (Business Studies, Accounting & Finance)"
+    ],
+    "website": "https://www.gdcdoda.in"
+  },
+  {
+    "name": "Government Degree College, Rajouri (GPG College Rajouri)",
+    "type": "Degree College",
+    "location": "Rajouri, Jammu & Kashmir, India",
+    "coordinates": {"lat": 33.05, "long": 74.30},
+    "courses_offered": [
+      "UG and PG courses",
+      "Streams: Arts, Physical Sciences, Bio-Sciences, Computer Sciences",
+      "Distance-education centres (IGNOU, etc.)",
+      "Multiple blocks including PG Urdu, PG Computer Science"
+    ],
+    "website": "https://www.gpgcollegerajouri.ac.in"
+  },
+  {
+    "name": "Government Degree College, Kulgam",
+    "type": "Degree College",
+    "location": "Nihama / Chawalgam, Kulgam district, Jammu & Kashmir, India",
+    "coordinates": null,
+    "courses_offered": [
+      "BA, BSc (Medical & Non-Medical), BCom, BBA, BCA",
+      "Various NEP-aligned FYUGP subject majors"
+    ]
+  },
+  {
+    "name": "Government Degree College, Kupwara",
+    "type": "Degree College",
+    "location": "Bohipora area, Kupwara district, Jammu & Kashmir, India",
+    "coordinates": {"lat": 34.53, "long": 74.28},
+    "courses_offered": [
+      "BA, BSc (Medical & Non-Medical), BCom, BCA",
+      "Skill/add-on courses: Sericulture, Lab techniques, Computer Applications"
+    ]
+  },
+  {
+    "name": "Government Degree College, Pattan",
+    "type": "Degree College",
+    "location": "Pattan town, Baramulla district, Jammu & Kashmir, India",
+    "coordinates": null,
+    "courses_offered": [
+      "BA, BSc (Medical & Non-Medical), BCom, BSc IT",
+      "NEP-aligned honours/major options and various skill courses"
+    ]
+  },
+  {
+    "name": "Government Degree College, Tral",
+    "type": "Degree College",
+    "location": "Tral town, Pulwama district, Jammu & Kashmir, India",
+    "coordinates": null,
+    "courses_offered": [
+      "BA, BSc, BCom",
+      "Multiple subject combinations"
+    ]
+  },
+  {
+    "name": "Government Degree College, Udhampur",
+    "type": "Degree College",
+    "location": "Udhampur town, Jammu division, Jammu & Kashmir, India",
+    "coordinates": {"lat": 32.93, "long": 75.13},
+    "courses_offered": [
+      "BA, BSc (various combinations), BCom",
+      "Detailed lab & course requirements as per official PDFs"
+    ]
+  },
+  {
+    "name": "Government Medical College, Jammu (GMC Jammu / GMCH)",
+    "type": "Medical College",
+    "location": "Jammu city, Jammu & Kashmir, India",
+    "coordinates": null,
+    "courses_offered": [
+      "MBBS, MD/MS specialities, PG diplomas, DNB, allied diploma programmes"
+    ]
+  },
+  {
+    "name": "Govt. Gandhi Memorial Science College (GGM Science College), Jammu",
+    "type": "Degree College",
+    "location": "Jammu city, Jammu & Kashmir, India",
+    "coordinates": null,
+    "courses_offered": [
+      "BSc majors: Physics, Chemistry, Maths, Botany, Zoology, Geography",
+      "BCA and some PG programmes (e.g., PG Geology, PG English)"
+    ]
+  },
+  {
+    "name": "Sri Pratap College (SP College), Srinagar",
+    "type": "Degree College",
+    "location": "Residency Road, Srinagar, Jammu & Kashmir, India",
+    "coordinates": null,
+    "courses_offered": [
+      "UG & PG programmes across Science, Arts, Commerce, and professional minors/majors"
+    ]
+  },
+  {
+    "name": "Govt. MAM PG College, Jammu",
+    "type": "Postgraduate College",
+    "location": "Near Tawi River, Jammu city, Jammu & Kashmir, India",
+    "coordinates": {"lat": 32.73, "long": 74.86},
+    "courses_offered": [
+      "UG & PG in Arts, Commerce, Science",
+      "Professional programmes: BBA, BCA"
+    ]
+  },
+  {
+    "name": "Model Institute of Engineering and Technology (MIET), Jammu",
+    "type": "Engineering College",
+    "location": "Kot Bhalwal, Jammu, Jammu & Kashmir, India",
+    "coordinates": {"lat": 32.82, "long": 74.77},
+    "courses_offered": [
+      "B.Tech: CSE, IT, Civil, ECE, Electrical",
+      "M.Tech, MBA, MCA, PhD research programmes"
+    ]
+  },
+  {
+    "name": "Shri Krishan Chander Govt. Degree College, Poonch",
+    "type": "Degree College",
+    "location": "Poonch town, Pir Panjal region, Jammu & Kashmir, India",
+    "coordinates": {"lat": 33.77, "long": 74.09},
+    "courses_offered": [
+      "BA, BSc, BCom, BCA",
+      "Skill-oriented and honours subjects"
+    ]
+  },
+  {
+    "name": "Government Degree College, Bhaderwah",
+    "type": "Degree College",
+    "location": "Bhaderwah town, Doda district, Jammu & Kashmir, India",
+    "coordinates": {"lat": 32.98, "long": 75.72},
+    "courses_offered": [
+      "BA, BSc (Medical & Non-Medical), BCom, BCA",
+      "Vocational subjects: Biotechnology, Computer Applications, Functional English"
+    ]
+  },
+  {
+    "name": "Government Degree College, Bijbehara",
+    "type": "Degree College",
+    "location": "Bijbehara town, Anantnag district, Jammu & Kashmir, India",
+    "coordinates": {"lat": 33.79, "long": 75.10},
+    "courses_offered": [
+      "BA, BSc, BCom",
+      "Additional courses: Sericulture, Biochemistry, Computer Applications"
+    ]
+  },
+  {
+    "name": "Government Degree College, Ganderbal",
+    "type": "Degree College",
+    "location": "Ganderbal town, central Kashmir, Jammu & Kashmir, India",
+    "coordinates": {"lat": 34.22, "long": 74.78},
+    "courses_offered": [
+      "BA, BSc (Medical & Non-Medical), BCom, BBA, BCA",
+      "Subjects: Kashmiri, Persian, Urdu"
+    ]
+  },
+  {
+    "name": "Government Degree College, Kelam",
+    "type": "Degree College",
+    "location": "Kelam village, Kulgam district, Jammu & Kashmir, India",
+    "coordinates": {"lat": 33.63, "long": 75.03},
+    "courses_offered": [
+      "BA, BSc (Medical & Non-Medical), BCom",
+      "Vocational & certificate courses in IT, Tourism"
+    ]
+  },
+  {
+    "name": "Govt. Degree College, Hadipora",
+    "type": "Degree College",
+    "location": "Hadipora village, Rafiabad tehsil, Baramulla district, Jammu & Kashmir, India",
+    "coordinates": {"lat": 34.42, "long": 74.37},
+    "courses_offered": [
+      "BA, BSc, BCom",
+      "Electives: IT, English Literature, Urdu, Political Science, Education"
+    ]
+  },
+  {
+    "name": "Government Degree College, Kalakote",
+    "type": "Degree College",
+    "location": "Kalakote tehsil, Rajouri district, Jammu & Kashmir, India",
+    "coordinates": {"lat": 33.15, "long": 74.43},
+    "courses_offered": [
+      "BA, BSc (Medical & Non-Medical), BCom, Computer Applications"
+    ]
+  },
+  {
+    "name": "Government Degree College, Kishtwar",
+    "type": "Degree College",
+    "location": "Kishtwar town, Chenab Valley, Jammu & Kashmir, India",
+    "coordinates": {"lat": 33.31, "long": 75.77},
+    "courses_offered": [
+      "BA, BSc, BCom, BCA",
+      "Electives: Geology, Geography, Urdu, Computer Science"
+    ]
+  },
+  {
+    "name": "Government Degree College, Kokernag",
+    "type": "Degree College",
+    "location": "Kokernag town, Anantnag district, Jammu & Kashmir, India",
+    "coordinates": {"lat": 33.62, "long": 75.27},
+    "courses_offered": [
+      "BA, BSc, BCom",
+      "Vocational programmes: Sericulture, Computer Applications"
+    ]
+  },
+  {
+    "name": "Government Degree College, Doru",
+    "type": "Degree College",
+    "location": "Doru Shahabad, Anantnag district, Jammu & Kashmir, India",
+    "coordinates": {"lat": 33.72, "long": 75.19},
+    "courses_offered": [
+      "BA, BSc (Medical & Non-Medical), BCom",
+      "Majors: Urdu, Arabic, Kashmiri"
+    ]
+  },
+  {
+    "name": "Government Degree College for Boys, Baramulla",
+    "type": "Degree College",
+    "location": "Baramulla town, Jammu & Kashmir, India",
+    "coordinates": {"lat": 34.20, "long": 74.34},
+    "courses_offered": [
+      "BA, BSc, BCom, BCA, BBA",
+      "PG courses: English, Mathematics"
+    ]
+  },
+  {
+    "name": "Government College of Engineering & Technology, Jammu",
+    "type": "Engineering College",
+    "location": "Chak Bhalwal area, Jammu, Jammu & Kashmir, India",
+    "coordinates": "Not precisely listed",
+    "website": "http://gcetjammu.org.in",
+    "courses_offered": {
+      "undergraduate": [
+        "B.E / B.Tech in Civil Engineering",
+        "B.E / B.Tech in Computer Science & Engineering",
+        "B.E / B.Tech in Electronics & Communication Engineering",
+        "B.E / B.Tech in Mechanical Engineering",
+        "B.E / B.Tech in Electrical Engineering"
+      ],
+      "postgraduate": [
+        "M.Tech in Computer Science & Engineering",
+        "M.Tech in Electronics & Communication Engineering",
+        "M.Tech in Mechanical Engineering"
+      ],
+      "other": ["Lateral entry programs"]
+    }
+  },
+  {
+    "name": "Model Institute of Engineering and Technology (MIET), Jammu",
+    "type": "Engineering College",
+    "location": "Jammu City, Jammu & Kashmir, India",
+    "coordinates": "~32.82° N, 74.77° E",
+    "website": "Not listed explicitly",
+    "courses_offered": {
+      "undergraduate": [
+        "B.Tech in Computer Science & Engineering",
+        "B.Tech in Mechanical Engineering",
+        "B.Tech in Information Technology",
+        "B.Tech in Electrical Engineering",
+        "B.Tech in Electronics & Communication Engineering",
+        "B.Tech in Civil Engineering"
+      ]
+    }
+  },
+  {
+    "name": "Baba Ghulam Shah Badshah University (BGSBU), Rajouri",
+    "type": "University",
+    "location": "Campus about 10 km outside Rajouri town, Jammu division, J&K, India",
+    "coordinates": "Not listed (use campus contact/maps)",
+    "website": "https://www.bgsbu.ac.in",
+    "courses_offered": {
+      "undergraduate": ["B.Tech (CSE, ECE, Civil etc.)", "B.Sc", "B.A.", "B.Com", "BBA", "BCA"],
+      "postgraduate": ["M.Sc", "M.A", "MBA"],
+      "doctoral": ["PhD programmes"],
+      "other": ["Diplomas", "Certificate courses"]
+    }
+  },
+  {
+    "name": "Central University of Jammu (CUJ)",
+    "type": "University",
+    "location": "Samba/Jammu region, Jammu & Kashmir, India",
+    "coordinates": "Not listed (use campus/maps)",
+    "website": "https://www.cujammu.ac.in",
+    "courses_offered": {
+      "undergraduate": ["Arts", "Science", "Social Sciences", "Education", "Management", "Computer Science", "Law", "Vocational programmes"],
+      "postgraduate": ["Arts", "Science", "Social Sciences", "Education", "Management", "Computer Science", "Law", "Vocational programmes"],
+      "doctoral": ["PhD programmes"]
+    }
+  },
+  {
+    "name": "Central University of Kashmir (CUK)",
+    "type": "University",
+    "location": "Ganderbal area / Srinagar vicinity, Jammu & Kashmir, India",
+    "coordinates": "Approx campus near Ganderbal (use maps)",
+    "website": "https://www.cukashmir.ac.in",
+    "courses_offered": {
+      "undergraduate": ["Sciences", "Arts", "Social Sciences", "Education", "Management", "Law", "Vocational & interdisciplinary programmes"],
+      "postgraduate": ["Sciences", "Arts", "Social Sciences", "Education", "Management", "Law", "Vocational & interdisciplinary programmes"],
+      "doctoral": ["PhD programmes"]
+    }
+  },
+  {
+    "name": "Cluster University of Srinagar (CUS)",
+    "type": "University",
+    "location": "Multiple campuses in Srinagar (Amar Singh College, Sri Pratap College, Govt. College for Women, Bemina, etc.)",
+    "coordinates": "Multi-campus (use individual campuses for exact pins)",
+    "website": "http://www.cusrinagar.edu.in",
+    "courses_offered": {
+      "undergraduate": ["Arts", "Science", "Commerce", "BCA", "Integrated / Honours courses"],
+      "postgraduate": ["Arts", "Science", "Commerce", "Integrated / Honours courses"]
+    }
+  },
+  {
+    "name": "Cluster University of Jammu (CLUJ)",
+    "type": "University",
+    "location": "Multi-campus structure in Jammu, Jammu & Kashmir, India",
+    "coordinates": "Not clearly published (multi-campus)",
+    "website": "https://www.clujammu.ac.in",
+    "courses_offered": {
+      "undergraduate": ["Arts", "Science", "Commerce", "Professional/Skill courses (BCA, BBA etc.)"],
+      "postgraduate": ["Arts", "Science", "Commerce", "Professional/Skill courses"]
+    }
+  },
+  {
+    "name": "Islamic University of Science & Technology (IUST), Awantipora",
+    "type": "University",
+    "location": "Awantipora, Pulwama district, Jammu & Kashmir, India",
+    "coordinates": "Campus coordinates not listed (use maps)",
+    "website": "https://www.iust.ac.in",
+    "courses_offered": {
+      "undergraduate": ["Engineering & Technology (Civil, ECE, Electrical, Food Tech)", "Sciences", "Humanities", "Management", "Professional diplomas"],
+      "postgraduate": ["Engineering & Technology", "Sciences", "Humanities", "Management", "Professional diplomas"],
+      "doctoral": ["PhD programmes"]
+    }
+  },
+  {
+    "name": "University of Jammu (JU)",
+    "type": "University",
+    "location": "Jammu city, Jammu & Kashmir, India",
+    "coordinates": "Approx 32.73° N, 74.85° E",
+    "website": "https://www.jammuuniversity.ac.in",
+    "courses_offered": {
+      "undergraduate": ["Arts", "Science", "Commerce", "Professional programmes (Remote Sensing & GIS, Management, Education)"],
+      "postgraduate": ["Arts", "Science", "Commerce", "Professional programmes", "Research programmes"],
+      "doctoral": ["PhD programmes"]
+    }
+  },
+  {
+    "name": "University of Kashmir (KU)",
+    "type": "University",
+    "location": "Hazratbal, Srinagar, Jammu & Kashmir, India",
+    "coordinates": "Use official campus pin/maps",
+    "website": "https://www.kashmiruniversity.ac.in",
+    "courses_offered": {
+      "undergraduate": ["Biological Sciences", "Physical Sciences", "Social Sciences", "Applied Sciences & Technology", "Law", "Education", "Management"],
+      "postgraduate": ["Biological Sciences", "Physical Sciences", "Social Sciences", "Applied Sciences & Technology", "Law", "Education", "Management"],
+      "doctoral": ["PhD programmes"]
+    }
+  },
+  {
+    "name": "Sher-e-Kashmir University of Agricultural Sciences & Technology (SKUAST-Jammu)",
+    "type": "University",
+    "location": "Jammu region, Jammu & Kashmir, India",
+    "coordinates": "Use campus contact pages",
+    "website": "http://www.skuast.org",
+    "courses_offered": {
+      "undergraduate": ["Agriculture", "Horticulture", "Veterinary & Animal Sciences", "Forestry", "Agricultural Engineering"],
+      "postgraduate": ["Agriculture", "Horticulture", "Veterinary & Animal Sciences", "Forestry", "Agricultural Engineering"],
+      "doctoral": ["PhD programmes"]
+    }
+  },
+  {
+    "name": "Sher-e-Kashmir University of Agricultural Sciences & Technology (SKUAST-Kashmir)",
+    "type": "University",
+    "location": "Kashmir valley, Jammu & Kashmir, India",
+    "coordinates": "Use campus contact pages",
+    "website": "http://www.skuastkashmir.ac.in",
+    "courses_offered": {
+      "undergraduate": ["B.Sc (Hons) Agriculture", "Veterinary Sciences", "Horticulture", "Soil Science & allied subjects"],
+      "postgraduate": ["M.Sc in Agricultural Sciences"],
+      "doctoral": ["PhD programmes"]
+    }
+  },
+  {
+    "name": "Shri Mata Vaishno Devi University (SMVDU), Katra",
+    "type": "University",
+    "location": "Katra, Reasi district, Jammu & Kashmir, India",
+    "coordinates": "Use SMVDU contact page / maps",
+    "website": "https://www.smvdu.ac.in",
+    "courses_offered": {
+      "undergraduate": ["B.Tech / Engineering", "Sciences", "Architecture & Landscape Design", "Management (BBA)"],
+      "postgraduate": ["M.Tech", "MBA", "M.Sc"],
+      "doctoral": ["PhD programmes"]
+    }
+  },
+  {
+    "name": "All India Institute of Medical Sciences, Vijaypur (AIIMS Jammu)",
+    "type": "Medical College",
+    "location": "Vijaypur, Samba district, Jammu & Kashmir, India",
+    "coordinates": "32.805° N, 75.137° E (approximate town coords)",
+    "website": "https://www.aiimsjammu.edu.in/",
+    "courses_offered": {
+      "undergraduate": ["MBBS (125 seats, NEET-UG)"],
+      "postgraduate": ["MD, MS, MDS, MCh (via NEET-PG / INI-CET)"]
+    }
+  },
+  {
+    "name": "Government Medical College, Anantnag",
+    "type": "Medical College",
+    "location": "Dialgam area, ~7 km from Anantnag town, Anantnag district, Jammu & Kashmir",
+    "coordinates": "33.73° N, 75.15° E",
+    "website": "https://www.gmcanantnag.net/",
+    "courses_offered": {
+      "undergraduate": ["MBBS (100 seats, NEET-UG)"],
+      "postgraduate": ["DNB / PG-Diplomas in clinical & non-clinical specialties"],
+      "other": ["B.Sc Nursing, Radiology, Medical Lab Technology"]
+    }
+  },
+  {
+    "name": "Government Medical College, Handwara",
+    "type": "Medical College",
+    "location": "Handwara town, Kupwara district, Jammu & Kashmir",
+    "coordinates": "Not precisely found",
+    "website": "Not reliably located",
+    "courses_offered": {
+      "undergraduate": ["MBBS (100 seats since 2023)"],
+      "postgraduate": ["DNB in Medicine, Surgery, Pediatrics, Pathology, etc."]
+    }
+  },
+  {
+    "name": "Government Medical College, Baramulla",
+    "type": "Medical College",
+    "location": "Kanthbagh area, Baramulla city, Jammu & Kashmir",
+    "coordinates": "34.198° N, 74.364° E",
+    "website": "https://www.gmcbaramulla.com/",
+    "courses_offered": {
+      "undergraduate": ["MBBS"],
+      "postgraduate": ["MD/MS/DNB and allied courses"]
+    }
+  },
+  {
+    "name": "Government Medical College, Srinagar (GMC Srinagar)",
+    "type": "Medical College",
+    "location": "Karan Nagar, Srinagar, Jammu & Kashmir",
+    "coordinates": "34.086° N, 74.796° E",
+    "website": "https://www.gmcs.ac.in/",
+    "courses_offered": {
+      "undergraduate": ["MBBS"],
+      "postgraduate": ["MD/MS/DNB and allied courses"]
+    }
+  },
+  {
+    "name": "Government Medical College, Jammu (GMC Jammu)",
+    "type": "Medical College",
+    "location": "Bakshi Nagar, Jammu city, Jammu & Kashmir",
+    "coordinates": "32.7363° N, 74.8543° E",
+    "website": "http://gmcjammu.nic.in",
+    "courses_offered": {
+      "undergraduate": ["MBBS"],
+      "postgraduate": ["MD/MS/DNB and allied courses"]
+    }
+  },
+  {
+    "name": "Government Medical College, Doda",
+    "type": "Medical College",
+    "location": "Doda district, Jammu & Kashmir",
+    "coordinates": "Not reliably found",
+    "website": "http://gmcdoda.in/",
+    "courses_offered": {
+      "undergraduate": ["MBBS"],
+      "postgraduate": ["MD/MS/DNB and allied courses"]
+    }
+  },
+  {
+    "name": "Government Medical College, Kathua",
+    "type": "Medical College",
+    "location": "Kathua district, Jammu & Kashmir",
+    "coordinates": "Not found",
+    "website": "Not found",
+    "courses_offered": {
+      "undergraduate": ["MBBS"],
+      "postgraduate": ["MD/MS/DNB and allied courses"]
+    }
+  },
+  {
+    "name": "Government Medical College, Rajouri",
+    "type": "Medical College",
+    "location": "Rajouri district, Jammu & Kashmir",
+    "coordinates": "Not found",
+    "website": "Not found",
+    "courses_offered": {
+      "undergraduate": ["MBBS"],
+      "postgraduate": ["MD/MS/DNB and allied courses"]
+    }
+  },
+  {
+    "name": "Government Medical College, Udhampur",
+    "type": "Medical College",
+    "location": "Udhampur district, Jammu & Kashmir",
+    "coordinates": "Not found",
+    "website": "Not found",
+    "courses_offered": {
+      "undergraduate": ["MBBS"],
+      "postgraduate": ["MD/MS/DNB and allied courses"]
+    }
+  },
+  {
+    "name": "Sher-e-Kashmir Institute of Medical Sciences (SKIMS), Srinagar",
+    "type": "Medical College",
+    "location": "Soura, Srinagar, Jammu & Kashmir",
+    "coordinates": "34.092° N, 74.810° E",
+    "website": "https://www.skims.ac.in/",
+    "courses_offered": {
+      "undergraduate": ["MBBS, B.Sc Nursing"],
+      "postgraduate": ["MD, MS, DNB, PG-Diplomas"],
+      "other": ["Allied health & paramedical courses"]
+    }
+  },
+  {
+    "name": "Vitasta School of Law & Humanities (VSLH), Srinagar",
+    "type": "Law School",
+    "location": "Pohru Crossing, Nowgam Bye-Pass, NH 1-A, Nowgam, Srinagar, Jammu & Kashmir, 190015",
+    "coordinates": "34.027197° N, 74.8319169° E",
+    "affiliation": "University of Kashmir",
+    "courses_offered": ["3-year LL.B.", "5-year integrated B.A.-LL.B."],
+    "seat_intake": "Approx. 120 students for integrated UG course"
+  },
+  {
+    "name": "Bhargava Law College, Samba",
+    "type": "Law School",
+    "location": "Langath, Samba district, Jammu & Kashmir, PIN 184121",
+    "coordinates": "Not reliably found",
+    "affiliation": "University of Jammu",
+    "courses_offered": ["3-year LL.B.", "5-year integrated LL.B."],
+    "seat_intake": "Not clearly listed"
+  },
+  {
+    "name": "Dogra Law College, Jammu",
+    "type": "Law School",
+    "location": "Bari Brahmana, Jammu, Jammu & Kashmir",
+    "coordinates": "Not reliably found",
+    "affiliation": "University of Jammu",
+    "courses_offered": ["3-year LL.B.", "5-year integrated LL.B."],
+    "seat_intake": "Not clearly listed"
+  },
+  {
+    "name": "Kishen Chand Law College (K.C. Law College), Jammu",
+    "type": "Law School",
+    "location": "Beside Akhnoor Road, Rajpura Chungi, Jammu, Jammu & Kashmir",
+    "coordinates": "Not reliably found",
+    "affiliation": "University of Jammu",
+    "courses_offered": ["3-year LL.B.", "5-year integrated LL.B."],
+    "seat_intake": "Not clearly listed"
+  },
+  {
+    "name": "Ashoka Law College, Kathua",
+    "type": "Law School",
+    "location": "Manke Talab, Lakhanpur, Kathua, Jammu & Kashmir, PIN 184152",
+    "coordinates": "Not reliably found",
+    "affiliation": "University of Jammu",
+    "courses_offered": ["3-year LL.B.", "5-year integrated B.A.-LL.B.", "5-year integrated B.Sc.-LL.B."],
+    "seat_intake": "Total ~160 seats; B.A.-LL.B. = 80, B.Sc.-LL.B. = 80"
+  },
+  {
+    "name": "R. K. Law College, Bari Brahmana, Jammu",
+    "type": "Law School",
+    "location": "JWFM+228, Bari Brahmana, Tehsil Samba, Jammu, Jammu & Kashmir 181133",
+    "coordinates": "Not reliably found",
+    "affiliation": "University of Jammu",
+    "courses_offered": ["3-year LL.B.", "5-year integrated LL.B."],
+    "seat_intake": "Not clearly listed"
+  },
+  {
+    "name": "Calliope School of Legal Studies, Jammu",
+    "type": "Law School",
+    "location": "Gandhi Nagar, Jammu, Jammu & Kashmir, PIN 180001",
+    "coordinates": "Not reliably found",
+    "affiliation": "University of Jammu",
+    "courses_offered": ["3-year LL.B.", "5-year integrated LL.B."],
+    "seat_intake": "Not clearly listed"
+  },
+  {
+    "name": "Sopore Law College, Baramulla",
+    "type": "Law School",
+    "location": "New Light Colony, Sopore Railway Station Road, Sopore town, Baramulla district, Jammu & Kashmir",
+    "coordinates": "Not reliably found",
+    "affiliation": "University of Kashmir",
+    "courses_offered": ["3-year LL.B.", "5-year integrated B.A.-LL.B."],
+    "seat_intake": "Not clearly listed"
+  }
+]
+
+
+

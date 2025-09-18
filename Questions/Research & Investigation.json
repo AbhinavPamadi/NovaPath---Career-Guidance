@@ -1,0 +1,132 @@
+[
+  {
+    "question": "When you want to learn about a topic, what do you usually do first?",
+    "options": {
+      "a": "Look for books, articles, or trusted sources",
+      "b": "Ask someone who knows about it",
+      "c": "Guess based on what you already know"
+    },
+    "inference": {
+      "a": ["Research & Investigation"],
+      "b": ["Research & Investigation"],
+      "c": []
+    }
+  },
+  {
+    "question": "How do you handle unclear or missing information when studying?",
+    "options": {
+      "a": "Search for more sources to fill the gaps",
+      "b": "Ask experts or teachers for help",
+      "c": "Skip over it and focus on what’s clear"
+    },
+    "inference": {
+      "a": ["Research & Investigation"],
+      "b": ["Research & Investigation"],
+      "c": []
+    }
+  },
+  {
+    "question": "Which activity sounds most interesting to you?",
+    "options": {
+      "a": "Collecting data and analyzing it",
+      "b": "Interviewing people to gather information",
+      "c": "Sharing what you learn through writing or presentations"
+    },
+    "inference": {
+      "a": ["Research & Investigation"],
+      "b": ["Research & Investigation"],
+      "c": ["Research & Investigation"]
+    }
+  },
+  {
+    "question": "When investigating a problem, what’s your approach?",
+    "options": {
+      "a": "Gather as many facts as possible before deciding",
+      "b": "Make quick decisions based on experience",
+      "c": "Ask for advice early in the process"
+    },
+    "inference": {
+      "a": ["Research & Investigation"],
+      "b": [],
+      "c": ["Research & Investigation"]
+    }
+  },
+  {
+    "question": "How do you stay organized when working on a research project?",
+    "options": {
+      "a": "Keep detailed notes and records",
+      "b": "Remember important points mentally",
+      "c": "Focus on the big picture without many details"
+    },
+    "inference": {
+      "a": ["Research & Investigation"],
+      "b": [],
+      "c": []
+    }
+  },
+  {
+    "question": "What interests you most about investigating?",
+    "options": {
+      "a": "Finding hidden facts or solving mysteries",
+      "b": "Understanding how things work or why they happen",
+      "c": "Sharing discoveries with others"
+    },
+    "inference": {
+      "a": ["Research & Investigation"],
+      "b": ["Research & Investigation"],
+      "c": ["Research & Investigation"]
+    }
+  },
+  {
+    "question": "How do you verify that information you find is accurate?",
+    "options": {
+      "a": "Cross-check multiple sources",
+      "b": "Trust sources that seem reliable",
+      "c": "Assume it’s correct if it sounds logical"
+    },
+    "inference": {
+      "a": ["Research & Investigation"],
+      "b": ["Research & Investigation"],
+      "c": []
+    }
+  },
+  {
+    "question": "When faced with conflicting information, what do you do?",
+    "options": {
+      "a": "Investigate further to resolve differences",
+      "b": "Choose the easiest explanation",
+      "c": "Ignore the conflict and move on"
+    },
+    "inference": {
+      "a": ["Research & Investigation"],
+      "b": [],
+      "c": []
+    }
+  },
+  {
+    "question": "How important is attention to detail in research for you?",
+    "options": {
+      "a": "Very important to ensure accuracy",
+      "b": "Somewhat important but not always needed",
+      "c": "Not very important"
+    },
+    "inference": {
+      "a": ["Research & Investigation"],
+      "b": ["Research & Investigation"],
+      "c": []
+    }
+  },
+  {
+    "question": "What role do you prefer when working on an investigation or research team?",
+    "options": {
+      "a": "Collecting and analyzing data",
+      "b": "Coordinating and communicating findings",
+      "c": "Supporting others with resources or tools"
+    },
+    "inference": {
+      "a": ["Research & Investigation"],
+      "b": ["Research & Investigation"],
+      "c": ["Research & Investigation"]
+    }
+  }
+]

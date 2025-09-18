@@ -1,0 +1,132 @@
+[
+  {
+    "question": "When you encounter a tricky problem, what’s your first step?",
+    "options": {
+      "a": "Break the problem into smaller, manageable parts",
+      "b": "Ask others for ideas or advice",
+      "c": "Try different solutions quickly to see what works"
+    },
+    "inference": {
+      "a": ["Problem Solving"],
+      "b": ["Problem Solving"],
+      "c": ["Problem Solving"]
+    }
+  },
+  {
+    "question": "Which activity sounds most fun to you?",
+    "options": {
+      "a": "Figuring out how things work and fixing them",
+      "b": "Brainstorming creative ways to solve challenges",
+      "c": "Trying out solutions until one fits"
+    },
+    "inference": {
+      "a": ["Problem Solving"],
+      "b": ["Problem Solving"],
+      "c": ["Problem Solving"]
+    }
+  },
+  {
+    "question": "How do you prefer to tackle a problem?",
+    "options": {
+      "a": "Analyze it carefully before acting",
+      "b": "Think outside the box for new ideas",
+      "c": "Jump right in and adapt as you go"
+    },
+    "inference": {
+      "a": ["Problem Solving"],
+      "b": ["Problem Solving"],
+      "c": ["Problem Solving"]
+    }
+  },
+  {
+    "question": "What do you do when your first solution doesn’t work?",
+    "options": {
+      "a": "Review what went wrong and adjust your plan",
+      "b": "Try a completely different approach",
+      "c": "Keep experimenting until something clicks"
+    },
+    "inference": {
+      "a": ["Problem Solving"],
+      "b": ["Problem Solving"],
+      "c": ["Problem Solving"]
+    }
+  },
+  {
+    "question": "Which kind of problem would you enjoy solving most?",
+    "options": {
+      "a": "Logical puzzles and brain teasers",
+      "b": "Creative challenges that need new ideas",
+      "c": "Hands-on problems where you fix things practically"
+    },
+    "inference": {
+      "a": ["Problem Solving"],
+      "b": ["Problem Solving"],
+      "c": ["Problem Solving"]
+    }
+  },
+  {
+    "question": "When working in a team, what role do you like?",
+    "options": {
+      "a": "Organizing the problem and making a plan",
+      "b": "Coming up with innovative ideas",
+      "c": "Testing solutions and giving feedback"
+    },
+    "inference": {
+      "a": ["Problem Solving"],
+      "b": ["Problem Solving"],
+      "c": ["Problem Solving"]
+    }
+  },
+  {
+    "question": "What motivates you most when solving problems?",
+    "options": {
+      "a": "Understanding the root cause deeply",
+      "b": "Finding new and better ways to fix things",
+      "c": "Seeing results quickly and learning fast"
+    },
+    "inference": {
+      "a": ["Problem Solving"],
+      "b": ["Problem Solving"],
+      "c": ["Problem Solving"]
+    }
+  },
+  {
+    "question": "How do you feel about mistakes during problem solving?",
+    "options": {
+      "a": "They are learning opportunities to improve",
+      "b": "They push me to think differently",
+      "c": "They don’t bother me; I keep trying"
+    },
+    "inference": {
+      "a": ["Problem Solving"],
+      "b": ["Problem Solving"],
+      "c": ["Problem Solving"]
+    }
+  },
+  {
+    "question": "Which describes your problem-solving style best?",
+    "options": {
+      "a": "Methodical and thorough",
+      "b": "Creative and flexible",
+      "c": "Practical and hands-on"
+    },
+    "inference": {
+      "a": ["Problem Solving"],
+      "b": ["Problem Solving"],
+      "c": ["Problem Solving"]
+    }
+  },
+  {
+    "question": "What kind of problems do you prefer?",
+    "options": {
+      "a": "Clear problems with defined steps",
+      "b": "Open-ended problems that need fresh ideas",
+      "c": "Real-world problems you can physically fix"
+    },
+    "inference": {
+      "a": ["Problem Solving"],
+      "b": ["Problem Solving"],
+      "c": ["Problem Solving"]
+    }
+  }
+]

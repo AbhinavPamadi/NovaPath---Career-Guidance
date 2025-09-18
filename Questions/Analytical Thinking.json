@@ -1,0 +1,132 @@
+[
+  {
+    "question": "When you get new information, how do you usually process it?",
+    "options": {
+      "a": "Look for patterns and connections",
+      "b": "Break it down into smaller parts",
+      "c": "Trust your gut feeling"
+    },
+    "inference": {
+      "a": ["Analytical Skills"],
+      "b": ["Analytical Skills"],
+      "c": []
+    }
+  },
+  {
+    "question": "Which activity do you find most enjoyable?",
+    "options": {
+      "a": "Solving puzzles and brainteasers",
+      "b": "Organizing data or information",
+      "c": "Making quick decisions without much analysis"
+    },
+    "inference": {
+      "a": ["Analytical Skills"],
+      "b": ["Analytical Skills"],
+      "c": []
+    }
+  },
+  {
+    "question": "How do you approach a complex problem?",
+    "options": {
+      "a": "Analyze each component carefully",
+      "b": "Look for cause and effect relationships",
+      "c": "Rely on intuition"
+    },
+    "inference": {
+      "a": ["Analytical Skills"],
+      "b": ["Analytical Skills"],
+      "c": []
+    }
+  },
+  {
+    "question": "When reviewing information, you prefer to:",
+    "options": {
+      "a": "Compare different sources for accuracy",
+      "b": "Organize facts into clear categories",
+      "c": "Accept the first explanation that makes sense"
+    },
+    "inference": {
+      "a": ["Analytical Skills"],
+      "b": ["Analytical Skills"],
+      "c": []
+    }
+  },
+  {
+    "question": "Which skill do you think is most important for problem solving?",
+    "options": {
+      "a": "Attention to detail",
+      "b": "Logical reasoning",
+      "c": "Quick decision making"
+    },
+    "inference": {
+      "a": ["Analytical Skills"],
+      "b": ["Analytical Skills"],
+      "c": []
+    }
+  },
+  {
+    "question": "When working on a project, you like to:",
+    "options": {
+      "a": "Gather and analyze all the data first",
+      "b": "Create a clear plan based on findings",
+      "c": "Start working right away and adjust as needed"
+    },
+    "inference": {
+      "a": ["Analytical Skills"],
+      "b": ["Analytical Skills"],
+      "c": []
+    }
+  },
+  {
+    "question": "How do you handle conflicting information?",
+    "options": {
+      "a": "Investigate further to find the truth",
+      "b": "Weigh the evidence before deciding",
+      "c": "Go with what seems most familiar"
+    },
+    "inference": {
+      "a": ["Analytical Skills"],
+      "b": ["Analytical Skills"],
+      "c": []
+    }
+  },
+  {
+    "question": "Which describes your thinking style best?",
+    "options": {
+      "a": "Careful and logical",
+      "b": "Organized and systematic",
+      "c": "Spontaneous and quick"
+    },
+    "inference": {
+      "a": ["Analytical Skills"],
+      "b": ["Analytical Skills"],
+      "c": []
+    }
+  },
+  {
+    "question": "What helps you make decisions?",
+    "options": {
+      "a": "Looking at all the facts",
+      "b": "Identifying patterns or trends",
+      "c": "Going with your first instinct"
+    },
+    "inference": {
+      "a": ["Analytical Skills"],
+      "b": ["Analytical Skills"],
+      "c": []
+    }
+  },
+  {
+    "question": "Which task sounds most appealing?",
+    "options": {
+      "a": "Sorting and categorizing information",
+      "b": "Solving logical challenges",
+      "c": "Making quick calls when needed"
+    },
+    "inference": {
+      "a": ["Analytical Skills"],
+      "b": ["Analytical Skills"],
+      "c": []
+    }
+  }
+]

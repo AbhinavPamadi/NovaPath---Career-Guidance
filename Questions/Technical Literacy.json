@@ -1,0 +1,132 @@
+[
+  {
+    "question": "When learning about new technology, what excites you most?",
+    "options": {
+      "a": "Understanding how it works behind the scenes",
+      "b": "Trying out new gadgets and apps",
+      "c": "Reading about its impact on everyday life"
+    },
+    "inference": {
+      "a": ["Technical Literacy"],
+      "b": ["Technical Literacy"],
+      "c": ["Technical Literacy"]
+    }
+  },
+  {
+    "question": "How comfortable are you with using new software or devices?",
+    "options": {
+      "a": "I enjoy exploring and figuring them out myself",
+      "b": "I prefer clear instructions or tutorials",
+      "c": "I avoid them unless necessary"
+    },
+    "inference": {
+      "a": ["Technical Literacy"],
+      "b": ["Technical Literacy"],
+      "c": []
+    }
+  },
+  {
+    "question": "When faced with a technical problem, what do you usually do?",
+    "options": {
+      "a": "Research solutions and try to fix it myself",
+      "b": "Ask someone with more experience for help",
+      "c": "Ignore it or wait for it to resolve itself"
+    },
+    "inference": {
+      "a": ["Technical Literacy"],
+      "b": ["Technical Literacy"],
+      "c": []
+    }
+  },
+  {
+    "question": "Which type of content do you enjoy most?",
+    "options": {
+      "a": "How-to guides and tutorials",
+      "b": "Tech news and product reviews",
+      "c": "Stories about technology changing the world"
+    },
+    "inference": {
+      "a": ["Technical Literacy"],
+      "b": ["Technical Literacy"],
+      "c": ["Technical Literacy"]
+    }
+  },
+  {
+    "question": "How do you feel about learning to code or program?",
+    "options": {
+      "a": "Very interested and excited to try",
+      "b": "Curious but unsure where to start",
+      "c": "Not interested at all"
+    },
+    "inference": {
+      "a": ["Technical Literacy"],
+      "b": ["Technical Literacy"],
+      "c": []
+    }
+  },
+  {
+    "question": "What’s your approach to updating or upgrading your devices?",
+    "options": {
+      "a": "I like to understand new features before updating",
+      "b": "I update when prompted without much thought",
+      "c": "I avoid updates as much as possible"
+    },
+    "inference": {
+      "a": ["Technical Literacy"],
+      "b": ["Technical Literacy"],
+      "c": []
+    }
+  },
+  {
+    "question": "When using technology, what matters most to you?",
+    "options": {
+      "a": "Efficiency and problem-solving ability",
+      "b": "Ease of use and convenience",
+      "c": "Design and appearance"
+    },
+    "inference": {
+      "a": ["Technical Literacy"],
+      "b": ["Technical Literacy"],
+      "c": ["Technical Literacy"]
+    }
+  },
+  {
+    "question": "How often do you explore new apps, tools, or gadgets?",
+    "options": {
+      "a": "Regularly, I like discovering new tech",
+      "b": "Sometimes, when recommended by friends",
+      "c": "Rarely, I stick to what I know"
+    },
+    "inference": {
+      "a": ["Technical Literacy"],
+      "b": ["Technical Literacy"],
+      "c": []
+    }
+  },
+  {
+    "question": "Which statement best describes you?",
+    "options": {
+      "a": "I enjoy understanding how things work technically",
+      "b": "I use technology mainly to get things done",
+      "c": "I prefer to avoid complex technical stuff"
+    },
+    "inference": {
+      "a": ["Technical Literacy"],
+      "b": ["Technical Literacy"],
+      "c": []
+    }
+  },
+  {
+    "question": "What do you find most challenging about technology?",
+    "options": {
+      "a": "Learning new skills and concepts",
+      "b": "Keeping up with frequent changes",
+      "c": "Finding reliable information"
+    },
+    "inference": {
+      "a": ["Technical Literacy"],
+      "b": ["Technical Literacy"],
+      "c": ["Technical Literacy"]
+    }
+  }
+]

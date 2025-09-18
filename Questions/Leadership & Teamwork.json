@@ -1,0 +1,132 @@
+[
+  {
+    "question": "When working on a team project, what role do you usually take?",
+    "options": {
+      "a": "Organizing and leading the group",
+      "b": "Supporting others and sharing ideas",
+      "c": "Doing individual tasks independently"
+    },
+    "inference": {
+      "a": ["Leadership", "Leadership and Teamwork"],
+      "b": ["Leadership and Teamwork"],
+      "c": []
+    }
+  },
+  {
+    "question": "What do you think makes a good leader?",
+    "options": {
+      "a": "Inspiring and motivating others",
+      "b": "Listening and understanding team members",
+      "c": "Making quick decisions alone"
+    },
+    "inference": {
+      "a": ["Leadership"],
+      "b": ["Leadership and Teamwork"],
+      "c": ["Leadership"]
+    }
+  },
+  {
+    "question": "How do you handle conflicts within a team?",
+    "options": {
+      "a": "Encourage open discussion to find a solution",
+      "b": "Stay neutral and help both sides communicate",
+      "c": "Avoid getting involved"
+    },
+    "inference": {
+      "a": ["Leadership and Teamwork"],
+      "b": ["Leadership and Teamwork"],
+      "c": []
+    }
+  },
+  {
+    "question": "Which teamwork activity do you enjoy most?",
+    "options": {
+      "a": "Brainstorming and planning together",
+      "b": "Helping others with their tasks",
+      "c": "Working on your own part quietly"
+    },
+    "inference": {
+      "a": ["Leadership and Teamwork"],
+      "b": ["Leadership and Teamwork"],
+      "c": []
+    }
+  },
+  {
+    "question": "When leading a team, what is your priority?",
+    "options": {
+      "a": "Making sure everyone’s voice is heard",
+      "b": "Keeping the team focused on goals",
+      "c": "Taking charge and making final decisions"
+    },
+    "inference": {
+      "a": ["Leadership and Teamwork"],
+      "b": ["Leadership", "Leadership and Teamwork"],
+      "c": ["Leadership"]
+    }
+  },
+  {
+    "question": "How do you prefer to communicate in a team?",
+    "options": {
+      "a": "Regular meetings to discuss progress",
+      "b": "Informal chats and quick updates",
+      "c": "Written messages or emails"
+    },
+    "inference": {
+      "a": ["Leadership and Teamwork", "Leadership"],
+      "b": ["Leadership and Teamwork"],
+      "c": ["Leadership and Teamwork"]
+    }
+  },
+  {
+    "question": "What motivates you most when working with others?",
+    "options": {
+      "a": "Achieving shared goals",
+      "b": "Learning from teammates",
+      "c": "Getting recognition for your efforts"
+    },
+    "inference": {
+      "a": ["Leadership and Teamwork"],
+      "b": ["Leadership and Teamwork"],
+      "c": ["Leadership"]
+    }
+  },
+  {
+    "question": "How do you respond when a teammate struggles?",
+    "options": {
+      "a": "Offer help and support",
+      "b": "Encourage them to ask for help",
+      "c": "Focus on your own work"
+    },
+    "inference": {
+      "a": ["Leadership and Teamwork"],
+      "b": ["Leadership and Teamwork"],
+      "c": []
+    }
+  },
+  {
+    "question": "What’s your approach to decision-making in a team?",
+    "options": {
+      "a": "Include everyone’s input before deciding",
+      "b": "Suggest ideas and let the team choose",
+      "c": "Make quick decisions to keep things moving"
+    },
+    "inference": {
+      "a": ["Leadership and Teamwork"],
+      "b": ["Leadership and Teamwork"],
+      "c": ["Leadership"]
+    }
+  },
+  {
+    "question": "Which skill do you think is most important for teamwork?",
+    "options": {
+      "a": "Communication",
+      "b": "Flexibility",
+      "c": "Confidence"
+    },
+    "inference": {
+      "a": ["Leadership and Teamwork"],
+      "b": ["Leadership and Teamwork"],
+      "c": ["Leadership"]
+    }
+  }
+]
