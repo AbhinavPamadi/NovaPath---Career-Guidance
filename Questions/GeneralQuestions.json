@@ -128,6 +128,137 @@
         "b": ["electronics", "firmware-development", "internet-of-things"],
         "c": ["process-engineering", "automation", "fabrication"]
       }
+    },
+  {
+    "question": "Which of these sounds most exciting to you?",
+    "options": {
+      "a": "Solving tricky puzzles or logic problems",
+      "b": "Building apps or useful computer tools",
+      "c": "Understanding how data is stored and accessed"
+    },
+    "inference": {
+      "a": ["algorithms", "numerical-reasoning", "data-structures"],
+      "b": ["computer-applications", "informatic-technology", "information-technology"],
+      "c": ["database-management", "information-systems"]
     }
-  ]
+  },
+  {
+    "question": "Which project would you rather take on?",
+    "options": {
+      "a": "Designing a computer network for a school",
+      "b": "Analyzing data to find interesting trends",
+      "c": "Writing a program to sort millions of records quickly"
+    },
+    "inference": {
+      "a": ["networking", "information-technology", "information-systems"],
+      "b": ["data-analysis", "probability", "analysis"],
+      "c": ["algorithms", "data-structures", "computer-applications"]
+    }
+  },
+  {
+    "question": "What kind of challenge do you enjoy the most?",
+    "options": {
+      "a": "Understanding patterns in data and graphs",
+      "b": "Improving the speed of a program",
+      "c": "Creating websites or software people can use"
+    },
+    "inference": {
+      "a": ["data-analysis", "numerical-reasoning", "fourier-analysis"],
+      "b": ["algorithms", "data-structures", "analysis"],
+      "c": ["computer-applications", "informatic-technology", "information-technology"]
+    }
+  },
+  {
+    "question": "If you're given a computer, what would you do first?",
+    "options": {
+      "a": "Check out how the network and internet are working",
+      "b": "Install tools to work with data and spreadsheets",
+      "c": "Try writing some code or script"
+    },
+    "inference": {
+      "a": ["networking", "information-systems", "information-technology"],
+      "b": ["computer-applications", "data-analysis", "database-management"],
+      "c": ["algorithms", "data-structures", "informatic-technology"]
+    }
+  },
+  {
+    "question": "Which topic sounds the most interesting to you?",
+    "options": {
+      "a": "How information is sent through the internet",
+      "b": "How computers make decisions based on data",
+      "c": "How to manage and organize huge amounts of data"
+    },
+    "inference": {
+      "a": ["networking", "information-technology", "informatic-technology"],
+      "b": ["data-analysis", "probability", "algorithms"],
+      "c": ["database-management", "information-systems"]
+    }
+  },
+  {
+    "question": "If you had to teach something, what would it be?",
+    "options": {
+      "a": "Ways to solve math problems using logic",
+      "b": "How to build and use a database",
+      "c": "How to create useful software or tools"
+    },
+    "inference": {
+      "a": ["numerical-reasoning", "algorithms", "fourier-analysis"],
+      "b": ["database-management", "information-systems", "analysis"],
+      "c": ["computer-applications", "informatic-technology", "information-technology"]
+    }
+  },
+  {
+    "question": "What do you like most in tech?",
+    "options": {
+      "a": "Finding smart solutions using code",
+      "b": "Understanding how networks and systems connect",
+      "c": "Analyzing data to make better decisions"
+    },
+    "inference": {
+      "a": ["algorithms", "data-structures", "computer-applications"],
+      "b": ["networking", "information-technology", "information-systems"],
+      "c": ["data-analysis", "probability", "analysis"]
+    }
+  },
+  {
+    "question": "What kind of school project would you enjoy the most?",
+    "options": {
+      "a": "Creating a small software or app",
+      "b": "Collecting and interpreting data from a survey",
+      "c": "Mapping out how computers share information"
+    },
+    "inference": {
+      "a": ["computer-applications", "informatic-technology"],
+      "b": ["data-analysis", "probability", "numerical-reasoning"],
+      "c": ["networking", "information-technology", "information-systems"]
+    }
+  },
+  {
+    "question": "Which skill would you like to develop?",
+    "options": {
+      "a": "Building smarter algorithms for computers",
+      "b": "Working with data to find patterns and insights",
+      "c": "Managing information across systems and databases"
+    },
+    "inference": {
+      "a": ["algorithms", "data-structures", "analysis"],
+      "b": ["data-analysis", "fourier-analysis", "probability"],
+      "c": ["database-management", "information-systems", "informatic-technology"]
+    }
+  },
+  {
+    "question": "Which area would you be curious to explore more?",
+    "options": {
+      "a": "How websites store and fetch your data",
+      "b": "How to analyze and visualize data trends",
+      "c": "How computers make predictions or decisions"
+    },
+    "inference": {
+      "a": ["database-management", "information-systems", "networking"],
+      "b": ["data-analysis", "numerical-reasoning", "fourier-analysis"],
+      "c": ["algorithms", "probability", "analysis"]
+    }
+  }
+]
+
   
