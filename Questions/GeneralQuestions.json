@@ -1948,8 +1948,139 @@
       "b": ["leadership-and-teamwork"],
       "c": ["customer-service", "communication"]
     }
+  },
+  {
+    "question": "What interests you most about solving mysteries?",
+    "options": {
+      "a": "Analyzing evidence carefully to find clues",
+      "b": "Using science to understand how events happened",
+      "c": "Researching information and gathering facts"
+    },
+    "inference": {
+      "a": ["forensic-analysis"],
+      "b": ["forensic-science"],
+      "c": ["investigative-research"]
+    }
+  },
+  {
+    "question": "Which activity would you enjoy the most?",
+    "options": {
+      "a": "Examining fingerprints or DNA samples in a lab",
+      "b": "Reconstructing crime scenes using scientific methods",
+      "c": "Interviewing people and collecting detailed information"
+    },
+    "inference": {
+      "a": ["forensic-analysis"],
+      "b": ["forensic-science"],
+      "c": ["investigative-research"]
+    }
+  },
+  {
+    "question": "When trying to solve a problem, you prefer to:",
+    "options": {
+      "a": "Look closely at physical evidence to find answers",
+      "b": "Apply scientific knowledge to explain what happened",
+      "c": "Search for information from different sources"
+    },
+    "inference": {
+      "a": ["forensic-analysis"],
+      "b": ["forensic-science"],
+      "c": ["investigative-research"]
+    }
+  },
+  {
+    "question": "Which skill would you like to develop?",
+    "options": {
+      "a": "Detecting and interpreting clues from evidence",
+      "b": "Understanding how science helps solve crimes",
+      "c": "Conducting deep research to uncover hidden facts"
+    },
+    "inference": {
+      "a": ["forensic-analysis"],
+      "b": ["forensic-science"],
+      "c": ["investigative-research"]
+    }
+  },
+  {
+    "question": "What sounds most exciting to you?",
+    "options": {
+      "a": "Using technology to analyze crime scene evidence",
+      "b": "Studying the biology and chemistry behind forensic science",
+      "c": "Investigating stories and gathering important details"
+    },
+    "inference": {
+      "a": ["forensic-analysis"],
+      "b": ["forensic-science"],
+      "c": ["investigative-research"]
+    }
+  },
+  {
+    "question": "If you were solving a mystery, you would:",
+    "options": {
+      "a": "Carefully examine physical clues and data",
+      "b": "Apply scientific methods to explain the findings",
+      "c": "Research and connect different pieces of information"
+    },
+    "inference": {
+      "a": ["forensic-analysis"],
+      "b": ["forensic-science"],
+      "c": ["investigative-research"]
+    }
+  },
+  {
+    "question": "Which of these appeals to you the most?",
+    "options": {
+      "a": "Working in a lab to analyze samples and evidence",
+      "b": "Using science to reconstruct what happened at a crime scene",
+      "c": "Collecting and studying detailed reports and documents"
+    },
+    "inference": {
+      "a": ["forensic-analysis"],
+      "b": ["forensic-science"],
+      "c": ["investigative-research"]
+    }
+  },
+  {
+    "question": "What kind of work would you like to do?",
+    "options": {
+      "a": "Testing and examining evidence for clues",
+      "b": "Studying forensic science theories and methods",
+      "c": "Researching cases and compiling information"
+    },
+    "inference": {
+      "a": ["forensic-analysis"],
+      "b": ["forensic-science"],
+      "c": ["investigative-research"]
+    }
+  },
+  {
+    "question": "What excites you most about investigative work?",
+    "options": {
+      "a": "Finding hidden clues through detailed analysis",
+      "b": "Using science to solve real-world problems",
+      "c": "Digging deep to uncover the truth through research"
+    },
+    "inference": {
+      "a": ["forensic-analysis"],
+      "b": ["forensic-science"],
+      "c": ["investigative-research"]
+    }
+  },
+  {
+    "question": "Which of these describes you best?",
+    "options": {
+      "a": "I enjoy examining physical evidence carefully",
+      "b": "I’m curious about how science explains crime scenes",
+      "c": "I love researching and piecing together information"
+    },
+    "inference": {
+      "a": ["forensic-analysis"],
+      "b": ["forensic-science"],
+      "c": ["investigative-research"]
+    }
   }
 ]
+
 
 
 
