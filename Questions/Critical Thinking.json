@@ -1,0 +1,132 @@
+[
+  {
+    "question": "When faced with a problem, how do you usually approach it?",
+    "options": {
+      "a": "Break it down into smaller parts to understand better",
+      "b": "Look for similar problems and solutions others used",
+      "c": "Trust your first instinct and act quickly"
+    },
+    "inference": {
+      "a": ["Critical Thinking"],
+      "b": ["Critical Thinking"],
+      "c": []
+    }
+  },
+  {
+    "question": "Which of these do you enjoy most?",
+    "options": {
+      "a": "Analyzing different viewpoints before making a decision",
+      "b": "Finding logical connections between ideas",
+      "c": "Taking risks even if you don’t have all the facts"
+    },
+    "inference": {
+      "a": ["Critical Thinking"],
+      "b": ["Critical Thinking"],
+      "c": []
+    }
+  },
+  {
+    "question": "How do you prefer to learn new information?",
+    "options": {
+      "a": "By questioning assumptions and asking why",
+      "b": "By organizing facts and evidence carefully",
+      "c": "By memorizing details quickly"
+    },
+    "inference": {
+      "a": ["Critical Thinking"],
+      "b": ["Critical Thinking"],
+      "c": []
+    }
+  },
+  {
+    "question": "When someone presents an argument, you usually:",
+    "options": {
+      "a": "Think about the reasons behind it and whether it makes sense",
+      "b": "Look for evidence that supports or contradicts it",
+      "c": "Accept it if it sounds confident"
+    },
+    "inference": {
+      "a": ["Critical Thinking"],
+      "b": ["Critical Thinking"],
+      "c": []
+    }
+  },
+  {
+    "question": "Which activity sounds most interesting to you?",
+    "options": {
+      "a": "Solving puzzles or brainteasers",
+      "b": "Debating different ideas with friends",
+      "c": "Going with your gut feeling"
+    },
+    "inference": {
+      "a": ["Critical Thinking"],
+      "b": ["Critical Thinking"],
+      "c": []
+    }
+  },
+  {
+    "question": "How do you handle mistakes?",
+    "options": {
+      "a": "Analyze what went wrong and learn from it",
+      "b": "Try a different approach based on what you learned",
+      "c": "Ignore it and move on quickly"
+    },
+    "inference": {
+      "a": ["Critical Thinking"],
+      "b": ["Critical Thinking"],
+      "c": []
+    }
+  },
+  {
+    "question": "When working in a group, your strength is:",
+    "options": {
+      "a": "Evaluating ideas to find the best solution",
+      "b": "Encouraging others to share their thoughts",
+      "c": "Making quick decisions to keep things moving"
+    },
+    "inference": {
+      "a": ["Critical Thinking"],
+      "b": ["Critical Thinking"],
+      "c": []
+    }
+  },
+  {
+    "question": "Which phrase describes you best?",
+    "options": {
+      "a": "I like to think things through before acting",
+      "b": "I enjoy questioning why things are the way they are",
+      "c": "I prefer to decide quickly and confidently"
+    },
+    "inference": {
+      "a": ["Critical Thinking"],
+      "b": ["Critical Thinking"],
+      "c": []
+    }
+  },
+  {
+    "question": "How do you evaluate information you find online?",
+    "options": {
+      "a": "Check if the sources are trustworthy and logical",
+      "b": "Compare it with other facts and opinions",
+      "c": "Believe it if it matches what you already think"
+    },
+    "inference": {
+      "a": ["Critical Thinking"],
+      "b": ["Critical Thinking"],
+      "c": []
+    }
+  },
+  {
+    "question": "What do you enjoy more?",
+    "options": {
+      "a": "Finding flaws or weaknesses in arguments",
+      "b": "Coming up with new ideas to solve problems",
+      "c": "Following instructions exactly as given"
+    },
+    "inference": {
+      "a": ["Critical Thinking"],
+      "b": ["Critical Thinking"],
+      "c": []
+    }
+  }
+]
