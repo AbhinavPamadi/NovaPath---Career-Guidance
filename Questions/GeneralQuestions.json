@@ -388,8 +388,139 @@
       "b": ["biochemistry", "molecular-biology", "microbiology"],
       "c": ["basic-nursing", "human-anatomy", "anatomy"]
     }
+  },
+  {
+    "question": "Which of these would you be most excited to do?",
+    "options": {
+      "a": "Mixing chemicals in a lab to see reactions",
+      "b": "Understanding how objects move and fall",
+      "c": "Exploring the basic rules of how nature works"
+    },
+    "inference": {
+      "a": ["basic-chemistry", "laboratory-experiments", "laboratory-technology"],
+      "b": ["physics", "fundamental-science"],
+      "c": ["fundamental-science", "physics", "basic-chemistry"]
+    }
+  },
+  {
+    "question": "Which science topic do you enjoy the most in school?",
+    "options": {
+      "a": "Experiments and lab work",
+      "b": "Forces, motion, and energy",
+      "c": "Chemical reactions and compounds"
+    },
+    "inference": {
+      "a": ["laboratory-experiments", "laboratory-technology"],
+      "b": ["physics", "fundamental-science"],
+      "c": ["basic-chemistry", "fundamental-science"]
+    }
+  },
+  {
+    "question": "What kind of science job sounds the most fun?",
+    "options": {
+      "a": "Working in a lab with equipment and tools",
+      "b": "Studying the laws of motion and gravity",
+      "c": "Understanding the makeup of matter"
+    },
+    "inference": {
+      "a": ["laboratory-technology", "laboratory-experiments"],
+      "b": ["physics", "fundamental-science"],
+      "c": ["basic-chemistry", "fundamental-science"]
+    }
+  },
+  {
+    "question": "Which experiment would you want to try?",
+    "options": {
+      "a": "Testing how different liquids react with each other",
+      "b": "Measuring how fast a ball rolls down a ramp",
+      "c": "Building a simple electric circuit and testing it"
+    },
+    "inference": {
+      "a": ["basic-chemistry", "laboratory-experiments"],
+      "b": ["physics", "fundamental-science"],
+      "c": ["laboratory-technology", "physics"]
+    }
+  },
+  {
+    "question": "What part of science makes you curious?",
+    "options": {
+      "a": "How substances change during reactions",
+      "b": "Why things move the way they do",
+      "c": "How scientists test things in labs"
+    },
+    "inference": {
+      "a": ["basic-chemistry", "fundamental-science"],
+      "b": ["physics", "fundamental-science"],
+      "c": ["laboratory-experiments", "laboratory-technology"]
+    }
+  },
+  {
+    "question": "Which science question would you rather answer?",
+    "options": {
+      "a": "Why does mixing vinegar and baking soda cause bubbles?",
+      "b": "Why does a magnet stick to some things but not others?",
+      "c": "How do scientists make sure experiments are accurate?"
+    },
+    "inference": {
+      "a": ["basic-chemistry", "laboratory-experiments"],
+      "b": ["physics", "fundamental-science"],
+      "c": ["laboratory-technology", "laboratory-experiments"]
+    }
+  },
+  {
+    "question": "Which tool would you be most interested to use?",
+    "options": {
+      "a": "A beaker and chemicals",
+      "b": "A motion sensor or stopwatch",
+      "c": "A microscope or measurement device"
+    },
+    "inference": {
+      "a": ["basic-chemistry", "laboratory-experiments"],
+      "b": ["physics", "laboratory-technology"],
+      "c": ["laboratory-technology", "fundamental-science"]
+    }
+  },
+  {
+    "question": "What kind of science fair project would you choose?",
+    "options": {
+      "a": "Creating and testing a chemical reaction",
+      "b": "Building a model to show gravity or friction",
+      "c": "Setting up a controlled experiment with measurements"
+    },
+    "inference": {
+      "a": ["basic-chemistry", "laboratory-experiments"],
+      "b": ["physics", "fundamental-science"],
+      "c": ["laboratory-technology", "laboratory-experiments"]
+    }
+  },
+  {
+    "question": "Which topic do you think you'd enjoy studying more?",
+    "options": {
+      "a": "The structure of atoms and molecules",
+      "b": "The behavior of light, sound, and forces",
+      "c": "How lab equipment is used in real science research"
+    },
+    "inference": {
+      "a": ["basic-chemistry", "fundamental-science"],
+      "b": ["physics", "fundamental-science"],
+      "c": ["laboratory-technology", "laboratory-experiments"]
+    }
+  },
+  {
+    "question": "What sounds like a fun science activity?",
+    "options": {
+      "a": "Mixing solutions to see color changes",
+      "b": "Testing how fast objects fall from different heights",
+      "c": "Learning how to safely use lab tools"
+    },
+    "inference": {
+      "a": ["basic-chemistry", "laboratory-experiments"],
+      "b": ["physics", "fundamental-science"],
+      "c": ["laboratory-technology", "laboratory-experiments"]
+    }
   }
 ]
+
 
 
   
