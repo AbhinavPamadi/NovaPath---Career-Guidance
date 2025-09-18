@@ -1038,8 +1038,139 @@
       "b": ["financial-planning"],
       "c": ["financial-analysis", "financial-modelling"]
     }
+  },
+  {
+    "question": "Which of these roles sounds most exciting to you?",
+    "options": {
+      "a": "Coming up with creative ways to promote a product",
+      "b": "Planning and organizing a big event like a concert or festival",
+      "c": "Managing how goods are delivered from the factory to the store"
+    },
+    "inference": {
+      "a": ["marketing"],
+      "b": ["event-management", "event-planning"],
+      "c": ["logistics", "production-management"]
+    }
+  },
+  {
+    "question": "What kind of project would you most enjoy working on?",
+    "options": {
+      "a": "Making sure a hotel or resort gives the best guest experience",
+      "b": "Organizing tasks and teams to finish a project on time",
+      "c": "Planning how products are made, stored, and shipped"
+    },
+    "inference": {
+      "a": ["hospitality-management"],
+      "b": ["project-management"],
+      "c": ["production-management", "logistics"]
+    }
+  },
+  {
+    "question": "Which activity do you find most fun?",
+    "options": {
+      "a": "Creating posters, videos, or social media content",
+      "b": "Scheduling and setting up for a big school event",
+      "c": "Planning out how to make and deliver something efficiently"
+    },
+    "inference": {
+      "a": ["marketing"],
+      "b": ["event-planning", "event-management"],
+      "c": ["production-management", "logistics"]
+    }
+  },
+  {
+    "question": "If you had to lead a group, what would you prefer to do?",
+    "options": {
+      "a": "Plan and promote a school talent show",
+      "b": "Organize the different roles and tasks in a team project",
+      "c": "Manage the supplies and schedule for making a product"
+    },
+    "inference": {
+      "a": ["event-management", "marketing"],
+      "b": ["project-management"],
+      "c": ["production-management", "logistics"]
+    }
+  },
+  {
+    "question": "Which work environment appeals to you the most?",
+    "options": {
+      "a": "A busy hotel where you help guests feel welcome",
+      "b": "An office where you plan timelines and team tasks",
+      "c": "A warehouse where you manage deliveries and inventory"
+    },
+    "inference": {
+      "a": ["hospitality-management"],
+      "b": ["project-management"],
+      "c": ["logistics"]
+    }
+  },
+  {
+    "question": "What do you enjoy more when working on a project?",
+    "options": {
+      "a": "Coming up with fresh ideas and creative materials",
+      "b": "Making a checklist and making sure everything runs smoothly",
+      "c": "Handling food, decorations, and schedules for an event"
+    },
+    "inference": {
+      "a": ["marketing"],
+      "b": ["project-management"],
+      "c": ["event-planning", "hospitality-management"]
+    }
+  },
+  {
+    "question": "What kind of leadership would you most enjoy?",
+    "options": {
+      "a": "Managing a team to deliver a product or service on time",
+      "b": "Overseeing guest services in a restaurant or hotel",
+      "c": "Promoting and hosting a brand launch or party"
+    },
+    "inference": {
+      "a": ["project-management", "production-management"],
+      "b": ["hospitality-management"],
+      "c": ["event-management", "marketing"]
+    }
+  },
+  {
+    "question": "Which of these problems would you be most excited to solve?",
+    "options": {
+      "a": "How to attract more people to a new product or service",
+      "b": "How to coordinate multiple teams for a successful project",
+      "c": "How to get items from a factory to stores efficiently"
+    },
+    "inference": {
+      "a": ["marketing"],
+      "b": ["project-management"],
+      "c": ["logistics"]
+    }
+  },
+  {
+    "question": "Which job feels like the best fit for your personality?",
+    "options": {
+      "a": "An event planner who makes celebrations unforgettable",
+      "b": "A logistics manager who keeps everything moving smoothly",
+      "c": "A marketing expert who understands what people want"
+    },
+    "inference": {
+      "a": ["event-planning", "event-management"],
+      "b": ["logistics"],
+      "c": ["marketing"]
+    }
+  },
+  {
+    "question": "What do you think is your strongest skill?",
+    "options": {
+      "a": "Organizing people and timelines for big projects",
+      "b": "Making people feel welcome and comfortable",
+      "c": "Creating eye-catching promotions and campaigns"
+    },
+    "inference": {
+      "a": ["project-management"],
+      "b": ["hospitality-management"],
+      "c": ["marketing"]
+    }
   }
 ]
+
 
 
 
