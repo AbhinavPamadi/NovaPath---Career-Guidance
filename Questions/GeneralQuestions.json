@@ -1298,8 +1298,139 @@
       "b": ["legal-research", "policy-analysis"],
       "c": ["ethical-reasoning"]
     }
+  },
+  {
+    "question": "Which of these activities sounds most interesting to you?",
+    "options": {
+      "a": "Helping lead a group or class by setting rules and keeping things on track",
+      "b": "Explaining a topic clearly so others can understand it",
+      "c": "Writing articles or essays to teach or inform people"
+    },
+    "inference": {
+      "a": ["classroom-management"],
+      "b": ["communication", "public-speking", "education-theory"],
+      "c": ["expository-writing"]
+    }
+  },
+  {
+    "question": "What would you enjoy doing in a group project?",
+    "options": {
+      "a": "Keeping the group focused and making sure everyone participates",
+      "b": "Presenting the topic in front of the class",
+      "c": "Writing the report or summary at the end"
+    },
+    "inference": {
+      "a": ["classroom-management", "communication"],
+      "b": ["public-speking"],
+      "c": ["expository-writing"]
+    }
+  },
+  {
+    "question": "If you had to teach something, how would you do it?",
+    "options": {
+      "a": "Prepare a talk and speak to the class about it",
+      "b": "Write out a clear explanation with examples",
+      "c": "Set up the room and organize the class for a group activity"
+    },
+    "inference": {
+      "a": ["public-speking", "communication"],
+      "b": ["expository-writing", "education-theory"],
+      "c": ["classroom-management"]
+    }
+  },
+  {
+    "question": "Which skill do you think you're best at?",
+    "options": {
+      "a": "Speaking confidently in front of others",
+      "b": "Helping others stay focused and behave well in a group",
+      "c": "Explaining things clearly in writing"
+    },
+    "inference": {
+      "a": ["public-speking"],
+      "b": ["classroom-management"],
+      "c": ["expository-writing", "communication"]
+    }
+  },
+  {
+    "question": "Which role would you prefer in a classroom setting?",
+    "options": {
+      "a": "The one who organizes the class and sets expectations",
+      "b": "The one who gives presentations to share ideas",
+      "c": "The one who writes lessons and instructions"
+    },
+    "inference": {
+      "a": ["classroom-management"],
+      "b": ["public-speking", "communication"],
+      "c": ["expository-writing", "education-theory"]
+    }
+  },
+  {
+    "question": "What kind of learning environment do you enjoy most?",
+    "options": {
+      "a": "Where the class is well-managed and everyone knows the rules",
+      "b": "Where students give talks and share what they’ve learned",
+      "c": "Where ideas are explored through reading and writing"
+    },
+    "inference": {
+      "a": ["classroom-management"],
+      "b": ["public-speking", "communication"],
+      "c": ["expository-writing", "education-theory"]
+    }
+  },
+  {
+    "question": "Which type of assignment do you enjoy more?",
+    "options": {
+      "a": "Writing an essay or article that explains something",
+      "b": "Organizing a group and keeping people on task",
+      "c": "Giving a speech or presentation to a group"
+    },
+    "inference": {
+      "a": ["expository-writing"],
+      "b": ["classroom-management"],
+      "c": ["public-speking"]
+    }
+  },
+  {
+    "question": "Which skill would you like to get better at?",
+    "options": {
+      "a": "Managing a group or classroom effectively",
+      "b": "Writing clearly to explain ideas",
+      "c": "Speaking confidently in front of others"
+    },
+    "inference": {
+      "a": ["classroom-management"],
+      "b": ["expository-writing"],
+      "c": ["public-speking", "communication"]
+    }
+  },
+  {
+    "question": "What kind of teaching would you enjoy the most?",
+    "options": {
+      "a": "Teaching through group discussions and speeches",
+      "b": "Helping students understand through written materials",
+      "c": "Making sure the classroom stays organized and positive"
+    },
+    "inference": {
+      "a": ["public-speking", "communication"],
+      "b": ["expository-writing", "education-theory"],
+      "c": ["classroom-management"]
+    }
+  },
+  {
+    "question": "What do you think is the most important skill for a teacher?",
+    "options": {
+      "a": "Keeping students focused and managing behavior",
+      "b": "Explaining things in a way people can clearly understand",
+      "c": "Speaking with confidence and energy"
+    },
+    "inference": {
+      "a": ["classroom-management"],
+      "b": ["education-theory", "communication"],
+      "c": ["public-speking"]
+    }
   }
 ]
+
 
 
 
