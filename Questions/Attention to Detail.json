@@ -1,0 +1,132 @@
+[
+  {
+    "question": "When working on a task, how do you make sure everything is correct?",
+    "options": {
+      "a": "Double-check each step carefully",
+      "b": "Finish quickly and review if there’s time",
+      "c": "Rely on others to catch mistakes"
+    },
+    "inference": {
+      "a": ["Attention to Detail"],
+      "b": [],
+      "c": []
+    }
+  },
+  {
+    "question": "Which activity do you enjoy most?",
+    "options": {
+      "a": "Spotting errors or inconsistencies",
+      "b": "Completing tasks fast",
+      "c": "Working on big-picture ideas"
+    },
+    "inference": {
+      "a": ["Attention to Detail"],
+      "b": [],
+      "c": []
+    }
+  },
+  {
+    "question": "How do you approach reading instructions or manuals?",
+    "options": {
+      "a": "Read carefully to understand every detail",
+      "b": "Skim through and jump to important parts",
+      "c": "Try figuring it out by doing"
+    },
+    "inference": {
+      "a": ["Attention to Detail"],
+      "b": [],
+      "c": []
+    }
+  },
+  {
+    "question": "When reviewing your work, what do you focus on?",
+    "options": {
+      "a": "Small mistakes and accuracy",
+      "b": "Overall completion",
+      "c": "Creative expression"
+    },
+    "inference": {
+      "a": ["Attention to Detail"],
+      "b": [],
+      "c": []
+    }
+  },
+  {
+    "question": "How do you feel about tasks that require precision?",
+    "options": {
+      "a": "I enjoy them and take pride in accuracy",
+      "b": "They can be boring but necessary",
+      "c": "I prefer less detailed work"
+    },
+    "inference": {
+      "a": ["Attention to Detail"],
+      "b": [],
+      "c": []
+    }
+  },
+  {
+    "question": "Which describes your approach to organizing things?",
+    "options": {
+      "a": "Everything has a specific place and order",
+      "b": "Organized enough to find what I need",
+      "c": "I’m comfortable with some clutter"
+    },
+    "inference": {
+      "a": ["Attention to Detail"],
+      "b": [],
+      "c": []
+    }
+  },
+  {
+    "question": "When spotting differences in images or patterns, how good are you?",
+    "options": {
+      "a": "Very good, I notice small changes quickly",
+      "b": "Average, depends on the situation",
+      "c": "Not very good, I miss details often"
+    },
+    "inference": {
+      "a": ["Attention to Detail"],
+      "b": [],
+      "c": []
+    }
+  },
+  {
+    "question": "How do you react when someone points out a mistake you made?",
+    "options": {
+      "a": "I appreciate the feedback and fix it",
+      "b": "I feel a bit frustrated but learn from it",
+      "c": "I tend to ignore or forget about it"
+    },
+    "inference": {
+      "a": ["Attention to Detail"],
+      "b": ["Attention to Detail"],
+      "c": []
+    }
+  },
+  {
+    "question": "In group projects, how do you contribute?",
+    "options": {
+      "a": "Making sure the final work is error-free",
+      "b": "Helping come up with ideas",
+      "c": "Leading the group discussions"
+    },
+    "inference": {
+      "a": ["Attention to Detail"],
+      "b": [],
+      "c": []
+    }
+  },
+  {
+    "question": "What kind of hobbies or activities do you enjoy?",
+    "options": {
+      "a": "Activities like puzzles, coding, or crafts that require focus",
+      "b": "Fast-paced sports or games",
+      "c": "Social or creative group activities"
+    },
+    "inference": {
+      "a": ["Attention to Detail"],
+      "b": [],
+      "c": []
+    }
+  }
+]
