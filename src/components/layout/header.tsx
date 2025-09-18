@@ -13,6 +13,7 @@ import { MobileNav } from './mobile-nav';
 import { Logo } from '../icons/logo';
 import { UserMenu } from './user-menu';
 import { NotificationPanel } from './notifications';
+import { LanguageSelector } from './language-selector';
 
 export function Header() {
   return (
@@ -42,6 +43,8 @@ export function Header() {
           </Popover>
 
           <UserMenu />
+
+          <LanguageSelector />
 
           <ThemeToggleButton />
           

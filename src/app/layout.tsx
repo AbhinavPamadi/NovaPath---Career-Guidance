@@ -9,6 +9,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Footer } from "@/components/layout/footer";
 import { Providers } from "@/components/layout/auth-provider";
+import { LanguageProvider } from "@/contexts/language-context";
 
 export const metadata: Metadata = {
   title: "NovaPath",
@@ -42,12 +43,13 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <Providers>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
+          <LanguageProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
+            >
             <div className="flex flex-col min-h-screen">
               <BackgroundParticles />
               <Header />
@@ -57,7 +59,8 @@ export default function RootLayout({
             <AIAvatar />
             <Toaster />
             <Analytics />
-          </ThemeProvider>
+            </ThemeProvider>
+          </LanguageProvider>
         </Providers>
       </body>
     </html>

@@ -248,11 +248,6 @@ export function QuizWidget() {
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Link>
             </Button>
-            <Button asChild variant="outline">
-              <Link href="/career-path">
-                Explore Career Paths
-              </Link>
-            </Button>
           </div>
         </CardContent>
       </Card>
