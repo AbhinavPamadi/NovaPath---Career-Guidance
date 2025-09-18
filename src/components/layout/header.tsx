@@ -12,6 +12,7 @@ import { ThemeToggleButton } from './theme-toggle-button';
 import { MobileNav } from './mobile-nav';
 import { Logo } from '../icons/logo';
 import { UserMenu } from './user-menu';
+import { NotificationPanel } from './notifications';
 
 export function Header() {
   return (
@@ -35,11 +36,8 @@ export function Header() {
                 <span className="sr-only">Notifications</span>
               </Button>
             </PopoverTrigger>
-            <PopoverContent align="end" className="w-80 glass-card">
-              <div className="font-medium">Notifications</div>
-              <p className="text-sm text-muted-foreground mt-2">
-                No new notifications. You're all caught up!
-              </p>
+            <PopoverContent align="end" className="p-0 glass-card">
+              <NotificationPanel />
             </PopoverContent>
           </Popover>
 
