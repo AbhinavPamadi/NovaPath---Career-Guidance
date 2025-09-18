@@ -8,8 +8,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth, db } from '@/lib/firebase';
-import { doc, setDoc } from 'firebase/firestore';
+import { auth } from '@/lib/firebase';
+import { createOrUpdateUserProfile } from '@/lib/firestore-utils';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -70,27 +70,66 @@ export default function SignupPage() {
 
   const handleGoogleLogin = async () => {
     setIsGoogleLoading(true);
-    try {
-      const provider = new GoogleAuthProvider();
-      const userCredential = await signInWithPopup(auth, provider);
-      const user = userCredential.user;
-
-      // Create user profile in Firestore if it doesn't exist
-      await setDoc(doc(db, "users", user.uid), {
-        uid: user.uid,
-        fullName: user.displayName,
-        email: user.email,
-        createdAt: new Date(),
-      }, { merge: true });
-
-
-      toast({ title: "Login Successful", description: "Welcome!" });
-      router.push('/profile');
-    } catch (error: any) {
+    
+    // Set up timeout to prevent infinite loading
+    const timeoutId = setTimeout(() => {
+      setIsGoogleLoading(false);
       toast({
         variant: "destructive",
-        title: "Google Login Failed",
-        description: error.message,
+        title: "Login Timeout",
+        description: "The login process took too long. Please try again.",
+      });
+    }, 30000); // 30 second timeout
+
+    try {
+      const provider = new GoogleAuthProvider();
+      
+      // Configure provider for popup
+      provider.setCustomParameters({
+        prompt: 'select_account'
+      });
+
+      console.log('Starting Google signup...');
+      const userCredential = await signInWithPopup(auth, provider);
+      const user = userCredential.user;
+      console.log('Google authentication successful:', user.uid);
+
+      // Clear the timeout since auth succeeded
+      clearTimeout(timeoutId);
+
+      // Show success message immediately
+      toast({ title: "Signup Successful", description: "Welcome to NovaPath!" });
+      
+      // Redirect immediately, don't wait for Firestore
+      router.push('/profile');
+
+      // Try to create user profile in Firestore in background
+      // Don't block the redirect on this
+      createOrUpdateUserProfile(user, true).catch(error => {
+        console.warn('Failed to create user profile in Firestore:', error);
+        // Could optionally show a non-blocking notification to the user
+      });
+    } catch (error: any) {
+      clearTimeout(timeoutId);
+      console.error('Google signup error:', error);
+      
+      let errorMessage = 'Signup failed';
+      
+      // Handle specific error cases
+      if (error.code === 'auth/popup-closed-by-user') {
+        errorMessage = 'Signup was cancelled. Please try again.';
+      } else if (error.code === 'auth/popup-blocked') {
+        errorMessage = 'Popup was blocked. Please allow popups for this site and try again.';
+      } else if (error.code === 'auth/network-request-failed') {
+        errorMessage = 'Network error. Please check your connection and try again.';
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
+      toast({
+        variant: "destructive",
+        title: "Google Signup Failed",
+        description: errorMessage,
       });
     } finally {
       setIsGoogleLoading(false);

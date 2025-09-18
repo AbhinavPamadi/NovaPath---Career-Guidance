@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth, db } from '@/lib/firebase';
-import { doc, setDoc } from 'firebase/firestore';
+import { auth } from '@/lib/firebase';
+import { createOrUpdateUserProfile } from '@/lib/firestore-utils';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -59,26 +59,68 @@ export default function LoginPage() {
   const handleGoogleLogin = async () => {
     setIsGoogleLoading(true);
     setError(null);
-    const provider = new GoogleAuthProvider();
+    
+    // Set up timeout to prevent infinite loading
+    const timeoutId = setTimeout(() => {
+      setIsGoogleLoading(false);
+      setError('Login timed out. Please try again.');
+      toast({
+        variant: "destructive",
+        title: "Login Timeout",
+        description: "The login process took too long. Please try again.",
+      });
+    }, 30000); // 30 second timeout
+
     try {
+      const provider = new GoogleAuthProvider();
+      
+      // Configure provider for popup
+      provider.setCustomParameters({
+        prompt: 'select_account'
+      });
+
+      console.log('Starting Google login...');
       const userCredential = await signInWithPopup(auth, provider);
       const user = userCredential.user;
+      console.log('Google authentication successful:', user.uid);
 
-      // Create or update user profile in Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        uid: user.uid,
-        fullName: user.displayName,
-        email: user.email,
-      }, { merge: true });
+      // Clear the timeout since auth succeeded
+      clearTimeout(timeoutId);
 
+      // Show success message immediately
       toast({ title: "Login Successful", description: "Welcome!" });
+      
+      // Redirect immediately, don't wait for Firestore
       router.push('/profile');
+
+      // Try to update user profile in Firestore in background
+      // Don't block the redirect on this
+      createOrUpdateUserProfile(user, false).catch(error => {
+        console.warn('Failed to update user profile in Firestore:', error);
+        // Could optionally show a non-blocking notification to the user
+      });
     } catch (error: any) {
-      setError(error.message || 'Login failed');
+      clearTimeout(timeoutId);
+      console.error('Google login error:', error);
+      
+      let errorMessage = 'Login failed';
+      
+      // Handle specific error cases
+      if (error.code === 'auth/popup-closed-by-user') {
+        errorMessage = 'Login was cancelled. Please try again.';
+      } else if (error.code === 'auth/popup-blocked') {
+        errorMessage = 'Popup was blocked. Please allow popups for this site and try again.';
+      } else if (error.code === 'auth/network-request-failed') {
+        errorMessage = 'Network error. Please check your connection and try again.';
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
+      setError(errorMessage);
       toast({
         variant: "destructive",
         title: "Google Login Failed",
-        description: error.message,
+        description: errorMessage,
       });
     } finally {
       setIsGoogleLoading(false);
