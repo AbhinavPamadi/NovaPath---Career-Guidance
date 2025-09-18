@@ -10,7 +10,7 @@ export const navItems = [
   { href: '/career-path', label: 'Career Path' },
   { href: '/peer-to-peer-forum', label: 'Forum' },
   { href: '/ngo-connection', label: 'NGO Connection' },
-  { href: '/#contact', label: 'Contact' },
+  { href: '/feedback-forum', label: 'Feedback' },
 ];
 
 export function NavLinks() {

@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/card';
 import { ArrowRight, Bot, CalendarCheck, Target, FileQuestion, HeartHandshake, Users } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Mail, Send, User } from 'lucide-react';
+import { MessageSquare, ThumbsUp, AlertCircle, User } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -84,44 +84,49 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="mt-24 md:mt-32 scroll-mt-20">
+      <section id="feedback" className="mt-24 md:mt-32 scroll-mt-20">
         <div className="text-center mb-12">
             <h2 className="font-headline text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-                Get in Touch
+                Feedback Forum
             </h2>
             <p className="mt-2 text-lg text-muted-foreground">
-                Have questions? We'd love to hear from you.
+                Share your thoughts, suggestions, and help us improve NovaPath together.
             </p>
         </div>
-        <Card className="max-w-3xl mx-auto glass-card p-8">
-            <form action="#" method="POST" className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                        <label htmlFor="name" className="text-sm font-medium text-muted-foreground">Full Name</label>
-                        <div className="relative">
-                            <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                            <Input id="name" name="name" type="text" placeholder="John Doe" className="pl-10" />
-                        </div>
-                    </div>
-                    <div className="space-y-2">
-                         <label htmlFor="email" className="text-sm font-medium text-muted-foreground">Email Address</label>
-                        <div className="relative">
-                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                            <Input id="email" name="email" type="email" placeholder="you@example.com" className="pl-10"/>
-                        </div>
-                    </div>
-                </div>
-                <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium text-muted-foreground">Message</label>
-                    <Textarea id="message" name="message" rows={5} placeholder="Your message..." />
-                </div>
-                <div>
-                    <Button type="submit" className="w-full" size="lg">
-                        Send Message <Send className="ml-2 h-5 w-5" />
-                    </Button>
-                </div>
-            </form>
-        </Card>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+          <Card className="glass-card p-6 text-center hover:border-accent/50 transition-all duration-300 transform hover:-translate-y-1">
+            <div className="mb-4 flex justify-center">
+              <MessageSquare className="h-8 w-8 text-primary" />
+            </div>
+            <h3 className="font-headline text-xl font-bold mb-2">Share Feedback</h3>
+            <p className="text-muted-foreground text-sm">Tell us what you think about NovaPath and how we can improve your experience.</p>
+          </Card>
+          
+          <Card className="glass-card p-6 text-center hover:border-accent/50 transition-all duration-300 transform hover:-translate-y-1">
+            <div className="mb-4 flex justify-center">
+              <ThumbsUp className="h-8 w-8 text-primary" />
+            </div>
+            <h3 className="font-headline text-xl font-bold mb-2">Vote on Ideas</h3>
+            <p className="text-muted-foreground text-sm">Vote for the features and improvements that matter most to you.</p>
+          </Card>
+          
+          <Card className="glass-card p-6 text-center hover:border-accent/50 transition-all duration-300 transform hover:-translate-y-1">
+            <div className="mb-4 flex justify-center">
+              <AlertCircle className="h-8 w-8 text-primary" />
+            </div>
+            <h3 className="font-headline text-xl font-bold mb-2">Report Issues</h3>
+            <p className="text-muted-foreground text-sm">Found a bug or something not working? Let us know so we can fix it quickly.</p>
+          </Card>
+        </div>
+
+        <div className="text-center">
+          <Button asChild size="lg" className="shadow-primary/50 shadow-lg hover:shadow-primary/50 hover:shadow-2xl transition-shadow">
+            <Link href="/feedback-forum">
+              Join the Discussion <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+        </div>
       </section>
 
     </div>
