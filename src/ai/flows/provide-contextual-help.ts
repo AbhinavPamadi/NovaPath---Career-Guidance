@@ -1,63 +1,59 @@
-'use server';
+"use server";
 
-/**
- * @fileOverview An AI agent that provides contextual help and guidance to students based on their behavior on the EduVoyager website.
- *
- * - provideContextualHelp - A function that determines whether to provide help and what kind of help to provide.
- * - ProvideContextualHelpInput - The input type for the provideContextualHelp function.
- * - ProvideContextualHelpOutput - The return type for the provideContextualHelp function.
- */
+import { ChatGroq } from "@langchain/groq";
+import { HumanMessage } from "@langchain/core/messages";
 
-import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
-
-const ProvideContextualHelpInputSchema = z.object({
-  userActivity: z
-    .string()
-    .describe('A description of the user\'s current activity on the website. This is likely the user\'s chat message.'),
-  pageContent: z
-    .string()
-    .describe('The content of the current page the user is viewing.'),
-  userInfo: z.string().optional().describe('Optional information about the user.'),
-});
-export type ProvideContextualHelpInput = z.infer<typeof ProvideContextualHelpInputSchema>;
-
-const ProvideContextualHelpOutputSchema = z.object({
-  helpMessage: z
-    .string()
-    .describe('The message the AI avatar should display to the user.'),
-});
-export type ProvideContextualHelpOutput = z.infer<typeof ProvideContextualHelpOutputSchema>;
-
-export async function provideContextualHelp(input: ProvideContextualHelpInput): Promise<ProvideContextualHelpOutput> {
-  return provideContextualHelpFlow(input);
+export interface ProvideContextualHelpInput {
+  userActivity: string;
+  pageContent: string;
+  userInfo?: string;
 }
 
-const prompt = ai.definePrompt({
-  name: 'provideContextualHelpPrompt',
-  input: {schema: ProvideContextualHelpInputSchema},
-  output: {schema: ProvideContextualHelpOutputSchema},
-  prompt: `You are a friendly and helpful AI career guidance avatar on the EduVoyager website. Your goal is to provide helpful and relevant guidance to students based on their questions and activity on the site.
+export interface ProvideContextualHelpOutput {
+  helpMessage: string;
+}
 
-  Here's information about the current user query and page content:
-
-  User Query: {{{userActivity}}}
-  Current Page: {{{pageContent}}}
-  User Info (if available): {{{userInfo}}}
-
-  Based on this information, provide a concise, helpful, and friendly response to the user's query. If the user asks a general question, provide a general answer. If their query is related to the current page, tailor your response to be more contextual.
-  If you don't know the answer, say so politely.
-`,
-});
-
-const provideContextualHelpFlow = ai.defineFlow(
-  {
-    name: 'provideContextualHelpFlow',
-    inputSchema: ProvideContextualHelpInputSchema,
-    outputSchema: ProvideContextualHelpOutputSchema,
-  },
-  async input => {
-    const {output} = await prompt(input);
-    return output!;
+// ------------------ LLM factory ------------------
+function getLLM() {
+  if (!process.env.GROQ_API_KEY) {
+    throw new Error("❌ Missing GROQ_API_KEY in .env");
   }
-);
+
+  return new ChatGroq({
+    // ✅ Valid Groq-supported model
+    model: "llama-3.1-8b-instant",
+    apiKey: process.env.GROQ_API_KEY,
+    temperature: 0.2,
+  });
+}
+
+// ------------------ Main function ------------------
+export async function provideContextualHelp(
+  input: ProvideContextualHelpInput
+): Promise<ProvideContextualHelpOutput> {
+  const { userActivity, pageContent, userInfo } = input;
+
+  const prompt = `
+You are a friendly and helpful AI career guidance avatar on the Nova AI website.
+Your goal is to provide helpful and relevant guidance to students based on their questions and activity on the site.
+
+User Query: ${userActivity}
+Current Page: ${pageContent}
+User Info (if available): ${userInfo ?? "N/A"}
+
+Instructions:
+- Always provide exactly 3 concise suggestions.
+- Explain each point with just a few words or a single short sentence.
+- Do NOT expand with detailed explanations unless the user explicitly asks.
+- If the input is NOT related to careers or education, reply exactly:
+  "I can only help with career and educational advice. Could you please rephrase your question?"
+- Keep answers minimal, clear, and structured.
+`;
+
+  const llm = getLLM();
+  const response = await llm.invoke([new HumanMessage(prompt)]);
+
+  return {
+    helpMessage: response.content as string,
+  };
+}

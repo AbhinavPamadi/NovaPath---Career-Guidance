@@ -1,20 +1,19 @@
-
-import type { Metadata } from 'next';
-import './globals.css';
-import { cn } from '@/lib/utils';
-import { Header } from '@/components/layout/header';
-import { BackgroundParticles } from '@/components/layout/background-particles';
-import { AIAvatar } from '@/components/layout/ai-avatar';
-import { Toaster } from '@/components/ui/toaster';
-import { Analytics } from "@vercel/analytics/react"
-import { ThemeProvider } from '@/components/layout/theme-provider';
-import { Footer } from '@/components/layout/footer';
-import { Providers } from '@/components/layout/auth-provider';
+import type { Metadata } from "next";
+import "./globals.css";
+import { cn } from "@/lib/utils";
+import { Header } from "@/components/layout/header";
+import { BackgroundParticles } from "@/components/layout/background-particles";
+import { AIAvatar } from "@/components/layout/ai-avatar";
+import { Toaster } from "@/components/ui/toaster";
+import { Analytics } from "@vercel/analytics/react";
+import { ThemeProvider } from "@/components/layout/theme-provider";
+import { Footer } from "@/components/layout/footer";
+import { Providers } from "@/components/layout/auth-provider";
 
 export const metadata: Metadata = {
-  title: 'NovaPath',
+  title: "NovaPath",
   description:
-    'Revolutionizing student career guidance with breathtaking aesthetics and immersive interactions.',
+    "Revolutionizing student career guidance with breathtaking aesthetics and immersive interactions.",
 };
 
 export default function RootLayout({
@@ -38,7 +37,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          'font-body antialiased bg-background text-foreground min-h-screen'
+          "font-body antialiased bg-background text-foreground min-h-screen"
         )}
         suppressHydrationWarning={true}
       >
