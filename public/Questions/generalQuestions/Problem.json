@@ -1,0 +1,398 @@
+{"problem_solving_creative": [
+    {
+      "question_id": "prob_1",
+      "question_text": "When facing a seemingly impossible deadline, your first response is to:",
+      "options": [
+        {
+          "option_text": "Analyze the requirements to identify what's truly essential versus nice-to-have",
+          "domain_weights": {"problem_solving": 2, "analytical": 1}
+        },
+        {
+          "option_text": "Brainstorm completely different approaches that might be faster",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Calculate exactly how much time each task requires and optimize the sequence",
+          "domain_weights": {"problem_solving": 1, "math": 2}
+        },
+        {
+          "option_text": "Rally the team and negotiate for additional resources or timeline adjustments",
+          "domain_weights": {"problem_solving": 1, "social": 2}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_2",
+      "question_text": "Your creative problem-solving process typically begins with:",
+      "options": [
+        {
+          "option_text": "Challenging assumptions about how the problem has been framed",
+          "domain_weights": {"problem_solving": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Generating as many ideas as possible without initial judgment",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Looking for analogies from completely different fields or industries",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Seeking input from diverse perspectives and backgrounds",
+          "domain_weights": {"problem_solving": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_3",
+      "question_text": "When traditional solutions aren't working, you tend to:",
+      "options": [
+        {
+          "option_text": "Deconstruct the problem to understand why conventional approaches fail",
+          "domain_weights": {"problem_solving": 2, "analytical": 2}
+        },
+        {
+          "option_text": "Experiment with radical alternatives, even if they seem unconventional",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Model different scenarios to test hypothetical solutions",
+          "domain_weights": {"problem_solving": 2, "math": 1}
+        },
+        {
+          "option_text": "Consult with others who have faced similar challenges",
+          "domain_weights": {"problem_solving": 1, "social": 2}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_4",
+      "question_text": "Your approach to innovation involves:",
+      "options": [
+        {
+          "option_text": "Systematically exploring the boundaries and constraints of current solutions",
+          "domain_weights": {"problem_solving": 2, "analytical": 1}
+        },
+        {
+          "option_text": "Combining existing ideas in novel and unexpected ways",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Using design thinking methodology to iterate on prototypes",
+          "domain_weights": {"problem_solving": 2, "visualization": 1}
+        },
+        {
+          "option_text": "Building on user feedback and real-world testing",
+          "domain_weights": {"problem_solving": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_5",
+      "question_text": "When stuck on a complex problem, you find breakthroughs by:",
+      "options": [
+        {
+          "option_text": "Taking breaks and letting your subconscious work on the problem",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Working backwards from the desired outcome",
+          "domain_weights": {"problem_solving": 2, "analytical": 1}
+        },
+        {
+          "option_text": "Sketching or visualizing the problem from different angles",
+          "domain_weights": {"problem_solving": 2, "visualization": 1}
+        },
+        {
+          "option_text": "Discussing the challenge with someone from a different field",
+          "domain_weights": {"problem_solving": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_6",
+      "question_text": "Your strength in lateral thinking is evident when you:",
+      "options": [
+        {
+          "option_text": "Find unexpected connections between seemingly unrelated concepts",
+          "domain_weights": {"problem_solving": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Deliberately seek out paradoxes and contradictions to explore",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Use random stimuli or chance operations to generate new ideas",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Ask 'what if' questions that challenge conventional thinking",
+          "domain_weights": {"problem_solving": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_7",
+      "question_text": "In brainstorming sessions, you contribute most by:",
+      "options": [
+        {
+          "option_text": "Building on others' ideas to create hybrid solutions",
+          "domain_weights": {"problem_solving": 3, "social": 1}
+        },
+        {
+          "option_text": "Introducing provocative questions that shift the group's thinking",
+          "domain_weights": {"problem_solving": 3, "social": 1}
+        },
+        {
+          "option_text": "Generating rapid-fire alternatives without filtering",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Ensuring all perspectives are heard and considered",
+          "domain_weights": {"problem_solving": 1, "social": 2}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_8",
+      "question_text": "Your creative confidence is highest when you're:",
+      "options": [
+        {
+          "option_text": "Working on problems where failure is a learning opportunity",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Given freedom to explore multiple solution paths",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Collaborating with other creative and open-minded people",
+          "domain_weights": {"problem_solving": 2, "social": 1}
+        },
+        {
+          "option_text": "Working on problems that have personal meaning or impact",
+          "domain_weights": {"problem_solving": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_9",
+      "question_text": "When evaluating creative solutions, you prioritize:",
+      "options": [
+        {
+          "option_text": "Feasibility and practical implementation considerations",
+          "domain_weights": {"problem_solving": 2, "analytical": 1}
+        },
+        {
+          "option_text": "Originality and potential for breakthrough impact",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Cost-effectiveness and resource requirements",
+          "domain_weights": {"problem_solving": 1, "math": 2}
+        },
+        {
+          "option_text": "Stakeholder acceptance and ease of adoption",
+          "domain_weights": {"problem_solving": 1, "social": 2}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_10",
+      "question_text": "Your approach to design thinking emphasizes:",
+      "options": [
+        {
+          "option_text": "Empathizing deeply with users to understand their real needs",
+          "domain_weights": {"problem_solving": 2, "social": 2}
+        },
+        {
+          "option_text": "Rapid prototyping and iterative testing of concepts",
+          "domain_weights": {"problem_solving": 3, "visualization": 1}
+        },
+        {
+          "option_text": "Defining problems clearly before jumping to solutions",
+          "domain_weights": {"problem_solving": 2, "analytical": 1}
+        },
+        {
+          "option_text": "Ideating without constraints before considering limitations",
+          "domain_weights": {"problem_solving": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_11",
+      "question_text": "When facing resource constraints, you innovate by:",
+      "options": [
+        {
+          "option_text": "Finding creative ways to repurpose existing resources",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Identifying the minimum viable solution that still meets core needs",
+          "domain_weights": {"problem_solving": 2, "analytical": 1}
+        },
+        {
+          "option_text": "Partnering with others to share resources and capabilities",
+          "domain_weights": {"problem_solving": 2, "social": 1}
+        },
+        {
+          "option_text": "Developing phased approaches that build value incrementally",
+          "domain_weights": {"problem_solving": 2, "analytical": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_12",
+      "question_text": "Your creative process is most productive when you:",
+      "options": [
+        {
+          "option_text": "Have dedicated time for unstructured exploration and play",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Work in environments that stimulate your senses and imagination",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Balance focused work with periods of relaxation and reflection",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Engage with diverse inputs like art, nature, or different cultures",
+          "domain_weights": {"problem_solving": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_13",
+      "question_text": "When leading change initiatives, you focus on:",
+      "options": [
+        {
+          "option_text": "Creating compelling visions that inspire people to embrace change",
+          "domain_weights": {"problem_solving": 2, "social": 2}
+        },
+        {
+          "option_text": "Designing experiments to test new approaches on a small scale",
+          "domain_weights": {"problem_solving": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Building coalitions and addressing resistance proactively",
+          "domain_weights": {"problem_solving": 1, "social": 2}
+        },
+        {
+          "option_text": "Identifying creative ways to make change feel less risky",
+          "domain_weights": {"problem_solving": 3, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_14",
+      "question_text": "Your approach to troubleshooting complex systems involves:",
+      "options": [
+        {
+          "option_text": "Thinking systemically about how components interact and influence each other",
+          "domain_weights": {"problem_solving": 2, "analytical": 2}
+        },
+        {
+          "option_text": "Experimenting with unconventional diagnostic approaches",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Using root cause analysis to prevent recurrence",
+          "domain_weights": {"problem_solving": 2, "analytical": 1}
+        },
+        {
+          "option_text": "Involving multiple stakeholders to get diverse perspectives on the issue",
+          "domain_weights": {"problem_solving": 1, "social": 2}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_15",
+      "question_text": "When facilitating creative workshops, you excel at:",
+      "options": [
+        {
+          "option_text": "Creating psychological safety where people feel free to take risks",
+          "domain_weights": {"problem_solving": 2, "social": 2}
+        },
+        {
+          "option_text": "Introducing creative constraints that spark innovative thinking",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Using diverse creative techniques and methodologies",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Helping groups build on ideas rather than criticizing them",
+          "domain_weights": {"problem_solving": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_16",
+      "question_text": "Your strength in ambiguity tolerance helps you:",
+      "options": [
+        {
+          "option_text": "Remain calm and creative when facing uncertain situations",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Explore multiple possibilities without rushing to conclusions",
+          "domain_weights": {"problem_solving": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Help others become more comfortable with uncertainty",
+          "domain_weights": {"problem_solving": 2, "social": 1}
+        },
+        {
+          "option_text": "Find opportunities hidden within chaotic or unclear situations",
+          "domain_weights": {"problem_solving": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_17",
+      "question_text": "When solving problems collaboratively, you contribute by:",
+      "options": [
+        {
+          "option_text": "Encouraging wild ideas and deferring judgment during ideation",
+          "domain_weights": {"problem_solving": 3, "social": 1}
+        },
+        {
+          "option_text": "Synthesizing different viewpoints into novel integrated solutions",
+          "domain_weights": {"problem_solving": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Facilitating productive conflict and healthy debate",
+          "domain_weights": {"problem_solving": 2, "social": 1}
+        },
+        {
+          "option_text": "Keeping the group focused on user needs and outcomes",
+          "domain_weights": {"problem_solving": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "prob_18",
+      "question_text": "Your creative problem-solving impact is greatest when you:",
+      "options": [
+        {
+          "option_text": "Reframe problems in ways that reveal previously hidden solutions",
+          "domain_weights": {"problem_solving": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Generate breakthrough innovations that disrupt traditional approaches",
+          "domain_weights": {"problem_solving": 3}
+        },
+        {
+          "option_text": "Help organizations become more adaptive and innovative",
+          "domain_weights": {"problem_solving": 2, "social": 2}
+        },
+        {
+          "option_text": "Create elegant solutions that address multiple problems simultaneously",
+          "domain_weights": {"problem_solving": 3, "analytical": 1}
+        }
+      ]
+    }
+  ]}

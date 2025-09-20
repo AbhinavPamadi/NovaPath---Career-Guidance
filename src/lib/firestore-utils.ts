@@ -10,6 +10,10 @@ export interface UserProfile {
   lastLogin?: Date;
   inferredSkills?: string[];
   quizResults?: QuizResult[];
+  // New two-tier quiz system fields
+  general_quiz_inferences?: any;
+  personalized_quiz_inferences?: any;
+  career_suggestions?: any;
 }
 
 export interface QuizResult {

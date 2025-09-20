@@ -1,6 +1,6 @@
 "use client";
 
-import { QuizWidget } from "@/components/quiz/quiz-widget";
+import { TwoTierQuiz } from "@/components/quiz/two-tier-quiz";
 
 export default function QuizPage() {
   return (
@@ -9,11 +9,12 @@ export default function QuizPage() {
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter font-headline holographic-text">
           Discover Your Path
         </h1>
-        <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Take our comprehensive career discovery quiz to uncover your ideal career direction based on your interests and preferences.
+        <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
+          Take our advanced two-tier career assessment to get personalized recommendations 
+          based on both your interests and demonstrated skills.
         </p>
       </div>
-      <QuizWidget />
+      <TwoTierQuiz />
     </div>
   );
 }

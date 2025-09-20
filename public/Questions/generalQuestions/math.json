@@ -1,0 +1,399 @@
+{
+"math_quantitative": [
+    {
+      "question_id": "math_1",
+      "question_text": "When analyzing business performance, you prefer to focus on:",
+      "options": [
+        {
+          "option_text": "Key performance indicators and their statistical significance",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Trend analysis and forecasting future performance",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Comparative analysis against industry benchmarks",
+          "domain_weights": {"math": 2, "analytical": 1}
+        },
+        {
+          "option_text": "Cost-benefit analysis of different strategic options",
+          "domain_weights": {"math": 2, "problem_solving": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "math_2",
+      "question_text": "Your approach to financial planning emphasizes:",
+      "options": [
+        {
+          "option_text": "Monte Carlo simulations to model different scenarios",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Compound interest calculations and time value of money",
+          "domain_weights": {"math": 3}
+        },
+        {
+          "option_text": "Risk assessment using statistical measures like standard deviation",
+          "domain_weights": {"math": 3}
+        },
+        {
+          "option_text": "Portfolio optimization based on correlation analysis",
+          "domain_weights": {"math": 3, "analytical": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "math_3",
+      "question_text": "When working with datasets, you're most comfortable:",
+      "options": [
+        {
+          "option_text": "Performing regression analysis to identify relationships between variables",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Calculating confidence intervals and statistical significance",
+          "domain_weights": {"math": 3}
+        },
+        {
+          "option_text": "Designing experiments to test hypotheses statistically",
+          "domain_weights": {"math": 2, "analytical": 2}
+        },
+        {
+          "option_text": "Creating mathematical models to predict future outcomes",
+          "domain_weights": {"math": 3, "problem_solving": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "math_4",
+      "question_text": "Your strength in quantitative reasoning is evident when you:",
+      "options": [
+        {
+          "option_text": "Quickly estimate orders of magnitude for complex calculations",
+          "domain_weights": {"math": 3}
+        },
+        {
+          "option_text": "Identify mathematical patterns in seemingly random data",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Convert between different units and measurement systems effortlessly",
+          "domain_weights": {"math": 3}
+        },
+        {
+          "option_text": "Understand the limitations and assumptions of mathematical models",
+          "domain_weights": {"math": 2, "analytical": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "math_5",
+      "question_text": "When solving optimization problems, you prefer to:",
+      "options": [
+        {
+          "option_text": "Use calculus-based methods to find analytical solutions",
+          "domain_weights": {"math": 3}
+        },
+        {
+          "option_text": "Apply linear programming techniques for constrained optimization",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Use iterative algorithms to approximate optimal solutions",
+          "domain_weights": {"math": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Employ sensitivity analysis to understand solution robustness",
+          "domain_weights": {"math": 3, "analytical": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "math_6",
+      "question_text": "Your approach to probability and risk assessment includes:",
+      "options": [
+        {
+          "option_text": "Using Bayesian methods to update probabilities with new information",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Applying probability distributions to model uncertain events",
+          "domain_weights": {"math": 3}
+        },
+        {
+          "option_text": "Calculating expected values for decision-making under uncertainty",
+          "domain_weights": {"math": 3, "problem_solving": 1}
+        },
+        {
+          "option_text": "Using decision trees to analyze complex probabilistic scenarios",
+          "domain_weights": {"math": 2, "analytical": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "math_7",
+      "question_text": "In quality control and process improvement, you focus on:",
+      "options": [
+        {
+          "option_text": "Statistical process control charts to monitor variation",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Calculating process capability indices and sigma levels",
+          "domain_weights": {"math": 3}
+        },
+        {
+          "option_text": "Using hypothesis testing to validate process improvements",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Applying design of experiments to optimize multiple factors",
+          "domain_weights": {"math": 2, "analytical": 2}
+        }
+      ]
+    },
+    {
+      "question_id": "math_8",
+      "question_text": "When working with time series data, you excel at:",
+      "options": [
+        {
+          "option_text": "Decomposing data into trend, seasonal, and irregular components",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Applying ARIMA models for forecasting future values",
+          "domain_weights": {"math": 3}
+        },
+        {
+          "option_text": "Identifying autocorrelation and seasonality patterns",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Using moving averages and exponential smoothing techniques",
+          "domain_weights": {"math": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "math_9",
+      "question_text": "Your mathematical modeling approach emphasizes:",
+      "options": [
+        {
+          "option_text": "Building parsimonious models that balance complexity and accuracy",
+          "domain_weights": {"math": 2, "analytical": 2}
+        },
+        {
+          "option_text": "Validating models using out-of-sample testing procedures",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Understanding the mathematical assumptions underlying each model",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Comparing multiple models using information criteria (AIC, BIC)",
+          "domain_weights": {"math": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "math_10",
+      "question_text": "In algorithmic problem-solving, you prefer:",
+      "options": [
+        {
+          "option_text": "Analyzing computational complexity and efficiency trade-offs",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Implementing dynamic programming solutions for optimization",
+          "domain_weights": {"math": 3, "problem_solving": 1}
+        },
+        {
+          "option_text": "Using graph theory algorithms for network problems",
+          "domain_weights": {"math": 2, "analytical": 1}
+        },
+        {
+          "option_text": "Applying machine learning algorithms for pattern recognition",
+          "domain_weights": {"math": 2, "problem_solving": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "math_11",
+      "question_text": "When conducting market research analysis, you focus on:",
+      "options": [
+        {
+          "option_text": "Sample size calculations and margin of error estimates",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Factor analysis to identify underlying customer segments",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Conjoint analysis to understand preference trade-offs",
+          "domain_weights": {"math": 3, "social": 1}
+        },
+        {
+          "option_text": "Chi-square tests for analyzing categorical relationships",
+          "domain_weights": {"math": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "math_12",
+      "question_text": "Your approach to numerical analysis includes:",
+      "options": [
+        {
+          "option_text": "Understanding convergence criteria and numerical stability",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Implementing iterative methods for solving equations",
+          "domain_weights": {"math": 3}
+        },
+        {
+          "option_text": "Using interpolation and approximation techniques",
+          "domain_weights": {"math": 3}
+        },
+        {
+          "option_text": "Applying numerical integration for complex functions",
+          "domain_weights": {"math": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "math_13",
+      "question_text": "In game theory and strategic decision-making, you:",
+      "options": [
+        {
+          "option_text": "Calculate Nash equilibria for competitive scenarios",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Use minimax algorithms for zero-sum games",
+          "domain_weights": {"math": 3, "problem_solving": 1}
+        },
+        {
+          "option_text": "Apply auction theory to pricing and bidding strategies",
+          "domain_weights": {"math": 2, "analytical": 1}
+        },
+        {
+          "option_text": "Model cooperative games using the Shapley value",
+          "domain_weights": {"math": 3, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "math_14",
+      "question_text": "When working with geometric and spatial calculations, you excel at:",
+      "options": [
+        {
+          "option_text": "Calculating areas, volumes, and surface areas of complex shapes",
+          "domain_weights": {"math": 3, "visualization": 1}
+        },
+        {
+          "option_text": "Using coordinate geometry for spatial analysis",
+          "domain_weights": {"math": 3, "visualization": 1}
+        },
+        {
+          "option_text": "Applying trigonometry to solve real-world measurement problems",
+          "domain_weights": {"math": 3}
+        },
+        {
+          "option_text": "Using vectors and matrices for spatial transformations",
+          "domain_weights": {"math": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "math_15",
+      "question_text": "Your computational thinking is strongest when you:",
+      "options": [
+        {
+          "option_text": "Translate real-world problems into mathematical formulations",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Optimize algorithms for better performance and efficiency",
+          "domain_weights": {"math": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Validate computational results through multiple approaches",
+          "domain_weights": {"math": 2, "analytical": 1}
+        },
+        {
+          "option_text": "Debug mathematical models by analyzing intermediate steps",
+          "domain_weights": {"math": 2, "analytical": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "math_16",
+      "question_text": "In operations research and logistics, you focus on:",
+      "options": [
+        {
+          "option_text": "Network flow optimization for transportation problems",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Inventory optimization using economic order quantity models",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Queueing theory for service system design",
+          "domain_weights": {"math": 3, "problem_solving": 1}
+        },
+        {
+          "option_text": "Simulation modeling for complex system analysis",
+          "domain_weights": {"math": 2, "problem_solving": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "math_17",
+      "question_text": "Your approach to error analysis and uncertainty quantification includes:",
+      "options": [
+        {
+          "option_text": "Propagating uncertainties through mathematical calculations",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Using sensitivity analysis to identify critical parameters",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Calculating confidence intervals for model predictions",
+          "domain_weights": {"math": 3}
+        },
+        {
+          "option_text": "Applying bootstrap methods for robust statistical inference",
+          "domain_weights": {"math": 3, "analytical": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "math_18",
+      "question_text": "Your quantitative problem-solving strength is best demonstrated when you:",
+      "options": [
+        {
+          "option_text": "Derive closed-form solutions to complex mathematical problems",
+          "domain_weights": {"math": 3}
+        },
+        {
+          "option_text": "Design mathematical frameworks for novel problem domains",
+          "domain_weights": {"math": 2, "problem_solving": 2}
+        },
+        {
+          "option_text": "Integrate multiple quantitative techniques to solve multifaceted problems",
+          "domain_weights": {"math": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Communicate complex mathematical concepts to non-technical audiences",
+          "domain_weights": {"math": 2, "social": 1}
+        }
+      ]
+    }
+  ]}

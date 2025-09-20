@@ -1,0 +1,398 @@
+{"analytical_reasoning": [
+    {
+      "question_id": "anal_1",
+      "question_text": "A research study claims that 90% of successful entrepreneurs wake up before 6 AM. What is your first concern about this claim?",
+      "options": [
+        {
+          "option_text": "The sample size and selection criteria for 'successful entrepreneurs'",
+          "domain_weights": {"analytical": 3, "math": 1}
+        },
+        {
+          "option_text": "Whether correlation implies causation in this context",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "How 'success' was defined and measured",
+          "domain_weights": {"analytical": 2, "math": 1}
+        },
+        {
+          "option_text": "The practical implications for aspiring entrepreneurs",
+          "domain_weights": {"analytical": 1, "problem_solving": 2}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_2",
+      "question_text": "You're analyzing a dataset and notice an unusual spike in one variable. Your systematic approach would be to:",
+      "options": [
+        {
+          "option_text": "Check for data entry errors, then examine external factors during that time period",
+          "domain_weights": {"analytical": 3, "math": 1}
+        },
+        {
+          "option_text": "Remove the outlier and continue with the analysis",
+          "domain_weights": {"analytical": 1, "math": 1}
+        },
+        {
+          "option_text": "Look for similar patterns in related variables",
+          "domain_weights": {"analytical": 2, "math": 2}
+        },
+        {
+          "option_text": "Brainstorm possible explanations with colleagues",
+          "domain_weights": {"analytical": 1, "social": 2}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_3",
+      "question_text": "Which logical fallacy are you most likely to identify in everyday arguments?",
+      "options": [
+        {
+          "option_text": "Ad hominem attacks that target the person rather than their argument",
+          "domain_weights": {"analytical": 3, "social": 1}
+        },
+        {
+          "option_text": "False dichotomies that present only two options when more exist",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Confirmation bias where people only seek supporting evidence",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Appeal to authority without considering the authority's expertise",
+          "domain_weights": {"analytical": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_4",
+      "question_text": "When reading a scientific paper, you focus most on:",
+      "options": [
+        {
+          "option_text": "The methodology section to evaluate the validity of conclusions",
+          "domain_weights": {"analytical": 3, "math": 1}
+        },
+        {
+          "option_text": "The discussion section to understand implications and limitations",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "The results section to examine the data and statistical significance",
+          "domain_weights": {"analytical": 2, "math": 2}
+        },
+        {
+          "option_text": "The abstract to quickly grasp the main findings",
+          "domain_weights": {"analytical": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_5",
+      "question_text": "You're tasked with improving a company's customer retention rate. Your analytical approach would start with:",
+      "options": [
+        {
+          "option_text": "Segmenting customers and analyzing retention patterns across segments",
+          "domain_weights": {"analytical": 3, "math": 1}
+        },
+        {
+          "option_text": "Conducting exit interviews to understand why customers leave",
+          "domain_weights": {"analytical": 2, "social": 1}
+        },
+        {
+          "option_text": "Mapping the customer journey to identify potential pain points",
+          "domain_weights": {"analytical": 2, "visualization": 1}
+        },
+        {
+          "option_text": "Benchmarking against industry standards and best practices",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_6",
+      "question_text": "When evaluating competing theories or models, you prioritize:",
+      "options": [
+        {
+          "option_text": "Empirical evidence and testable predictions",
+          "domain_weights": {"analytical": 3, "math": 1}
+        },
+        {
+          "option_text": "Logical consistency and internal coherence",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Simplicity and elegance (Occam's razor)",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Practical applicability and real-world utility",
+          "domain_weights": {"analytical": 1, "problem_solving": 2}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_7",
+      "question_text": "You discover contradictory information from two reliable sources. Your response is to:",
+      "options": [
+        {
+          "option_text": "Trace back to the original data sources to identify the discrepancy",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Look for a third independent source to help resolve the conflict",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Examine the methodologies used by each source",
+          "domain_weights": {"analytical": 3, "math": 1}
+        },
+        {
+          "option_text": "Consider that both might be partially correct in different contexts",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_8",
+      "question_text": "In a debate, you're most effective when you:",
+      "options": [
+        {
+          "option_text": "Present structured arguments with clear premises and conclusions",
+          "domain_weights": {"analytical": 3, "social": 1}
+        },
+        {
+          "option_text": "Systematically address each point raised by the opposition",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Use specific examples and case studies to support your points",
+          "domain_weights": {"analytical": 2, "social": 1}
+        },
+        {
+          "option_text": "Identify logical inconsistencies in opposing arguments",
+          "domain_weights": {"analytical": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_9",
+      "question_text": "When faced with incomplete information, you typically:",
+      "options": [
+        {
+          "option_text": "Identify what information is missing and seek it out systematically",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Make reasonable assumptions and clearly state your limitations",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Use statistical methods to estimate missing values",
+          "domain_weights": {"analytical": 2, "math": 2}
+        },
+        {
+          "option_text": "Postpone analysis until more complete data is available",
+          "domain_weights": {"analytical": 2}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_10",
+      "question_text": "Your approach to building a logical argument involves:",
+      "options": [
+        {
+          "option_text": "Starting with clear definitions and establishing common ground",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Building from simple premises to more complex conclusions",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Anticipating counterarguments and addressing them preemptively",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Using analogies and examples to make abstract concepts concrete",
+          "domain_weights": {"analytical": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_11",
+      "question_text": "When analyzing cause-and-effect relationships, you:",
+      "options": [
+        {
+          "option_text": "Look for temporal sequences and rule out alternative explanations",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Seek experimental or quasi-experimental evidence",
+          "domain_weights": {"analytical": 3, "math": 1}
+        },
+        {
+          "option_text": "Consider multiple potential causes and their interactions",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Examine the strength and consistency of the relationship",
+          "domain_weights": {"analytical": 2, "math": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_12",
+      "question_text": "Your systematic approach to problem diagnosis includes:",
+      "options": [
+        {
+          "option_text": "Creating a comprehensive list of potential causes before investigating",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Testing the most likely hypotheses first",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Gathering baseline data before implementing any changes",
+          "domain_weights": {"analytical": 2, "math": 1}
+        },
+        {
+          "option_text": "Looking for patterns in when and where problems occur",
+          "domain_weights": {"analytical": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_13",
+      "question_text": "When reviewing complex contracts or policies, you focus on:",
+      "options": [
+        {
+          "option_text": "Internal consistency and potential contradictions",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Specific clauses that could create unexpected obligations",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "The logical flow and structure of the document",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Comparing terms against industry standards",
+          "domain_weights": {"analytical": 2}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_14",
+      "question_text": "Your method for staying objective in analysis involves:",
+      "options": [
+        {
+          "option_text": "Actively seeking disconfirming evidence for your hypotheses",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Having others review your work for potential biases",
+          "domain_weights": {"analytical": 2, "social": 1}
+        },
+        {
+          "option_text": "Using structured frameworks to guide your analysis",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Clearly separating facts from interpretations in your reports",
+          "domain_weights": {"analytical": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_15",
+      "question_text": "When learning about a new field, you start by:",
+      "options": [
+        {
+          "option_text": "Understanding the fundamental principles and frameworks",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Identifying the key debates and controversies in the field",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Studying how experts in the field think and reason",
+          "domain_weights": {"analytical": 2, "social": 1}
+        },
+        {
+          "option_text": "Learning the specialized vocabulary and terminology",
+          "domain_weights": {"analytical": 2}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_16",
+      "question_text": "Your approach to evaluating the credibility of sources includes:",
+      "options": [
+        {
+          "option_text": "Checking the author's expertise and potential conflicts of interest",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Examining the publication's peer review process and standards",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Cross-referencing claims with other reliable sources",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Evaluating the quality of evidence presented",
+          "domain_weights": {"analytical": 3, "math": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_17",
+      "question_text": "When synthesizing information from multiple sources, you:",
+      "options": [
+        {
+          "option_text": "Create matrices or frameworks to compare different perspectives",
+          "domain_weights": {"analytical": 3, "visualization": 1}
+        },
+        {
+          "option_text": "Look for convergent themes while noting important disagreements",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Weight sources based on their reliability and relevance",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Identify gaps where additional research is needed",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_18",
+      "question_text": "Your strength in analytical thinking is best demonstrated when you:",
+      "options": [
+        {
+          "option_text": "Break down complex systems into their component parts",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Identify hidden assumptions in arguments or proposals",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Construct logical chains of reasoning to reach conclusions",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Recognize patterns and relationships that others miss",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        }
+      ]
+    }
+  ]}
