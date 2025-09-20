@@ -9,15 +9,14 @@ import {
   HeartHandshake,
   Users,
 } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { MessageSquare, ThumbsUp, AlertCircle, User } from "lucide-react";
+import { MessageSquare, ThumbsUp, AlertCircle } from "lucide-react";
 import { QuizWidget } from "@/components/quiz/quiz-widget";
 import { Translate } from "@/hooks/use-translation";
 
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-12 sm:py-24 overflow-hidden">
+      {/* Hero Section */}
       <div className="relative">
         <div className="absolute top-[-5rem] -left-24 w-72 h-72 bg-primary rounded-full mix-blend-lighten filter blur-3xl opacity-20 animate-float"></div>
         <div
@@ -25,11 +24,12 @@ export default function Home() {
           style={{ animationDelay: "2s" }}
         ></div>
       </div>
+
       <section className="text-center relative z-10">
         <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70 mb-6">
           <Translate text="Navigate Your Future with" />
           <span className="block bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary mt-2">
-            NovaPath
+            <Translate text="NovaPath" />
           </span>
         </h1>
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-10">
@@ -54,6 +54,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Quiz Section */}
       <section id="quiz" className="mt-24 md:mt-32 scroll-mt-20">
         <div className="text-center mb-12">
           <h2 className="font-headline text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
@@ -66,6 +67,7 @@ export default function Home() {
         <QuizWidget />
       </section>
 
+      {/* Features Section */}
       <section id="features" className="mt-24 md:mt-32 scroll-mt-20">
         <div className="text-center mb-12">
           <h2 className="font-headline text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
@@ -109,14 +111,14 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Feedback Section */}
       <section id="feedback" className="mt-24 md:mt-32 scroll-mt-20">
         <div className="text-center mb-12">
           <h2 className="font-headline text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-            Feedback Forum
+            <Translate text="Feedback Forum" />
           </h2>
           <p className="mt-2 text-lg text-muted-foreground">
-            Share your thoughts, suggestions, and help us improve NovaPath
-            together.
+            <Translate text="Share your thoughts, suggestions, and help us improve NovaPath together." />
           </p>
         </div>
 
@@ -126,11 +128,10 @@ export default function Home() {
               <MessageSquare className="h-8 w-8 text-primary" />
             </div>
             <h3 className="font-headline text-xl font-bold mb-2">
-              Share Feedback
+              <Translate text="Share Feedback" />
             </h3>
             <p className="text-muted-foreground text-sm">
-              Tell us what you think about NovaPath and how we can improve your
-              experience.
+              <Translate text="Tell us what you think about NovaPath and how we can improve your experience." />
             </p>
           </Card>
 
@@ -139,10 +140,10 @@ export default function Home() {
               <ThumbsUp className="h-8 w-8 text-primary" />
             </div>
             <h3 className="font-headline text-xl font-bold mb-2">
-              Vote on Ideas
+              <Translate text="Vote on Ideas" />
             </h3>
             <p className="text-muted-foreground text-sm">
-              Vote for the features and improvements that matter most to you.
+              <Translate text="Vote for the features and improvements that matter most to you." />
             </p>
           </Card>
 
@@ -151,11 +152,10 @@ export default function Home() {
               <AlertCircle className="h-8 w-8 text-primary" />
             </div>
             <h3 className="font-headline text-xl font-bold mb-2">
-              Report Issues
+              <Translate text="Report Issues" />
             </h3>
             <p className="text-muted-foreground text-sm">
-              Found a bug or something not working? Let us know so we can fix it
-              quickly.
+              <Translate text="Found a bug or something not working? Let us know so we can fix it quickly." />
             </p>
           </Card>
         </div>
@@ -167,7 +167,8 @@ export default function Home() {
             className="shadow-primary/50 shadow-lg hover:shadow-primary/50 hover:shadow-2xl transition-shadow"
           >
             <Link href="/feedback-forum">
-              Join the Discussion <ArrowRight className="ml-2 h-5 w-5" />
+              <Translate text="Join the Discussion" />{" "}
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
