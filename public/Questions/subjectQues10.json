@@ -1,0 +1,204 @@
+{
+  "grade10": [
+    {
+      "question_type": "math",
+      "question_text": "The value of 7 × 6 - 4 is:",
+      "options": [
+        {"option_text": "38", "domain_weights": {"math": 2}},
+        {"option_text": "35", "domain_weights": {"math": 0}},
+        {"option_text": "40", "domain_weights": {"math": 0}},
+        {"option_text": "42", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "science",
+      "question_text": "Which gas do plants release during photosynthesis?",
+      "options": [
+        {"option_text": "Carbon Dioxide", "domain_weights": {"science": 0}},
+        {"option_text": "Nitrogen", "domain_weights": {"science": 0}},
+        {"option_text": "Oxygen", "domain_weights": {"science": 2}},
+        {"option_text": "Hydrogen", "domain_weights": {"science": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "The perimeter of a rectangle with length 8 cm and width 3 cm is:",
+      "options": [
+        {"option_text": "24 cm", "domain_weights": {"math": 0}},
+        {"option_text": "22 cm", "domain_weights": {"math": 2}},
+        {"option_text": "20 cm", "domain_weights": {"math": 0}},
+        {"option_text": "18 cm", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "science",
+      "question_text": "The chemical formula of water is:",
+      "options": [
+        {"option_text": "CO2", "domain_weights": {"science": 0}},
+        {"option_text": "O2", "domain_weights": {"science": 0}},
+        {"option_text": "H2", "domain_weights": {"science": 0}},
+        {"option_text": "H2O", "domain_weights": {"science": 2}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "The square of 12 is:",
+      "options": [
+        {"option_text": "124", "domain_weights": {"math": 0}},
+        {"option_text": "134", "domain_weights": {"math": 0}},
+        {"option_text": "144", "domain_weights": {"math": 2}},
+        {"option_text": "142", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "science",
+      "question_text": "Which organ pumps blood throughout the human body?",
+      "options": [
+        {"option_text": "Heart", "domain_weights": {"science": 2}},
+        {"option_text": "Liver", "domain_weights": {"science": 0}},
+        {"option_text": "Kidney", "domain_weights": {"science": 0}},
+        {"option_text": "Lungs", "domain_weights": {"science": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "The area of a triangle with base 6 cm and height 4 cm is:",
+      "options": [
+        {"option_text": "10 cm²", "domain_weights": {"math": 0}},
+        {"option_text": "12 cm²", "domain_weights": {"math": 0}},
+        {"option_text": "24 cm²", "domain_weights": {"math": 0}},
+        {"option_text": "8 cm²", "domain_weights": {"math": 2}}
+      ]
+    },
+    {
+      "question_type": "science",
+      "question_text": "The SI unit of force is:",
+      "options": [
+        {"option_text": "Pascal", "domain_weights": {"science": 0}},
+        {"option_text": "Joule", "domain_weights": {"science": 0}},
+        {"option_text": "Newton", "domain_weights": {"science": 2}},
+        {"option_text": "Watt", "domain_weights": {"science": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "The square root of 196 is:",
+      "options": [
+        {"option_text": "12", "domain_weights": {"math": 0}},
+        {"option_text": "16", "domain_weights": {"math": 0}},
+        {"option_text": "14", "domain_weights": {"math": 2}},
+        {"option_text": "15", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "science",
+      "question_text": "Which planet is called the Red Planet?",
+      "options": [
+        {"option_text": "Mars", "domain_weights": {"science": 2}},
+        {"option_text": "Venus", "domain_weights": {"science": 0}},
+        {"option_text": "Saturn", "domain_weights": {"science": 0}},
+        {"option_text": "Jupiter", "domain_weights": {"science": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "If x + 5 = 12, what is x?",
+      "options": [
+        {"option_text": "17", "domain_weights": {"math": 0}},
+        {"option_text": "5", "domain_weights": {"math": 0}},
+        {"option_text": "7", "domain_weights": {"math": 2}},
+        {"option_text": "12", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "science",
+      "question_text": "Which vitamin is synthesized in human skin on exposure to sunlight?",
+      "options": [
+        {"option_text": "Vitamin A", "domain_weights": {"science": 0}},
+        {"option_text": "Vitamin C", "domain_weights": {"science": 0}},
+        {"option_text": "Vitamin D", "domain_weights": {"science": 2}},
+        {"option_text": "Vitamin K", "domain_weights": {"science": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "The value of π (pi) is approximately:",
+      "options": [
+        {"option_text": "3.15", "domain_weights": {"math": 0}},
+        {"option_text": "3.14", "domain_weights": {"math": 2}},
+        {"option_text": "3.41", "domain_weights": {"math": 0}},
+        {"option_text": "3.41", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "science",
+      "question_text": "Which gas is released when HCl reacts with Zn?",
+      "options": [
+        {"option_text": "Oxygen", "domain_weights": {"science": 0}},
+        {"option_text": "Nitrogen", "domain_weights": {"science": 0}},
+        {"option_text": "Hydrogen", "domain_weights": {"science": 2}},
+        {"option_text": "Chlorine", "domain_weights": {"science": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "The sum of the first 5 natural numbers is:",
+      "options": [
+        {"option_text": "10", "domain_weights": {"math": 0}},
+        {"option_text": "15", "domain_weights": {"math": 2}},
+        {"option_text": "20", "domain_weights": {"math": 0}},
+        {"option_text": "25", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "science",
+      "question_text": "The powerhouse of the cell is:",
+      "options": [
+        {"option_text": "Ribosome", "domain_weights": {"science": 0}},
+        {"option_text": "Mitochondria", "domain_weights": {"science": 2}},
+        {"option_text": "Nucleus", "domain_weights": {"science": 0}},
+        {"option_text": "Chloroplast", "domain_weights": {"science": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "If 5x = 20, what is x?",
+      "options": [
+        {"option_text": "5", "domain_weights": {"math": 0}},
+        {"option_text": "6", "domain_weights": {"math": 0}},
+        {"option_text": "4", "domain_weights": {"math": 2}},
+        {"option_text": "3", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "science",
+      "question_text": "Which planet is nearest to the Sun?",
+      "options": [
+        {"option_text": "Mercury", "domain_weights": {"science": 2}},
+        {"option_text": "Venus", "domain_weights": {"science": 0}},
+        {"option_text": "Earth", "domain_weights": {"science": 0}},
+        {"option_text": "Mars", "domain_weights": {"science": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "The value of 9² is:",
+      "options": [
+        {"option_text": "72", "domain_weights": {"math": 0}},
+        {"option_text": "79", "domain_weights": {"math": 0}},
+        {"option_text": "81", "domain_weights": {"math": 2}},
+        {"option_text": "90", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "science",
+      "question_text": "Which planet has a prominent ring system?",
+      "options": [
+        {"option_text": "Jupiter", "domain_weights": {"science": 0}},
+        {"option_text": "Mars", "domain_weights": {"science": 0}},
+        {"option_text": "Saturn", "domain_weights": {"science": 2}},
+        {"option_text": "Venus", "domain_weights": {"science": 0}}
+      ]
+    }
+  ]
+}

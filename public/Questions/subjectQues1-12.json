@@ -1,0 +1,124 @@
+{
+"grade12": [
+    {
+      "question_type": "physics",
+      "question_text": "The SI unit of electric charge is:",
+      "options": [
+        {"option_text": "Volt", "domain_weights": {"physics": 0}},
+        {"option_text": "Coulomb", "domain_weights": {"physics": 2}},
+        {"option_text": "Ampere", "domain_weights": {"physics": 0}},
+        {"option_text": "Ohm", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_type": "physics",
+      "question_text": "Which of the following is a scalar quantity?",
+      "options": [
+        {"option_text": "Velocity", "domain_weights": {"physics": 0}},
+        {"option_text": "Force", "domain_weights": {"physics": 0}},
+        {"option_text": "Speed", "domain_weights": {"physics": 2}},
+        {"option_text": "Acceleration", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_type": "chemistry",
+      "question_text": "The oxidation number of sulfur in H2SO4 is:",
+      "options": [
+        {"option_text": "2", "domain_weights": {"chemistry": 0}},
+        {"option_text": "6", "domain_weights": {"chemistry": 2}},
+        {"option_text": "4", "domain_weights": {"chemistry": 0}},
+        {"option_text": "0", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_type": "chemistry",
+      "question_text": "Which gas is released when HCl reacts with Zn?",
+      "options": [
+        {"option_text": "Oxygen", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Nitrogen", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Chlorine", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Hydrogen", "domain_weights": {"chemistry": 2}}
+      ]
+    },
+    {
+      "question_type": "biology",
+      "question_text": "Which vitamin is synthesized in human skin on exposure to sunlight?",
+      "options": [
+        {"option_text": "Vitamin A", "domain_weights": {"biology": 0}},
+        {"option_text": "Vitamin D", "domain_weights": {"biology": 2}},
+        {"option_text": "Vitamin C", "domain_weights": {"biology": 0}},
+        {"option_text": "Vitamin K", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_type": "biology",
+      "question_text": "The powerhouse of the cell is:",
+      "options": [
+        {"option_text": "Ribosome", "domain_weights": {"biology": 0}},
+        {"option_text": "Chloroplast", "domain_weights": {"biology": 0}},
+        {"option_text": "Nucleus", "domain_weights": {"biology": 0}},
+        {"option_text": "Mitochondria", "domain_weights": {"biology": 2}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "The derivative of e^x is:",
+      "options": [
+        {"option_text": "ln x", "domain_weights": {"math": 0}},
+        {"option_text": "e^x", "domain_weights": {"math": 2}},
+        {"option_text": "x e^x", "domain_weights": {"math": 0}},
+        {"option_text": "1/x", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "The sum of the first n natural numbers is:",
+      "options": [
+        {"option_text": "n(n-1)/2", "domain_weights": {"math": 0}},
+        {"option_text": "n^2+n", "domain_weights": {"math": 0}},
+        {"option_text": "n(n+1)/2", "domain_weights": {"math": 2}},
+        {"option_text": "n^2", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "physics",
+      "question_text": "A 5 kg object is moving with a velocity of 10 m/s. What is its kinetic energy?",
+      "options": [
+        {"option_text": "50 J", "domain_weights": {"physics": 0}},
+        {"option_text": "100 J", "domain_weights": {"physics": 0}},
+        {"option_text": "250 J", "domain_weights": {"physics": 2}},
+        {"option_text": "500 J", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_type": "chemistry",
+      "question_text": "Which compound is used as a bleaching agent in the textile industry?",
+      "options": [
+        {"option_text": "Sodium chloride", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Sodium hydroxide", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Sodium hypochlorite", "domain_weights": {"chemistry": 2}},
+        {"option_text": "Calcium carbonate", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_type": "biology",
+      "question_text": "Which hormone regulates the sleep-wake cycle in humans?",
+      "options": [
+        {"option_text": "Insulin", "domain_weights": {"biology": 0}},
+        {"option_text": "Melatonin", "domain_weights": {"biology": 2}},
+        {"option_text": "Adrenaline", "domain_weights": {"biology": 0}},
+        {"option_text": "Thyroxine", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "If the matrix A = [[1,2],[3,4]], what is det(A)?",
+      "options": [
+        {"option_text": "10", "domain_weights": {"math": 0}},
+        {"option_text": "2", "domain_weights": {"math": 0}},
+        {"option_text": "-2", "domain_weights": {"math": 2}},
+        {"option_text": "0", "domain_weights": {"math": 0}}
+      ]
+    }
+  ]
+}
