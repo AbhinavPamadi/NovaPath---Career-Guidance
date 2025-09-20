@@ -9,6 +9,23 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: false,
   },
+  // Add experimental features for better SSR handling
+  experimental: {
+    esmExternals: 'loose', // Handle ESM dependencies better
+  },
+  // Handle Firebase during build time
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      // Don't bundle Firebase for server-side code
+      config.externals = config.externals || [];
+      config.externals.push({
+        'firebase/app': 'firebase/app',
+        'firebase/auth': 'firebase/auth',
+        'firebase/firestore': 'firebase/firestore',
+      });
+    }
+    return config;
+  },
   images: {
     remotePatterns: [
       {

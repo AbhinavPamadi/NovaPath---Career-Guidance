@@ -3,7 +3,7 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { onAuthStateChanged, signOut as firebaseSignOut, User } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { auth, isFirebaseConfigured } from '@/lib/firebase';
 
 interface AuthContextType {
   user: User | null;
@@ -27,6 +27,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Check if Firebase is properly configured
+    if (!isFirebaseConfigured) {
+      setLoading(false);
+      setError('Firebase is not properly configured. Please check your environment variables.');
+      console.warn('Firebase configuration is missing or invalid. Authentication will not work.');
+      return;
+    }
+
     // Set up a timeout to prevent infinite loading
     const loadingTimeout = setTimeout(() => {
       if (loading) {
@@ -59,6 +67,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [loading]);
 
   const signOut = async () => {
+    if (!isFirebaseConfigured) {
+      setError('Firebase is not properly configured. Cannot sign out.');
+      return;
+    }
+    
     try {
       await firebaseSignOut(auth);
       setUser(null);
