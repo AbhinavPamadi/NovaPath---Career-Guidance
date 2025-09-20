@@ -1352,3 +1352,38 @@ export async function getUserInteractions(userId: string): Promise<UserInteracti
     };
   }
 }
+
+/**
+ * Safely converts Firestore timestamp to Date
+ * @param timestamp - Firestore timestamp (may be null)
+ * @returns Date object or current date if timestamp is null
+ */
+export function safeTimestampToDate(timestamp: Timestamp | null | undefined): Date {
+  if (!timestamp) {
+    return new Date();
+  }
+  try {
+    return timestamp.toDate();
+  } catch (error) {
+    console.warn('Error converting timestamp to date:', error);
+    return new Date();
+  }
+}
+
+/**
+ * Safely formats Firestore timestamp to relative time string
+ * @param timestamp - Firestore timestamp (may be null)
+ * @param fallback - Fallback string if timestamp is invalid
+ * @returns Formatted time string
+ */
+export function safeFormatRelativeTime(timestamp: Timestamp | null | undefined, fallback: string = 'Recently'): string {
+  if (!timestamp) {
+    return fallback;
+  }
+  try {
+    return timestamp.toDate().toLocaleString();
+  } catch (error) {
+    console.warn('Error formatting timestamp:', error);
+    return fallback;
+  }
+}

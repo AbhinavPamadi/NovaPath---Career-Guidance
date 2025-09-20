@@ -73,7 +73,7 @@ export function ForumAnswer({ answer, questionId }: { answer: ForumReply; questi
               {answer.isAnonymous ? 'Anonymous' : answer.authorName}
             </span>
             <span>•</span>
-            <span>{formatDistanceToNowStrict(answer.createdAt.toDate())} ago</span>
+            <span>{answer.createdAt ? formatDistanceToNowStrict(answer.createdAt.toDate()) : 'Recently'} ago</span>
             {answer.isAcceptedAnswer && (
               <>
                 <span>•</span>

@@ -146,7 +146,7 @@ export function QuestionCard({ question }: { question: ForumQuestion }) {
           </Avatar>
           <span>{question.isAnonymous ? 'Anonymous' : question.authorName}</span>
           <span>•</span>
-          <span>{formatDistanceToNowStrict(question.createdAt.toDate())} ago</span>
+          <span>{question.createdAt ? formatDistanceToNowStrict(question.createdAt.toDate()) : 'Recently'} ago</span>
           {question.views > 0 && (
             <>
               <span>•</span>

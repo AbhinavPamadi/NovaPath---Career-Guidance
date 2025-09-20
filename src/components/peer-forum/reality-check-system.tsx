@@ -512,7 +512,7 @@ export function RealityCheckSystem() {
                   
                   <div className="flex justify-between items-center pt-4 border-t">
                     <div className="text-sm text-muted-foreground">
-                      by {review.authorName} • {new Date(review.createdAt.seconds * 1000).toLocaleDateString()}
+                      by {review.authorName} • {review.createdAt?.seconds ? new Date(review.createdAt.seconds * 1000).toLocaleDateString() : 'Recently'}
                     </div>
                     <div className="flex items-center gap-4">
                       <div className="flex items-center gap-2">
