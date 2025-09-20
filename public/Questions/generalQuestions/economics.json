@@ -1,0 +1,202 @@
+[
+    {
+      "question_id": "econ_1",
+      "question_text": "What is the basic problem of economics?",
+      "options": [
+        {"option_text": "Scarcity", "domain_weights": {"economics": 3}},
+        {"option_text": "Abundance", "domain_weights": {"economics": -1}},
+        {"option_text": "Unemployment", "domain_weights": {"economics": 0}},
+        {"option_text": "Inflation", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_2",
+      "question_text": "What does GDP stand for?",
+      "options": [
+        {"option_text": "Gross Domestic Product", "domain_weights": {"economics": 3}},
+        {"option_text": "Gross Development Policy", "domain_weights": {"economics": -1}},
+        {"option_text": "General Domestic Price", "domain_weights": {"economics": 0}},
+        {"option_text": "Global Demand Production", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_3",
+      "question_text": "Which market structure has a single seller?",
+      "options": [
+        {"option_text": "Monopoly", "domain_weights": {"economics": 3}},
+        {"option_text": "Oligopoly", "domain_weights": {"economics": 0}},
+        {"option_text": "Perfect competition", "domain_weights": {"economics": -1}},
+        {"option_text": "Monopolistic competition", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_4",
+      "question_text": "Law of Demand states that:",
+      "options": [
+        {"option_text": "Price and demand are inversely related", "domain_weights": {"economics": 3}},
+        {"option_text": "Price and demand are directly related", "domain_weights": {"economics": -1}},
+        {"option_text": "Demand is independent of price", "domain_weights": {"economics": 0}},
+        {"option_text": "Supply creates its own demand", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_5",
+      "question_text": "Which is NOT a factor of production?",
+      "options": [
+        {"option_text": "Money", "domain_weights": {"economics": 3}},
+        {"option_text": "Land", "domain_weights": {"economics": 0}},
+        {"option_text": "Labor", "domain_weights": {"economics": 0}},
+        {"option_text": "Capital", "domain_weights": {"economics": -1}}
+      ]
+    },
+    {
+      "question_id": "econ_6",
+      "question_text": "Opportunity cost refers to:",
+      "options": [
+        {"option_text": "The next best alternative forgone", "domain_weights": {"economics": 3}},
+        {"option_text": "The total cost of production", "domain_weights": {"economics": -1}},
+        {"option_text": "The cost of labor", "domain_weights": {"economics": 0}},
+        {"option_text": "The sunk cost", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_7",
+      "question_text": "Which curve shows the trade-off between two goods?",
+      "options": [
+        {"option_text": "Production Possibility Curve", "domain_weights": {"economics": 3}},
+        {"option_text": "Indifference Curve", "domain_weights": {"economics": -1}},
+        {"option_text": "Demand Curve", "domain_weights": {"economics": 0}},
+        {"option_text": "Supply Curve", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_8",
+      "question_text": "Which policy is used by the central bank to control money supply?",
+      "options": [
+        {"option_text": "Monetary policy", "domain_weights": {"economics": 3}},
+        {"option_text": "Fiscal policy", "domain_weights": {"economics": -1}},
+        {"option_text": "Trade policy", "domain_weights": {"economics": 0}},
+        {"option_text": "Industrial policy", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_9",
+      "question_text": "Inflation refers to:",
+      "options": [
+        {"option_text": "General rise in prices", "domain_weights": {"economics": 3}},
+        {"option_text": "Decrease in prices", "domain_weights": {"economics": -1}},
+        {"option_text": "Increase in employment", "domain_weights": {"economics": 0}},
+        {"option_text": "Increase in exports", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_10",
+      "question_text": "Which economist is known as the father of economics?",
+      "options": [
+        {"option_text": "Adam Smith", "domain_weights": {"economics": 3}},
+        {"option_text": "Karl Marx", "domain_weights": {"economics": 0}},
+        {"option_text": "John Maynard Keynes", "domain_weights": {"economics": -1}},
+        {"option_text": "David Ricardo", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_11",
+      "question_text": "Which curve is associated with the trade-off between inflation and unemployment?",
+      "options": [
+        {"option_text": "Phillips Curve", "domain_weights": {"economics": 3}},
+        {"option_text": "Laffer Curve", "domain_weights": {"economics": 0}},
+        {"option_text": "Engel Curve", "domain_weights": {"economics": -1}},
+        {"option_text": "Lorenz Curve", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_12",
+      "question_text": "Which tax is regressive in nature?",
+      "options": [
+        {"option_text": "Indirect tax", "domain_weights": {"economics": 3}},
+        {"option_text": "Income tax", "domain_weights": {"economics": -1}},
+        {"option_text": "Corporate tax", "domain_weights": {"economics": 0}},
+        {"option_text": "Wealth tax", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_13",
+      "question_text": "What does 'Microeconomics' study?",
+      "options": [
+        {"option_text": "Individual economic units", "domain_weights": {"economics": 3}},
+        {"option_text": "The economy as a whole", "domain_weights": {"economics": -1}},
+        {"option_text": "International trade only", "domain_weights": {"economics": 0}},
+        {"option_text": "Government spending", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_14",
+      "question_text": "Which curve shows income inequality?",
+      "options": [
+        {"option_text": "Lorenz Curve", "domain_weights": {"economics": 3}},
+        {"option_text": "Phillips Curve", "domain_weights": {"economics": -1}},
+        {"option_text": "Laffer Curve", "domain_weights": {"economics": 0}},
+        {"option_text": "IS Curve", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_15",
+      "question_text": "Which of the following is a direct tax?",
+      "options": [
+        {"option_text": "Income tax", "domain_weights": {"economics": 3}},
+        {"option_text": "GST", "domain_weights": {"economics": -1}},
+        {"option_text": "Excise duty", "domain_weights": {"economics": 0}},
+        {"option_text": "Customs duty", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_16",
+      "question_text": "Which type of unemployment occurs due to changes in technology?",
+      "options": [
+        {"option_text": "Structural unemployment", "domain_weights": {"economics": 3}},
+        {"option_text": "Frictional unemployment", "domain_weights": {"economics": -1}},
+        {"option_text": "Seasonal unemployment", "domain_weights": {"economics": 0}},
+        {"option_text": "Cyclical unemployment", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_17",
+      "question_text": "Which measure shows average income of a country?",
+      "options": [
+        {"option_text": "Per capita income", "domain_weights": {"economics": 3}},
+        {"option_text": "GDP", "domain_weights": {"economics": 1}},
+        {"option_text": "GNP", "domain_weights": {"economics": 0}},
+        {"option_text": "National debt", "domain_weights": {"economics": -1}}
+      ]
+    },
+    {
+      "question_id": "econ_18",
+      "question_text": "Which policy uses government spending and taxation to influence the economy?",
+      "options": [
+        {"option_text": "Fiscal policy", "domain_weights": {"economics": 3}},
+        {"option_text": "Monetary policy", "domain_weights": {"economics": -1}},
+        {"option_text": "Trade policy", "domain_weights": {"economics": 0}},
+        {"option_text": "Agricultural policy", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_19",
+      "question_text": "Which curve shows relationship between tax rates and revenue?",
+      "options": [
+        {"option_text": "Laffer Curve", "domain_weights": {"economics": 3}},
+        {"option_text": "Phillips Curve", "domain_weights": {"economics": -1}},
+        {"option_text": "Lorenz Curve", "domain_weights": {"economics": 0}},
+        {"option_text": "Engel Curve", "domain_weights": {"economics": 0}}
+      ]
+    },
+    {
+      "question_id": "econ_20",
+      "question_text": "Which term refers to a long-term decline in the GDP of a country?",
+      "options": [
+        {"option_text": "Depression", "domain_weights": {"economics": 3}},
+        {"option_text": "Recession", "domain_weights": {"economics": 1}},
+        {"option_text": "Inflation", "domain_weights": {"economics": -1}},
+        {"option_text": "Deflation", "domain_weights": {"economics": 0}}
+      ]
+    }
+  ]

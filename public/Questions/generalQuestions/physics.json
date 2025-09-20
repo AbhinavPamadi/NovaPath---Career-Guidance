@@ -1,0 +1,202 @@
+[
+    {
+      "question_id": "phy_1",
+      "question_text": "What is the SI unit of force?",
+      "options": [
+        {"option_text": "Newton (N)", "domain_weights": {"physics": 3}},
+        {"option_text": "Joule (J)", "domain_weights": {"physics": -1}},
+        {"option_text": "Pascal (Pa)", "domain_weights": {"physics": 0}},
+        {"option_text": "Watt (W)", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_id": "phy_2",
+      "question_text": "Which law explains why we wear seatbelts in a moving car?",
+      "options": [
+        {"option_text": "Newton’s First Law of Motion", "domain_weights": {"physics": 3}},
+        {"option_text": "Newton’s Second Law of Motion", "domain_weights": {"physics": 1}},
+        {"option_text": "Newton’s Third Law of Motion", "domain_weights": {"physics": 1}},
+        {"option_text": "Law of Gravitation", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_id": "phy_3",
+      "question_text": "What type of lens is used in a magnifying glass?",
+      "options": [
+        {"option_text": "Convex lens", "domain_weights": {"physics": 3}},
+        {"option_text": "Concave lens", "domain_weights": {"physics": -1}},
+        {"option_text": "Cylindrical lens", "domain_weights": {"physics": 0}},
+        {"option_text": "Plano-concave lens", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_id": "phy_4",
+      "question_text": "What is the speed of light in vacuum?",
+      "options": [
+        {"option_text": "3 × 10^8 m/s", "domain_weights": {"physics": 3}},
+        {"option_text": "1.5 × 10^8 m/s", "domain_weights": {"physics": 0}},
+        {"option_text": "3 × 10^6 m/s", "domain_weights": {"physics": -1}},
+        {"option_text": "1 × 10^9 m/s", "domain_weights": {"physics": -1}}
+      ]
+    },
+    {
+      "question_id": "phy_5",
+      "question_text": "Which device is used to measure electric current?",
+      "options": [
+        {"option_text": "Ammeter", "domain_weights": {"physics": 3}},
+        {"option_text": "Voltmeter", "domain_weights": {"physics": -1}},
+        {"option_text": "Galvanometer", "domain_weights": {"physics": 1}},
+        {"option_text": "Ohmmeter", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_id": "phy_6",
+      "question_text": "What happens to the frequency of a wave when its wavelength increases while velocity remains constant?",
+      "options": [
+        {"option_text": "Frequency decreases", "domain_weights": {"physics": 3}},
+        {"option_text": "Frequency increases", "domain_weights": {"physics": -1}},
+        {"option_text": "Frequency remains constant", "domain_weights": {"physics": 0}},
+        {"option_text": "Frequency doubles", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_id": "phy_7",
+      "question_text": "Which law states that current is directly proportional to voltage and inversely proportional to resistance?",
+      "options": [
+        {"option_text": "Ohm’s Law", "domain_weights": {"physics": 3}},
+        {"option_text": "Coulomb’s Law", "domain_weights": {"physics": -1}},
+        {"option_text": "Faraday’s Law", "domain_weights": {"physics": 0}},
+        {"option_text": "Ampere’s Law", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_id": "phy_8",
+      "question_text": "Which type of mirror is used in car headlights?",
+      "options": [
+        {"option_text": "Concave mirror", "domain_weights": {"physics": 3}},
+        {"option_text": "Convex mirror", "domain_weights": {"physics": -1}},
+        {"option_text": "Plane mirror", "domain_weights": {"physics": 0}},
+        {"option_text": "Parabolic lens", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_id": "phy_9",
+      "question_text": "What is the SI unit of work?",
+      "options": [
+        {"option_text": "Joule (J)", "domain_weights": {"physics": 3}},
+        {"option_text": "Newton (N)", "domain_weights": {"physics": 0}},
+        {"option_text": "Watt (W)", "domain_weights": {"physics": -1}},
+        {"option_text": "Pascal (Pa)", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_id": "phy_10",
+      "question_text": "Which fundamental force keeps planets in orbit around the Sun?",
+      "options": [
+        {"option_text": "Gravitational force", "domain_weights": {"physics": 3}},
+        {"option_text": "Electromagnetic force", "domain_weights": {"physics": -1}},
+        {"option_text": "Nuclear force", "domain_weights": {"physics": 0}},
+        {"option_text": "Frictional force", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_id": "phy_11",
+      "question_text": "Which particle has no charge?",
+      "options": [
+        {"option_text": "Neutron", "domain_weights": {"physics": 3}},
+        {"option_text": "Proton", "domain_weights": {"physics": -1}},
+        {"option_text": "Electron", "domain_weights": {"physics": -1}},
+        {"option_text": "Positron", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_id": "phy_12",
+      "question_text": "What is the acceleration due to gravity on Earth?",
+      "options": [
+        {"option_text": "9.8 m/s²", "domain_weights": {"physics": 3}},
+        {"option_text": "8.9 m/s²", "domain_weights": {"physics": 0}},
+        {"option_text": "10.8 m/s²", "domain_weights": {"physics": 0}},
+        {"option_text": "7.8 m/s²", "domain_weights": {"physics": -1}}
+      ]
+    },
+    {
+      "question_id": "phy_13",
+      "question_text": "Which color of light has the highest frequency?",
+      "options": [
+        {"option_text": "Violet", "domain_weights": {"physics": 3}},
+        {"option_text": "Red", "domain_weights": {"physics": -1}},
+        {"option_text": "Green", "domain_weights": {"physics": 1}},
+        {"option_text": "Yellow", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_id": "phy_14",
+      "question_text": "Which physical quantity is measured in Pascals?",
+      "options": [
+        {"option_text": "Pressure", "domain_weights": {"physics": 3}},
+        {"option_text": "Force", "domain_weights": {"physics": -1}},
+        {"option_text": "Energy", "domain_weights": {"physics": 0}},
+        {"option_text": "Power", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_id": "phy_15",
+      "question_text": "Which device converts mechanical energy into electrical energy?",
+      "options": [
+        {"option_text": "Generator", "domain_weights": {"physics": 3}},
+        {"option_text": "Motor", "domain_weights": {"physics": -1}},
+        {"option_text": "Battery", "domain_weights": {"physics": 0}},
+        {"option_text": "Transformer", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_id": "phy_16",
+      "question_text": "Which phenomenon explains the bending of light when it enters water from air?",
+      "options": [
+        {"option_text": "Refraction", "domain_weights": {"physics": 3}},
+        {"option_text": "Reflection", "domain_weights": {"physics": -1}},
+        {"option_text": "Diffraction", "domain_weights": {"physics": 0}},
+        {"option_text": "Dispersion", "domain_weights": {"physics": 1}}
+      ]
+    },
+    {
+      "question_id": "phy_17",
+      "question_text": "Which scientist proposed the theory of relativity?",
+      "options": [
+        {"option_text": "Albert Einstein", "domain_weights": {"physics": 3}},
+        {"option_text": "Isaac Newton", "domain_weights": {"physics": 0}},
+        {"option_text": "Niels Bohr", "domain_weights": {"physics": 0}},
+        {"option_text": "Galileo Galilei", "domain_weights": {"physics": 1}}
+      ]
+    },
+    {
+      "question_id": "phy_18",
+      "question_text": "What is the function of a transformer?",
+      "options": [
+        {"option_text": "To change the voltage of AC", "domain_weights": {"physics": 3}},
+        {"option_text": "To convert AC to DC", "domain_weights": {"physics": -1}},
+        {"option_text": "To store electric charge", "domain_weights": {"physics": 0}},
+        {"option_text": "To measure resistance", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_id": "phy_19",
+      "question_text": "Which phenomenon makes the sky appear blue?",
+      "options": [
+        {"option_text": "Scattering of light", "domain_weights": {"physics": 3}},
+        {"option_text": "Reflection of light", "domain_weights": {"physics": -1}},
+        {"option_text": "Refraction of light", "domain_weights": {"physics": 0}},
+        {"option_text": "Dispersion of light", "domain_weights": {"physics": 1}}
+      ]
+    },
+    {
+      "question_id": "phy_20",
+      "question_text": "What is the SI unit of power?",
+      "options": [
+        {"option_text": "Watt (W)", "domain_weights": {"physics": 3}},
+        {"option_text": "Joule (J)", "domain_weights": {"physics": 0}},
+        {"option_text": "Newton (N)", "domain_weights": {"physics": -1}},
+        {"option_text": "Volt (V)", "domain_weights": {"physics": 0}}
+      ]
+    }
+  ]

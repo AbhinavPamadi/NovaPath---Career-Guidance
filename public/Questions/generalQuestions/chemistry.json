@@ -1,0 +1,202 @@
+[
+    {
+      "question_id": "chem_1",
+      "question_text": "What is the atomic number of Oxygen?",
+      "options": [
+        {"option_text": "8", "domain_weights": {"chemistry": 3}},
+        {"option_text": "16", "domain_weights": {"chemistry": -1}},
+        {"option_text": "6", "domain_weights": {"chemistry": 0}},
+        {"option_text": "12", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_2",
+      "question_text": "Which of the following is a noble gas?",
+      "options": [
+        {"option_text": "Helium", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Oxygen", "domain_weights": {"chemistry": -1}},
+        {"option_text": "Hydrogen", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Nitrogen", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_3",
+      "question_text": "What is the chemical formula of table salt?",
+      "options": [
+        {"option_text": "NaCl", "domain_weights": {"chemistry": 3}},
+        {"option_text": "KCl", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Na2SO4", "domain_weights": {"chemistry": -1}},
+        {"option_text": "CaCl2", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_4",
+      "question_text": "What type of bond involves the sharing of electron pairs between atoms?",
+      "options": [
+        {"option_text": "Covalent bond", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Ionic bond", "domain_weights": {"chemistry": -1}},
+        {"option_text": "Metallic bond", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Hydrogen bond", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_5",
+      "question_text": "Which acid is present in vinegar?",
+      "options": [
+        {"option_text": "Acetic acid", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Hydrochloric acid", "domain_weights": {"chemistry": -1}},
+        {"option_text": "Sulfuric acid", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Nitric acid", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_6",
+      "question_text": "Which gas is produced during photosynthesis?",
+      "options": [
+        {"option_text": "Oxygen", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Carbon dioxide", "domain_weights": {"chemistry": -1}},
+        {"option_text": "Nitrogen", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Methane", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_7",
+      "question_text": "What is the pH value of pure water at room temperature?",
+      "options": [
+        {"option_text": "7", "domain_weights": {"chemistry": 3}},
+        {"option_text": "0", "domain_weights": {"chemistry": -1}},
+        {"option_text": "14", "domain_weights": {"chemistry": 0}},
+        {"option_text": "5", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_8",
+      "question_text": "Which element is a halogen?",
+      "options": [
+        {"option_text": "Chlorine", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Oxygen", "domain_weights": {"chemistry": -1}},
+        {"option_text": "Sodium", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Magnesium", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_9",
+      "question_text": "What is the chemical formula of methane?",
+      "options": [
+        {"option_text": "CH4", "domain_weights": {"chemistry": 3}},
+        {"option_text": "C2H6", "domain_weights": {"chemistry": 0}},
+        {"option_text": "CO2", "domain_weights": {"chemistry": -1}},
+        {"option_text": "H2CO3", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_10",
+      "question_text": "Which scientist proposed the modern periodic table?",
+      "options": [
+        {"option_text": "Mendeleev", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Dalton", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Thomson", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Bohr", "domain_weights": {"chemistry": -1}}
+      ]
+    },
+    {
+      "question_id": "chem_11",
+      "question_text": "What is the common name of H2O2?",
+      "options": [
+        {"option_text": "Hydrogen peroxide", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Water", "domain_weights": {"chemistry": -1}},
+        {"option_text": "Hydroxide", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Hydride", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_12",
+      "question_text": "Which element has the highest electronegativity?",
+      "options": [
+        {"option_text": "Fluorine", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Oxygen", "domain_weights": {"chemistry": 1}},
+        {"option_text": "Chlorine", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Nitrogen", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_13",
+      "question_text": "What is the molar mass of water (H2O)?",
+      "options": [
+        {"option_text": "18 g/mol", "domain_weights": {"chemistry": 3}},
+        {"option_text": "20 g/mol", "domain_weights": {"chemistry": 0}},
+        {"option_text": "16 g/mol", "domain_weights": {"chemistry": -1}},
+        {"option_text": "10 g/mol", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_14",
+      "question_text": "What type of reaction is burning of methane?",
+      "options": [
+        {"option_text": "Combustion", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Decomposition", "domain_weights": {"chemistry": -1}},
+        {"option_text": "Neutralization", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Oxidation only", "domain_weights": {"chemistry": 1}}
+      ]
+    },
+    {
+      "question_id": "chem_15",
+      "question_text": "Which metal is liquid at room temperature?",
+      "options": [
+        {"option_text": "Mercury", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Iron", "domain_weights": {"chemistry": -1}},
+        {"option_text": "Aluminium", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Sodium", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_16",
+      "question_text": "What is the chemical symbol for Gold?",
+      "options": [
+        {"option_text": "Au", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Ag", "domain_weights": {"chemistry": -1}},
+        {"option_text": "Gd", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Go", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_17",
+      "question_text": "Which gas is known as 'laughing gas'?",
+      "options": [
+        {"option_text": "Nitrous oxide (N2O)", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Carbon monoxide (CO)", "domain_weights": {"chemistry": -1}},
+        {"option_text": "Ozone (O3)", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Sulfur dioxide (SO2)", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_18",
+      "question_text": "Which acid is used in car batteries?",
+      "options": [
+        {"option_text": "Sulfuric acid", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Hydrochloric acid", "domain_weights": {"chemistry": -1}},
+        {"option_text": "Nitric acid", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Phosphoric acid", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_19",
+      "question_text": "Which process is used to separate crude oil into fractions?",
+      "options": [
+        {"option_text": "Fractional distillation", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Filtration", "domain_weights": {"chemistry": -1}},
+        {"option_text": "Evaporation", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Sedimentation", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_id": "chem_20",
+      "question_text": "What is the most abundant gas in Earth’s atmosphere?",
+      "options": [
+        {"option_text": "Nitrogen", "domain_weights": {"chemistry": 3}},
+        {"option_text": "Oxygen", "domain_weights": {"chemistry": -1}},
+        {"option_text": "Carbon dioxide", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Argon", "domain_weights": {"chemistry": 1}}
+      ]
+    }
+  ]

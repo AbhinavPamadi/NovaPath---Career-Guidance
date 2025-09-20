@@ -1,0 +1,202 @@
+[
+    {
+      "question_id": "arts_1",
+      "question_text": "Who painted the Mona Lisa?",
+      "options": [
+        {"option_text": "Leonardo da Vinci", "domain_weights": {"arts": 3}},
+        {"option_text": "Michelangelo", "domain_weights": {"arts": 0}},
+        {"option_text": "Raphael", "domain_weights": {"arts": 0}},
+        {"option_text": "Vincent van Gogh", "domain_weights": {"arts": -1}}
+      ]
+    },
+    {
+      "question_id": "arts_2",
+      "question_text": "Which art movement is Pablo Picasso associated with?",
+      "options": [
+        {"option_text": "Cubism", "domain_weights": {"arts": 3}},
+        {"option_text": "Impressionism", "domain_weights": {"arts": -1}},
+        {"option_text": "Surrealism", "domain_weights": {"arts": 0}},
+        {"option_text": "Baroque", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_3",
+      "question_text": "The Starry Night is a famous work of which artist?",
+      "options": [
+        {"option_text": "Vincent van Gogh", "domain_weights": {"arts": 3}},
+        {"option_text": "Claude Monet", "domain_weights": {"arts": -1}},
+        {"option_text": "Salvador Dalí", "domain_weights": {"arts": 0}},
+        {"option_text": "Paul Cézanne", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_4",
+      "question_text": "Which style of painting is Claude Monet known for?",
+      "options": [
+        {"option_text": "Impressionism", "domain_weights": {"arts": 3}},
+        {"option_text": "Cubism", "domain_weights": {"arts": -1}},
+        {"option_text": "Expressionism", "domain_weights": {"arts": 0}},
+        {"option_text": "Realism", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_5",
+      "question_text": "The Sistine Chapel ceiling was painted by:",
+      "options": [
+        {"option_text": "Michelangelo", "domain_weights": {"arts": 3}},
+        {"option_text": "Leonardo da Vinci", "domain_weights": {"arts": 0}},
+        {"option_text": "Donatello", "domain_weights": {"arts": -1}},
+        {"option_text": "Raphael", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_6",
+      "question_text": "Which art form involves arranging materials such as paper and fabric into designs?",
+      "options": [
+        {"option_text": "Collage", "domain_weights": {"arts": 3}},
+        {"option_text": "Mosaic", "domain_weights": {"arts": 0}},
+        {"option_text": "Calligraphy", "domain_weights": {"arts": -1}},
+        {"option_text": "Sculpture", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_7",
+      "question_text": "Which painter is famous for melting clocks in 'The Persistence of Memory'?",
+      "options": [
+        {"option_text": "Salvador Dalí", "domain_weights": {"arts": 3}},
+        {"option_text": "Pablo Picasso", "domain_weights": {"arts": 0}},
+        {"option_text": "Claude Monet", "domain_weights": {"arts": -1}},
+        {"option_text": "Edvard Munch", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_8",
+      "question_text": "Which of these is a traditional Indian classical dance form?",
+      "options": [
+        {"option_text": "Bharatanatyam", "domain_weights": {"arts": 3}},
+        {"option_text": "Salsa", "domain_weights": {"arts": -1}},
+        {"option_text": "Ballet", "domain_weights": {"arts": 0}},
+        {"option_text": "Flamenco", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_9",
+      "question_text": "Which element is NOT part of the visual arts?",
+      "options": [
+        {"option_text": "Music", "domain_weights": {"arts": 3}},
+        {"option_text": "Painting", "domain_weights": {"arts": 0}},
+        {"option_text": "Sculpture", "domain_weights": {"arts": 0}},
+        {"option_text": "Drawing", "domain_weights": {"arts": -1}}
+      ]
+    },
+    {
+      "question_id": "arts_10",
+      "question_text": "Who painted 'The Last Supper'?",
+      "options": [
+        {"option_text": "Leonardo da Vinci", "domain_weights": {"arts": 3}},
+        {"option_text": "Michelangelo", "domain_weights": {"arts": -1}},
+        {"option_text": "Raphael", "domain_weights": {"arts": 0}},
+        {"option_text": "Titian", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_11",
+      "question_text": "Which of these is an example of performing arts?",
+      "options": [
+        {"option_text": "Theater", "domain_weights": {"arts": 3}},
+        {"option_text": "Painting", "domain_weights": {"arts": -1}},
+        {"option_text": "Architecture", "domain_weights": {"arts": 0}},
+        {"option_text": "Sculpture", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_12",
+      "question_text": "The painting 'The Scream' was created by:",
+      "options": [
+        {"option_text": "Edvard Munch", "domain_weights": {"arts": 3}},
+        {"option_text": "Van Gogh", "domain_weights": {"arts": -1}},
+        {"option_text": "Paul Gauguin", "domain_weights": {"arts": 0}},
+        {"option_text": "Claude Monet", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_13",
+      "question_text": "Which art style uses small dots of pure color applied in patterns?",
+      "options": [
+        {"option_text": "Pointillism", "domain_weights": {"arts": 3}},
+        {"option_text": "Surrealism", "domain_weights": {"arts": -1}},
+        {"option_text": "Realism", "domain_weights": {"arts": 0}},
+        {"option_text": "Cubism", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_14",
+      "question_text": "Which famous sculpture was created by Auguste Rodin?",
+      "options": [
+        {"option_text": "The Thinker", "domain_weights": {"arts": 3}},
+        {"option_text": "David", "domain_weights": {"arts": -1}},
+        {"option_text": "Venus de Milo", "domain_weights": {"arts": 0}},
+        {"option_text": "Pietà", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_15",
+      "question_text": "Which country is known for the art form of Origami?",
+      "options": [
+        {"option_text": "Japan", "domain_weights": {"arts": 3}},
+        {"option_text": "China", "domain_weights": {"arts": 0}},
+        {"option_text": "India", "domain_weights": {"arts": -1}},
+        {"option_text": "Korea", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_16",
+      "question_text": "Which artist cut off part of his own ear?",
+      "options": [
+        {"option_text": "Vincent van Gogh", "domain_weights": {"arts": 3}},
+        {"option_text": "Pablo Picasso", "domain_weights": {"arts": 0}},
+        {"option_text": "Claude Monet", "domain_weights": {"arts": -1}},
+        {"option_text": "Paul Cézanne", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_17",
+      "question_text": "Which of these is an example of applied arts?",
+      "options": [
+        {"option_text": "Fashion design", "domain_weights": {"arts": 3}},
+        {"option_text": "Opera", "domain_weights": {"arts": -1}},
+        {"option_text": "Sculpture", "domain_weights": {"arts": 0}},
+        {"option_text": "Poetry", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_18",
+      "question_text": "Which Indian artist is known as the 'Picasso of India'?",
+      "options": [
+        {"option_text": "M.F. Husain", "domain_weights": {"arts": 3}},
+        {"option_text": "Raja Ravi Varma", "domain_weights": {"arts": -1}},
+        {"option_text": "Amrita Sher-Gil", "domain_weights": {"arts": 0}},
+        {"option_text": "Jamini Roy", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_19",
+      "question_text": "Which of the following is a Renaissance artist?",
+      "options": [
+        {"option_text": "Raphael", "domain_weights": {"arts": 3}},
+        {"option_text": "Jackson Pollock", "domain_weights": {"arts": -1}},
+        {"option_text": "Frida Kahlo", "domain_weights": {"arts": 0}},
+        {"option_text": "Henri Matisse", "domain_weights": {"arts": 0}}
+      ]
+    },
+    {
+      "question_id": "arts_20",
+      "question_text": "Which of the following is an element of design in visual arts?",
+      "options": [
+        {"option_text": "Line", "domain_weights": {"arts": 3}},
+        {"option_text": "GDP", "domain_weights": {"arts": -1}},
+        {"option_text": "Market share", "domain_weights": {"arts": 0}},
+        {"option_text": "Gravity", "domain_weights": {"arts": 0}}
+      ]
+    }
+  ]

@@ -1,0 +1,202 @@
+[
+    {
+      "question_id": "bio_1",
+      "question_text": "Which organelle is known as the powerhouse of the cell?",
+      "options": [
+        {"option_text": "Nucleus", "domain_weights": {"biology": 0}},
+        {"option_text": "Mitochondria", "domain_weights": {"biology": 2}},
+        {"option_text": "Ribosome", "domain_weights": {"biology": 0}},
+        {"option_text": "Chloroplast", "domain_weights": {"biology": 1}}
+      ]
+    },
+    {
+      "question_id": "bio_2",
+      "question_text": "Which of the following carries genetic information?",
+      "options": [
+        {"option_text": "Proteins", "domain_weights": {"biology": 0}},
+        {"option_text": "DNA", "domain_weights": {"biology": 2}},
+        {"option_text": "Lipids", "domain_weights": {"biology": 0}},
+        {"option_text": "Carbohydrates", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_3",
+      "question_text": "Which blood cells are responsible for fighting infections?",
+      "options": [
+        {"option_text": "Red blood cells", "domain_weights": {"biology": 0}},
+        {"option_text": "White blood cells", "domain_weights": {"biology": 2}},
+        {"option_text": "Platelets", "domain_weights": {"biology": 0}},
+        {"option_text": "Plasma cells", "domain_weights": {"biology": 1}}
+      ]
+    },
+    {
+      "question_id": "bio_4",
+      "question_text": "What process do plants use to convert sunlight into chemical energy?",
+      "options": [
+        {"option_text": "Respiration", "domain_weights": {"biology": 0}},
+        {"option_text": "Photosynthesis", "domain_weights": {"biology": 2}},
+        {"option_text": "Fermentation", "domain_weights": {"biology": 0}},
+        {"option_text": "Transpiration", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_5",
+      "question_text": "Which part of the neuron receives signals from other neurons?",
+      "options": [
+        {"option_text": "Axon", "domain_weights": {"biology": 0}},
+        {"option_text": "Dendrites", "domain_weights": {"biology": 2}},
+        {"option_text": "Myelin sheath", "domain_weights": {"biology": 0}},
+        {"option_text": "Synapse", "domain_weights": {"biology": 1}}
+      ]
+    },
+    {
+      "question_id": "bio_6",
+      "question_text": "Which blood group is considered the universal donor?",
+      "options": [
+        {"option_text": "AB+", "domain_weights": {"biology": 0}},
+        {"option_text": "O-", "domain_weights": {"biology": 2}},
+        {"option_text": "A+", "domain_weights": {"biology": 0}},
+        {"option_text": "B-", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_7",
+      "question_text": "What is the main function of ribosomes?",
+      "options": [
+        {"option_text": "Protein synthesis", "domain_weights": {"biology": 2}},
+        {"option_text": "Energy production", "domain_weights": {"biology": 0}},
+        {"option_text": "DNA storage", "domain_weights": {"biology": 0}},
+        {"option_text": "Lipid breakdown", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_8",
+      "question_text": "Which part of the human brain controls balance and coordination?",
+      "options": [
+        {"option_text": "Cerebrum", "domain_weights": {"biology": 0}},
+        {"option_text": "Cerebellum", "domain_weights": {"biology": 2}},
+        {"option_text": "Medulla oblongata", "domain_weights": {"biology": 1}},
+        {"option_text": "Hypothalamus", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_9",
+      "question_text": "Which gas is produced during photosynthesis?",
+      "options": [
+        {"option_text": "Carbon dioxide", "domain_weights": {"biology": 0}},
+        {"option_text": "Oxygen", "domain_weights": {"biology": 2}},
+        {"option_text": "Nitrogen", "domain_weights": {"biology": 0}},
+        {"option_text": "Methane", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_10",
+      "question_text": "Which structure in plant cells stores water and nutrients?",
+      "options": [
+        {"option_text": "Chloroplast", "domain_weights": {"biology": 0}},
+        {"option_text": "Vacuole", "domain_weights": {"biology": 2}},
+        {"option_text": "Golgi apparatus", "domain_weights": {"biology": 0}},
+        {"option_text": "Nucleus", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_11",
+      "question_text": "Which scientist proposed the theory of natural selection?",
+      "options": [
+        {"option_text": "Gregor Mendel", "domain_weights": {"biology": 0}},
+        {"option_text": "Charles Darwin", "domain_weights": {"biology": 2}},
+        {"option_text": "Louis Pasteur", "domain_weights": {"biology": 0}},
+        {"option_text": "Robert Hooke", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_12",
+      "question_text": "Which organ is responsible for filtering blood in the human body?",
+      "options": [
+        {"option_text": "Liver", "domain_weights": {"biology": 1}},
+        {"option_text": "Kidneys", "domain_weights": {"biology": 2}},
+        {"option_text": "Heart", "domain_weights": {"biology": 0}},
+        {"option_text": "Lungs", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_13",
+      "question_text": "What type of blood circulation occurs between the heart and lungs?",
+      "options": [
+        {"option_text": "Systemic circulation", "domain_weights": {"biology": 0}},
+        {"option_text": "Pulmonary circulation", "domain_weights": {"biology": 2}},
+        {"option_text": "Coronary circulation", "domain_weights": {"biology": 1}},
+        {"option_text": "Lymphatic circulation", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_14",
+      "question_text": "Which pigment in plants captures light energy for photosynthesis?",
+      "options": [
+        {"option_text": "Carotene", "domain_weights": {"biology": 0}},
+        {"option_text": "Chlorophyll", "domain_weights": {"biology": 2}},
+        {"option_text": "Xanthophyll", "domain_weights": {"biology": 0}},
+        {"option_text": "Anthocyanin", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_15",
+      "question_text": "Which process produces gametes in humans?",
+      "options": [
+        {"option_text": "Mitosis", "domain_weights": {"biology": 0}},
+        {"option_text": "Meiosis", "domain_weights": {"biology": 2}},
+        {"option_text": "Binary fission", "domain_weights": {"biology": 0}},
+        {"option_text": "Budding", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_16",
+      "question_text": "Which vitamin is essential for blood clotting?",
+      "options": [
+        {"option_text": "Vitamin A", "domain_weights": {"biology": 0}},
+        {"option_text": "Vitamin K", "domain_weights": {"biology": 2}},
+        {"option_text": "Vitamin D", "domain_weights": {"biology": 0}},
+        {"option_text": "Vitamin C", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_17",
+      "question_text": "Which part of the flower produces pollen?",
+      "options": [
+        {"option_text": "Ovary", "domain_weights": {"biology": 0}},
+        {"option_text": "Anther", "domain_weights": {"biology": 2}},
+        {"option_text": "Style", "domain_weights": {"biology": 0}},
+        {"option_text": "Stigma", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_18",
+      "question_text": "Which human organ secretes insulin?",
+      "options": [
+        {"option_text": "Liver", "domain_weights": {"biology": 0}},
+        {"option_text": "Pancreas", "domain_weights": {"biology": 2}},
+        {"option_text": "Stomach", "domain_weights": {"biology": 0}},
+        {"option_text": "Gall bladder", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_19",
+      "question_text": "Which process involves the exchange of gases in the alveoli of lungs?",
+      "options": [
+        {"option_text": "Digestion", "domain_weights": {"biology": 0}},
+        {"option_text": "Respiration", "domain_weights": {"biology": 2}},
+        {"option_text": "Circulation", "domain_weights": {"biology": 0}},
+        {"option_text": "Excretion", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_id": "bio_20",
+      "question_text": "Which kingdom includes organisms like mushrooms and yeast?",
+      "options": [
+        {"option_text": "Plantae", "domain_weights": {"biology": 0}},
+        {"option_text": "Fungi", "domain_weights": {"biology": 2}},
+        {"option_text": "Protista", "domain_weights": {"biology": 0}},
+        {"option_text": "Monera", "domain_weights": {"biology": 0}}
+      ]
+    }
+  ]

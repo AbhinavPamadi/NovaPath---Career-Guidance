@@ -1,0 +1,202 @@
+[
+    {
+      "question_id": "comp_1",
+      "question_text": "Which of the following is an input device?",
+      "options": [
+        {"option_text": "Keyboard", "domain_weights": {"computer": 3}},
+        {"option_text": "Monitor", "domain_weights": {"computer": -1}},
+        {"option_text": "Printer", "domain_weights": {"computer": 0}},
+        {"option_text": "Speaker", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_2",
+      "question_text": "Which company developed the Windows operating system?",
+      "options": [
+        {"option_text": "Microsoft", "domain_weights": {"computer": 3}},
+        {"option_text": "Apple", "domain_weights": {"computer": 0}},
+        {"option_text": "Google", "domain_weights": {"computer": -1}},
+        {"option_text": "IBM", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_3",
+      "question_text": "What does 'URL' stand for?",
+      "options": [
+        {"option_text": "Uniform Resource Locator", "domain_weights": {"computer": 3}},
+        {"option_text": "Universal Record Locator", "domain_weights": {"computer": -1}},
+        {"option_text": "Uniform Retrieval Link", "domain_weights": {"computer": 0}},
+        {"option_text": "User Resource Link", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_4",
+      "question_text": "Which of these is NOT a programming language?",
+      "options": [
+        {"option_text": "Python", "domain_weights": {"computer": 0}},
+        {"option_text": "C++", "domain_weights": {"computer": 0}},
+        {"option_text": "HTML", "domain_weights": {"computer": -1}},
+        {"option_text": "Java", "domain_weights": {"computer": 3}}
+      ]
+    },
+    {
+      "question_id": "comp_5",
+      "question_text": "What is the brain of the computer?",
+      "options": [
+        {"option_text": "CPU", "domain_weights": {"computer": 3}},
+        {"option_text": "RAM", "domain_weights": {"computer": 0}},
+        {"option_text": "Hard Disk", "domain_weights": {"computer": -1}},
+        {"option_text": "Monitor", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_6",
+      "question_text": "Which protocol is used for sending emails?",
+      "options": [
+        {"option_text": "SMTP", "domain_weights": {"computer": 3}},
+        {"option_text": "HTTP", "domain_weights": {"computer": 0}},
+        {"option_text": "FTP", "domain_weights": {"computer": -1}},
+        {"option_text": "DNS", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_7",
+      "question_text": "Which storage device is permanent?",
+      "options": [
+        {"option_text": "Hard Disk Drive (HDD)", "domain_weights": {"computer": 3}},
+        {"option_text": "RAM", "domain_weights": {"computer": -1}},
+        {"option_text": "Cache Memory", "domain_weights": {"computer": 0}},
+        {"option_text": "Registers", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_8",
+      "question_text": "What does HTTP stand for?",
+      "options": [
+        {"option_text": "Hypertext Transfer Protocol", "domain_weights": {"computer": 3}},
+        {"option_text": "High Transfer Text Protocol", "domain_weights": {"computer": -1}},
+        {"option_text": "Hyper Transfer Technology Process", "domain_weights": {"computer": 0}},
+        {"option_text": "Hyper Terminal Test Protocol", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_9",
+      "question_text": "Which of these is an open-source operating system?",
+      "options": [
+        {"option_text": "Linux", "domain_weights": {"computer": 3}},
+        {"option_text": "Windows", "domain_weights": {"computer": 0}},
+        {"option_text": "MacOS", "domain_weights": {"computer": -1}},
+        {"option_text": "iOS", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_10",
+      "question_text": "Which device connects a computer to the internet?",
+      "options": [
+        {"option_text": "Router", "domain_weights": {"computer": 3}},
+        {"option_text": "Printer", "domain_weights": {"computer": -1}},
+        {"option_text": "Scanner", "domain_weights": {"computer": 0}},
+        {"option_text": "Keyboard", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_11",
+      "question_text": "Which company created the iPhone?",
+      "options": [
+        {"option_text": "Apple", "domain_weights": {"computer": 3}},
+        {"option_text": "Samsung", "domain_weights": {"computer": 0}},
+        {"option_text": "Microsoft", "domain_weights": {"computer": -1}},
+        {"option_text": "Nokia", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_12",
+      "question_text": "Which of the following is an example of cloud storage?",
+      "options": [
+        {"option_text": "Google Drive", "domain_weights": {"computer": 3}},
+        {"option_text": "USB Drive", "domain_weights": {"computer": 0}},
+        {"option_text": "External Hard Disk", "domain_weights": {"computer": -1}},
+        {"option_text": "CD/DVD", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_13",
+      "question_text": "Which shortcut is used to copy selected text on a computer?",
+      "options": [
+        {"option_text": "Ctrl + C", "domain_weights": {"computer": 3}},
+        {"option_text": "Ctrl + V", "domain_weights": {"computer": -1}},
+        {"option_text": "Ctrl + X", "domain_weights": {"computer": 0}},
+        {"option_text": "Ctrl + Z", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_14",
+      "question_text": "Which of these is an example of an antivirus software?",
+      "options": [
+        {"option_text": "Norton", "domain_weights": {"computer": 3}},
+        {"option_text": "MS Word", "domain_weights": {"computer": -1}},
+        {"option_text": "Excel", "domain_weights": {"computer": 0}},
+        {"option_text": "Photoshop", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_15",
+      "question_text": "Which programming language is mainly used for web development?",
+      "options": [
+        {"option_text": "JavaScript", "domain_weights": {"computer": 3}},
+        {"option_text": "Python", "domain_weights": {"computer": 0}},
+        {"option_text": "C", "domain_weights": {"computer": 0}},
+        {"option_text": "Assembly", "domain_weights": {"computer": -1}}
+      ]
+    },
+    {
+      "question_id": "comp_16",
+      "question_text": "What does 'IP' in IP address stand for?",
+      "options": [
+        {"option_text": "Internet Protocol", "domain_weights": {"computer": 3}},
+        {"option_text": "Internal Process", "domain_weights": {"computer": -1}},
+        {"option_text": "Interconnected Program", "domain_weights": {"computer": 0}},
+        {"option_text": "Input Protocol", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_17",
+      "question_text": "Which of these is NOT an operating system?",
+      "options": [
+        {"option_text": "Windows", "domain_weights": {"computer": 0}},
+        {"option_text": "Linux", "domain_weights": {"computer": 0}},
+        {"option_text": "Android", "domain_weights": {"computer": 0}},
+        {"option_text": "Oracle", "domain_weights": {"computer": 3}}
+      ]
+    },
+    {
+      "question_id": "comp_18",
+      "question_text": "Which part of the computer temporarily stores data and instructions?",
+      "options": [
+        {"option_text": "RAM", "domain_weights": {"computer": 3}},
+        {"option_text": "ROM", "domain_weights": {"computer": -1}},
+        {"option_text": "Hard Disk", "domain_weights": {"computer": 0}},
+        {"option_text": "Monitor", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_19",
+      "question_text": "Which company developed the Android operating system?",
+      "options": [
+        {"option_text": "Google", "domain_weights": {"computer": 3}},
+        {"option_text": "Apple", "domain_weights": {"computer": -1}},
+        {"option_text": "Microsoft", "domain_weights": {"computer": 0}},
+        {"option_text": "IBM", "domain_weights": {"computer": 0}}
+      ]
+    },
+    {
+      "question_id": "comp_20",
+      "question_text": "Which of these is used to uniquely identify a device on a network?",
+      "options": [
+        {"option_text": "IP Address", "domain_weights": {"computer": 3}},
+        {"option_text": "Gateway", "domain_weights": {"computer": 0}},
+        {"option_text": "DNS", "domain_weights": {"computer": -1}},
+        {"option_text": "Firewall", "domain_weights": {"computer": 0}}
+      ]
+    }
+  ]
