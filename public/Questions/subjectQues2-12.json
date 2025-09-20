@@ -1,0 +1,170 @@
+{
+  "physics": [
+    {
+      "question_type": "physics",
+      "question_text": "A car accelerates from rest at 2 m/s². What is its velocity after 5 seconds?",
+      "options": [
+        {"option_text": "5 m/s", "domain_weights": {"physics": 0}},
+        {"option_text": "10 m/s", "domain_weights": {"physics": 2}},
+        {"option_text": "15 m/s", "domain_weights": {"physics": 0}},
+        {"option_text": "8 m/s", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_type": "physics",
+      "question_text": "The energy stored in a stretched spring is called:",
+      "options": [
+        {"option_text": "Kinetic energy", "domain_weights": {"physics": 0}},
+        {"option_text": "Potential energy", "domain_weights": {"physics": 0}},
+        {"option_text": "Elastic potential energy", "domain_weights": {"physics": 2}},
+        {"option_text": "Mechanical energy", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_type": "physics",
+      "question_text": "Which of the following is an example of electromagnetic induction?",
+      "options": [
+        {"option_text": "Battery producing current", "domain_weights": {"physics": 0}},
+        {"option_text": "Moving a magnet through a coil", "domain_weights": {"physics": 2}},
+        {"option_text": "Charging a capacitor", "domain_weights": {"physics": 0}},
+        {"option_text": "Heating a wire with current", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_type": "physics",
+      "question_text": "Light travels fastest in:",
+      "options": [
+        {"option_text": "Glass", "domain_weights": {"physics": 0}},
+        {"option_text": "Air", "domain_weights": {"physics": 2}},
+        {"option_text": "Water", "domain_weights": {"physics": 0}},
+        {"option_text": "Diamond", "domain_weights": {"physics": 0}}
+      ]
+    }
+  ],
+  "chemistry": [
+    {
+      "question_type": "chemistry",
+      "question_text": "Which element is most reactive in the halogen group?",
+      "options": [
+        {"option_text": "Chlorine", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Fluorine", "domain_weights": {"chemistry": 2}},
+        {"option_text": "Bromine", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Iodine", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_type": "chemistry",
+      "question_text": "Which gas is commonly used in balloons due to being inert?",
+      "options": [
+        {"option_text": "Hydrogen", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Oxygen", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Helium", "domain_weights": {"chemistry": 2}},
+        {"option_text": "Nitrogen", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_type": "chemistry",
+      "question_text": "Which of the following is an amphoteric oxide?",
+      "options": [
+        {"option_text": "Na2O", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Al2O3", "domain_weights": {"chemistry": 2}},
+        {"option_text": "CO2", "domain_weights": {"chemistry": 0}},
+        {"option_text": "SO3", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_type": "chemistry",
+      "question_text": "pH of a neutral solution at 25°C is:",
+      "options": [
+        {"option_text": "7", "domain_weights": {"chemistry": 2}},
+        {"option_text": "0", "domain_weights": {"chemistry": 0}},
+        {"option_text": "14", "domain_weights": {"chemistry": 0}},
+        {"option_text": "1", "domain_weights": {"chemistry": 0}}
+      ]
+    }
+  ],
+  "biology": [
+    {
+      "question_type": "biology",
+      "question_text": "The structural unit of the kidney is:",
+      "options": [
+        {"option_text": "Neuron", "domain_weights": {"biology": 0}},
+        {"option_text": "Nephron", "domain_weights": {"biology": 2}},
+        {"option_text": "Alveolus", "domain_weights": {"biology": 0}},
+        {"option_text": "Bronchiole", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_type": "biology",
+      "question_text": "Which macromolecule is the main source of energy?",
+      "options": [
+        {"option_text": "Protein", "domain_weights": {"biology": 0}},
+        {"option_text": "Carbohydrates", "domain_weights": {"biology": 2}},
+        {"option_text": "Lipids", "domain_weights": {"biology": 0}},
+        {"option_text": "Nucleic acids", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_type": "biology",
+      "question_text": "Which blood cells help in clotting?",
+      "options": [
+        {"option_text": "RBC", "domain_weights": {"biology": 0}},
+        {"option_text": "WBC", "domain_weights": {"biology": 0}},
+        {"option_text": "Platelets", "domain_weights": {"biology": 2}},
+        {"option_text": "Plasma", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_type": "biology",
+      "question_text": "Which vitamin is essential for blood clotting?",
+      "options": [
+        {"option_text": "Vitamin A", "domain_weights": {"biology": 0}},
+        {"option_text": "Vitamin K", "domain_weights": {"biology": 2}},
+        {"option_text": "Vitamin C", "domain_weights": {"biology": 0}},
+        {"option_text": "Vitamin D", "domain_weights": {"biology": 0}}
+      ]
+    }
+  ],
+  "math": [
+    {
+      "question_type": "math",
+      "question_text": "The derivative of x³ is:",
+      "options": [
+        {"option_text": "3x²", "domain_weights": {"math": 2}},
+        {"option_text": "x²", "domain_weights": {"math": 0}},
+        {"option_text": "3x³", "domain_weights": {"math": 0}},
+        {"option_text": "x³/3", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "The solution of 2x - 5 = 9 is:",
+      "options": [
+        {"option_text": "x = 7", "domain_weights": {"math": 0}},
+        {"option_text": "x = 5", "domain_weights": {"math": 2}},
+        {"option_text": "x = 2", "domain_weights": {"math": 0}},
+        {"option_text": "x = -2", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "The integral of 2x dx is:",
+      "options": [
+        {"option_text": "x²/2 + C", "domain_weights": {"math": 0}},
+        {"option_text": "2x + C", "domain_weights": {"math": 0}},
+        {"option_text": "x² + C", "domain_weights": {"math": 2}},
+        {"option_text": "x + C", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "The sum of angles in a triangle is:",
+      "options": [
+        {"option_text": "360°", "domain_weights": {"math": 0}},
+        {"option_text": "180°", "domain_weights": {"math": 2}},
+        {"option_text": "90°", "domain_weights": {"math": 0}},
+        {"option_text": "270°", "domain_weights": {"math": 0}}
+      ]
+    }
+  ]
+}

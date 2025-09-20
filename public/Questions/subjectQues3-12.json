@@ -1,0 +1,170 @@
+{
+  "physics": [
+    {
+      "question_type": "physics",
+      "question_text": "The acceleration due to gravity on Earth is approximately:",
+      "options": [
+        {"option_text": "9.8 m/s²", "domain_weights": {"physics": 2}},
+        {"option_text": "10.8 m/s²", "domain_weights": {"physics": 0}},
+        {"option_text": "9.2 m/s²", "domain_weights": {"physics": 0}},
+        {"option_text": "8.9 m/s²", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_type": "physics",
+      "question_text": "Which phenomenon explains the bending of light when it passes from one medium to another?",
+      "options": [
+        {"option_text": "Reflection", "domain_weights": {"physics": 0}},
+        {"option_text": "Refraction", "domain_weights": {"physics": 2}},
+        {"option_text": "Diffraction", "domain_weights": {"physics": 0}},
+        {"option_text": "Polarization", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_type": "physics",
+      "question_text": "A wire of length L and cross-sectional area A has resistance R. If the length is doubled and area halved, the new resistance is:",
+      "options": [
+        {"option_text": "2R", "domain_weights": {"physics": 0}},
+        {"option_text": "4R", "domain_weights": {"physics": 2}},
+        {"option_text": "R/2", "domain_weights": {"physics": 0}},
+        {"option_text": "R/4", "domain_weights": {"physics": 0}}
+      ]
+    },
+    {
+      "question_type": "physics",
+      "question_text": "The time period of a simple pendulum is independent of:",
+      "options": [
+        {"option_text": "Length of pendulum", "domain_weights": {"physics": 0}},
+        {"option_text": "Acceleration due to gravity", "domain_weights": {"physics": 0}},
+        {"option_text": "Mass of the bob", "domain_weights": {"physics": 2}},
+        {"option_text": "Amplitude (for small angles)", "domain_weights": {"physics": 0}}
+      ]
+    }
+  ],
+  "chemistry": [
+    {
+      "question_type": "chemistry",
+      "question_text": "Which of the following is a noble gas?",
+      "options": [
+        {"option_text": "Neon", "domain_weights": {"chemistry": 2}},
+        {"option_text": "Nitrogen", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Oxygen", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Chlorine", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_type": "chemistry",
+      "question_text": "Which of these is an example of a covalent compound?",
+      "options": [
+        {"option_text": "NaCl", "domain_weights": {"chemistry": 0}},
+        {"option_text": "H2O", "domain_weights": {"chemistry": 2}},
+        {"option_text": "MgO", "domain_weights": {"chemistry": 0}},
+        {"option_text": "CaCl2", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_type": "chemistry",
+      "question_text": "Which of the following elements is a transition metal?",
+      "options": [
+        {"option_text": "Copper", "domain_weights": {"chemistry": 2}},
+        {"option_text": "Sodium", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Calcium", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Oxygen", "domain_weights": {"chemistry": 0}}
+      ]
+    },
+    {
+      "question_type": "chemistry",
+      "question_text": "Electrolysis of water produces:",
+      "options": [
+        {"option_text": "Oxygen at anode, hydrogen at cathode", "domain_weights": {"chemistry": 2}},
+        {"option_text": "Hydrogen at anode, oxygen at cathode", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Oxygen only", "domain_weights": {"chemistry": 0}},
+        {"option_text": "Hydrogen only", "domain_weights": {"chemistry": 0}}
+      ]
+    }
+  ],
+  "biology": [
+    {
+      "question_type": "biology",
+      "question_text": "Which organ produces insulin?",
+      "options": [
+        {"option_text": "Pancreas", "domain_weights": {"biology": 2}},
+        {"option_text": "Liver", "domain_weights": {"biology": 0}},
+        {"option_text": "Kidney", "domain_weights": {"biology": 0}},
+        {"option_text": "Spleen", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_type": "biology",
+      "question_text": "Which blood component transports oxygen?",
+      "options": [
+        {"option_text": "White blood cells", "domain_weights": {"biology": 0}},
+        {"option_text": "Red blood cells", "domain_weights": {"biology": 2}},
+        {"option_text": "Platelets", "domain_weights": {"biology": 0}},
+        {"option_text": "Plasma", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_type": "biology",
+      "question_text": "The process of conversion of light energy into chemical energy in plants is called:",
+      "options": [
+        {"option_text": "Fermentation", "domain_weights": {"biology": 0}},
+        {"option_text": "Transpiration", "domain_weights": {"biology": 0}},
+        {"option_text": "Photosynthesis", "domain_weights": {"biology": 2}},
+        {"option_text": "Respiration", "domain_weights": {"biology": 0}}
+      ]
+    },
+    {
+      "question_type": "biology",
+      "question_text": "Which part of the human brain regulates hunger and thirst?",
+      "options": [
+        {"option_text": "Cerebrum", "domain_weights": {"biology": 0}},
+        {"option_text": "Medulla oblongata", "domain_weights": {"biology": 0}},
+        {"option_text": "Hypothalamus", "domain_weights": {"biology": 2}},
+        {"option_text": "Cerebellum", "domain_weights": {"biology": 0}}
+      ]
+    }
+  ],
+  "math": [
+    {
+      "question_type": "math",
+      "question_text": "If f(x) = 2x² + 3x + 1, find f'(x):",
+      "options": [
+        {"option_text": "4x + 3", "domain_weights": {"math": 2}},
+        {"option_text": "2x + 3", "domain_weights": {"math": 0}},
+        {"option_text": "2x² + 3", "domain_weights": {"math": 0}},
+        {"option_text": "x² + 3x", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "The value of (3² + 4²)^(1/2) is:",
+      "options": [
+        {"option_text": "7", "domain_weights": {"math": 0}},
+        {"option_text": "5", "domain_weights": {"math": 2}},
+        {"option_text": "25", "domain_weights": {"math": 0}},
+        {"option_text": "6", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "If sin²θ + cos²θ = ?",
+      "options": [
+        {"option_text": "0", "domain_weights": {"math": 0}},
+        {"option_text": "1", "domain_weights": {"math": 2}},
+        {"option_text": "sin²θ", "domain_weights": {"math": 0}},
+        {"option_text": "cos²θ", "domain_weights": {"math": 0}}
+      ]
+    },
+    {
+      "question_type": "math",
+      "question_text": "The solution to the equation x² - 5x + 6 = 0 is:",
+      "options": [
+        {"option_text": "x = 2 or 3", "domain_weights": {"math": 2}},
+        {"option_text": "x = -2 or 3", "domain_weights": {"math": 0}},
+        {"option_text": "x = 1 or 6", "domain_weights": {"math": 0}},
+        {"option_text": "x = -1 or -6", "domain_weights": {"math": 0}}
+      ]
+    }
+  ]
+}
