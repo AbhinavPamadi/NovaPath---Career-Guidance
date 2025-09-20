@@ -10,6 +10,7 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Footer } from "@/components/layout/footer";
 import { Providers } from "@/components/layout/auth-provider";
 import { LanguageProvider } from "@/contexts/language-context";
+import { Logo } from "../components/icons/logo";
 
 export const metadata: Metadata = {
   title: "NovaPath",
@@ -50,15 +51,15 @@ export default function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
-            <div className="flex flex-col min-h-screen">
-              <BackgroundParticles />
-              <Header />
-              <main className="relative z-10 flex-grow">{children}</main>
-              <Footer />
-            </div>
-            <AIAvatar />
-            <Toaster />
-            <Analytics />
+              <div className="flex flex-col min-h-screen">
+                <BackgroundParticles />
+                <Header />
+                <main className="relative z-10 flex-grow">{children}</main>
+                <Footer />
+              </div>
+              <AIAvatar />
+              <Toaster />
+              <Analytics />
             </ThemeProvider>
           </LanguageProvider>
         </Providers>
