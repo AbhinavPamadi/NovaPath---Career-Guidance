@@ -90,6 +90,13 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
         throw new Error('Translation failed');
       }
 
+      // Check if response is JSON before parsing
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        const text = await response.text();
+        throw new Error(`Expected JSON response but received HTML: ${text.substring(0, 100)}`);
+      }
+
       const data = await response.json();
       const translatedText = data.translatedText || text;
 

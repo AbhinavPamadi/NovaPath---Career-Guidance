@@ -5,6 +5,14 @@ export async function fetchNewsByKeyword(keyword: string) {
     )}&apiKey=${"be76df14099e4cd286edf5e959907809"}`
   );
   if (!res.ok) throw new Error("Failed to fetch news");
+  
+  // Check if response is JSON before parsing
+  const contentType = res.headers.get("content-type");
+  if (!contentType || !contentType.includes("application/json")) {
+    const text = await res.text();
+    throw new Error(`Expected JSON response but received: ${text.substring(0, 100)}...`);
+  }
+  
   const data = await res.json();
   return data.articles; // list of news articles
 }

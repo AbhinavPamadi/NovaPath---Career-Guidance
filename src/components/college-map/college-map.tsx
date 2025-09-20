@@ -64,6 +64,14 @@ export function CollegeMap() {
         if (!response.ok) {
           throw new Error('Failed to load institutes data');
         }
+        
+        // Check if response is JSON before parsing
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          const text = await response.text();
+          throw new Error(`Expected JSON file but received: ${text.substring(0, 100)}...`);
+        }
+        
         const data: Institute[] = await response.json();
         setInstitutes(data);
       } catch (err) {
