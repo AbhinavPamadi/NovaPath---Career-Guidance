@@ -207,7 +207,7 @@ export default function ProfilePage() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Full Name</FormLabel>
-                    <FormControl><Input {...field} /></FormControl>
+                    <FormControl><Input {...field} value={field.value || ""} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -218,7 +218,7 @@ export default function ProfilePage() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Email Address</FormLabel>
-                    <FormControl><Input type="email" readOnly {...field} /></FormControl>
+                    <FormControl><Input type="email" readOnly {...field} value={field.value || ""} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -229,7 +229,7 @@ export default function ProfilePage() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Gender</FormLabel>
-                     <Select onValueChange={field.onChange} defaultValue={field.value}>
+                     <Select onValueChange={field.onChange} value={field.value || ""}>
                         <FormControl>
                           <SelectTrigger><SelectValue placeholder="Select a gender" /></SelectTrigger>
                         </FormControl>
@@ -250,7 +250,7 @@ export default function ProfilePage() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Phone Number</FormLabel>
-                    <FormControl><Input type="tel" {...field} /></FormControl>
+                    <FormControl><Input type="tel" {...field} value={field.value || ""} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -261,7 +261,7 @@ export default function ProfilePage() {
                 render={({ field }) => (
                   <FormItem className="md:col-span-2">
                     <FormLabel>Address</FormLabel>
-                    <FormControl><Textarea {...field} /></FormControl>
+                    <FormControl><Textarea {...field} value={field.value || ""} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -281,7 +281,7 @@ export default function ProfilePage() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>University or Organization</FormLabel>
-                    <FormControl><Input {...field} /></FormControl>
+                    <FormControl><Input {...field} value={field.value || ""} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -292,7 +292,7 @@ export default function ProfilePage() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Class or Grade</FormLabel>
-                    <FormControl><Input {...field} placeholder="e.g., 12th Grade, 2nd Year B.Tech" /></FormControl>
+                    <FormControl><Input {...field} value={field.value || ""} placeholder="e.g., 12th Grade, 2nd Year B.Tech" /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -303,7 +303,7 @@ export default function ProfilePage() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Age</FormLabel>
-                    <FormControl><Input type="number" {...field} /></FormControl>
+                    <FormControl><Input type="number" {...field} value={field.value || ""} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -314,7 +314,7 @@ export default function ProfilePage() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Hobbies and Interests</FormLabel>
-                    <FormControl><Textarea {...field} placeholder="e.g., Reading, coding, hiking" /></FormControl>
+                    <FormControl><Textarea {...field} value={field.value || ""} placeholder="e.g., Reading, coding, hiking" /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -325,7 +325,7 @@ export default function ProfilePage() {
                 render={({ field }) => (
                   <FormItem className="md:col-span-2">
                     <FormLabel>Skills</FormLabel>
-                    <FormControl><Textarea {...field} placeholder="e.g., Python, Graphic Design, Public Speaking" /></FormControl>
+                    <FormControl><Textarea {...field} value={field.value || ""} placeholder="e.g., Python, Graphic Design, Public Speaking" /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
