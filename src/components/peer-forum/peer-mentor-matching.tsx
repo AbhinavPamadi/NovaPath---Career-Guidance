@@ -12,6 +12,8 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Label } from '@/components/ui/label';
 import { ArrowRight, Search, UserCheck, Plus, Star, MapPin, GraduationCap, Briefcase, Calendar } from 'lucide-react';
 import { MentorProfile, getMentors, createMentorConnection, createMentorProfile, getMentorConnections } from '@/lib/firestore-utils';
+import { onSnapshot, collection, query, where, orderBy, limit } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 import { useAuth } from '@/hooks/use-auth';
 import { toast } from '@/hooks/use-toast';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -66,9 +68,25 @@ export function PeerMentorMatching() {
     menteeCapacity: 5
   });
 
-  // Load mentors on component mount
+  // Load mentors with real-time listener
   useEffect(() => {
-    loadMentors();
+    const q = query(
+      collection(db, 'mentors'),
+      where('isActive', '==', true),
+      orderBy('rating', 'desc'),
+      limit(50)
+    );
+    
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const mentorsList = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      } as MentorProfile));
+      setMentors(mentorsList);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
   }, []);
 
   // Filter mentors when search criteria change
@@ -76,22 +94,6 @@ export function PeerMentorMatching() {
     filterMentors();
   }, [mentors, searchTerm, selectedExpertise, selectedSubject, minYear]);
 
-  const loadMentors = async () => {
-    setLoading(true);
-    try {
-      const mentorsList = await getMentors();
-      setMentors(mentorsList);
-    } catch (error) {
-      console.error('Error loading mentors:', error);
-      toast({
-        title: "Error",
-        description: "Failed to load mentors. Please try again.",
-        variant: "destructive"
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const filterMentors = () => {
     let filtered = mentors;
@@ -223,7 +225,7 @@ export function PeerMentorMatching() {
       });
 
       setShowMentorForm(false);
-      loadMentors(); // Refresh the list
+      // Real-time listener will automatically update the list
     } catch (error) {
       console.error('Error creating mentor profile:', error);
       toast({
@@ -331,6 +333,89 @@ export function PeerMentorMatching() {
                         onChange={(e) => setMentorForm({...mentorForm, gpa: e.target.value})}
                       />
                     </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="currentRole">Current Role</Label>
+                      <Input
+                        id="currentRole"
+                        placeholder="e.g., Student, Intern, Developer"
+                        value={mentorForm.currentRole}
+                        onChange={(e) => setMentorForm({...mentorForm, currentRole: e.target.value})}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="company">Company/Organization</Label>
+                      <Input
+                        id="company"
+                        placeholder="e.g., Google, Microsoft, College"
+                        value={mentorForm.company}
+                        onChange={(e) => setMentorForm({...mentorForm, company: e.target.value})}
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <Label>Expertise Areas *</Label>
+                    <div className="grid grid-cols-3 gap-2 mt-2 max-h-32 overflow-y-auto p-2 border rounded">
+                      {EXPERTISE_OPTIONS.map(exp => (
+                        <Label key={exp} className="flex items-center space-x-2 text-sm cursor-pointer">
+                          <input
+                            type="checkbox"
+                            checked={mentorForm.expertise.includes(exp)}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setMentorForm({...mentorForm, expertise: [...mentorForm.expertise, exp]});
+                              } else {
+                                setMentorForm({...mentorForm, expertise: mentorForm.expertise.filter(x => x !== exp)});
+                              }
+                            }}
+                            className="w-4 h-4"
+                          />
+                          <span>{exp}</span>
+                        </Label>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <Label>Subjects *</Label>
+                    <div className="grid grid-cols-3 gap-2 mt-2 max-h-32 overflow-y-auto p-2 border rounded">
+                      {SUBJECT_OPTIONS.map(sub => (
+                        <Label key={sub} className="flex items-center space-x-2 text-sm cursor-pointer">
+                          <input
+                            type="checkbox"
+                            checked={mentorForm.subjects.includes(sub)}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setMentorForm({...mentorForm, subjects: [...mentorForm.subjects, sub]});
+                              } else {
+                                setMentorForm({...mentorForm, subjects: mentorForm.subjects.filter(x => x !== sub)});
+                              }
+                            }}
+                            className="w-4 h-4"
+                          />
+                          <span>{sub}</span>
+                        </Label>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="menteeCapacity">Mentee Capacity</Label>
+                    <Select value={mentorForm.menteeCapacity.toString()} 
+                            onValueChange={(value) => setMentorForm({...mentorForm, menteeCapacity: parseInt(value)})}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="1">1 mentee</SelectItem>
+                        <SelectItem value="3">3 mentees</SelectItem>
+                        <SelectItem value="5">5 mentees</SelectItem>
+                        <SelectItem value="10">10 mentees</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
                 

@@ -16,6 +16,25 @@ service cloud.firestore {
              resource.data.keys().hasAll(['authorId', 'authorName', 'createdAt']) &&
              resource.data.authorId == request.auth.uid;
     }
+    
+    function isValidMentor(resource) {
+      return isSignedIn() && 
+             resource.data.keys().hasAll(['userId', 'name', 'email', 'bio', 'degree', 'college', 'isActive']) &&
+             resource.data.userId == request.auth.uid;
+    }
+    
+    function isValidStudyBuddy(resource) {
+      return isSignedIn() && 
+             resource.data.keys().hasAll(['userId', 'name', 'email', 'bio', 'examsTags', 'isActive']) &&
+             resource.data.userId == request.auth.uid;
+    }
+    
+    function isValidReview(resource) {
+      return isSignedIn() && 
+             resource.data.keys().hasAll(['collegeName', 'courseName', 'rating', 'content', 'authorId']) &&
+             resource.data.authorId == request.auth.uid &&
+             resource.data.rating >= 1 && resource.data.rating <= 5;
+    }
 
     // Users collection - users can read all profiles but only edit their own
     match /users/{userId} {
@@ -50,11 +69,24 @@ service cloud.firestore {
     // Mentors collection
     match /mentors/{mentorId} {
       allow read: if true; // Public read for discovery
-      allow create: if isSignedIn() && 
-                    request.auth.uid == mentorId &&
-                    isValidUser(request.resource);
-      allow update: if isSignedIn() && request.auth.uid == mentorId;
-      allow delete: if isSignedIn() && request.auth.uid == mentorId;
+      allow create: if isValidMentor(request.resource);
+      allow update: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+      
+      // Mentor connections subcollection
+      match /connections/{connectionId} {
+        allow read: if isSignedIn() && 
+                    (resource.data.mentorId == request.auth.uid ||
+                     resource.data.studentId == request.auth.uid);
+        allow create: if isSignedIn() && 
+                      request.resource.data.studentId == request.auth.uid;
+        allow update: if isSignedIn() && 
+                      (resource.data.mentorId == request.auth.uid ||
+                       resource.data.studentId == request.auth.uid);
+        allow delete: if isSignedIn() && 
+                      (resource.data.mentorId == request.auth.uid ||
+                       resource.data.studentId == request.auth.uid);
+      }
     }
 
     // Mentor connections/requests
@@ -75,11 +107,24 @@ service cloud.firestore {
     // Study buddies collection
     match /studyBuddies/{buddyId} {
       allow read: if true; // Public read for discovery
-      allow create: if isSignedIn() && 
-                    request.auth.uid == buddyId &&
-                    isValidUser(request.resource);
-      allow update: if isSignedIn() && request.auth.uid == buddyId;
-      allow delete: if isSignedIn() && request.auth.uid == buddyId;
+      allow create: if isValidStudyBuddy(request.resource);
+      allow update: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+      
+      // Buddy connections subcollection
+      match /buddyConnections/{connectionId} {
+        allow read: if isSignedIn() && 
+                    (resource.data.senderId == request.auth.uid ||
+                     resource.data.receiverId == request.auth.uid);
+        allow create: if isSignedIn() && 
+                      request.resource.data.senderId == request.auth.uid;
+        allow update: if isSignedIn() && 
+                      (resource.data.senderId == request.auth.uid ||
+                       resource.data.receiverId == request.auth.uid);
+        allow delete: if isSignedIn() && 
+                      (resource.data.senderId == request.auth.uid ||
+                       resource.data.receiverId == request.auth.uid);
+      }
     }
 
     // Study buddy connections
@@ -100,9 +145,7 @@ service cloud.firestore {
     // Reviews collection (Reality Check)
     match /reviews/{reviewId} {
       allow read: if true; // Public read access
-      allow create: if isSignedIn() && 
-                    isValidUser(request.resource) &&
-                    request.resource.data.keys().hasAll(['collegeName', 'courseName', 'rating', 'content']);
+      allow create: if isValidReview(request.resource);
       allow update: if isOwner(resource) ||
                     (isSignedIn() && 
                      request.resource.data.diff(resource.data).affectedKeys()
