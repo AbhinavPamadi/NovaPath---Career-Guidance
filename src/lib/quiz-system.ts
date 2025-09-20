@@ -31,6 +31,8 @@ export interface GeneralQuizOption {
 export interface GeneralQuizQuestion {
   question_id: string;
   question_text: string;
+  question_type?: string;
+  image_path?: string; // For image-based questions like spatial reasoning
   options: GeneralQuizOption[];
 }
 
@@ -57,6 +59,7 @@ export interface PersonalizedQuizOption {
 export interface PersonalizedQuizQuestion {
   question_type?: string;
   question_text: string;
+  image_path?: string; // For image-based questions like spatial reasoning
   options: PersonalizedQuizOption[];
 }
 
@@ -168,9 +171,16 @@ export class AdaptiveThreeTierQuizSystem {
         const questions = data[domainKey];
         
         if (questions && questions.length > 0) {
-          // Select 5 non-repeating questions
+          // Select 5 non-repeating questions and ensure all fields are preserved
           const shuffled = [...questions].sort(() => Math.random() - 0.5);
-          selectedQuestions.push(...shuffled.slice(0, 5));
+          const selectedFromDomain = shuffled.slice(0, 5).map(q => ({
+            question_id: q.question_id,
+            question_text: q.question_text,
+            question_type: q.question_type,
+            image_path: q.image_path, // Preserve image path if present
+            options: q.options
+          }));
+          selectedQuestions.push(...selectedFromDomain);
         }
       } catch (error) {
         console.error(`Failed to load ${file}:`, error);
@@ -269,7 +279,8 @@ export class AdaptiveThreeTierQuizSystem {
           domainQuestions = data.map(item => ({
             question_text: item.question_text,
             options: item.options,
-            question_type: item.question_type || domain
+            question_type: item.question_type || domain,
+            image_path: item.image_path // Include image path for spatial questions
           }));
         } else {
           const dataKey = Object.keys(data)[0];
@@ -278,7 +289,8 @@ export class AdaptiveThreeTierQuizSystem {
             domainQuestions = rawQuestions.map(item => ({
               question_text: item.question_text,
               options: item.options,
-              question_type: item.question_type || domain
+              question_type: item.question_type || domain,
+              image_path: item.image_path // Include image path for spatial questions
             }));
           }
         }
@@ -353,7 +365,8 @@ export class AdaptiveThreeTierQuizSystem {
           domainQuestions = data.map(item => ({
             question_text: item.question_text,
             options: item.options,
-            question_type: item.question_type || domain
+            question_type: item.question_type || domain,
+            image_path: item.image_path // Include image path for spatial questions
           }));
         } else {
           // Object format with domain key
@@ -363,7 +376,8 @@ export class AdaptiveThreeTierQuizSystem {
             domainQuestions = rawQuestions.map(item => ({
               question_text: item.question_text,
               options: item.options,
-              question_type: item.question_type || domain
+              question_type: item.question_type || domain,
+              image_path: item.image_path // Include image path for spatial questions
             }));
           }
         }

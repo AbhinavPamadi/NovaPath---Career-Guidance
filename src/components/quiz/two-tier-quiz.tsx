@@ -411,6 +411,20 @@ export function TwoTierQuiz() {
           </CardTitle>
         </CardHeader>
         <CardContent className="p-8">
+          {/* Display image for image-based questions in Level 1 */}
+          {currentQuestion.image_path && (
+            <div className="mb-6 flex justify-center">
+              <img 
+                src={currentQuestion.image_path} 
+                alt="Question image"
+                className="max-w-full h-auto max-h-96 rounded-lg border border-border shadow-sm"
+                onError={(e) => {
+                  console.error('Failed to load Level 1 question image:', currentQuestion.image_path);
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            </div>
+          )}
           <div className="space-y-4 mb-8">
             {currentQuestion.options.map((option, index) => (
               <button
@@ -558,6 +572,20 @@ export function TwoTierQuiz() {
           </CardTitle>
         </CardHeader>
         <CardContent className="p-8">
+          {/* Display image for spatial reasoning questions */}
+          {currentQuestion.image_path && (
+            <div className="mb-6 flex justify-center">
+              <img 
+                src={currentQuestion.image_path} 
+                alt="Spatial reasoning question"
+                className="max-w-full h-auto max-h-96 rounded-lg border border-border shadow-sm"
+                onError={(e) => {
+                  console.error('Failed to load spatial question image:', currentQuestion.image_path);
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            </div>
+          )}
           <div className="space-y-4 mb-8">
             {currentQuestion.options.map((option, index) => (
               <button
