@@ -82,6 +82,9 @@ export interface AdaptiveQuizState {
   domain_question_pool: { [domain: string]: PersonalizedQuizQuestion[] };
   asked_questions: Set<string>;
   should_continue: { [domain: string]: boolean };
+  domain_confidence: { [domain: string]: number };
+  recent_performance: { [domain: string]: number[] }; // Track last 5 answers per domain
+  progression_trend: { [domain: string]: 'improving' | 'stable' | 'declining' | 'unknown' };
 }
 
 export interface PersonalizedQuizResults {
@@ -297,7 +300,10 @@ export class AdaptiveThreeTierQuizSystem {
       questions_correct: {},
       domain_question_pool: domainQuestionPool,
       asked_questions: new Set<string>(),
-      should_continue: {}
+      should_continue: {},
+      domain_confidence: {},
+      recent_performance: {},
+      progression_trend: {}
     };
 
     // Initialize counters for all domains
@@ -306,6 +312,9 @@ export class AdaptiveThreeTierQuizSystem {
       adaptiveState.questions_attempted[domain] = 0;
       adaptiveState.questions_correct[domain] = 0;
       adaptiveState.should_continue[domain] = true;
+      adaptiveState.domain_confidence[domain] = 0;
+      adaptiveState.recent_performance[domain] = [];
+      adaptiveState.progression_trend[domain] = 'unknown';
     });
 
     return adaptiveState;
@@ -383,66 +392,63 @@ export class AdaptiveThreeTierQuizSystem {
     // Check if we should stop (all domains completed or max questions reached)
     const shouldStop = selectedDomains.every(domain => 
       !state.should_continue[domain] || 
-      state.questions_attempted[domain] >= 15
+      state.questions_attempted[domain] >= 40
     );
     
     if (shouldStop) {
       return null;
     }
 
-    // Strategy: Prioritize domains that need more questions
+    // Enhanced strategy: Prioritize domains based on performance trends and confidence
     let targetDomain = null;
+    let highestPriority = -1;
     
-    // 1. First, check domains that are still eligible and below 75% accuracy
     for (const domain of selectedDomains) {
-      if (!state.should_continue[domain] || state.questions_attempted[domain] >= 15) continue;
+      if (!state.should_continue[domain] || state.questions_attempted[domain] >= 40) continue;
       
       const accuracy = state.questions_attempted[domain] > 0 
         ? state.questions_correct[domain] / state.questions_attempted[domain] 
         : 0;
       
-      // If accuracy < 75% and we have questions, prioritize this domain
-      if (accuracy < 0.75 && state.domain_question_pool[domain]?.length > 0) {
+      const attempts = state.questions_attempted[domain];
+      const confidence = state.domain_confidence[domain];
+      const trend = state.progression_trend[domain];
+      
+      // Calculate priority score for this domain
+      let priority = 0;
+      
+      // High priority for low accuracy domains
+      if (accuracy < 0.75) priority += 10;
+      
+      // High priority for improving trends
+      if (trend === 'improving') priority += 8;
+      
+      // Medium priority for declining trends (need more data)
+      if (trend === 'declining') priority += 6;
+      
+      // Low confidence domains need more questions
+      if (confidence < 0.6) priority += 5;
+      
+      // Ensure minimum exploration for all domains
+      if (attempts < 5) priority += 7;
+      
+      // Moderate exploration for medium-confidence domains
+      if (accuracy >= 0.60 && accuracy < 0.85 && attempts < 20) priority += 4;
+      
+      // Occasional testing of high-confidence domains
+      if (accuracy >= 0.85 && attempts < 15 && Math.random() < 0.3) priority += 2;
+      
+      if (priority > highestPriority && state.domain_question_pool[domain]?.length > 0) {
+        highestPriority = priority;
         targetDomain = domain;
-        break;
       }
     }
     
-    // 2. If no low-accuracy domains, check domains with high accuracy that still need exploration
-    if (!targetDomain) {
-      for (const domain of selectedDomains) {
-        if (!state.should_continue[domain] || state.questions_attempted[domain] >= 15) continue;
-        
-        const accuracy = state.questions_attempted[domain] > 0 
-          ? state.questions_correct[domain] / state.questions_attempted[domain] 
-          : 0;
-        
-        // If accuracy >= 75% but we haven't asked many questions yet, continue occasionally
-        if (accuracy >= 0.75 && state.questions_attempted[domain] < 8 && 
-            state.domain_question_pool[domain]?.length > 0) {
-          targetDomain = domain;
-          break;
-        }
-      }
-    }
-    
-    // 3. Always explore at least 1-2 questions from outside top domains occasionally
-    if (!targetDomain) {
-      // Find a domain we haven't explored much
-      for (const domain of selectedDomains) {
-        if (state.questions_attempted[domain] < 2 && 
-            state.domain_question_pool[domain]?.length > 0) {
-          targetDomain = domain;
-          break;
-        }
-      }
-    }
-    
-    // 4. Default: pick first available domain
+    // Fallback: if no domain was prioritized, pick first available domain
     if (!targetDomain) {
       targetDomain = selectedDomains.find(domain => 
         state.should_continue[domain] && 
-        state.questions_attempted[domain] < 15 &&
+        state.questions_attempted[domain] < 40 &&
         state.domain_question_pool[domain]?.length > 0
       );
     }
@@ -509,14 +515,56 @@ export class AdaptiveThreeTierQuizSystem {
       ? state.questions_correct[questionDomain] / state.questions_attempted[questionDomain]
       : 0;
     
-    // Update continuation decision based on 75% threshold
+    // Track recent performance (last 5 answers)
+    const recentPerf = state.recent_performance[questionDomain];
+    recentPerf.push(isCorrect ? 1 : 0);
+    if (recentPerf.length > 5) {
+      recentPerf.shift(); // Remove oldest
+    }
+    
+    // Calculate confidence based on consistency
     const accuracy = state.domain_accuracy[questionDomain];
     const attempts = state.questions_attempted[questionDomain];
     
-    // Stop asking questions from this domain if:
-    // 1. We've asked 15 questions, OR
-    // 2. We have high confidence (accuracy >= 75% with at least 4 questions)
-    if (attempts >= 15 || (accuracy >= 0.75 && attempts >= 4)) {
+    if (attempts >= 3) {
+      const recentAccuracy = recentPerf.reduce((sum, val) => sum + val, 0) / recentPerf.length;
+      const consistency = 1 - Math.abs(accuracy - recentAccuracy);
+      state.domain_confidence[questionDomain] = Math.min((accuracy + consistency) / 2, 1.0);
+    }
+    
+    // Update progression trend
+    if (attempts >= 6) {
+      const firstHalf = recentPerf.slice(0, Math.floor(recentPerf.length / 2));
+      const secondHalf = recentPerf.slice(Math.floor(recentPerf.length / 2));
+      
+      const firstHalfAvg = firstHalf.reduce((sum, val) => sum + val, 0) / firstHalf.length;
+      const secondHalfAvg = secondHalf.reduce((sum, val) => sum + val, 0) / secondHalf.length;
+      
+      const improvement = secondHalfAvg - firstHalfAvg;
+      
+      if (improvement > 0.2) {
+        state.progression_trend[questionDomain] = 'improving';
+      } else if (improvement < -0.2) {
+        state.progression_trend[questionDomain] = 'declining';
+      } else {
+        state.progression_trend[questionDomain] = 'stable';
+      }
+    }
+    
+    // Enhanced stopping criteria for better skill refinement:
+    // 1. We've asked 40 questions (absolute maximum), OR
+    // 2. High confidence: accuracy >= 85% with confidence >= 0.8 and at least 8 questions, OR
+    // 3. Stable high performance: accuracy >= 75% with stable trend and at least 12 questions, OR
+    // 4. Low performance plateau: accuracy < 50% with stable/declining trend and at least 15 questions, OR
+    // 5. High confidence reached: confidence >= 0.9 with at least 10 questions
+    const confidence = state.domain_confidence[questionDomain];
+    const trend = state.progression_trend[questionDomain];
+    
+    if (attempts >= 40 || 
+        (accuracy >= 0.85 && confidence >= 0.8 && attempts >= 8) ||
+        (accuracy >= 0.75 && trend === 'stable' && attempts >= 12) ||
+        (accuracy < 0.50 && (trend === 'stable' || trend === 'declining') && attempts >= 15) ||
+        (confidence >= 0.9 && attempts >= 10)) {
       state.should_continue[questionDomain] = false;
     }
     
@@ -952,34 +1000,62 @@ export class AdaptiveThreeTierQuizSystem {
   }
 
   /**
-   * Get adaptive quiz summary for UI display
+   * Get enhanced adaptive quiz summary for UI display
    */
   getAdaptiveQuizSummary(state: AdaptiveQuizState): {
     totalQuestionsAsked: number;
-    domainBreakdown: { [domain: string]: { attempted: number; accuracy: number; }};
+    domainBreakdown: { [domain: string]: { 
+      attempted: number; 
+      accuracy: number; 
+      confidence: number; 
+      trend: 'improving' | 'stable' | 'declining' | 'unknown';
+    }};
     overallProgress: number;
+    averageConfidence: number;
   } {
     const totalQuestionsAsked = Object.values(state.questions_attempted)
       .reduce((sum, count) => sum + count, 0);
     
-    const domainBreakdown: { [domain: string]: { attempted: number; accuracy: number; }} = {};
+    const domainBreakdown: { [domain: string]: { 
+      attempted: number; 
+      accuracy: number; 
+      confidence: number; 
+      trend: 'improving' | 'stable' | 'declining' | 'unknown';
+    }} = {};
+    
+    let totalConfidence = 0;
+    let confidenceCount = 0;
+    
     Object.keys(state.domain_accuracy).forEach(domain => {
+      const confidence = state.domain_confidence[domain] || 0;
       domainBreakdown[domain] = {
         attempted: state.questions_attempted[domain] || 0,
-        accuracy: state.domain_accuracy[domain] || 0
+        accuracy: state.domain_accuracy[domain] || 0,
+        confidence: confidence,
+        trend: state.progression_trend[domain] || 'unknown'
       };
+      
+      if (confidence > 0) {
+        totalConfidence += confidence;
+        confidenceCount++;
+      }
     });
     
-    // Calculate overall progress (0-1) based on domain completion
+    // Calculate overall progress (0-1) based on domain completion and confidence
     const totalDomains = Object.keys(state.should_continue).length;
     const completedDomains = Object.values(state.should_continue)
       .filter(shouldContinue => !shouldContinue).length;
-    const overallProgress = totalDomains > 0 ? completedDomains / totalDomains : 0;
+    const averageConfidence = confidenceCount > 0 ? totalConfidence / confidenceCount : 0;
+    
+    // Enhanced progress calculation: 70% completion + 30% confidence
+    const completionProgress = totalDomains > 0 ? completedDomains / totalDomains : 0;
+    const overallProgress = (completionProgress * 0.7) + (averageConfidence * 0.3);
     
     return {
       totalQuestionsAsked,
       domainBreakdown,
-      overallProgress
+      overallProgress: Math.min(overallProgress, 1.0),
+      averageConfidence
     };
   }
 }

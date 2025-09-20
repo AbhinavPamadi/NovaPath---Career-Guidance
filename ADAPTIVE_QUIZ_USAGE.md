@@ -13,14 +13,16 @@ The new **Adaptive Three-Tier Quiz System** replaces the legacy fixed Two-Tier Q
 - **Output**: Ranked domain list with scores
 - **Storage**: `general_quiz_inferences` in Firestore
 
-### Level 2 — Adaptive Skill Assessment (Personalized Quiz)
-- **Goal**: Evaluate actual competency using dynamic questioning
-- **Adaptive Rules**:
-  - 75% accuracy threshold per domain
-  - Maximum 15 questions per domain
-  - Dynamic exploration of weaker domains
-  - Occasional testing of strong domains
-- **Storage**: `personalized_quiz_inferences` with accuracy metrics
+### Level 2 — Enhanced Adaptive Skill Assessment (Personalized Quiz)
+- **Goal**: Evaluate actual competency using intelligent dynamic questioning
+- **Enhanced Adaptive Rules**:
+  - **Maximum 40 questions per domain** (increased from 15)
+  - **Dynamic stopping criteria** based on performance trends and confidence
+  - **Intelligent prioritization** using performance trends and confidence levels
+  - **Progressive tracking** of recent performance (last 5 answers)
+  - **Trend analysis**: detecting improving, stable, or declining performance
+  - **Confidence scoring**: based on accuracy consistency
+- **Storage**: `personalized_quiz_inferences` with comprehensive metrics
 
 ### Level 3 — Career Recommendations
 - **Goal**: Match interests + skills to career paths
@@ -153,18 +155,34 @@ recommendations.forEach(rec => {
 await quizSystem.saveCareerSuggestions(userId, userInterests, userSkills, recommendations);
 ```
 
-### Monitoring Quiz Progress
+### Enhanced Progress Monitoring
 
 ```typescript
-// Get real-time summary during adaptive quiz
+// Get comprehensive real-time summary during adaptive quiz
 const summary = quizSystem.getAdaptiveQuizSummary(adaptiveState);
 
 console.log(`Total questions asked: ${summary.totalQuestionsAsked}`);
 console.log(`Overall progress: ${Math.round(summary.overallProgress * 100)}%`);
+console.log(`Average confidence: ${Math.round(summary.averageConfidence * 100)}%`);
 
 Object.entries(summary.domainBreakdown).forEach(([domain, stats]) => {
-  console.log(`${domain}: ${stats.attempted} questions, ${Math.round(stats.accuracy * 100)}% accuracy`);
+  console.log(`${domain}:`);
+  console.log(`  Questions: ${stats.attempted}/40`);
+  console.log(`  Accuracy: ${Math.round(stats.accuracy * 100)}%`);
+  console.log(`  Confidence: ${Math.round(stats.confidence * 100)}%`);
+  console.log(`  Trend: ${stats.trend}`);
+  
+  // Determine if domain assessment is complete
+  const isComplete = !adaptiveState.should_continue[domain];
+  console.log(`  Status: ${isComplete ? 'Complete' : 'In Progress'}`);
 });
+
+// Dynamic stopping prediction
+const remainingDomains = Object.entries(adaptiveState.should_continue)
+  .filter(([domain, shouldContinue]) => shouldContinue)
+  .map(([domain]) => domain);
+
+console.log(`Remaining domains: ${remainingDomains.join(', ')}`);
 ```
 
 ### Checking User Progress
@@ -191,16 +209,27 @@ if (progress.hasCareerSuggestions) {
 
 ## Key Features
 
-### Adaptive Logic
-- **75% Accuracy Threshold**: Questions continue for domains below 75% accuracy
-- **Maximum 15 Questions**: Per domain limit prevents over-testing
-- **Smart Exploration**: Always tests 1-2 questions from non-primary domains
-- **Dynamic Stopping**: Stops when confidence achieved or limits reached
+### Enhanced Adaptive Logic
+- **Intelligent Question Selection**: Priority-based system considering:
+  - Performance trends (improving/stable/declining)
+  - Confidence levels (accuracy consistency)
+  - Domain exploration requirements
+  - Recent performance patterns
+- **Maximum 40 Questions**: Per domain limit for thorough assessment
+- **Dynamic Stopping Criteria**:
+  - High confidence: 85% accuracy + 80% confidence + 8+ questions
+  - Stable performance: 75% accuracy + stable trend + 12+ questions
+  - Low performance plateau: <50% accuracy + stable/declining trend + 15+ questions
+  - Maximum confidence: 90% confidence + 10+ questions
+- **Progressive Refinement**: Continuously adapts based on user performance
 
 ### Enhanced Metrics
 - **Domain Accuracy**: Percentage correct per domain
 - **Questions Attempted**: Count per domain for confidence assessment
-- **Skill Competency**: Combined metric of accuracy × attempts × raw score
+- **Confidence Scoring**: Accuracy consistency measurement (0-1)
+- **Performance Trends**: Recent performance direction (improving/stable/declining)
+- **Recent Performance**: Track last 5 answers per domain
+- **Skill Competency**: Enhanced metric combining accuracy, confidence, and attempts
 
 ### Firestore Structure
 ```javascript
