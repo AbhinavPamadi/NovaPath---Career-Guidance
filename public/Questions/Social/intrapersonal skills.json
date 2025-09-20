@@ -1,0 +1,192 @@
+[
+    {
+      "question_id": "comm_1",
+      "question_text": "Rewrite this email more politely: 'Send the report by tonight, or it will cause problems.' What is the best option?",
+      "options": [
+        {"option_text": "I need the report by tonight, please ensure it is sent.", "domain_weights": {"communication": 2}},
+        {"option_text": "Can you send the report tonight? It will help us avoid delays.", "domain_weights": {"communication": 3, "social": 1}},
+        {"option_text": "Send the report tonight if you can.", "domain_weights": {"communication": 1}},
+        {"option_text": "Just send the report tonight, no excuses.", "domain_weights": {"communication": -1}}
+      ]
+    },
+    {
+      "question_id": "comm_2",
+      "question_text": "You are asked to give a 2-minute project update. Which is the most effective approach?",
+      "options": [
+        {"option_text": "Explain all details in depth with examples.", "domain_weights": {"communication": 1}},
+        {"option_text": "Share only the challenges you faced.", "domain_weights": {"communication": 0}},
+        {"option_text": "Summarize key progress, challenges, and next steps clearly.", "domain_weights": {"communication": 3, "managerial": 1}},
+        {"option_text": "Focus only on the positive achievements.", "domain_weights": {"communication": 1}}
+      ]
+    },
+    {
+      "question_id": "comm_3",
+      "question_text": "Which of the following is the most professional way to decline a meeting?",
+      "options": [
+        {"option_text": "I'm busy, can't attend.", "domain_weights": {"communication": -1}},
+        {"option_text": "Not interested in this meeting.", "domain_weights": {"communication": -2}},
+        {"option_text": "I have a prior commitment, could we reschedule?", "domain_weights": {"communication": 3, "social": 1}},
+        {"option_text": "I’ll check if I feel like attending.", "domain_weights": {"communication": -1}}
+      ]
+    },
+    {
+      "question_id": "soc_1",
+      "question_text": "In a group project, two members strongly disagree on the approach. What would be your first step?",
+      "options": [
+        {"option_text": "Listen to both sides carefully before suggesting a way forward.", "domain_weights": {"social": 2, "managerial": 1}},
+        {"option_text": "Encourage them to resolve it privately without involving you.", "domain_weights": {"intrapersonal": 1}},
+        {"option_text": "Pick the side that seems more logical and move on.", "domain_weights": {"managerial": 0}},
+        {"option_text": "Ignore the conflict and focus on your own work.", "domain_weights": {"intrapersonal": -1}}
+      ]
+    },
+    {
+      "question_id": "soc_2",
+      "question_text": "During a meeting, one person dominates the discussion. How would you respond?",
+      "options": [
+        {"option_text": "Interrupt them and shift focus to someone else.", "domain_weights": {"communication": -1}},
+        {"option_text": "Wait until they finish, then invite others to share their views.", "domain_weights": {"social": 2, "managerial": 1}},
+        {"option_text": "Let them continue; at least someone is contributing.", "domain_weights": {"intrapersonal": -1}},
+        {"option_text": "Privately talk to them later about giving space to others.", "domain_weights": {"social": 1, "managerial": 1}}
+      ]
+    },
+    {
+      "question_id": "soc_3",
+      "question_text": "A new intern joins your team. What is the best way to welcome them?",
+      "options": [
+        {"option_text": "Send them a short message introducing yourself and offering help.", "domain_weights": {"social": 2}},
+        {"option_text": "Wait for them to approach you if they need something.", "domain_weights": {"intrapersonal": -1}},
+        {"option_text": "Give them all the rules immediately.", "domain_weights": {"managerial": 0}},
+        {"option_text": "Ignore them; they will adjust on their own.", "domain_weights": {"social": -2}}
+      ]
+    },
+    {
+      "question_id": "mgr_1",
+      "question_text": "You have 4 tasks: urgent client email, team conflict, weekly report, and a presentation tomorrow. Which should you handle first?",
+      "options": [
+        {"option_text": "Address the urgent client email first.", "domain_weights": {"managerial": 2}},
+        {"option_text": "Resolve the team conflict immediately.", "domain_weights": {"managerial": 1, "social": 1}},
+        {"option_text": "Start writing the weekly report first.", "domain_weights": {"managerial": 0}},
+        {"option_text": "Prepare the presentation first and ignore the others.", "domain_weights": {"managerial": -1}}
+      ]
+    },
+    {
+      "question_id": "mgr_2",
+      "question_text": "One team member is consistently missing deadlines. How would you address the issue?",
+      "options": [
+        {"option_text": "Talk to them privately to understand the problem.", "domain_weights": {"managerial": 2, "social": 1}},
+        {"option_text": "Publicly point it out in front of the team.", "domain_weights": {"managerial": -1, "social": -2}},
+        {"option_text": "Take over their work yourself to avoid delays.", "domain_weights": {"intrapersonal": 0}},
+        {"option_text": "Escalate directly to higher management without discussion.", "domain_weights": {"managerial": -1}}
+      ]
+    },
+    {
+      "question_id": "mgr_3",
+      "question_text": "Your manager gives you negative feedback on your presentation. How do you respond?",
+      "options": [
+        {"option_text": "Listen carefully, thank them, and ask how you can improve.", "domain_weights": {"intrapersonal": 2, "communication": 2}},
+        {"option_text": "Argue and defend your choices strongly.", "domain_weights": {"communication": -1}},
+        {"option_text": "Ignore the feedback since the presentation is already over.", "domain_weights": {"intrapersonal": -1}},
+        {"option_text": "Blame the team for the mistakes instead of yourself.", "domain_weights": {"managerial": -1, "social": -1}}
+      ]
+    },
+    {
+      "question_id": "comm_4",
+      "question_text": "Spot the issue in this message: 'I don’t understand what you are saying. Explain properly.' What would be a better phrasing?",
+      "options": [
+        {"option_text": "I couldn’t follow, could you clarify your point?", "domain_weights": {"communication": 3}},
+        {"option_text": "That made no sense, say it again.", "domain_weights": {"communication": -2}},
+        {"option_text": "I didn’t get that, can you explain with an example?", "domain_weights": {"communication": 2}},
+        {"option_text": "Explain properly, you are unclear.", "domain_weights": {"communication": -1}}
+      ]
+    },
+    {
+      "question_id": "soc_4",
+      "question_text": "You’re at a networking event. How would you introduce yourself?",
+      "options": [
+        {"option_text": "State your name, role, and ask about the other person.", "domain_weights": {"social": 3, "communication": 2}},
+        {"option_text": "Just give your name and wait silently.", "domain_weights": {"social": -1}},
+        {"option_text": "Talk only about your achievements for 5 minutes.", "domain_weights": {"communication": -1}},
+        {"option_text": "Wait for someone else to approach you.", "domain_weights": {"intrapersonal": -1}}
+      ]
+    },
+    {
+      "question_id": "mgr_4",
+      "question_text": "You need to assign a research task to your team. How would you decide who does it?",
+      "options": [
+        {"option_text": "Match the task with the team member’s strengths.", "domain_weights": {"managerial": 3}},
+        {"option_text": "Assign it randomly to anyone.", "domain_weights": {"managerial": -1}},
+        {"option_text": "Take the task yourself to avoid mistakes.", "domain_weights": {"intrapersonal": 0}},
+        {"option_text": "Give it to the newest team member without explanation.", "domain_weights": {"managerial": -2}}
+      ]
+    },
+    {
+      "question_id": "soc_5",
+      "question_text": "Two colleagues misunderstand each other’s emails, leading to frustration. What would you do?",
+      "options": [
+        {"option_text": "Bring them together to clarify and ensure shared understanding.", "domain_weights": {"social": 2, "managerial": 1}},
+        {"option_text": "Ignore it; they’ll figure it out on their own.", "domain_weights": {"intrapersonal": -1}},
+        {"option_text": "Take sides and support one colleague.", "domain_weights": {"social": -1}},
+        {"option_text": "Escalate immediately without discussing with them.", "domain_weights": {"managerial": -1}}
+      ]
+    },
+    {
+      "question_id": "comm_5",
+      "question_text": "Write a short closing line for a professional email requesting information.",
+      "options": [
+        {"option_text": "Looking forward to your response.", "domain_weights": {"communication": 3}},
+        {"option_text": "Reply soon.", "domain_weights": {"communication": 1}},
+        {"option_text": "Don’t delay, I need it quickly.", "domain_weights": {"communication": -1}},
+        {"option_text": "I hope you respond whenever you have time.", "domain_weights": {"communication": 0}}
+      ]
+    },
+    {
+      "question_id": "soc_6",
+      "question_text": "In an online meeting, someone hasn’t spoken at all. How should you handle it?",
+      "options": [
+        {"option_text": "Invite them politely to share their views.", "domain_weights": {"social": 2, "communication": 1}},
+        {"option_text": "Ignore it; participation is optional.", "domain_weights": {"intrapersonal": -1}},
+        {"option_text": "Call them out directly and demand input.", "domain_weights": {"communication": -1}},
+        {"option_text": "Send them a private message to check if they want to contribute.", "domain_weights": {"social": 1}}
+      ]
+    },
+    {
+      "question_id": "comm_6",
+      "question_text": "If you had to explain the importance of teamwork to school students, which example would be most effective?",
+      "options": [
+        {"option_text": "Explain how a football team needs every player to win.", "domain_weights": {"communication": 3, "social": 1}},
+        {"option_text": "Say teamwork is good, without examples.", "domain_weights": {"communication": 0}},
+        {"option_text": "Talk only about how you work best alone.", "domain_weights": {"communication": -1, "intrapersonal": -1}},
+        {"option_text": "Explain teamwork using a very technical business example.", "domain_weights": {"communication": 0}}
+      ]
+    },
+    {
+      "question_id": "mgr_5",
+      "question_text": "A team member suggests an idea you think won’t work. What is the most respectful way to respond?",
+      "options": [
+        {"option_text": "Thank them and suggest building on it with some modifications.", "domain_weights": {"social": 2, "managerial": 1}},
+        {"option_text": "Reject the idea immediately as unhelpful.", "domain_weights": {"communication": -1}},
+        {"option_text": "Ignore the idea and move on without comment.", "domain_weights": {"social": -1}},
+        {"option_text": "Ask questions to understand their perspective before sharing your concerns.", "domain_weights": {"communication": 2, "social": 1}}
+      ]
+    },
+    {
+      "question_id": "soc_7",
+      "question_text": "A colleague often interrupts you during meetings. What would be the best way to handle it?",
+      "options": [
+        {"option_text": "Address it politely by saying you'd like to finish your point first.", "domain_weights": {"communication": 2, "social": 1}},
+        {"option_text": "Keep quiet and let them take over.", "domain_weights": {"intrapersonal": -1}},
+        {"option_text": "Confront them angrily in the meeting.", "domain_weights": {"social": -2}},
+        {"option_text": "Talk to them privately after the meeting.", "domain_weights": {"social": 1}}
+      ]
+    },
+    {
+      "question_id": "comm_7",
+      "question_text": "Which format is best for updating your manager about project status?",
+      "options": [
+        {"option_text": "Long paragraphs explaining everything in detail.", "domain_weights": {"communication": 0}},
+        {"option_text": "Bullet points highlighting key progress and issues.", "domain_weights": {"communication": 3, "managerial": 1}},
+        {"option_text": "Only achievements, no challenges.", "domain_weights": {"communication": 0}},
+        {"option_text": "Verbal updates with no written summary.", "domain_weights": {"communication": -1}}
+      ]
+    }
+  ]
