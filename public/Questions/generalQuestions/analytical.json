@@ -1,0 +1,224 @@
+{
+  "analytical_reasoning": [
+    {
+      "question_id": "anal_sch_1",
+      "question_text": "A survey claims that students who study late at night always perform better in exams. What should be your first concern?",
+      "options": [
+        {
+          "option_text": "How 'perform better' was measured",
+          "domain_weights": {"analytical": 2, "math": 1}
+        },
+        {
+          "option_text": "The sample size and whether different study habits were compared",
+          "domain_weights": {"analytical": 3, "math": 1}
+        },
+        {
+          "option_text": "Whether correlation implies causation in this case",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "The practical advice this gives to other students",
+          "domain_weights": {"analytical": 1, "problem_solving": 2}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_sch_2",
+      "question_text": "You see a sudden drop in your class test scores compared to the previous month. What would be your first step?",
+      "options": [
+        {
+          "option_text": "Check if the exam was harder or had a different pattern",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Ask classmates if they faced similar difficulties",
+          "domain_weights": {"analytical": 1, "social": 2}
+        },
+        {
+          "option_text": "Look at your own preparation strategy for changes",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Ignore it and focus only on the next test",
+          "domain_weights": {"analytical": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_sch_3",
+      "question_text": "During a science discussion, a student argues, 'If you are good at Physics, you must be bad at Biology.' What logical fallacy does this show?",
+      "options": [
+        {
+          "option_text": "False dichotomy (assuming only two possible outcomes)",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Ad hominem (attacking the student, not the argument)",
+          "domain_weights": {"analytical": 3, "social": 1}
+        },
+        {
+          "option_text": "Confirmation bias (only looking at supporting examples)",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Appeal to authority (relying on someone famous instead of reasoning)",
+          "domain_weights": {"analytical": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_sch_4",
+      "question_text": "When reading your science textbook, which section do you focus on most for deeper understanding?",
+      "options": [
+        {
+          "option_text": "The experiments and methodology to see how results are obtained",
+          "domain_weights": {"analytical": 3, "math": 1}
+        },
+        {
+          "option_text": "The results and graphs to check patterns in data",
+          "domain_weights": {"analytical": 2, "math": 2}
+        },
+        {
+          "option_text": "The introduction to quickly know what the chapter is about",
+          "domain_weights": {"analytical": 1}
+        },
+        {
+          "option_text": "The summary and discussion to know the overall importance",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_sch_5",
+      "question_text": "If your school wants to improve attendance, what would be the best first analytical step?",
+      "options": [
+        {
+          "option_text": "Compare attendance patterns across different grades",
+          "domain_weights": {"analytical": 3, "math": 1}
+        },
+        {
+          "option_text": "Ask students directly why they are missing school",
+          "domain_weights": {"analytical": 2, "social": 1}
+        },
+        {
+          "option_text": "Check holidays or weather patterns that may affect attendance",
+          "domain_weights": {"analytical": 2}
+        },
+        {
+          "option_text": "Look at how other schools manage attendance",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_sch_6",
+      "question_text": "Two textbooks give slightly different explanations for the same Chemistry law. How should you respond?",
+      "options": [
+        {
+          "option_text": "Check the experiments or data that each book is using",
+          "domain_weights": {"analytical": 3, "math": 1}
+        },
+        {
+          "option_text": "Assume one is wrong and ignore it",
+          "domain_weights": {"analytical": 1}
+        },
+        {
+          "option_text": "Look for a third reliable source to compare",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Consider that both may be correct in slightly different contexts",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_sch_7",
+      "question_text": "When you don’t have all the information to solve a Math problem, what do you usually do?",
+      "options": [
+        {
+          "option_text": "Clearly state assumptions and solve with them",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Wait until the teacher gives more data",
+          "domain_weights": {"analytical": 1}
+        },
+        {
+          "option_text": "Use estimation or approximation methods",
+          "domain_weights": {"analytical": 2, "math": 2}
+        },
+        {
+          "option_text": "Identify missing information and try to find it",
+          "domain_weights": {"analytical": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_sch_8",
+      "question_text": "While preparing for a debate competition, you are most effective when you:",
+      "options": [
+        {
+          "option_text": "Use strong real-life examples to support your point",
+          "domain_weights": {"analytical": 2, "social": 1}
+        },
+        {
+          "option_text": "Organize your speech with clear premises and conclusions",
+          "domain_weights": {"analytical": 3, "social": 1}
+        },
+        {
+          "option_text": "Identify logical gaps in the opponent’s arguments",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Address every point the opposition raises systematically",
+          "domain_weights": {"analytical": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_sch_9",
+      "question_text": "When analyzing why your science experiment failed, what systematic approach would you follow?",
+      "options": [
+        {
+          "option_text": "Make a list of all possible reasons before testing",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Check the most likely error first",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Collect fresh baseline data and compare",
+          "domain_weights": {"analytical": 2, "math": 1}
+        },
+        {
+          "option_text": "Notice patterns in when and where the errors happen",
+          "domain_weights": {"analytical": 3}
+        }
+      ]
+    },
+    {
+      "question_id": "anal_sch_10",
+      "question_text": "When you start learning a new subject like Economics or Psychology, what’s your first step?",
+      "options": [
+        {
+          "option_text": "Study how experts think about the subject",
+          "domain_weights": {"analytical": 2, "social": 1}
+        },
+        {
+          "option_text": "Understand the basic principles and frameworks",
+          "domain_weights": {"analytical": 3}
+        },
+        {
+          "option_text": "Learn the important keywords and terms",
+          "domain_weights": {"analytical": 2}
+        },
+        {
+          "option_text": "Find out the main debates and controversies in the subject",
+          "domain_weights": {"analytical": 2, "problem_solving": 1}
+        }
+      ]
+    }
+  ]
+}

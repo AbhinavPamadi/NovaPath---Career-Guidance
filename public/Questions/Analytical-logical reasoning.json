@@ -1,0 +1,444 @@
+{
+    "analytical_logical_questions": [
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "In a sequence: 2, 6, 18, 54, ?, what is the next number?",
+        "options": [
+          {
+            "option_text": "162",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "108",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "72",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "216",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "If all roses are flowers, and some flowers are red, which conclusion is logically valid?",
+        "options": [
+          {
+            "option_text": "Some roses may be red",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "All roses are red",
+            "domain_weights": {"analytical": -2}
+          },
+          {
+            "option_text": "No roses are red",
+            "domain_weights": {"analytical": -2}
+          },
+          {
+            "option_text": "All red things are roses",
+            "domain_weights": {"analytical": -2}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "A train travels 120 km in 2 hours. If it maintains the same speed, how far will it travel in 5 hours?",
+        "options": [
+          {
+            "option_text": "300 km",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "240 km",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "360 km",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "600 km",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "In a class of 30 students, 18 play cricket, 12 play football, and 6 play both games. How many students play neither game?",
+        "options": [
+          {
+            "option_text": "6 students",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "4 students",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "8 students",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "12 students",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "If P → Q is true, and Q is false, what can you conclude about P?",
+        "options": [
+          {
+            "option_text": "P must be false",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "P must be true",
+            "domain_weights": {"analytical": -2}
+          },
+          {
+            "option_text": "P can be either true or false",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "Cannot determine anything about P",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "Find the missing term in the series: A1, D4, G7, J10, ?",
+        "options": [
+          {
+            "option_text": "M13",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "L12",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "N14",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "K11",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "In a certain code, COMPUTER is written as RFUVQNPC. How will SCIENCE be written in the same code?",
+        "options": [
+          {
+            "option_text": "PJFRJCR",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "PRFJRJC",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "RJFRPJC",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "JRPFRJC",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "A clock shows 3:15. What is the angle between the hour and minute hands?",
+        "options": [
+          {
+            "option_text": "7.5 degrees",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "15 degrees",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "22.5 degrees",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "30 degrees",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "If today is Wednesday, what day will it be 100 days from now?",
+        "options": [
+          {
+            "option_text": "Friday",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "Thursday",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "Saturday",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "Sunday",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "In a family of 6 people, there are two married couples. If A is B's brother and C is A's wife, and D is C's sister, what is the relationship between B and D?",
+        "options": [
+          {
+            "option_text": "Sister-in-law",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "Sister",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "Cousin",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "Mother",
+            "domain_weights": {"analytical": -2}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "A box contains 3 red balls, 4 blue balls, and 5 green balls. What is the probability of drawing a red or blue ball?",
+        "options": [
+          {
+            "option_text": "7/12",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "1/4",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "1/3",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "5/12",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "If ∠A + ∠B = 90° and ∠B + ∠C = 120°, what is the relationship between ∠A and ∠C?",
+        "options": [
+          {
+            "option_text": "∠C = ∠A + 30°",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "∠A = ∠C + 30°",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "∠A = ∠C",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "∠C = ∠A + 60°",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "In a sequence of operations: Start with 8, multiply by 3, subtract 12, divide by 2, add 6. What is the final result?",
+        "options": [
+          {
+            "option_text": "12",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "18",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "15",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "9",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "A statement says: 'All birds can fly. Penguins are birds. Therefore, penguins can fly.' What is wrong with this reasoning?",
+        "options": [
+          {
+            "option_text": "The first premise is false",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "The conclusion doesn't follow the premises",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "Penguins are not birds",
+            "domain_weights": {"analytical": -2}
+          },
+          {
+            "option_text": "Nothing is wrong with the reasoning",
+            "domain_weights": {"analytical": -2}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "If 5 machines can produce 5 widgets in 5 minutes, how many widgets can 100 machines produce in 100 minutes?",
+        "options": [
+          {
+            "option_text": "2000 widgets",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "500 widgets",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "1000 widgets",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "10000 widgets",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "In a magic square, each row, column, and diagonal adds up to the same sum. If the magic square has numbers 1-9 and the magic sum is 15, what number goes in the center?",
+        "options": [
+          {
+            "option_text": "5",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "3",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "7",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "9",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "Water flows into a tank at 3 liters per minute and flows out at 2 liters per minute. If the tank starts empty, how much water will be in the tank after 10 minutes?",
+        "options": [
+          {
+            "option_text": "10 liters",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "20 liters",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "30 liters",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "5 liters",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "A number when divided by 6 gives remainder 2, and when divided by 8 gives remainder 4. What is the smallest positive number satisfying these conditions?",
+        "options": [
+          {
+            "option_text": "20",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "14",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "32",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "44",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "In a tournament, each team plays every other team exactly once. If there are 6 teams, how many games will be played in total?",
+        "options": [
+          {
+            "option_text": "15 games",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "12 games",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "30 games",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "36 games",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      },
+      {
+        "question_type": "Analytical/logical",
+        "question_text": "If the average of 5 numbers is 20, and you add a 6th number, the new average becomes 22. What is the 6th number?",
+        "options": [
+          {
+            "option_text": "32",
+            "domain_weights": {"analytical": 3}
+          },
+          {
+            "option_text": "22",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "24",
+            "domain_weights": {"analytical": -1}
+          },
+          {
+            "option_text": "30",
+            "domain_weights": {"analytical": -1}
+          }
+        ]
+      }
+    ]
+  }
