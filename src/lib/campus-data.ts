@@ -1,69 +1,111 @@
-{
-  "name": "nextn",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack -p 9002",
-    "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
-    "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@genkit-ai/googleai": "^1.14.1",
-    "@genkit-ai/next": "^1.14.1",
-    "@hookform/resolvers": "^4.1.3",
-    "@radix-ui/react-accordion": "^1.2.3",
-    "@radix-ui/react-alert-dialog": "^1.1.6",
-    "@radix-ui/react-avatar": "^1.1.3",
-    "@radix-ui/react-checkbox": "^1.1.4",
-    "@radix-ui/react-collapsible": "^1.1.11",
-    "@radix-ui/react-dialog": "^1.1.6",
-    "@radix-ui/react-dropdown-menu": "^2.1.6",
-    "@radix-ui/react-label": "^2.1.2",
-    "@radix-ui/react-menubar": "^1.1.6",
-    "@radix-ui/react-popover": "^1.1.6",
-    "@radix-ui/react-progress": "^1.1.2",
-    "@radix-ui/react-radio-group": "^1.2.3",
-    "@radix-ui/react-scroll-area": "^1.2.3",
-    "@radix-ui/react-select": "^2.1.6",
-    "@radix-ui/react-separator": "^1.1.2",
-    "@radix-ui/react-slider": "^1.2.3",
-    "@radix-ui/react-slot": "^1.2.3",
-    "@radix-ui/react-switch": "^1.1.3",
-    "@radix-ui/react-tabs": "^1.1.3",
-    "@radix-ui/react-toast": "^1.2.6",
-    "@radix-ui/react-tooltip": "^1.1.8",
-    "@vercel/analytics": "^1.3.1",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "date-fns": "^3.6.0",
-    "dotenv": "^16.5.0",
-    "embla-carousel-react": "^8.6.0",
-    "firebase": "^11.9.1",
-    "framer-motion": "^11.5.7",
-    "genkit": "^1.14.1",
-    "lucide-react": "^0.475.0",
-    "next": "15.3.3",
-    "patch-package": "^8.0.0",
-    "react": "^18.3.1",
-    "react-day-picker": "^8.10.1",
-    "react-dom": "^18.3.1",
-    "react-hook-form": "^7.54.2",
-    "recharts": "^2.15.1",
-    "tailwind-merge": "^3.0.1",
-    "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.24.2"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "genkit-cli": "^1.14.1",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+// Campus and College Data for NovaPath Career Guidance
+// This file exports interfaces and data for educational institutions
+
+export interface Coordinates {
+  lat: number;
+  long: number;
+}
+
+export interface Institute {
+  name: string;
+  abbreviation?: string;
+  type: string;
+  location: string;
+  coordinates?: Coordinates;
+  website?: string;
+  established?: number;
+  description?: string;
+  admissions?: {
+    undergraduate?: string;
+    postgraduate?: string;
+  };
+  departments?: {
+    engineering?: string[];
+    physical_sciences?: string[];
+    [key: string]: any;
+  };
+  academic_programs?: string[];
+  degrees_offered?: {
+    btech?: string[];
+    mtech?: string[];
+    mtech_executive?: string[];
+    phd?: string[];
+    [key: string]: any;
+  };
+  courses_offered?: string[] | {
+    undergraduate?: string[];
+    postgraduate?: string[];
+    doctoral?: string[];
+    other?: string[];
+    [key: string]: any;
+  };
+  contact?: any;
+  other_programs?: string[];
+  affiliation?: string;
+  seat_intake?: string;
+}
+
+// Campus data is loaded from public/directory.json
+// This file provides type definitions and utility functions
+
+export const INSTITUTE_TYPES = [
+  'Engineering / Technical University',
+  'Management / Business School',
+  'Medical University',
+  'Medical College',
+  'University',
+  'Degree College',
+  'Postgraduate College',
+  'Engineering College',
+  'Media / Mass Communication',
+  'Law School'
+] as const;
+
+export type InstituteType = typeof INSTITUTE_TYPES[number];
+
+// Utility function to load institutes from JSON
+export async function loadInstitutes(): Promise<Institute[]> {
+  try {
+    const response = await fetch('/directory.json');
+    if (!response.ok) {
+      throw new Error('Failed to load institutes data');
+    }
+    const data: Institute[] = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error loading institutes:', error);
+    throw error;
   }
 }
+
+// Utility function to filter institutes by type
+export function filterInstitutesByType(institutes: Institute[], type: InstituteType): Institute[] {
+  return institutes.filter(institute => institute.type === type);
+}
+
+// Utility function to search institutes by name or location
+export function searchInstitutes(institutes: Institute[], query: string): Institute[] {
+  const lowercaseQuery = query.toLowerCase();
+  return institutes.filter(institute => 
+    institute.name.toLowerCase().includes(lowercaseQuery) ||
+    institute.location.toLowerCase().includes(lowercaseQuery) ||
+    (institute.abbreviation && institute.abbreviation.toLowerCase().includes(lowercaseQuery))
+  );
+}
+
+// Utility function to get institutes with coordinates
+export function getInstitutesWithCoordinates(institutes: Institute[]): Institute[] {
+  return institutes.filter(institute => 
+    institute.coordinates && 
+    !isNaN(institute.coordinates.lat) && 
+    !isNaN(institute.coordinates.long)
+  );
+}
+
+export default {
+  INSTITUTE_TYPES,
+  loadInstitutes,
+  filterInstitutesByType,
+  searchInstitutes,
+  getInstitutesWithCoordinates
+};

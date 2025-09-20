@@ -11,6 +11,7 @@ import { Footer } from "@/components/layout/footer";
 import { Providers } from "@/components/layout/auth-provider";
 import { LanguageProvider } from "@/contexts/language-context";
 import { Logo } from "../components/icons/logo";
+import ErrorBoundary from "@/components/error-boundary";
 
 export const metadata: Metadata = {
   title: "NovaPath",
@@ -43,26 +44,28 @@ export default function RootLayout({
         )}
         suppressHydrationWarning={true}
       >
-        <Providers>
-          <LanguageProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="dark"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <div className="flex flex-col min-h-screen">
-                <BackgroundParticles />
-                <Header />
-                <main className="relative z-10 flex-grow">{children}</main>
-                <Footer />
-              </div>
-              <AIAvatar />
-              <Toaster />
-              <Analytics />
-            </ThemeProvider>
-          </LanguageProvider>
-        </Providers>
+        <ErrorBoundary>
+          <Providers>
+            <LanguageProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="dark"
+                enableSystem
+                disableTransitionOnChange
+              >
+                <div className="flex flex-col min-h-screen">
+                  <BackgroundParticles />
+                  <Header />
+                  <main className="relative z-10 flex-grow">{children}</main>
+                  <Footer />
+                </div>
+                <AIAvatar />
+                <Toaster />
+                <Analytics />
+              </ThemeProvider>
+            </LanguageProvider>
+          </Providers>
+        </ErrorBoundary>
       </body>
     </html>
   );

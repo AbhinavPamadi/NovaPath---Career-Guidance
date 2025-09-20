@@ -14,7 +14,10 @@ service cloud.firestore {
     function isValidUser(resource) {
       return isSignedIn() && 
              resource.data.keys().hasAll(['authorId', 'authorName', 'createdAt']) &&
-             resource.data.authorId == request.auth.uid;
+             resource.data.authorId == request.auth.uid &&
+             resource.data.authorName is string &&
+             resource.data.authorName.size() > 0 &&
+             resource.data.authorName.size() <= 100;
     }
     
     function isValidMentor(resource) {
@@ -33,7 +36,13 @@ service cloud.firestore {
       return isSignedIn() && 
              resource.data.keys().hasAll(['collegeName', 'courseName', 'rating', 'content', 'authorId']) &&
              resource.data.authorId == request.auth.uid &&
-             resource.data.rating >= 1 && resource.data.rating <= 5;
+             resource.data.rating >= 1 && resource.data.rating <= 5 &&
+             resource.data.collegeName is string &&
+             resource.data.courseName is string &&
+             resource.data.content is string &&
+             resource.data.collegeName.size() > 2 &&
+             resource.data.courseName.size() > 2 &&
+             resource.data.content.size() <= 2000;
     }
 
     // Users collection - users can read all profiles but only edit their own
@@ -44,14 +53,18 @@ service cloud.firestore {
 
     // Questions collection
     match /questions/{questionId} {
-      allow read: if true; // Public read access
+      allow read: if true; // Public read access for educational content
       allow create: if isSignedIn() && 
                     isValidUser(request.resource) &&
-                    request.resource.data.keys().hasAll(['title', 'content', 'tags']);
+                    request.resource.data.keys().hasAll(['title', 'content', 'tags']) &&
+                    request.resource.data.title.size() > 5 &&
+                    request.resource.data.content.size() > 10;
       allow update: if isOwner(resource) || 
                     (isSignedIn() && 
                      request.resource.data.diff(resource.data).affectedKeys()
-                     .hasOnly(['upvotes', 'downvotes', 'views']));
+                     .hasOnly(['upvotes', 'downvotes', 'views']) &&
+                     request.resource.data.upvotes is number &&
+                     request.resource.data.downvotes is number);
       allow delete: if isOwner(resource);
       
       // Nested replies within questions
@@ -144,12 +157,15 @@ service cloud.firestore {
 
     // Reviews collection (Reality Check)
     match /reviews/{reviewId} {
-      allow read: if true; // Public read access
-      allow create: if isValidReview(request.resource);
+      allow read: if true; // Public read access for educational transparency
+      allow create: if isValidReview(request.resource) &&
+                    request.resource.data.content.size() > 20; // Minimum review length
       allow update: if isOwner(resource) ||
                     (isSignedIn() && 
                      request.resource.data.diff(resource.data).affectedKeys()
-                     .hasOnly(['helpful', 'notHelpful']));
+                     .hasOnly(['helpful', 'notHelpful']) &&
+                     request.resource.data.helpful is number &&
+                     request.resource.data.notHelpful is number);
       allow delete: if isOwner(resource);
     }
 

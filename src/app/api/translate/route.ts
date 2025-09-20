@@ -36,14 +36,16 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Translation API error:', error);
     
-    // Return original text if translation fails
-    const { text } = await request.json().catch(() => ({ text: '' }));
+    // Return a proper error response without attempting to re-parse the request
     return NextResponse.json(
       { 
-        translatedText: text,
-        error: 'Translation service temporarily unavailable'
+        error: 'Translation service temporarily unavailable',
+        translatedText: '', // Provide empty fallback
+        originalText: '',
+        sourceLanguage: 'en',
+        targetLanguage: 'en'
       },
-      { status: 200 } // Return 200 with original text instead of error
+      { status: 500 } // Return proper error status
     );
   }
 }
