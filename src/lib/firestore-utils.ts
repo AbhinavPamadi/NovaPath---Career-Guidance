@@ -499,26 +499,28 @@ export async function getQuestions(
   tags: string[] = []
 ): Promise<ForumQuestion[]> {
   try {
-    let q = query(
+    // Always get questions without tag filtering to avoid index issues
+    const q = query(
       collection(db, 'questions'),
       orderBy('createdAt', 'desc'),
-      limit(limitCount)
+      limit(limitCount * 2) // Get more to allow for client-side filtering
     );
 
-    if (tags.length > 0) {
-      q = query(
-        collection(db, 'questions'),
-        where('tags', 'array-contains-any', tags),
-        orderBy('createdAt', 'desc'),
-        limit(limitCount)
-      );
-    }
-
     const snapshot = await getDocs(q);
-    return snapshot.docs.map(doc => ({
+    let questions = snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data()
     } as ForumQuestion));
+
+    // Apply client-side filtering if tags are specified
+    if (tags.length > 0) {
+      questions = questions.filter(q => 
+        tags.some(tag => q.tags && q.tags.includes(tag))
+      );
+    }
+
+    // Return limited results
+    return questions.slice(0, limitCount);
   } catch (error) {
     console.error('Error getting questions:', error);
     return [];
@@ -792,26 +794,29 @@ export function listenToQuestions(
   callback: (questions: ForumQuestion[]) => void,
   tags: string[] = []
 ): () => void {
-  let q = query(
+  // Always get all questions first, then filter client-side to avoid index issues
+  const q = query(
     collection(db, 'questions'),
     orderBy('createdAt', 'desc'),
-    limit(20)
+    limit(50) // Increased limit to allow for client-side filtering
   );
 
-  if (tags.length > 0) {
-    q = query(
-      collection(db, 'questions'),
-      where('tags', 'array-contains-any', tags),
-      orderBy('createdAt', 'desc'),
-      limit(20)
-    );
-  }
-
   return onSnapshot(q, (snapshot) => {
-    const questions = snapshot.docs.map(doc => ({
+    let questions = snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data()
     } as ForumQuestion));
+
+    // Apply client-side filtering if tags are selected
+    if (tags.length > 0) {
+      questions = questions.filter(q => 
+        tags.some(tag => q.tags && q.tags.includes(tag))
+      );
+    }
+
+    // Limit to 20 after filtering
+    questions = questions.slice(0, 20);
+    
     callback(questions);
   });
 }

@@ -36,7 +36,7 @@ export function RealityCheckSystem() {
   const [searchTerm, setSearchTerm] = useState('');
   const [collegeFilter, setCollegeFilter] = useState('');
   const [courseFilter, setCourseFilter] = useState('');
-  const [authorTypeFilter, setAuthorTypeFilter] = useState('');
+  const [authorTypeFilter, setAuthorTypeFilter] = useState('all');
   const [minRating, setMinRating] = useState('');
   
   // Review form
@@ -111,7 +111,7 @@ export function RealityCheckSystem() {
       );
     }
 
-    if (authorTypeFilter) {
+    if (authorTypeFilter && authorTypeFilter !== 'all') {
       filtered = filtered.filter(review => review.authorType === authorTypeFilter);
     }
 
@@ -411,7 +411,7 @@ export function RealityCheckSystem() {
                 <SelectValue placeholder="Author Type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All</SelectItem>
+                <SelectItem value="all">All</SelectItem>
                 <SelectItem value="student">Students</SelectItem>
                 <SelectItem value="alumni">Alumni</SelectItem>
               </SelectContent>
@@ -545,12 +545,12 @@ export function RealityCheckSystem() {
               <CheckCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
               <h3 className="font-semibold text-lg mb-2">No reviews found</h3>
               <p className="text-muted-foreground mb-6">
-                {searchTerm || collegeFilter || courseFilter || authorTypeFilter || minRating
+                {searchTerm || collegeFilter || courseFilter || (authorTypeFilter !== 'all') || minRating
                   ? 'Try adjusting your search filters to find more reviews.'
                   : 'Be the first to write a review and help fellow students!'
                 }
               </p>
-              {!(searchTerm || collegeFilter || courseFilter || authorTypeFilter || minRating) && (
+              {!(searchTerm || collegeFilter || courseFilter || (authorTypeFilter !== 'all') || minRating) && (
                 <Button onClick={() => setShowReviewForm(true)}>
                   <Plus className="mr-2 h-4 w-4" />
                   Write Review

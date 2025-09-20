@@ -41,8 +41,8 @@ export function StudyBuddyFinder() {
   
   // Search filters
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedExam, setSelectedExam] = useState('');
-  const [selectedLevel, setSelectedLevel] = useState('');
+  const [selectedExam, setSelectedExam] = useState('all');
+  const [selectedLevel, setSelectedLevel] = useState('all');
   const [selectedLocation, setSelectedLocation] = useState('');
   
   // Connect dialog
@@ -100,13 +100,13 @@ export function StudyBuddyFinder() {
       );
     }
 
-    if (selectedExam) {
+    if (selectedExam && selectedExam !== 'all') {
       filtered = filtered.filter(buddy => 
         buddy.examsTags.some(exam => exam.toLowerCase().includes(selectedExam.toLowerCase()))
       );
     }
 
-    if (selectedLevel) {
+    if (selectedLevel && selectedLevel !== 'all') {
       filtered = filtered.filter(buddy => 
         buddy.studyLevel === selectedLevel
       );
@@ -360,7 +360,7 @@ export function StudyBuddyFinder() {
                 <SelectValue placeholder="Exam" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Exams</SelectItem>
+                <SelectItem value="all">All Exams</SelectItem>
                 {EXAM_OPTIONS.map(exam => (
                   <SelectItem key={exam} value={exam}>{exam}</SelectItem>
                 ))}
@@ -372,7 +372,7 @@ export function StudyBuddyFinder() {
                 <SelectValue placeholder="Study Level" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Levels</SelectItem>
+                <SelectItem value="all">All Levels</SelectItem>
                 {STUDY_LEVELS.map(level => (
                   <SelectItem key={level} value={level}>{level}</SelectItem>
                 ))}
@@ -498,12 +498,12 @@ export function StudyBuddyFinder() {
                 <Users className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                 <h3 className="font-semibold text-lg mb-2">No study buddies found</h3>
                 <p className="text-muted-foreground mb-6">
-                  {searchTerm || selectedExam || selectedLevel || selectedLocation
+                  {searchTerm || (selectedExam !== 'all') || (selectedLevel !== 'all') || selectedLocation
                     ? 'Try adjusting your search filters to find more study buddies.'
                     : 'Be the first to create a study buddy profile!'
                   }
                 </p>
-                {!(searchTerm || selectedExam || selectedLevel || selectedLocation) && (
+                {!(searchTerm || (selectedExam !== 'all') || (selectedLevel !== 'all') || selectedLocation) && (
                   <Button onClick={() => setShowBuddyForm(true)}>
                     <Plus className="mr-2 h-4 w-4" />
                     Create Profile

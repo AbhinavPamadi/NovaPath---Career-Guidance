@@ -42,9 +42,9 @@ export function PeerMentorMatching() {
   
   // Search filters
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedExpertise, setSelectedExpertise] = useState('');
-  const [selectedSubject, setSelectedSubject] = useState('');
-  const [minYear, setMinYear] = useState('');
+  const [selectedExpertise, setSelectedExpertise] = useState('all');
+  const [selectedSubject, setSelectedSubject] = useState('all');
+  const [minYear, setMinYear] = useState('all');
   
   // Connect dialog
   const [connectingMentor, setConnectingMentor] = useState<MentorProfile | null>(null);
@@ -106,19 +106,19 @@ export function PeerMentorMatching() {
       );
     }
 
-    if (selectedExpertise) {
+    if (selectedExpertise && selectedExpertise !== 'all') {
       filtered = filtered.filter(mentor => 
         mentor.expertise.includes(selectedExpertise)
       );
     }
 
-    if (selectedSubject) {
+    if (selectedSubject && selectedSubject !== 'all') {
       filtered = filtered.filter(mentor => 
         mentor.subjects.includes(selectedSubject)
       );
     }
 
-    if (minYear) {
+    if (minYear && minYear !== 'all') {
       filtered = filtered.filter(mentor => 
         mentor.yearOfStudy >= parseInt(minYear)
       );
@@ -442,7 +442,7 @@ export function PeerMentorMatching() {
                 <SelectValue placeholder="Expertise" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Expertise</SelectItem>
+                <SelectItem value="all">All Expertise</SelectItem>
                 {EXPERTISE_OPTIONS.map(exp => (
                   <SelectItem key={exp} value={exp}>{exp}</SelectItem>
                 ))}
@@ -454,7 +454,7 @@ export function PeerMentorMatching() {
                 <SelectValue placeholder="Subject" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Subjects</SelectItem>
+                <SelectItem value="all">All Subjects</SelectItem>
                 {SUBJECT_OPTIONS.map(sub => (
                   <SelectItem key={sub} value={sub}>{sub}</SelectItem>
                 ))}
@@ -466,7 +466,7 @@ export function PeerMentorMatching() {
                 <SelectValue placeholder="Min Year" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Any Year</SelectItem>
+                <SelectItem value="all">Any Year</SelectItem>
                 <SelectItem value="2">2nd Year+</SelectItem>
                 <SelectItem value="3">3rd Year+</SelectItem>
                 <SelectItem value="4">4th Year+</SelectItem>
@@ -605,12 +605,12 @@ export function PeerMentorMatching() {
               <UserCheck className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
               <h3 className="font-semibold text-lg mb-2">No mentors found</h3>
               <p className="text-muted-foreground mb-6">
-                {searchTerm || selectedExpertise || selectedSubject || minYear
+                {searchTerm || (selectedExpertise !== 'all') || (selectedSubject !== 'all') || (minYear !== 'all')
                   ? 'Try adjusting your search filters to find more mentors.'
                   : 'Be the first to create a mentor profile and help fellow students!'
                 }
               </p>
-              {!(searchTerm || selectedExpertise || selectedSubject || minYear) && (
+              {!(searchTerm || (selectedExpertise !== 'all') || (selectedSubject !== 'all') || (minYear !== 'all')) && (
                 <Button onClick={() => setShowMentorForm(true)}>
                   <Plus className="mr-2 h-4 w-4" />
                   Become a Mentor
