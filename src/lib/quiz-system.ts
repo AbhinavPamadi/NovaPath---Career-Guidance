@@ -68,6 +68,23 @@ export interface PersonalizedQuizAnswer {
   question_index: number;
   selected_option_index: number;
   domain_weights: { [key: string]: number };
+  question_domain?: string;
+  is_correct?: boolean;
+  timestamp?: Date;
+}
+
+// Adaptive Quiz State Management
+export interface AdaptiveQuizState {
+  current_question_index: number;
+  domain_accuracy: { [domain: string]: number };
+  questions_attempted: { [domain: string]: number };
+  questions_correct: { [domain: string]: number };
+  domain_question_pool: { [domain: string]: PersonalizedQuizQuestion[] };
+  asked_questions: Set<string>;
+  should_continue: { [domain: string]: boolean };
+  domain_confidence: { [domain: string]: number };
+  recent_performance: { [domain: string]: number[] }; // Track last 5 answers per domain
+  progression_trend: { [domain: string]: 'improving' | 'stable' | 'declining' | 'unknown' };
 }
 
 export interface PersonalizedQuizResults {
@@ -110,6 +127,8 @@ export interface PersonalizedQuizInferences {
   completed_at: Date;
   selected_domains: string[];
   domain_scores: PersonalizedQuizResults;
+  domain_accuracy: { [domain: string]: number };
+  questions_attempted: { [domain: string]: number };
   skill_competency: { [domain: string]: number };
   answers: PersonalizedQuizAnswer[];
 }
@@ -122,8 +141,8 @@ export interface CareerSuggestions {
   total_matches: number;
 }
 
-// Quiz System Class
-export class TwoTierQuizSystem {
+// Adaptive Quiz System Class
+export class AdaptiveThreeTierQuizSystem {
   
   /**
    * Step 1: Load and prepare general quiz questions
@@ -218,7 +237,91 @@ export class TwoTierQuizSystem {
   }
 
   /**
-   * Step 2: Load personalized quiz questions for selected domains
+   * Step 2: Initialize adaptive quiz state with question pools for selected domains
+   */
+  async initializeAdaptiveQuiz(selectedDomains: string[]): Promise<AdaptiveQuizState> {
+    const domainQuestionPool: { [domain: string]: PersonalizedQuizQuestion[] } = {};
+    
+    const domainFileMapping: { [key: string]: string } = {
+      'Analytical/logical reasoning': 'Analytical-logical reasoning.json',
+      'Math/quant': 'MathQues.json',
+      'Problem-solving/Creative thinking': 'problem_solving_creative_thinking_questions.json',
+      'Social/intrapersonal skills': 'intrapersonal skills.json',
+      'Visualization/Spatial design': 'VisualizationSpatialQues.json'
+    };
+
+    // Load all questions for selected domains
+    for (const domain of selectedDomains) {
+      const filename = domainFileMapping[domain];
+      if (!filename) {
+        console.warn(`No question file found for domain: ${domain}`);
+        continue;
+      }
+
+      try {
+        const response = await fetch(`/Questions/${filename}`);
+        const data = await response.json();
+        
+        let domainQuestions: PersonalizedQuizQuestion[] = [];
+        
+        // Handle different file structures
+        if (Array.isArray(data)) {
+          domainQuestions = data.map(item => ({
+            question_text: item.question_text,
+            options: item.options,
+            question_type: item.question_type || domain
+          }));
+        } else {
+          const dataKey = Object.keys(data)[0];
+          const rawQuestions = data[dataKey];
+          if (rawQuestions && Array.isArray(rawQuestions)) {
+            domainQuestions = rawQuestions.map(item => ({
+              question_text: item.question_text,
+              options: item.options,
+              question_type: item.question_type || domain
+            }));
+          }
+        }
+        
+        if (domainQuestions.length > 0) {
+          // Shuffle questions to ensure random selection
+          domainQuestionPool[domain] = [...domainQuestions].sort(() => Math.random() - 0.5);
+        }
+      } catch (error) {
+        console.error(`Failed to load adaptive questions for ${domain}:`, error);
+      }
+    }
+
+    // Initialize adaptive state
+    const adaptiveState: AdaptiveQuizState = {
+      current_question_index: 0,
+      domain_accuracy: {},
+      questions_attempted: {},
+      questions_correct: {},
+      domain_question_pool: domainQuestionPool,
+      asked_questions: new Set<string>(),
+      should_continue: {},
+      domain_confidence: {},
+      recent_performance: {},
+      progression_trend: {}
+    };
+
+    // Initialize counters for all domains
+    selectedDomains.forEach(domain => {
+      adaptiveState.domain_accuracy[domain] = 0;
+      adaptiveState.questions_attempted[domain] = 0;
+      adaptiveState.questions_correct[domain] = 0;
+      adaptiveState.should_continue[domain] = true;
+      adaptiveState.domain_confidence[domain] = 0;
+      adaptiveState.recent_performance[domain] = [];
+      adaptiveState.progression_trend[domain] = 'unknown';
+    });
+
+    return adaptiveState;
+  }
+
+  /**
+   * Step 2: Load personalized quiz questions for selected domains (Legacy method - kept for compatibility)
    */
   async loadPersonalizedQuizQuestions(selectedDomains: string[]): Promise<PersonalizedQuizQuestion[]> {
     const questions: PersonalizedQuizQuestion[] = [];
@@ -227,8 +330,8 @@ export class TwoTierQuizSystem {
       'Analytical/logical reasoning': 'Analytical-logical reasoning.json',
       'Math/quant': 'MathQues.json',
       'Problem-solving/Creative thinking': 'problem_solving_creative_thinking_questions.json',
-      'Social/intrapersonal skills': 'intrapersonal skills.json'
-      // Note: No specific file for Visualization/Spatial design in the available files
+      'Social/intrapersonal skills': 'intrapersonal skills.json',
+      'Visualization/Spatial design': 'VisualizationSpatialQues.json'
     };
 
     for (const domain of selectedDomains) {
@@ -279,7 +382,259 @@ export class TwoTierQuizSystem {
   }
 
   /**
-   * Step 2: Process personalized quiz results
+   * Step 2: Get next adaptive question based on current state and 75% accuracy threshold
+   */
+  getNextAdaptiveQuestion(
+    state: AdaptiveQuizState, 
+    selectedDomains: string[]
+  ): { question: PersonalizedQuizQuestion; domain: string; questionId: string } | null {
+    
+    // Check if we should stop (all domains completed or max questions reached)
+    const shouldStop = selectedDomains.every(domain => 
+      !state.should_continue[domain] || 
+      state.questions_attempted[domain] >= 40
+    );
+    
+    if (shouldStop) {
+      return null;
+    }
+
+    // Enhanced strategy: Prioritize domains based on performance trends and confidence
+    let targetDomain = null;
+    let highestPriority = -1;
+    
+    for (const domain of selectedDomains) {
+      if (!state.should_continue[domain] || state.questions_attempted[domain] >= 40) continue;
+      
+      const accuracy = state.questions_attempted[domain] > 0 
+        ? state.questions_correct[domain] / state.questions_attempted[domain] 
+        : 0;
+      
+      const attempts = state.questions_attempted[domain];
+      const confidence = state.domain_confidence[domain];
+      const trend = state.progression_trend[domain];
+      
+      // Calculate priority score for this domain
+      let priority = 0;
+      
+      // High priority for low accuracy domains
+      if (accuracy < 0.75) priority += 10;
+      
+      // High priority for improving trends
+      if (trend === 'improving') priority += 8;
+      
+      // Medium priority for declining trends (need more data)
+      if (trend === 'declining') priority += 6;
+      
+      // Low confidence domains need more questions
+      if (confidence < 0.6) priority += 5;
+      
+      // Ensure minimum exploration for all domains
+      if (attempts < 5) priority += 7;
+      
+      // Moderate exploration for medium-confidence domains
+      if (accuracy >= 0.60 && accuracy < 0.85 && attempts < 20) priority += 4;
+      
+      // Occasional testing of high-confidence domains
+      if (accuracy >= 0.85 && attempts < 15 && Math.random() < 0.3) priority += 2;
+      
+      if (priority > highestPriority && state.domain_question_pool[domain]?.length > 0) {
+        highestPriority = priority;
+        targetDomain = domain;
+      }
+    }
+    
+    // Fallback: if no domain was prioritized, pick first available domain
+    if (!targetDomain) {
+      targetDomain = selectedDomains.find(domain => 
+        state.should_continue[domain] && 
+        state.questions_attempted[domain] < 40 &&
+        state.domain_question_pool[domain]?.length > 0
+      );
+    }
+    
+    if (!targetDomain || !state.domain_question_pool[targetDomain]?.length) {
+      return null;
+    }
+    
+    // Get next available question from the target domain
+    const domainQuestions = state.domain_question_pool[targetDomain];
+    let questionIndex = 0;
+    let questionId = `${targetDomain}_${questionIndex}`;
+    
+    // Find a question we haven't asked yet
+    while (questionIndex < domainQuestions.length && 
+           state.asked_questions.has(questionId)) {
+      questionIndex++;
+      questionId = `${targetDomain}_${questionIndex}`;
+    }
+    
+    if (questionIndex >= domainQuestions.length) {
+      // No more questions in this domain
+      state.should_continue[targetDomain] = false;
+      return this.getNextAdaptiveQuestion(state, selectedDomains);
+    }
+    
+    return {
+      question: domainQuestions[questionIndex],
+      domain: targetDomain,
+      questionId
+    };
+  }
+
+  /**
+   * Step 2: Process adaptive question answer and update state
+   */
+  processAdaptiveAnswer(
+    state: AdaptiveQuizState,
+    answer: PersonalizedQuizAnswer,
+    questionDomain: string,
+    questionId: string
+  ): void {
+    // Mark question as asked
+    state.asked_questions.add(questionId);
+    
+    // Update question attempts for the domain
+    state.questions_attempted[questionDomain] = (state.questions_attempted[questionDomain] || 0) + 1;
+    
+    // Determine if answer is "correct" based on domain weights
+    // A question is considered "correct" if the selected option has the highest weight for the target domain
+    const selectedOption = answer.domain_weights;
+    const targetDomainWeight = selectedOption[this.getDomainKey(questionDomain)] || 0;
+    
+    // Check if this is the highest weight among all domains for this option
+    const maxWeight = Math.max(...Object.values(selectedOption));
+    const isCorrect = targetDomainWeight === maxWeight && targetDomainWeight > 0;
+    
+    if (isCorrect) {
+      state.questions_correct[questionDomain] = (state.questions_correct[questionDomain] || 0) + 1;
+    }
+    
+    // Update accuracy
+    state.domain_accuracy[questionDomain] = state.questions_attempted[questionDomain] > 0
+      ? state.questions_correct[questionDomain] / state.questions_attempted[questionDomain]
+      : 0;
+    
+    // Track recent performance (last 5 answers)
+    const recentPerf = state.recent_performance[questionDomain];
+    recentPerf.push(isCorrect ? 1 : 0);
+    if (recentPerf.length > 5) {
+      recentPerf.shift(); // Remove oldest
+    }
+    
+    // Calculate confidence based on consistency
+    const accuracy = state.domain_accuracy[questionDomain];
+    const attempts = state.questions_attempted[questionDomain];
+    
+    if (attempts >= 3) {
+      const recentAccuracy = recentPerf.reduce((sum, val) => sum + val, 0) / recentPerf.length;
+      const consistency = 1 - Math.abs(accuracy - recentAccuracy);
+      state.domain_confidence[questionDomain] = Math.min((accuracy + consistency) / 2, 1.0);
+    }
+    
+    // Update progression trend
+    if (attempts >= 6) {
+      const firstHalf = recentPerf.slice(0, Math.floor(recentPerf.length / 2));
+      const secondHalf = recentPerf.slice(Math.floor(recentPerf.length / 2));
+      
+      const firstHalfAvg = firstHalf.reduce((sum, val) => sum + val, 0) / firstHalf.length;
+      const secondHalfAvg = secondHalf.reduce((sum, val) => sum + val, 0) / secondHalf.length;
+      
+      const improvement = secondHalfAvg - firstHalfAvg;
+      
+      if (improvement > 0.2) {
+        state.progression_trend[questionDomain] = 'improving';
+      } else if (improvement < -0.2) {
+        state.progression_trend[questionDomain] = 'declining';
+      } else {
+        state.progression_trend[questionDomain] = 'stable';
+      }
+    }
+    
+    // Enhanced stopping criteria for better skill refinement:
+    // 1. We've asked 40 questions (absolute maximum), OR
+    // 2. High confidence: accuracy >= 85% with confidence >= 0.8 and at least 8 questions, OR
+    // 3. Stable high performance: accuracy >= 75% with stable trend and at least 12 questions, OR
+    // 4. Low performance plateau: accuracy < 50% with stable/declining trend and at least 15 questions, OR
+    // 5. High confidence reached: confidence >= 0.9 with at least 10 questions
+    const confidence = state.domain_confidence[questionDomain];
+    const trend = state.progression_trend[questionDomain];
+    
+    if (attempts >= 40 || 
+        (accuracy >= 0.85 && confidence >= 0.8 && attempts >= 8) ||
+        (accuracy >= 0.75 && trend === 'stable' && attempts >= 12) ||
+        (accuracy < 0.50 && (trend === 'stable' || trend === 'declining') && attempts >= 15) ||
+        (confidence >= 0.9 && attempts >= 10)) {
+      state.should_continue[questionDomain] = false;
+    }
+    
+    // Update answer with correctness info
+    answer.is_correct = isCorrect;
+    answer.question_domain = questionDomain;
+    answer.timestamp = new Date();
+  }
+
+  /**
+   * Helper method to get domain key for weight lookup
+   */
+  private getDomainKey(normalizedDomain: string): string {
+    const reverseMapping: { [key: string]: string } = {};
+    Object.entries(DOMAIN_MAPPING).forEach(([key, value]) => {
+      reverseMapping[value] = key;
+    });
+    
+    return reverseMapping[normalizedDomain] || normalizedDomain.toLowerCase().replace(/[^a-z]/g, '_');
+  }
+
+  /**
+   * Step 2: Process adaptive quiz results with enhanced metrics
+   */
+  processAdaptiveQuizResults(
+    answers: PersonalizedQuizAnswer[], 
+    state: AdaptiveQuizState
+  ): {
+    domainScores: PersonalizedQuizResults;
+    domainAccuracy: { [domain: string]: number };
+    questionsAttempted: { [domain: string]: number };
+    skillCompetency: { [domain: string]: number };
+  } {
+    const domainScores: PersonalizedQuizResults = {};
+    
+    // Aggregate domain weights
+    answers.forEach(answer => {
+      Object.entries(answer.domain_weights).forEach(([domain, weight]) => {
+        const normalizedDomain = this.normalizeDomainName(domain);
+        domainScores[normalizedDomain] = (domainScores[normalizedDomain] || 0) + weight;
+      });
+    });
+
+    // Calculate enhanced skill competency: accuracy × attempts × normalized_score
+    const skillCompetency: { [domain: string]: number } = {};
+    
+    Object.keys(state.domain_accuracy).forEach(domain => {
+      const accuracy = state.domain_accuracy[domain];
+      const attempts = state.questions_attempted[domain];
+      const rawScore = domainScores[domain] || 0;
+      
+      // Enhanced competency calculation
+      // Factor in accuracy (how well they answered), attempts (confidence), and raw score
+      const attemptFactor = Math.min(attempts / 10, 1.0); // Normalize attempts to 0-1
+      const accuracyFactor = accuracy;
+      const scoreFactor = Math.min(rawScore / (attempts * 3), 1.0); // Normalize score
+      
+      skillCompetency[domain] = (accuracyFactor * 0.5 + scoreFactor * 0.3 + attemptFactor * 0.2);
+    });
+
+    return {
+      domainScores,
+      domainAccuracy: { ...state.domain_accuracy },
+      questionsAttempted: { ...state.questions_attempted },
+      skillCompetency
+    };
+  }
+
+  /**
+   * Step 2: Process personalized quiz results (Legacy method - enhanced for adaptive system)
    */
   processPersonalizedQuizResults(answers: PersonalizedQuizAnswer[]): {
     domainScores: PersonalizedQuizResults;
@@ -382,7 +737,44 @@ export class TwoTierQuizSystem {
   }
 
   /**
-   * Step 4: Save personalized quiz results to Firestore
+   * Step 4: Save adaptive personalized quiz results to Firestore
+   */
+  async saveAdaptivePersonalizedQuizResults(
+    uid: string,
+    selectedDomains: string[],
+    answers: PersonalizedQuizAnswer[],
+    domainScores: PersonalizedQuizResults,
+    domainAccuracy: { [domain: string]: number },
+    questionsAttempted: { [domain: string]: number },
+    skillCompetency: { [domain: string]: number }
+  ): Promise<boolean> {
+    try {
+      const personalizedQuizInferences: PersonalizedQuizInferences = {
+        quiz_type: 'personalized',
+        completed_at: new Date(),
+        selected_domains: selectedDomains,
+        domain_scores: domainScores,
+        domain_accuracy: domainAccuracy,
+        questions_attempted: questionsAttempted,
+        skill_competency: skillCompetency,
+        answers
+      };
+
+      await setDoc(doc(db, "users", uid), {
+        personalized_quiz_inferences: personalizedQuizInferences,
+        lastLogin: new Date()
+      }, { merge: true });
+
+      console.log('Adaptive personalized quiz results saved successfully');
+      return true;
+    } catch (error) {
+      console.error('Failed to save adaptive personalized quiz results:', error);
+      return false;
+    }
+  }
+
+  /**
+   * Step 4: Save personalized quiz results to Firestore (Legacy method)
    */
   async savePersonalizedQuizResults(
     uid: string,
@@ -397,6 +789,8 @@ export class TwoTierQuizSystem {
         completed_at: new Date(),
         selected_domains: selectedDomains,
         domain_scores: domainScores,
+        domain_accuracy: {}, // Legacy method doesn't track accuracy
+        questions_attempted: {}, // Legacy method doesn't track per-domain attempts
         skill_competency: skillCompetency,
         answers
       };
@@ -518,7 +912,153 @@ export class TwoTierQuizSystem {
       };
     }
   }
+
+  /**
+   * Complete Adaptive Three-Tier Quiz Workflow
+   */
+  async executeAdaptiveThreeTierQuiz(uid: string): Promise<{
+    success: boolean;
+    generalResults?: any;
+    personalizedResults?: any;
+    careerRecommendations?: any;
+    error?: string;
+  }> {
+    try {
+      // Step 1: Execute Level 1 - Interest Assessment (General Quiz)
+      console.log('Starting Level 1: Interest Assessment...');
+      const generalQuestions = await this.loadGeneralQuizQuestions();
+      
+      // For demo purposes, simulate user completing general quiz
+      // In real implementation, this would be handled by UI
+      const mockGeneralAnswers: GeneralQuizAnswer[] = [];
+      // This would be replaced with actual user answers
+      
+      const { domainScores: generalDomainScores, topDomains } = 
+        this.processGeneralQuizResults(mockGeneralAnswers);
+      
+      await this.saveGeneralQuizResults(uid, mockGeneralAnswers, generalDomainScores, topDomains);
+      
+      // Step 2: Execute Level 2 - Adaptive Skill Assessment
+      console.log('Starting Level 2: Adaptive Skill Assessment...');
+      const selectedDomains = this.selectPersonalizedQuizDomains(topDomains, generalDomainScores);
+      const adaptiveState = await this.initializeAdaptiveQuiz(selectedDomains);
+      
+      // This would be handled by the UI in real implementation
+      const adaptiveAnswers: PersonalizedQuizAnswer[] = [];
+      
+      // Simulate adaptive questioning loop (in real app, this is UI-driven)
+      let questionCount = 0;
+      while (questionCount < 50) { // Safety limit
+        const nextQuestion = this.getNextAdaptiveQuestion(adaptiveState, selectedDomains);
+        if (!nextQuestion) break;
+        
+        // In real implementation, present question to user and get answer
+        // For now, break to avoid infinite loop
+        break;
+      }
+      
+      const adaptiveResults = this.processAdaptiveQuizResults(adaptiveAnswers, adaptiveState);
+      
+      await this.saveAdaptivePersonalizedQuizResults(
+        uid,
+        selectedDomains,
+        adaptiveAnswers,
+        adaptiveResults.domainScores,
+        adaptiveResults.domainAccuracy,
+        adaptiveResults.questionsAttempted,
+        adaptiveResults.skillCompetency
+      );
+      
+      // Step 3: Execute Level 3 - Career Recommendations
+      console.log('Starting Level 3: Career Recommendations...');
+      const userInterests = topDomains.slice(0, 3); // Top 3 domains from general quiz
+      const userSkills = Object.keys(adaptiveResults.skillCompetency)
+        .filter(domain => adaptiveResults.skillCompetency[domain] > 0.6)
+        .slice(0, 5); // Top skills with competency > 60%
+      
+      const careerRecommendations = await this.generateCareerRecommendations(
+        userInterests, 
+        userSkills
+      );
+      
+      await this.saveCareerSuggestions(uid, userInterests, userSkills, careerRecommendations);
+      
+      return {
+        success: true,
+        generalResults: { domainScores: generalDomainScores, topDomains },
+        personalizedResults: adaptiveResults,
+        careerRecommendations
+      };
+      
+    } catch (error) {
+      console.error('Error in adaptive three-tier quiz execution:', error);
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      };
+    }
+  }
+
+  /**
+   * Get enhanced adaptive quiz summary for UI display
+   */
+  getAdaptiveQuizSummary(state: AdaptiveQuizState): {
+    totalQuestionsAsked: number;
+    domainBreakdown: { [domain: string]: { 
+      attempted: number; 
+      accuracy: number; 
+      confidence: number; 
+      trend: 'improving' | 'stable' | 'declining' | 'unknown';
+    }};
+    overallProgress: number;
+    averageConfidence: number;
+  } {
+    const totalQuestionsAsked = Object.values(state.questions_attempted)
+      .reduce((sum, count) => sum + count, 0);
+    
+    const domainBreakdown: { [domain: string]: { 
+      attempted: number; 
+      accuracy: number; 
+      confidence: number; 
+      trend: 'improving' | 'stable' | 'declining' | 'unknown';
+    }} = {};
+    
+    let totalConfidence = 0;
+    let confidenceCount = 0;
+    
+    Object.keys(state.domain_accuracy).forEach(domain => {
+      const confidence = state.domain_confidence[domain] || 0;
+      domainBreakdown[domain] = {
+        attempted: state.questions_attempted[domain] || 0,
+        accuracy: state.domain_accuracy[domain] || 0,
+        confidence: confidence,
+        trend: state.progression_trend[domain] || 'unknown'
+      };
+      
+      if (confidence > 0) {
+        totalConfidence += confidence;
+        confidenceCount++;
+      }
+    });
+    
+    // Calculate overall progress (0-1) based on domain completion and confidence
+    const totalDomains = Object.keys(state.should_continue).length;
+    const completedDomains = Object.values(state.should_continue)
+      .filter(shouldContinue => !shouldContinue).length;
+    const averageConfidence = confidenceCount > 0 ? totalConfidence / confidenceCount : 0;
+    
+    // Enhanced progress calculation: 70% completion + 30% confidence
+    const completionProgress = totalDomains > 0 ? completedDomains / totalDomains : 0;
+    const overallProgress = (completionProgress * 0.7) + (averageConfidence * 0.3);
+    
+    return {
+      totalQuestionsAsked,
+      domainBreakdown,
+      overallProgress: Math.min(overallProgress, 1.0),
+      averageConfidence
+    };
+  }
 }
 
 // Export singleton instance
-export const quizSystem = new TwoTierQuizSystem();
+export const quizSystem = new AdaptiveThreeTierQuizSystem();

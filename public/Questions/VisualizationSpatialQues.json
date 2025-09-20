@@ -1,0 +1,400 @@
+{
+  "visualization_spatial_questions": [
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "When designing a presentation, your primary concern is:",
+      "options": [
+        {
+          "option_text": "Creating a clear visual hierarchy that guides the viewer's attention",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Ensuring data visualizations accurately represent the underlying information",
+          "domain_weights": {"visualization": 2, "math": 1}
+        },
+        {
+          "option_text": "Using consistent design elements to create professional aesthetics",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Adapting the visual style to the audience and context",
+          "domain_weights": {"visualization": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "You're most confident in your ability to:",
+      "options": [
+        {
+          "option_text": "Mentally rotate 3D objects and understand their different perspectives",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Visualize how puzzle pieces fit together before trying them",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Navigate using maps and understand spatial relationships",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Estimate distances and proportions by visual inspection",
+          "domain_weights": {"visualization": 2, "math": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "When explaining complex spatial relationships, you prefer to:",
+      "options": [
+        {
+          "option_text": "Draw diagrams or sketches to illustrate your points",
+          "domain_weights": {"visualization": 3, "social": 1}
+        },
+        {
+          "option_text": "Use physical models or objects as demonstrations",
+          "domain_weights": {"visualization": 3, "problem_solving": 1}
+        },
+        {
+          "option_text": "Create detailed technical drawings with measurements",
+          "domain_weights": {"visualization": 2, "math": 1}
+        },
+        {
+          "option_text": "Use analogies to familiar spatial concepts",
+          "domain_weights": {"visualization": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "Your approach to interior design or space planning focuses on:",
+      "options": [
+        {
+          "option_text": "Optimizing traffic flow and functional relationships between areas",
+          "domain_weights": {"visualization": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Creating visual balance through color, texture, and lighting",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Maximizing the perceived size and openness of spaces",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Incorporating personal style preferences and lifestyle needs",
+          "domain_weights": {"visualization": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "When working with data visualization, you excel at:",
+      "options": [
+        {
+          "option_text": "Choosing the most appropriate chart type for different data relationships",
+          "domain_weights": {"visualization": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Creating compelling visual narratives that tell a story with data",
+          "domain_weights": {"visualization": 3, "social": 1}
+        },
+        {
+          "option_text": "Designing interactive visualizations that encourage exploration",
+          "domain_weights": {"visualization": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Ensuring visualizations are accessible to colorblind users",
+          "domain_weights": {"visualization": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "Your strength in visual composition lies in:",
+      "options": [
+        {
+          "option_text": "Understanding how different shapes and forms interact spatially",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Using perspective and depth to create engaging visual experiences",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Balancing positive and negative space effectively",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Creating rhythm and movement through visual elements",
+          "domain_weights": {"visualization": 3}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "When reading architectural blueprints or technical drawings, you:",
+      "options": [
+        {
+          "option_text": "Quickly visualize how the 2D plans translate to 3D reality",
+          "domain_weights": {"visualization": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Focus on understanding the scale and proportional relationships",
+          "domain_weights": {"visualization": 2, "math": 1}
+        },
+        {
+          "option_text": "Look for potential design flaws or construction challenges",
+          "domain_weights": {"visualization": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Consider how the space will function for its intended users",
+          "domain_weights": {"visualization": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "In graphic design projects, your aesthetic decisions are guided by:",
+      "options": [
+        {
+          "option_text": "Principles of visual hierarchy and information organization",
+          "domain_weights": {"visualization": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Color theory and psychological impact of design choices",
+          "domain_weights": {"visualization": 3, "social": 1}
+        },
+        {
+          "option_text": "Typography and its role in communication effectiveness",
+          "domain_weights": {"visualization": 3, "social": 1}
+        },
+        {
+          "option_text": "Brand consistency and recognition across different media",
+          "domain_weights": {"visualization": 2, "analytical": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "Your approach to photography composition emphasizes:",
+      "options": [
+        {
+          "option_text": "Using leading lines and framing to direct viewer attention",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Capturing interesting patterns, textures, and geometric relationships",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Understanding how lighting affects mood and perception",
+          "domain_weights": {"visualization": 2, "social": 1}
+        },
+        {
+          "option_text": "Experimenting with unusual angles and perspectives",
+          "domain_weights": {"visualization": 2, "problem_solving": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "When organizing physical spaces or digital interfaces, you prioritize:",
+      "options": [
+        {
+          "option_text": "Logical grouping based on function and frequency of use",
+          "domain_weights": {"visualization": 2, "analytical": 1}
+        },
+        {
+          "option_text": "Visual clarity and ease of navigation",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Aesthetic appeal while maintaining functionality",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "User experience and accessibility considerations",
+          "domain_weights": {"visualization": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "Your spatial memory is strongest when:",
+      "options": [
+        {
+          "option_text": "Remembering the layout of buildings and room arrangements",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Recalling where objects are located in three-dimensional space",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Visualizing routes and navigation paths you've traveled",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Remembering the relative positions of elements in complex diagrams",
+          "domain_weights": {"visualization": 2, "analytical": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "When designing user interfaces, you focus on:",
+      "options": [
+        {
+          "option_text": "Creating intuitive visual metaphors that users can understand immediately",
+          "domain_weights": {"visualization": 3, "social": 1}
+        },
+        {
+          "option_text": "Establishing clear visual relationships between related elements",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Using whitespace effectively to reduce cognitive load",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Ensuring consistent interaction patterns across the interface",
+          "domain_weights": {"visualization": 2, "analytical": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "Your ability to visualize abstract concepts is demonstrated when you:",
+      "options": [
+        {
+          "option_text": "Create mental models of complex systems and their interactions",
+          "domain_weights": {"visualization": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Transform statistical data into meaningful visual representations",
+          "domain_weights": {"visualization": 2, "math": 1}
+        },
+        {
+          "option_text": "Use visual metaphors to explain difficult concepts to others",
+          "domain_weights": {"visualization": 3, "social": 1}
+        },
+        {
+          "option_text": "Design flowcharts and diagrams that clarify complex processes",
+          "domain_weights": {"visualization": 3, "analytical": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "In collaborative design projects, you contribute most by:",
+      "options": [
+        {
+          "option_text": "Creating rough sketches to quickly communicate design ideas",
+          "domain_weights": {"visualization": 3, "social": 1}
+        },
+        {
+          "option_text": "Helping others visualize how their ideas might look in practice",
+          "domain_weights": {"visualization": 2, "social": 2}
+        },
+        {
+          "option_text": "Identifying visual inconsistencies or design problems",
+          "domain_weights": {"visualization": 2, "analytical": 1}
+        },
+        {
+          "option_text": "Proposing alternative visual solutions to design challenges",
+          "domain_weights": {"visualization": 2, "problem_solving": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "Your understanding of visual perception helps you:",
+      "options": [
+        {
+          "option_text": "Predict how viewers will visually scan and process information",
+          "domain_weights": {"visualization": 3, "social": 1}
+        },
+        {
+          "option_text": "Use optical illusions and visual tricks effectively in design",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Choose colors and contrasts that enhance readability",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Design for accessibility across different visual abilities",
+          "domain_weights": {"visualization": 2, "social": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "When working with geometric shapes and patterns, you excel at:",
+      "options": [
+        {
+          "option_text": "Recognizing symmetries and mathematical relationships in design",
+          "domain_weights": {"visualization": 2, "math": 1}
+        },
+        {
+          "option_text": "Creating tessellations and repeating patterns",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Understanding how shapes interact in three-dimensional space",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Using geometric principles to create visual harmony",
+          "domain_weights": {"visualization": 3}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "Your approach to visual problem-solving involves:",
+      "options": [
+        {
+          "option_text": "Sketching multiple variations to explore different possibilities",
+          "domain_weights": {"visualization": 3, "problem_solving": 1}
+        },
+        {
+          "option_text": "Using mood boards and visual references for inspiration",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Creating prototypes to test visual concepts in context",
+          "domain_weights": {"visualization": 2, "problem_solving": 1}
+        },
+        {
+          "option_text": "Analyzing successful designs to understand their visual strategies",
+          "domain_weights": {"visualization": 2, "analytical": 1}
+        }
+      ]
+    },
+    {
+      "question_type": "Visualization/Spatial design",
+      "question_text": "Your visual-spatial intelligence is most evident when you:",
+      "options": [
+        {
+          "option_text": "Effortlessly pack items into containers by visualizing optimal arrangements",
+          "domain_weights": {"visualization": 3, "math": 1}
+        },
+        {
+          "option_text": "Quickly understand complex assembly instructions without text",
+          "domain_weights": {"visualization": 3}
+        },
+        {
+          "option_text": "Visualize how mechanical parts work together in three dimensions",
+          "domain_weights": {"visualization": 3, "analytical": 1}
+        },
+        {
+          "option_text": "Create accurate mental maps of new environments after brief exposure",
+          "domain_weights": {"visualization": 3}
+        }
+      ]
+    }
+  ]
+}
