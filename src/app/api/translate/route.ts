@@ -5,11 +5,8 @@ import { NextRequest, NextResponse } from 'next/server';
 const translate = require('google-translate-api-x');
 
 export async function POST(request: NextRequest) {
-  let requestBody: { text?: string; targetLanguage?: string; sourceLanguage?: string } = {};
-  
   try {
-    requestBody = await request.json();
-    const { text, targetLanguage, sourceLanguage = 'en' } = requestBody;
+    const { text, targetLanguage, sourceLanguage = 'en' } = await request.json();
 
     if (!text || !targetLanguage) {
       return NextResponse.json(
@@ -40,11 +37,10 @@ export async function POST(request: NextRequest) {
     console.error('Translation API error:', error);
     
     // Return original text if translation fails
-    // Use the text from the already parsed requestBody instead of trying to parse again
-    const fallbackText = requestBody.text || '';
+    const { text } = await request.json().catch(() => ({ text: '' }));
     return NextResponse.json(
       { 
-        translatedText: fallbackText,
+        translatedText: text,
         error: 'Translation service temporarily unavailable'
       },
       { status: 200 } // Return 200 with original text instead of error

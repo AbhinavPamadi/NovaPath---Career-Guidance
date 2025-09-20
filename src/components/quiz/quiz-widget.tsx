@@ -50,22 +50,7 @@ export function QuizWidget() {
     const loadQuestions = async () => {
       setLoadingQuestions(true);
       try {
-<<<<<<< Updated upstream
         const response = await fetch("/Questions/test.json");
-=======
-        const response = await fetch('/Questions/test.json');
-        if (!response.ok) {
-          throw new Error('Failed to load quiz questions');
-        }
-        
-        // Check if response is JSON before parsing
-        const contentType = response.headers.get("content-type");
-        if (!contentType || !contentType.includes("application/json")) {
-          const text = await response.text();
-          throw new Error(`Expected JSON file but received: ${text.substring(0, 100)}...`);
-        }
-        
->>>>>>> Stashed changes
         const data = await response.json();
         setQuestions(data);
       } catch (error) {
