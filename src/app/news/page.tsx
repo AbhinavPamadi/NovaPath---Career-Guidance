@@ -73,7 +73,7 @@ export default function NewsPage() {
       {!loading && (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {articles.length > 0 ? (
-            articles.slice(0, 6).map((article, index) => (
+            articles.map((article, index) => (
               <Card key={index} className="glass-card hover:shadow-lg transition-all duration-300 group">
                 <CardHeader className="space-y-2">
                   <div className="flex items-center justify-between">
