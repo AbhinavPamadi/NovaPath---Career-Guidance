@@ -15,11 +15,10 @@ const educationKeywords = [
 ];
 
 export async function fetchNewsByKeyword(keyword: string, limit: number = 6) {
-  // For client-side usage, we need to use NEXT_PUBLIC_ prefix
-  const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY || process.env.NEWS_API_KEY;
+  const apiKey = process.env.NEWS_API_KEY || process.env.NEXT_PUBLIC_NEWS_API_KEY;
   
   if (!apiKey) {
-    console.warn("News API key not found. Please set NEXT_PUBLIC_NEWS_API_KEY in your environment variables.");
+    console.warn("News API key not found. Please set NEWS_API_KEY in your environment variables.");
     return [];
   }
   
