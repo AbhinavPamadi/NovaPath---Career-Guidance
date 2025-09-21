@@ -26,7 +26,7 @@ export async function fetchNewsByKeyword(keyword: string, limit: number = 6) {
   let articles = Array.isArray(data.articles) ? data.articles : [];
 
   // Filter articles internally
-  articles = articles.filter((article: any) => {
+  articles = articles.filter(article => {
     const titleText = (article.title || "").toLowerCase();
     const descText = (article.description || "").toLowerCase();
     const combinedText = titleText + " " + descText;
