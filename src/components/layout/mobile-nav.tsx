@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { navItems } from "./nav-links";
 import { cn } from "@/lib/utils";
 import { Logo } from "../icons/logo";
-import { LanguageSelector } from "./language-selector";
 import { ThemeToggleButton } from "./theme-toggle-button";
 
 export function MobileNav() {
@@ -55,12 +54,11 @@ export function MobileNav() {
                 ))}
               </nav>
               
-              {/* Language Selector and Theme Toggle for Mobile */}
+              {/* Theme Toggle for Mobile */}
               <div className="mt-8 pt-6 border-t border-border/50">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-foreground/80">Settings</span>
                   <div className="flex items-center space-x-2">
-                    <LanguageSelector />
                     <ThemeToggleButton />
                   </div>
                 </div>
