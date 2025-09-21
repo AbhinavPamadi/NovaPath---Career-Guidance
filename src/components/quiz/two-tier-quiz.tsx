@@ -1225,6 +1225,104 @@ export function TwoTierQuiz() {
                       )}
                     </div>
 
+                    {/* Enhanced Recommendation Details */}
+                    {recommendation.overall_fit_score !== undefined && (
+                      <div className="mb-4 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-sm font-semibold">Overall Fit Score:</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-lg font-bold text-green-600">
+                              {recommendation.overall_fit_score}/100
+                            </span>
+                            <Badge className={cn(
+                              "text-xs",
+                              recommendation.recommendation_tier === 'perfect_match' && "bg-green-100 text-green-800",
+                              recommendation.recommendation_tier === 'strong_candidate' && "bg-blue-100 text-blue-800",
+                              recommendation.recommendation_tier === 'growth_opportunity' && "bg-purple-100 text-purple-800",
+                              recommendation.recommendation_tier === 'alternative_path' && "bg-orange-100 text-orange-800",
+                              recommendation.recommendation_tier === 'backup_option' && "bg-gray-100 text-gray-800"
+                            )}>
+                              {recommendation.recommendation_tier?.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                            </Badge>
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-2 gap-3 text-xs">
+                          <div>
+                            <div className="flex justify-between items-center mb-1">
+                              <span>Interest Alignment:</span>
+                              <span className="font-medium">{recommendation.interest_alignment}%</span>
+                            </div>
+                            <div className="w-full bg-gray-200 rounded-full h-1.5">
+                              <div 
+                                className="bg-green-500 h-1.5 rounded-full" 
+                                style={{ width: `${recommendation.interest_alignment}%` }}
+                              ></div>
+                            </div>
+                          </div>
+                          <div>
+                            <div className="flex justify-between items-center mb-1">
+                              <span>Aptitude Match:</span>
+                              <span className="font-medium">{recommendation.aptitude_match}%</span>
+                            </div>
+                            <div className="w-full bg-gray-200 rounded-full h-1.5">
+                              <div 
+                                className="bg-blue-500 h-1.5 rounded-full" 
+                                style={{ width: `${recommendation.aptitude_match}%` }}
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {recommendation.confidence_level && (
+                          <div className="mt-2 text-xs text-muted-foreground">
+                            Confidence Level: {recommendation.confidence_level}%
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Recommendation Explanations */}
+                    {recommendation.explanation && (
+                      <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                        <h4 className="text-sm font-semibold mb-2 text-blue-900 dark:text-blue-100">
+                          Why This is Recommended:
+                        </h4>
+                        <div className="space-y-2 text-xs">
+                          {recommendation.explanation.why_recommended.length > 0 && (
+                            <div>
+                              <span className="font-medium text-green-700 dark:text-green-300">✓ Key Reasons:</span>
+                              <ul className="mt-1 space-y-1 ml-2">
+                                {recommendation.explanation.why_recommended.map((reason, idx) => (
+                                  <li key={idx} className="text-gray-700 dark:text-gray-300">• {reason}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                          {recommendation.explanation.strengths.length > 0 && (
+                            <div>
+                              <span className="font-medium text-blue-700 dark:text-blue-300">💪 Your Strengths:</span>
+                              <ul className="mt-1 space-y-1 ml-2">
+                                {recommendation.explanation.strengths.map((strength, idx) => (
+                                  <li key={idx} className="text-gray-700 dark:text-gray-300">• {strength}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                          {recommendation.explanation.growth_areas.length > 0 && (
+                            <div>
+                              <span className="font-medium text-purple-700 dark:text-purple-300">📈 Growth Areas:</span>
+                              <ul className="mt-1 space-y-1 ml-2">
+                                {recommendation.explanation.growth_areas.map((area, idx) => (
+                                  <li key={idx} className="text-gray-700 dark:text-gray-300">• {area}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
                     <div className="mb-3">
                       <p className="text-sm text-muted-foreground mb-2">Matching skills:</p>
                       <div className="flex flex-wrap gap-1">

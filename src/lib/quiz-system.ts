@@ -1,15 +1,25 @@
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 
-// Domain mappings for consistent naming
+// Enhanced Domain mappings for consistent naming across all components
 export const DOMAIN_MAPPING = {
+  // Question file domain keys → Normalized domain names
   'analytical': 'Analytical/logical reasoning',
+  'analytical_reasoning': 'Analytical/logical reasoning',
+  'logical': 'Analytical/logical reasoning',
   'visualization': 'Visualization/Spatial design', 
   'spatial': 'Visualization/Spatial design',
+  'visual': 'Visualization/Spatial design',
   'math': 'Math/quant',
+  'mathematical': 'Math/quant',
+  'quantitative': 'Math/quant',
   'problem_solving': 'Problem-solving/Creative thinking',
   'creative_thinking': 'Problem-solving/Creative thinking',
-  'social': 'Social/intrapersonal skills'
+  'creative': 'Problem-solving/Creative thinking',
+  'problem': 'Problem-solving/Creative thinking',
+  'social': 'Social/intrapersonal skills',
+  'interpersonal': 'Social/intrapersonal skills',
+  'intrapersonal': 'Social/intrapersonal skills'
 } as const;
 
 export const NORMALIZED_DOMAINS = [
@@ -19,6 +29,15 @@ export const NORMALIZED_DOMAINS = [
   'Problem-solving/Creative thinking',
   'Social/intrapersonal skills'
 ] as const;
+
+// Reverse mapping for quick lookups
+export const DOMAIN_KEYS = {
+  'Analytical/logical reasoning': ['analytical', 'analytical_reasoning', 'logical'],
+  'Visualization/Spatial design': ['visualization', 'spatial', 'visual'],
+  'Math/quant': ['math', 'mathematical', 'quantitative'],
+  'Problem-solving/Creative thinking': ['problem_solving', 'creative_thinking', 'creative', 'problem'],
+  'Social/intrapersonal skills': ['social', 'interpersonal', 'intrapersonal']
+} as const;
 
 export type NormalizedDomain = typeof NORMALIZED_DOMAINS[number];
 
@@ -135,8 +154,22 @@ export interface CareerRecommendation {
   matching_skills: string[];
   subject_matched?: boolean;
   user_subject_scores?: { [subject: string]: number };
-  primary_subject_score?: number; // Score for the course's main subject
-  ranking_position?: number; // Ordinal ranking position
+  primary_subject_score?: number;
+  ranking_position?: number;
+  
+  // Enhanced recommendation fields
+  overall_fit_score: number;        // 0-100 composite score
+  interest_alignment: number;       // 0-100 how much they'll enjoy it
+  aptitude_match: number;          // 0-100 how likely they'll succeed
+  confidence_level: number;        // 0-100 how sure we are
+  recommendation_tier: 'perfect_match' | 'strong_candidate' | 'growth_opportunity' | 'alternative_path' | 'backup_option';
+  
+  explanation: {
+    why_recommended: string[];      // Reasons for recommendation
+    strengths: string[];           // User's matching strengths
+    growth_areas: string[];        // Areas to develop
+    success_factors: string[];     // What makes this a good fit
+  };
 }
 
 // Firestore storage interfaces
@@ -817,7 +850,7 @@ export class AdaptiveThreeTierQuizSystem {
   }
 
   /**
-   * Step 3: Enhanced career recommendations with skills + subjects matching
+   * Enhanced multi-factor career recommendation engine
    */
   async generateCareerRecommendations(
     userInterests: string[],
@@ -833,91 +866,277 @@ export class AdaptiveThreeTierQuizSystem {
       const recommendations: CareerRecommendation[] = [];
 
       courses.forEach(course => {
-        // Enhanced subject-aware filtering
-        let subjectRelevance = 0;
-        let subjectMatch = false;
-        
-        if (userSubjects && userSubjects.length > 0 && course.subject_interest) {
-          subjectMatch = userSubjects.includes(course.subject_interest);
-          if (subjectMatch) {
-            subjectRelevance = 1.0; // Perfect match
-          } else {
-            // Check if course has any relation to selected subjects (partial relevance)
-            // This allows some flexibility for interdisciplinary courses
-            subjectRelevance = 0.1; // Minimal relevance for non-matching but potentially related courses
-          }
-        } else if (!userSubjects || userSubjects.length === 0) {
-          // If no subjects selected, all courses are equally relevant
-          subjectRelevance = 0.5;
-        }
-
-        // Calculate skill matching
-        let matchingSkills = course.skill_labels.filter(skill => 
-          userInterests.includes(skill) || userSkills.includes(skill)
+        const analysis = this.analyzeCareerFit(
+          course, 
+          userInterests, 
+          userSkills, 
+          userSubjects, 
+          userSubjectScores
         );
-
-        // Calculate comprehensive ranking score for ALL courses
-        let rankingScore = 0;
-
-        // 1. Subject relevance contribution (40% of score)
-        rankingScore += subjectRelevance * 0.4;
         
-        // Add bonus for subject quiz performance
-        if (subjectMatch && userSubjectScores && course.subject_interest) {
-          const subjectScore = userSubjectScores[course.subject_interest] || 0;
-          const maxSubjectScore = Math.max(...Object.values(userSubjectScores), 1);
-          const normalizedSubjectScore = subjectScore / maxSubjectScore;
-          rankingScore += normalizedSubjectScore * 0.2; // Up to 20% bonus
-        }
-
-        // 2. Skill match contribution (35% of score)
-        if (course.skill_labels.length > 0) {
-          const skillMatchRatio = matchingSkills.length / course.skill_labels.length;
-          rankingScore += skillMatchRatio * 0.35;
-        }
-
-        // 3. Interest alignment contribution (25% of score)
-        if (course.skill_labels.length > 0) {
-          const interestMatchCount = course.skill_labels.filter(skill => userInterests.includes(skill)).length;
-          const interestMatchRatio = interestMatchCount / course.skill_labels.length;
-          rankingScore += interestMatchRatio * 0.25;
-        }
-
-        // Include ALL courses with some ranking score
-        recommendations.push({
-          course,
-          match_score: Math.min(rankingScore, 1.0), // For internal ranking, not displayed
-          matching_skills: matchingSkills,
-          subject_matched: subjectMatch,
-          subject_relevance: subjectRelevance,
-          user_subject_scores: userSubjectScores || {},
-          primary_subject_score: userSubjectScores && course.subject_interest ? 
-            userSubjectScores[course.subject_interest] || 0 : 0
-        } as any);
+        recommendations.push(analysis);
       });
 
-      // Sort by match score (descending) to create comprehensive ranked list
+      // Sort by overall fit score and assign final rankings
       return recommendations
-        .sort((a: any, b: any) => {
-          // Primary sort by match score
-          if (Math.abs(a.match_score - b.match_score) > 0.001) {
-            return b.match_score - a.match_score;
-          }
-          // Secondary sort by subject relevance for ties
-          return b.subject_relevance - a.subject_relevance;
-        })
-        .map((rec: any, index: number) => {
-          // Remove internal scoring fields and add ranking
-          const { match_score, subject_relevance, ...cleanRec } = rec;
-          return {
-            ...cleanRec,
-            ranking_position: index + 1 // Add ordinal ranking
-          } as CareerRecommendation;
-        });
+        .sort((a, b) => b.overall_fit_score - a.overall_fit_score)
+        .map((rec, index) => ({
+          ...rec,
+          ranking_position: index + 1
+        }));
     } catch (error) {
       console.error('Failed to load courses or generate recommendations:', error);
       return [];
     }
+  }
+
+  /**
+   * Multi-factor career fit analysis with enhanced scoring
+   */
+  private analyzeCareerFit(
+    course: Course,
+    userInterests: string[],
+    userSkills: string[],
+    userSubjects?: string[],
+    userSubjectScores?: { [subject: string]: number }
+  ): CareerRecommendation {
+    
+    // 1. Calculate Interest Alignment (0-100)
+    const interestAlignment = this.calculateInterestAlignment(course, userInterests);
+    
+    // 2. Calculate Aptitude Match (0-100) 
+    const aptitudeMatch = this.calculateAptitudeMatch(course, userSkills);
+    
+    // 3. Calculate Subject Relevance (0-100)
+    const subjectRelevance = this.calculateSubjectRelevance(course, userSubjects, userSubjectScores);
+    
+    // 4. Calculate Confidence Level based on data quality
+    const confidenceLevel = this.calculateConfidenceLevel(course, userInterests, userSkills, userSubjects);
+    
+    // 5. Composite Overall Fit Score (weighted combination)
+    const overallFitScore = Math.round(
+      interestAlignment * 0.35 +        // How much they'll enjoy it
+      aptitudeMatch * 0.40 +            // How likely they'll succeed  
+      subjectRelevance * 0.25           // Subject-specific alignment
+    );
+    
+    // 6. Determine Recommendation Tier
+    const recommendationTier = this.determineRecommendationTier(overallFitScore, confidenceLevel);
+    
+    // 7. Generate Explanations
+    const explanation = this.generateRecommendationExplanation(
+      course, 
+      userInterests, 
+      userSkills, 
+      interestAlignment, 
+      aptitudeMatch, 
+      subjectRelevance
+    );
+    
+    // 8. Find matching skills for backward compatibility
+    const matchingSkills = course.skill_labels.filter(skill => 
+      userInterests.includes(skill) || userSkills.includes(skill)
+    );
+    
+    return {
+      course,
+      matching_skills: matchingSkills,
+      subject_matched: userSubjects?.includes(course.subject_interest || '') || false,
+      user_subject_scores: userSubjectScores || {},
+      primary_subject_score: userSubjectScores && course.subject_interest ? 
+        userSubjectScores[course.subject_interest] || 0 : 0,
+      ranking_position: 0, // Will be set after sorting
+      
+      // Enhanced fields
+      overall_fit_score: overallFitScore,
+      interest_alignment: Math.round(interestAlignment),
+      aptitude_match: Math.round(aptitudeMatch),
+      confidence_level: Math.round(confidenceLevel),
+      recommendation_tier: recommendationTier,
+      explanation
+    };
+  }
+
+  /**
+   * Calculate how well the course aligns with user interests
+   */
+  private calculateInterestAlignment(course: Course, userInterests: string[]): number {
+    if (!course.skill_labels || course.skill_labels.length === 0) return 0;
+    
+    let matchCount = 0;
+    let weightedScore = 0;
+    
+    course.skill_labels.forEach(skill => {
+      const userInterestIndex = userInterests.indexOf(skill);
+      if (userInterestIndex !== -1) {
+        matchCount++;
+        // Higher weight for top interests (earlier in array)
+        const interestWeight = Math.max(1, userInterests.length - userInterestIndex);
+        weightedScore += interestWeight;
+      }
+    });
+    
+    if (matchCount === 0) return 0;
+    
+    // Normalize to 0-100 scale
+    const maxPossibleScore = course.skill_labels.length * userInterests.length;
+    return Math.min(100, (weightedScore / maxPossibleScore) * 100 * 2); // Boost factor
+  }
+
+  /**
+   * Calculate how well user skills match course requirements
+   */
+  private calculateAptitudeMatch(course: Course, userSkills: string[]): number {
+    if (!course.skill_labels || course.skill_labels.length === 0) return 0;
+    
+    const skillMatches = course.skill_labels.filter(skill => userSkills.includes(skill)).length;
+    const matchRatio = skillMatches / course.skill_labels.length;
+    
+    // Apply bonus for having multiple skill matches
+    let bonus = 0;
+    if (skillMatches >= 3) bonus = 20;
+    else if (skillMatches >= 2) bonus = 10;
+    else if (skillMatches >= 1) bonus = 5;
+    
+    return Math.min(100, (matchRatio * 80) + bonus);
+  }
+
+  /**
+   * Calculate subject-specific relevance and performance
+   */
+  private calculateSubjectRelevance(
+    course: Course, 
+    userSubjects?: string[], 
+    userSubjectScores?: { [subject: string]: number }
+  ): number {
+    if (!course.subject_interest) return 50; // Neutral if no subject specified
+    
+    if (!userSubjects || userSubjects.length === 0) return 50; // Neutral if no subjects taken
+    
+    const isSubjectMatch = userSubjects.includes(course.subject_interest);
+    
+    if (!isSubjectMatch) return 20; // Low relevance for non-matching subjects
+    
+    // Perfect match - check performance if available
+    if (!userSubjectScores) return 80; // Good relevance without performance data
+    
+    const subjectScore = userSubjectScores[course.subject_interest] || 0;
+    const maxSubjectScore = Math.max(...Object.values(userSubjectScores), 1);
+    const normalizedPerformance = subjectScore / maxSubjectScore;
+    
+    // Combine subject match with performance (80% base + 20% performance bonus)
+    return Math.min(100, 80 + (normalizedPerformance * 20));
+  }
+
+  /**
+   * Calculate confidence level based on available data quality
+   */
+  private calculateConfidenceLevel(
+    course: Course,
+    userInterests: string[],
+    userSkills: string[],
+    userSubjects?: string[]
+  ): number {
+    let confidence = 40; // Base confidence
+    
+    // Boost confidence based on data availability
+    if (userInterests.length >= 3) confidence += 20;
+    if (userSkills.length >= 2) confidence += 20;  
+    if (userSubjects && userSubjects.length > 0) confidence += 15;
+    if (course.skill_labels && course.skill_labels.length >= 3) confidence += 5;
+    
+    return Math.min(100, confidence);
+  }
+
+  /**
+   * Determine recommendation tier based on fit score and confidence
+   */
+  private determineRecommendationTier(
+    overallFitScore: number, 
+    confidenceLevel: number
+  ): 'perfect_match' | 'strong_candidate' | 'growth_opportunity' | 'alternative_path' | 'backup_option' {
+    
+    // High confidence recommendations
+    if (confidenceLevel >= 70) {
+      if (overallFitScore >= 85) return 'perfect_match';
+      if (overallFitScore >= 70) return 'strong_candidate';
+      if (overallFitScore >= 55) return 'growth_opportunity';
+      if (overallFitScore >= 40) return 'alternative_path';
+      return 'backup_option';
+    }
+    
+    // Medium/Low confidence - be more conservative
+    if (overallFitScore >= 75) return 'strong_candidate';
+    if (overallFitScore >= 60) return 'growth_opportunity';
+    if (overallFitScore >= 45) return 'alternative_path';
+    return 'backup_option';
+  }
+
+  /**
+   * Generate human-readable explanations for recommendations
+   */
+  private generateRecommendationExplanation(
+    course: Course,
+    userInterests: string[],
+    userSkills: string[],
+    interestAlignment: number,
+    aptitudeMatch: number,
+    subjectRelevance: number
+  ): {
+    why_recommended: string[];
+    strengths: string[];
+    growth_areas: string[];
+    success_factors: string[];
+  } {
+    
+    const whyRecommended: string[] = [];
+    const strengths: string[] = [];
+    const growthAreas: string[] = [];
+    const successFactors: string[] = [];
+    
+    // Generate why recommended
+    if (interestAlignment >= 70) {
+      whyRecommended.push(`Strong alignment with your interests in ${userInterests.slice(0, 2).join(' and ')}`);
+    }
+    if (aptitudeMatch >= 70) {
+      whyRecommended.push(`Your skills in ${userSkills.slice(0, 2).join(' and ')} match course requirements well`);
+    }
+    if (subjectRelevance >= 70) {
+      whyRecommended.push(`Good match with your academic background`);
+    }
+    
+    // Identify strengths
+    const matchingSkills = course.skill_labels.filter(skill => 
+      userInterests.includes(skill) || userSkills.includes(skill)
+    );
+    
+    if (matchingSkills.length > 0) {
+      strengths.push(`Strong foundation in ${matchingSkills.slice(0, 3).join(', ')}`);
+    }
+    
+    // Identify growth areas
+    const nonMatchingSkills = course.skill_labels.filter(skill => 
+      !userInterests.includes(skill) && !userSkills.includes(skill)
+    );
+    
+    if (nonMatchingSkills.length > 0) {
+      growthAreas.push(`Opportunity to develop ${nonMatchingSkills.slice(0, 2).join(' and ')} skills`);
+    }
+    
+    // Success factors
+    if (aptitudeMatch >= 60) {
+      successFactors.push('Good skill alignment increases likelihood of academic success');
+    }
+    if (interestAlignment >= 60) {
+      successFactors.push('High interest level supports long-term engagement and motivation');
+    }
+    
+    return {
+      why_recommended: whyRecommended.length > 0 ? whyRecommended : ['Based on overall profile compatibility'],
+      strengths: strengths.length > 0 ? strengths : ['Solid foundation for this field'],
+      growth_areas: growthAreas.length > 0 ? growthAreas : ['Well-prepared for course requirements'],
+      success_factors: successFactors.length > 0 ? successFactors : ['Good match for your profile']
+    };
   }
 
   /**
