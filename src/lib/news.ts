@@ -15,17 +15,10 @@ const educationKeywords = [
 ];
 
 export async function fetchNewsByKeyword(keyword: string, limit: number = 6) {
-  const apiKey = process.env.NEWS_API_KEY || process.env.NEXT_PUBLIC_NEWS_API_KEY;
-  
-  if (!apiKey) {
-    console.warn("News API key not found. Please set NEWS_API_KEY in your environment variables.");
-    return [];
-  }
-  
   const res = await fetch(
     `https://newsapi.org/v2/everything?q=${encodeURIComponent(
       keyword
-    )}&language=en&apiKey=${apiKey}`
+    )}&language=en&apiKey=${"be76df14099e4cd286edf5e959907809"}`
   );
   if (!res.ok) throw new Error("Failed to fetch news");
 
