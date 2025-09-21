@@ -10,9 +10,9 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: false,
   },
   // Add experimental features for better SSR handling
-  experimental: {
-    esmExternals: 'loose', // Handle ESM dependencies better
-  },
+  // experimental: {
+  //   esmExternals: 'loose', // Commented out for Turbopack compatibility
+  // },
   // Handle Firebase during build time
   webpack: (config, { isServer }) => {
     if (isServer) {

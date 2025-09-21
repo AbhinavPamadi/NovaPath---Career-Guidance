@@ -13,6 +13,7 @@ import {
   QuizAnswer,
   testUserWritePermissions,
 } from "@/lib/firestore-utils";
+import { useSimpleTranslation } from "@/hooks/use-simple-translation";
 
 interface QuizQuestion {
   question: string;
@@ -44,6 +45,9 @@ export function QuizWidget() {
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
   const [savingResults, setSavingResults] = useState(false);
+
+  // Simple translation hook
+  const { t } = useSimpleTranslation();
 
   // Load questions from test.json
   useEffect(() => {
@@ -187,7 +191,7 @@ export function QuizWidget() {
         <CardHeader>
           <CardTitle className="text-center text-2xl font-headline flex items-center justify-center gap-2">
             <Lock className="h-6 w-6 text-primary" />
-            Career Discovery Quiz
+            {t('career_discovery_quiz')}
           </CardTitle>
         </CardHeader>
         <CardContent className="text-center p-8">
@@ -336,7 +340,7 @@ export function QuizWidget() {
                 <span className="flex-shrink-0 w-6 h-6 rounded-full border-2 border-current flex items-center justify-center text-sm font-semibold uppercase">
                   {key}
                 </span>
-                <span className="flex-1">{text}</span>
+                <span className="flex-1">{String(text)}</span>
               </div>
             </button>
           ))}
@@ -348,8 +352,8 @@ export function QuizWidget() {
           size="lg"
         >
           {currentQuestionIndex < questions.length - 1
-            ? "Next Question"
-            : "Complete Quiz"}
+            ? t('next_question')
+            : t('complete_quiz')}
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </CardContent>

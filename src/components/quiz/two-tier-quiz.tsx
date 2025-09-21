@@ -26,14 +26,18 @@ import {
   GeneralQuizAnswer,
   PersonalizedQuizQuestion,
   PersonalizedQuizAnswer,
+  SubjectQuizQuestion,
+  SubjectQuizAnswer,
   CareerRecommendation,
   type NormalizedDomain
 } from "@/lib/quiz-system";
+import { useSimpleTranslation } from "@/hooks/use-simple-translation";
 
-type QuizStage = 'start' | 'general' | 'general-results' | 'personalized' | 'personalized-results' | 'career-recommendations' | 'completed';
+type QuizStage = 'start' | 'general' | 'general-results' | 'subject-selection' | 'subject-quiz' | 'subject-results' | 'personalized' | 'personalized-results' | 'career-recommendations' | 'completed';
 
 export function TwoTierQuiz() {
   const { user, loading } = useAuth();
+  const { t } = useSimpleTranslation();
   
   // Quiz state
   const [currentStage, setCurrentStage] = useState<QuizStage>('start');
@@ -49,6 +53,15 @@ export function TwoTierQuiz() {
     domainScores: { [key: string]: number };
     topDomains: string[];
   } | null>(null);
+  
+  // Subject quiz state  
+  const [availableSubjects] = useState<string[]>(['Arts', 'Biology', 'Chemistry', 'CS', 'Economics', 'Physics']);
+  const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
+  const [subjectQuestions, setSubjectQuestions] = useState<SubjectQuizQuestion[]>([]);
+  const [subjectCurrentIndex, setSubjectCurrentIndex] = useState(0);
+  const [subjectAnswers, setSubjectAnswers] = useState<SubjectQuizAnswer[]>([]);
+  const [subjectSelectedOption, setSubjectSelectedOption] = useState<number | null>(null);
+  const [subjectResults, setSubjectResults] = useState<{ [subject: string]: number } | null>(null);
   
   // Personalized quiz state
   const [personalizedQuestions, setPersonalizedQuestions] = useState<PersonalizedQuizQuestion[]>([]);
@@ -75,6 +88,12 @@ export function TwoTierQuiz() {
           }
         } else if (progress.hasCompletedPersonalized) {
           setCurrentStage('career-recommendations');
+        } else if (progress.hasCompletedSubjects) {
+          setCurrentStage('subject-results');
+          if (progress.subjectResults) {
+            setSubjectResults(progress.subjectResults.subject_scores);
+            setSelectedSubjects(progress.subjectResults.selected_subjects);
+          }
         } else if (progress.hasCompletedGeneral) {
           setCurrentStage('general-results');
           if (progress.generalResults) {
@@ -156,6 +175,102 @@ export function TwoTierQuiz() {
     }
   };
 
+  const startSubjectSelection = () => {
+    setCurrentStage('subject-selection');
+    setSelectedSubjects([]);
+  };
+
+  const handleSubjectToggle = (subject: string) => {
+    setSelectedSubjects(prev => {
+      if (prev.includes(subject)) {
+        return prev.filter(s => s !== subject);
+      } else {
+        return [...prev, subject];
+      }
+    });
+  };
+
+  const startSubjectQuiz = async () => {
+    if (selectedSubjects.length === 0 || !user) return;
+    
+    setSavingResults(true);
+    try {
+      const subjectQuestionMap = await quizSystem.loadSubjectQuestions(selectedSubjects);
+      
+      // Flatten questions from all selected subjects
+      const allQuestions: SubjectQuizQuestion[] = [];
+      selectedSubjects.forEach(subject => {
+        const questions = subjectQuestionMap[subject] || [];
+        questions.forEach(q => {
+          allQuestions.push({
+            ...q,
+            subject: subject // Add subject info to each question
+          } as SubjectQuizQuestion & { subject: string });
+        });
+      });
+      
+      // Shuffle the combined questions
+      const shuffledQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
+      setSubjectQuestions(shuffledQuestions);
+      setCurrentStage('subject-quiz');
+      setSubjectCurrentIndex(0);
+      setSubjectAnswers([]);
+      setSubjectSelectedOption(null);
+    } catch (error) {
+      console.error('Failed to load subject quiz questions:', error);
+    } finally {
+      setSavingResults(false);
+    }
+  };
+
+  const handleSubjectAnswerSelect = (optionIndex: number) => {
+    setSubjectSelectedOption(optionIndex);
+  };
+
+  const handleSubjectNextQuestion = async () => {
+    if (subjectSelectedOption === null) return;
+
+    const currentQuestion = subjectQuestions[subjectCurrentIndex];
+    const selectedOption = currentQuestion.options[subjectSelectedOption];
+    const questionSubject = (currentQuestion as any).subject || 'unknown';
+    
+    const newAnswer: SubjectQuizAnswer = {
+      question_id: currentQuestion.question_id,
+      selected_option_index: subjectSelectedOption,
+      domain_weights: selectedOption.domain_weights,
+      subject: questionSubject
+    };
+
+    const updatedAnswers = [...subjectAnswers, newAnswer];
+    setSubjectAnswers(updatedAnswers);
+
+    if (subjectCurrentIndex < subjectQuestions.length - 1) {
+      setSubjectCurrentIndex(subjectCurrentIndex + 1);
+      setSubjectSelectedOption(null);
+    } else {
+      // Process subject quiz results
+      setSavingResults(true);
+      try {
+        const results = quizSystem.processSubjectQuizResults(updatedAnswers);
+        setSubjectResults(results);
+        
+        // Save to Firestore
+        await quizSystem.saveSubjectQuizResults(
+          user!.uid,
+          selectedSubjects,
+          updatedAnswers,
+          results
+        );
+        
+        setCurrentStage('subject-results');
+      } catch (error) {
+        console.error('Failed to process subject quiz results:', error);
+      } finally {
+        setSavingResults(false);
+      }
+    }
+  };
+
   const startPersonalizedQuiz = async () => {
     if (!generalResults || !user) return;
     
@@ -217,25 +332,28 @@ export function TwoTierQuiz() {
           results.skillCompetency
         );
         
-        // Generate career recommendations
+        // Generate enhanced career recommendations with subject data
         const userInterests = generalResults!.topDomains.slice(0, 3);
         const userSkills = Object.entries(results.skillCompetency)
           .filter(([, competency]) => competency > 0.3) // Filter for decent competency
           .map(([domain]) => domain);
+        const userSubjects = selectedSubjects; // From subject quiz
         
         const recommendations = await quizSystem.generateCareerRecommendations(
           userInterests,
-          userSkills
+          userSkills,
+          userSubjects
         );
         
         setCareerRecommendations(recommendations);
         
-        // Save career suggestions
+        // Save enhanced career suggestions
         await quizSystem.saveCareerSuggestions(
           user!.uid,
           userInterests,
           userSkills,
-          recommendations
+          recommendations,
+          userSubjects
         );
         
         setCurrentStage('career-recommendations');
@@ -254,6 +372,12 @@ export function TwoTierQuiz() {
     setGeneralAnswers([]);
     setGeneralSelectedOption(null);
     setGeneralResults(null);
+    setSelectedSubjects([]);
+    setSubjectQuestions([]);
+    setSubjectCurrentIndex(0);
+    setSubjectAnswers([]);
+    setSubjectSelectedOption(null);
+    setSubjectResults(null);
     setPersonalizedQuestions([]);
     setPersonalizedCurrentIndex(0);
     setPersonalizedAnswers([]);
@@ -281,13 +405,13 @@ export function TwoTierQuiz() {
         <CardHeader>
           <CardTitle className="text-center text-2xl font-headline flex items-center justify-center gap-2">
             <Lock className="h-6 w-6 text-primary" />
-            Two-Tier Career Discovery Quiz
+            Enhanced Career Discovery Quiz
           </CardTitle>
         </CardHeader>
         <CardContent className="text-center p-8">
           <p className="text-muted-foreground mb-6">
-            Discover your ideal career path with our comprehensive two-tier assessment system. 
-            Sign in to unlock personalized insights and career recommendations.
+            Discover your ideal career path with our comprehensive three-tier assessment system featuring 
+            subject-specific testing. Sign in to unlock personalized insights and career recommendations.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild>
@@ -309,43 +433,61 @@ export function TwoTierQuiz() {
         <CardHeader>
           <CardTitle className="text-center text-3xl font-headline flex items-center justify-center gap-3">
             <Brain className="h-8 w-8 text-primary" />
-            Two-Tier Career Discovery Quiz
+            {t('enhanced_career_discovery')}
           </CardTitle>
         </CardHeader>
         <CardContent className="p-8">
           <div className="text-center mb-8">
             <p className="text-lg text-muted-foreground mb-6">
-              Our advanced career assessment system uses a scientific two-tier approach to provide 
-              highly personalized career recommendations based on your interests and skills.
+              Our advanced career assessment system uses a scientific three-tier approach with subject-specific 
+              testing to provide highly personalized career recommendations based on your interests, subjects, and skills.
             </p>
             
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="p-6 border rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50">
-                <div className="flex items-center gap-2 mb-3">
-                  <Target className="h-5 w-5 text-blue-600" />
-                  <h3 className="font-semibold text-blue-900 dark:text-blue-100">Level 1: Interest Assessment</h3>
+            <div className="grid md:grid-cols-3 gap-4 mb-8">
+              <div className="p-4 border rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50">
+                <div className="flex items-center gap-2 mb-2">
+                  <Target className="h-4 w-4 text-blue-600" />
+                  <h3 className="font-semibold text-blue-900 dark:text-blue-100 text-sm">Level 1: Interest Assessment</h3>
                 </div>
-                <p className="text-sm text-blue-700 dark:text-blue-200">
-                  25 questions across 5 domains to gauge your natural interests and preferences
+                <p className="text-xs text-blue-700 dark:text-blue-200 mb-2">
+                  25 questions across 5 domains to gauge your natural interests
                 </p>
-                <div className="mt-3 flex flex-wrap gap-1">
-                  <Badge variant="secondary" className="text-xs">Analytical Reasoning</Badge>
-                  <Badge variant="secondary" className="text-xs">Spatial Design</Badge>
-                  <Badge variant="secondary" className="text-xs">Math/Quant</Badge>
+                <div className="flex flex-wrap gap-1">
+                  <Badge variant="secondary" className="text-xs">Analytical</Badge>
+                  <Badge variant="secondary" className="text-xs">Spatial</Badge>
+                  <Badge variant="secondary" className="text-xs">Math</Badge>
                   <Badge variant="secondary" className="text-xs">Problem Solving</Badge>
-                  <Badge variant="secondary" className="text-xs">Social Skills</Badge>
+                  <Badge variant="secondary" className="text-xs">Social</Badge>
                 </div>
               </div>
               
-              <div className="p-6 border rounded-lg bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/50 dark:to-emerald-950/50">
-                <div className="flex items-center gap-2 mb-3">
-                  <Sparkles className="h-5 w-5 text-green-600" />
-                  <h3 className="font-semibold text-green-900 dark:text-green-100">Level 2: Skill Assessment</h3>
+              <div className="p-4 border rounded-lg bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/50 dark:to-pink-950/50">
+                <div className="flex items-center gap-2 mb-2">
+                  <BookOpen className="h-4 w-4 text-purple-600" />
+                  <h3 className="font-semibold text-purple-900 dark:text-purple-100 text-sm">Level 2: Subject Testing</h3>
                 </div>
-                <p className="text-sm text-green-700 dark:text-green-200">
-                  Focused questions on your top 2-3 domains to evaluate actual skill competency
+                <p className="text-xs text-purple-700 dark:text-purple-200 mb-2">
+                  Choose subjects of interest and answer specific questions
                 </p>
-                <div className="mt-3">
+                <div className="flex flex-wrap gap-1">
+                  <Badge variant="secondary" className="text-xs">Arts</Badge>
+                  <Badge variant="secondary" className="text-xs">Biology</Badge>
+                  <Badge variant="secondary" className="text-xs">Chemistry</Badge>
+                  <Badge variant="secondary" className="text-xs">CS</Badge>
+                  <Badge variant="secondary" className="text-xs">Economics</Badge>
+                  <Badge variant="secondary" className="text-xs">Physics</Badge>
+                </div>
+              </div>
+
+              <div className="p-4 border rounded-lg bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/50 dark:to-emerald-950/50">
+                <div className="flex items-center gap-2 mb-2">
+                  <Sparkles className="h-4 w-4 text-green-600" />
+                  <h3 className="font-semibold text-green-900 dark:text-green-100 text-sm">Level 3: Skill Assessment</h3>
+                </div>
+                <p className="text-xs text-green-700 dark:text-green-200 mb-2">
+                  Deep dive into your top domains to evaluate skill competency
+                </p>
+                <div className="mt-2">
                   <Badge variant="secondary" className="text-xs">Personalized to your interests</Badge>
                 </div>
               </div>
@@ -357,25 +499,25 @@ export function TwoTierQuiz() {
                 <h3 className="font-semibold text-purple-900 dark:text-purple-100">Career Recommendations</h3>
               </div>
               <p className="text-sm text-purple-700 dark:text-purple-200">
-                Get matched with courses and career paths where your interests and skills align, 
-                complete with entry requirements and job role examples.
+                Get matched with courses and career paths where your interests, subjects, and skills align, 
+                with priority given to subject+skill matches over skill-only matches.
               </p>
             </div>
           </div>
           
           <div className="text-center">
-            <Button 
+              <Button 
               onClick={startGeneralQuiz} 
               size="lg" 
               className="animate-pulse-glow bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
             >
               <Brain className="mr-2 h-5 w-5" />
-              Start Assessment
+              {t('start_assessment')}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <p className="text-xs text-muted-foreground mt-2">
               <Clock className="inline h-3 w-3 mr-1" />
-              Estimated time: 15-20 minutes
+              Estimated time: 20-25 minutes
             </p>
           </div>
         </CardContent>
@@ -394,7 +536,7 @@ export function TwoTierQuiz() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Target className="h-5 w-5 text-blue-600" />
-              <span className="text-sm font-medium text-blue-600">Level 1: Interest Assessment</span>
+              <span className="text-sm font-medium text-blue-600">{t('level_1_interest')}</span>
             </div>
             <span className="text-sm text-primary font-semibold">
               {Math.round(progress)}% Complete
@@ -426,7 +568,7 @@ export function TwoTierQuiz() {
             </div>
           )}
           <div className="space-y-4 mb-8">
-            {currentQuestion.options.map((option, index) => (
+            {currentQuestion.options.map((option: any, index: number) => (
               <button
                 key={index}
                 onClick={() => handleGeneralAnswerSelect(index)}
@@ -453,7 +595,7 @@ export function TwoTierQuiz() {
             size="lg"
           >
             {generalCurrentIndex < generalQuestions.length - 1
-              ? "Next Question"
+              ? t('next_question')
               : "Complete Level 1"}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
@@ -516,16 +658,233 @@ export function TwoTierQuiz() {
 
           <div className="text-center">
             <p className="text-sm text-muted-foreground mb-4">
-              Ready for Level 2? We'll focus on your strongest domains to assess your actual skills.
+              Ready for Level 2? Choose your subject interests and we'll assess your skills accordingly.
             </p>
             <Button 
-              onClick={startPersonalizedQuiz} 
+              onClick={startSubjectSelection} 
               size="lg"
               disabled={savingResults}
               className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700"
             >
               <Sparkles className="mr-2 h-5 w-5" />
-              Start Level 2 Assessment
+              {t('continue_to_subject')}
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  // Show subject selection
+  if (currentStage === 'subject-selection') {
+    return (
+      <Card className="glass-card max-w-2xl mx-auto">
+        <CardHeader>
+          <CardTitle className="text-center text-2xl font-headline flex items-center justify-center gap-2">
+            <BookOpen className="h-6 w-6 text-purple-500" />
+            Level 2: Subject Interest Selection
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-8">
+          <div className="text-center mb-6">
+            <p className="text-muted-foreground mb-4">
+              Select one or more subjects that interest you. We'll test your knowledge and align 
+              your career recommendations accordingly.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4 mb-6">
+            {availableSubjects.map(subject => (
+              <button
+                key={subject}
+                onClick={() => handleSubjectToggle(subject)}
+                className={cn(
+                  "p-4 text-left rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                  selectedSubjects.includes(subject)
+                    ? "border-primary bg-primary/10"
+                    : "border-border bg-background/50"
+                )}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-medium">{subject}</span>
+                  {selectedSubjects.includes(subject) && (
+                    <CheckCircle className="h-5 w-5 text-primary" />
+                  )}
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <p className="text-xs text-muted-foreground mb-4">
+              Selected: {selectedSubjects.length} subject(s)
+            </p>
+            <Button
+              onClick={startSubjectQuiz}
+              disabled={selectedSubjects.length === 0 || savingResults}
+              className="w-full"
+              size="lg"
+            >
+              {savingResults ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  Loading Questions...
+                </>
+              ) : (
+                <>
+                  {t('start_subject_quiz')}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </>
+              )}
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  // Show subject quiz
+  if (currentStage === 'subject-quiz') {
+    const currentQuestion = subjectQuestions[subjectCurrentIndex];
+    const progress = ((subjectCurrentIndex + 1) / subjectQuestions.length) * 100;
+
+    return (
+      <Card className="glass-card max-w-2xl mx-auto">
+        <CardHeader>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <BookOpen className="h-5 w-5 text-purple-600" />
+              <span className="text-sm font-medium text-purple-600">{t('level_2_subject')}</span>
+            </div>
+            <span className="text-sm text-primary font-semibold">
+              {Math.round(progress)}% Complete
+            </span>
+          </div>
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-sm text-muted-foreground">
+              Question {subjectCurrentIndex + 1} of {subjectQuestions.length}
+            </span>
+          </div>
+          <Progress value={progress} className="mb-4" />
+          <div className="mb-4">
+            <p className="text-xs text-muted-foreground mb-2">Selected subjects:</p>
+            <div className="flex flex-wrap gap-1">
+              {selectedSubjects.map(subject => (
+                <Badge key={subject} variant="secondary" className="text-xs">
+                  {subject}
+                </Badge>
+              ))}
+            </div>
+          </div>
+          <CardTitle className="text-xl font-headline">
+            {currentQuestion.question_text}
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-8">
+          <div className="space-y-4 mb-8">
+            {currentQuestion.options.map((option: any, index: number) => (
+              <button
+                key={index}
+                onClick={() => handleSubjectAnswerSelect(index)}
+                className={cn(
+                  "w-full p-4 text-left rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                  subjectSelectedOption === index
+                    ? "border-primary bg-primary/10"
+                    : "border-border bg-background/50"
+                )}
+              >
+                <div className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full border-2 border-current flex items-center justify-center text-sm font-semibold">
+                    {String.fromCharCode(65 + index)}
+                  </span>
+                  <span className="flex-1">{option.option_text}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+          <Button
+            onClick={handleSubjectNextQuestion}
+            disabled={subjectSelectedOption === null || savingResults}
+            className="w-full"
+            size="lg"
+          >
+            {subjectCurrentIndex < subjectQuestions.length - 1
+              ? t('next_question')
+              : "Complete Subject Assessment"}
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  // Show subject results
+  if (currentStage === 'subject-results' && subjectResults) {
+    return (
+      <Card className="glass-card max-w-2xl mx-auto">
+        <CardHeader>
+          <CardTitle className="text-center text-2xl font-headline flex items-center justify-center gap-2">
+            <CheckCircle className="h-6 w-6 text-green-500" />
+            Subject Assessment Complete!
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-8">
+          <div className="text-center mb-6">
+            <p className="text-muted-foreground mb-4">
+              Your subject interest strengths:
+            </p>
+            <div className="space-y-3">
+              {Object.entries(subjectResults)
+                .sort(([, a], [, b]) => b - a)
+                .map(([subject, score], index) => (
+                <div
+                  key={subject}
+                  className="flex items-center justify-between p-4 bg-gradient-to-r from-background/50 to-purple-50/20 rounded-lg border"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={cn(
+                      "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold",
+                      index === 0 ? "bg-gold-500 text-white" :
+                      index === 1 ? "bg-gray-400 text-white" :
+                      index === 2 ? "bg-amber-600 text-white" :
+                      "bg-gray-200 text-gray-700"
+                    )}>
+                      {index + 1}
+                    </div>
+                    <span className="font-medium">{subject}</span>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-sm font-semibold text-primary">
+                      {score} points
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {savingResults && (
+            <div className="text-center mb-6 p-4 bg-primary/10 rounded-lg">
+              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary mx-auto mb-2"></div>
+              <p className="text-sm text-muted-foreground">
+                Processing your results...
+              </p>
+            </div>
+          )}
+
+          <div className="text-center">
+            <p className="text-sm text-muted-foreground mb-4">
+              Now let's assess your skills in your strongest domains from Level 1.
+            </p>
+            <Button 
+              onClick={startPersonalizedQuiz} 
+              size="lg"
+              disabled={savingResults}
+              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+            >
+              <Target className="mr-2 h-5 w-5" />
+              Start Level 3: Skill Assessment
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
@@ -545,7 +904,7 @@ export function TwoTierQuiz() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-green-600" />
-              <span className="text-sm font-medium text-green-600">Level 2: Skill Assessment</span>
+              <span className="text-sm font-medium text-green-600">{t('level_3_skill')}</span>
             </div>
             <span className="text-sm text-primary font-semibold">
               {Math.round(progress)}% Complete
@@ -587,7 +946,7 @@ export function TwoTierQuiz() {
             </div>
           )}
           <div className="space-y-4 mb-8">
-            {currentQuestion.options.map((option, index) => (
+            {currentQuestion.options.map((option: any, index: number) => (
               <button
                 key={index}
                 onClick={() => handlePersonalizedAnswerSelect(index)}
@@ -614,7 +973,7 @@ export function TwoTierQuiz() {
             size="lg"
           >
             {personalizedCurrentIndex < personalizedQuestions.length - 1
-              ? "Next Question"
+              ? t('next_question')
               : "Generate Career Recommendations"}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>

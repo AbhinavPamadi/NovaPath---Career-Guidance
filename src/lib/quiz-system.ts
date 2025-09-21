@@ -36,6 +36,25 @@ export interface GeneralQuizQuestion {
   options: GeneralQuizOption[];
 }
 
+// Subject-specific quiz interfaces for Level 2
+export interface SubjectQuizOption {
+  option_text: string;
+  domain_weights: { [key: string]: number };
+}
+
+export interface SubjectQuizQuestion {
+  question_id: string;
+  question_text: string;
+  options: SubjectQuizOption[];
+}
+
+export interface SubjectQuizAnswer {
+  question_id: string;
+  selected_option_index: number;
+  domain_weights: { [key: string]: number };
+  subject: string;
+}
+
 export interface GeneralQuizData {
   [key: string]: GeneralQuizQuestion[];
 }
@@ -108,6 +127,7 @@ export interface Course {
   skill_labels: string[];
   example_job_roles: string[];
   confidence_level: string;
+  subject_interest?: string; // Added for Level 2 subject matching
 }
 
 export interface CareerRecommendation {
@@ -125,6 +145,14 @@ export interface GeneralQuizInferences {
   answers: GeneralQuizAnswer[];
 }
 
+export interface SubjectQuizInferences {
+  quiz_type: 'subject_continuation';
+  completed_at: Date;
+  selected_subjects: string[];
+  subject_scores: { [subject: string]: number };
+  answers: SubjectQuizAnswer[];
+}
+
 export interface PersonalizedQuizInferences {
   quiz_type: 'personalized';
   completed_at: Date;
@@ -140,6 +168,7 @@ export interface CareerSuggestions {
   generated_at: Date;
   user_interests: string[];
   user_skills: string[];
+  user_subjects?: string[]; // Added for Level 2 subject continuation
   recommendations: CareerRecommendation[];
   total_matches: number;
 }
@@ -188,6 +217,79 @@ export class AdaptiveThreeTierQuizSystem {
     }
 
     return selectedQuestions;
+  }
+
+  /**
+   * Step 1.5: Load subject-specific questions for Level 2 continuation
+   */
+  async loadSubjectQuestions(subjects: string[]): Promise<{ [subject: string]: SubjectQuizQuestion[] }> {
+    const subjectQuestions: { [subject: string]: SubjectQuizQuestion[] } = {};
+    
+    const subjectFileMapping: { [key: string]: string } = {
+      'Arts': 'arts.json',
+      'Biology': 'biology.json', 
+      'Chemistry': 'chemistry.json',
+      'CS': 'cs.json',
+      'Economics': 'economics.json',
+      'Physics': 'physics.json'
+    };
+
+    for (const subject of subjects) {
+      const filename = subjectFileMapping[subject];
+      if (!filename) {
+        console.warn(`No question file found for subject: ${subject}`);
+        continue;
+      }
+
+      try {
+        const response = await fetch(`/otherQuestions/${filename}`);
+        const data: SubjectQuizQuestion[] = await response.json();
+        
+        if (data && Array.isArray(data)) {
+          // Randomly select 5 non-repeating questions
+          const shuffled = [...data].sort(() => Math.random() - 0.5);
+          subjectQuestions[subject] = shuffled.slice(0, 5);
+        }
+      } catch (error) {
+        console.error(`Failed to load subject questions for ${subject}:`, error);
+      }
+    }
+
+    return subjectQuestions;
+  }
+
+  /**
+   * Step 1.5: Process subject quiz results
+   */
+  processSubjectQuizResults(answers: SubjectQuizAnswer[]): { [subject: string]: number } {
+    const subjectScores: { [subject: string]: number } = {};
+
+    // Group answers by subject and aggregate scores
+    answers.forEach(answer => {
+      const subject = answer.subject;
+      Object.entries(answer.domain_weights).forEach(([domain, weight]) => {
+        const normalizedSubject = this.normalizeSubjectName(subject);
+        subjectScores[normalizedSubject] = (subjectScores[normalizedSubject] || 0) + weight;
+      });
+    });
+
+    return subjectScores;
+  }
+
+  /**
+   * Helper: Normalize subject names for consistency
+   */
+  private normalizeSubjectName(subject: string): string {
+    const lowerSubject = subject.toLowerCase();
+    
+    if (lowerSubject.includes('art')) return 'Arts';
+    if (lowerSubject.includes('bio')) return 'Biology';
+    if (lowerSubject.includes('chem')) return 'Chemistry';
+    if (lowerSubject.includes('comp') || lowerSubject.includes('cs')) return 'CS';
+    if (lowerSubject.includes('econ')) return 'Economics';
+    if (lowerSubject.includes('phys')) return 'Physics';
+    
+    return subject;
   }
 
   /**
@@ -681,38 +783,111 @@ export class AdaptiveThreeTierQuizSystem {
   }
 
   /**
-   * Step 3: Generate career recommendations
+   * Step 2.5: Save subject quiz results to Firestore
+   */
+  async saveSubjectQuizResults(
+    uid: string,
+    selectedSubjects: string[],
+    answers: SubjectQuizAnswer[],
+    subjectScores: { [subject: string]: number }
+  ): Promise<boolean> {
+    try {
+      const subjectQuizInferences: SubjectQuizInferences = {
+        quiz_type: 'subject_continuation',
+        completed_at: new Date(),
+        selected_subjects: selectedSubjects,
+        subject_scores: subjectScores,
+        answers
+      };
+
+      await setDoc(doc(db, "users", uid), {
+        subject_quiz_inferences: subjectQuizInferences,
+        lastLogin: new Date()
+      }, { merge: true });
+
+      console.log('Subject quiz results saved successfully');
+      return true;
+    } catch (error) {
+      console.error('Failed to save subject quiz results:', error);
+      return false;
+    }
+  }
+
+  /**
+   * Step 3: Enhanced career recommendations with skills + subjects matching
    */
   async generateCareerRecommendations(
     userInterests: string[],
-    userSkills: string[]
+    userSkills: string[],
+    userSubjects?: string[]
   ): Promise<CareerRecommendation[]> {
     try {
       const response = await fetch('/courses1.json');
       const data = await response.json();
-      const courses: Course[] = data.courses;
+      const courses: Course[] = Array.isArray(data) ? data : data.courses || [];
 
       const recommendations: CareerRecommendation[] = [];
 
       courses.forEach(course => {
-        const matchingSkills = course.skill_labels.filter(skill => 
+        let matchingSkills = course.skill_labels.filter(skill => 
           userInterests.includes(skill) || userSkills.includes(skill)
         );
 
-        // Recommend if at least 2 skills match
+        // Enhanced matching: Also check subject interest alignment
+        let subjectMatch = false;
+        if (userSubjects && userSubjects.length > 0 && course.subject_interest) {
+          subjectMatch = userSubjects.includes(course.subject_interest);
+        }
+
+        // Prioritized recommendation logic:
+        // 1. Courses that match both skills (≥2) AND subjects get highest priority
+        // 2. Courses that match skills only (≥2) get second priority
+        let shouldRecommend = false;
+        let matchScore = 0;
+        let priority = 0;
+
         if (matchingSkills.length >= 2) {
-          const matchScore = matchingSkills.length / course.skill_labels.length;
+          shouldRecommend = true;
+          const skillMatchScore = matchingSkills.length / course.skill_labels.length;
           
+          if (subjectMatch) {
+            // Subject + skill match: highest priority
+            priority = 3;
+            matchScore = skillMatchScore * 1.2; // 20% bonus for subject match
+          } else {
+            // Skill-only match: lower priority
+            priority = 2;
+            matchScore = skillMatchScore;
+          }
+        } else if (subjectMatch && matchingSkills.length >= 1) {
+          // Subject match with at least 1 skill: moderate priority
+          shouldRecommend = true;
+          priority = 1;
+          matchScore = 0.5 + (matchingSkills.length / course.skill_labels.length) * 0.3;
+        }
+
+        if (shouldRecommend) {
           recommendations.push({
             course,
-            match_score: matchScore,
-            matching_skills: matchingSkills
-          });
+            match_score: Math.min(matchScore, 1.0), // Cap at 1.0
+            matching_skills: matchingSkills,
+            priority // Add for sorting
+          } as any);
         }
       });
 
-      // Sort by match score (descending)
-      return recommendations.sort((a, b) => b.match_score - a.match_score);
+      // Sort by priority first, then by match score (descending)
+      return recommendations
+        .sort((a: any, b: any) => {
+          if (a.priority !== b.priority) {
+            return b.priority - a.priority; // Higher priority first
+          }
+          return b.match_score - a.match_score; // Higher score first
+        })
+        .map((rec: any) => {
+          const { priority, ...cleanRec } = rec;
+          return cleanRec as CareerRecommendation;
+        }); // Remove priority from final result
     } catch (error) {
       console.error('Failed to load courses or generate recommendations:', error);
       return [];
@@ -823,19 +998,21 @@ export class AdaptiveThreeTierQuizSystem {
   }
 
   /**
-   * Step 4: Save career suggestions to Firestore
+   * Step 4: Save enhanced career suggestions to Firestore
    */
   async saveCareerSuggestions(
     uid: string,
     userInterests: string[],
     userSkills: string[],
-    recommendations: CareerRecommendation[]
+    recommendations: CareerRecommendation[],
+    userSubjects?: string[]
   ): Promise<boolean> {
     try {
       const careerSuggestions: CareerSuggestions = {
         generated_at: new Date(),
         user_interests: userInterests,
         user_skills: userSkills,
+        user_subjects: userSubjects, // Added for Level 2 subject continuation
         recommendations,
         total_matches: recommendations.length
       };
@@ -845,7 +1022,7 @@ export class AdaptiveThreeTierQuizSystem {
         lastLogin: new Date()
       }, { merge: true });
 
-      console.log('Career suggestions saved successfully');
+      console.log('Enhanced career suggestions saved successfully');
       return true;
     } catch (error) {
       console.error('Failed to save career suggestions:', error);
@@ -886,13 +1063,15 @@ export class AdaptiveThreeTierQuizSystem {
   }
 
   /**
-   * Get user's quiz progress and results
+   * Get user's enhanced quiz progress and results with subject continuation
    */
   async getUserQuizProgress(uid: string): Promise<{
     hasCompletedGeneral: boolean;
+    hasCompletedSubjects: boolean;
     hasCompletedPersonalized: boolean;
     hasCareerSuggestions: boolean;
     generalResults?: GeneralQuizInferences;
+    subjectResults?: SubjectQuizInferences;
     personalizedResults?: PersonalizedQuizInferences;
     careerSuggestions?: CareerSuggestions;
   }> {
@@ -902,6 +1081,7 @@ export class AdaptiveThreeTierQuizSystem {
       if (!userDoc.exists()) {
         return {
           hasCompletedGeneral: false,
+          hasCompletedSubjects: false,
           hasCompletedPersonalized: false,
           hasCareerSuggestions: false
         };
@@ -911,9 +1091,11 @@ export class AdaptiveThreeTierQuizSystem {
       
       return {
         hasCompletedGeneral: !!userData.general_quiz_inferences,
+        hasCompletedSubjects: !!userData.subject_quiz_inferences,
         hasCompletedPersonalized: !!userData.personalized_quiz_inferences,
         hasCareerSuggestions: !!userData.career_suggestions,
         generalResults: userData.general_quiz_inferences,
+        subjectResults: userData.subject_quiz_inferences,
         personalizedResults: userData.personalized_quiz_inferences,
         careerSuggestions: userData.career_suggestions
       };
@@ -921,6 +1103,7 @@ export class AdaptiveThreeTierQuizSystem {
       console.error('Failed to get user quiz progress:', error);
       return {
         hasCompletedGeneral: false,
+        hasCompletedSubjects: false,
         hasCompletedPersonalized: false,
         hasCareerSuggestions: false
       };
@@ -983,19 +1166,30 @@ export class AdaptiveThreeTierQuizSystem {
         adaptiveResults.skillCompetency
       );
       
-      // Step 3: Execute Level 3 - Career Recommendations
-      console.log('Starting Level 3: Career Recommendations...');
+      // Step 2.5: Execute Subject Continuation (Mock - would be UI driven)
+      console.log('Starting Level 2.5: Subject Continuation...');
+      // In real implementation, user selects subjects in UI
+      const mockSelectedSubjects = ['CS', 'Physics']; // This would come from UI
+      const subjectQuestions = await this.loadSubjectQuestions(mockSelectedSubjects);
+      const mockSubjectAnswers: SubjectQuizAnswer[] = []; // Would be populated by UI
+      const subjectScores = this.processSubjectQuizResults(mockSubjectAnswers);
+      await this.saveSubjectQuizResults(uid, mockSelectedSubjects, mockSubjectAnswers, subjectScores);
+      
+      // Step 3: Execute Level 3 - Enhanced Career Recommendations
+      console.log('Starting Level 3: Enhanced Career Recommendations...');
       const userInterests = topDomains.slice(0, 3); // Top 3 domains from general quiz
       const userSkills = Object.keys(adaptiveResults.skillCompetency)
         .filter(domain => adaptiveResults.skillCompetency[domain] > 0.6)
         .slice(0, 5); // Top skills with competency > 60%
+      const userSubjects = mockSelectedSubjects; // From subject continuation
       
       const careerRecommendations = await this.generateCareerRecommendations(
         userInterests, 
-        userSkills
+        userSkills,
+        userSubjects
       );
       
-      await this.saveCareerSuggestions(uid, userInterests, userSkills, careerRecommendations);
+      await this.saveCareerSuggestions(uid, userInterests, userSkills, careerRecommendations, userSubjects);
       
       return {
         success: true,

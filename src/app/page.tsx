@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { MessageSquare, ThumbsUp, AlertCircle } from "lucide-react";
 import { QuizWidget } from "@/components/quiz/quiz-widget";
-import { Translate } from "@/hooks/use-translation";
+// Removed translation imports to minimize API calls
 
 export default function Home() {
   return (
@@ -27,13 +27,13 @@ export default function Home() {
 
       <section className="text-center relative z-10">
         <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70 mb-6">
-          <Translate text="Navigate Your Future with" />
+          Navigate Your Future with
           <span className="block bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary mt-2">
-            <Translate text="NovaPath" />
+            NovaPath
           </span>
         </h1>
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-10">
-          <Translate text="An ultra-modern guidance platform using AI to illuminate your career and educational journey. Step into the future of decision-making." />
+          An ultra-modern guidance platform using AI to illuminate your career and educational journey. Step into the future of decision-making.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Button
@@ -42,13 +42,13 @@ export default function Home() {
             className="shadow-primary/50 shadow-lg hover:shadow-primary/50 hover:shadow-2xl transition-shadow"
           >
             <Link href="/quiz">
-              <Translate text="Find Your Path" />{" "}
+              Find Your Path{" "}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline">
             <Link href="/timeline">
-              <Translate text="Explore Timeline" />
+              Explore Timeline
             </Link>
           </Button>
         </div>
@@ -58,10 +58,10 @@ export default function Home() {
       <section id="quiz" className="mt-24 md:mt-32 scroll-mt-20">
         <div className="text-center mb-12">
           <h2 className="font-headline text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-            <Translate text="Discover Your Path" />
+            Discover Your Path
           </h2>
           <p className="mt-2 text-lg text-muted-foreground">
-            <Translate text="Take our interactive quiz to uncover your ideal career direction." />
+            Take our interactive quiz to uncover your ideal career direction.
           </p>
         </div>
         <QuizWidget />
@@ -71,10 +71,10 @@ export default function Home() {
       <section id="features" className="mt-24 md:mt-32 scroll-mt-20">
         <div className="text-center mb-12">
           <h2 className="font-headline text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-            <Translate text="Explore Our Features" />
+            Explore Our Features
           </h2>
           <p className="mt-2 text-lg text-muted-foreground">
-            <Translate text="A suite of tools designed to guide you to success." />
+            A suite of tools designed to guide you to success.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -115,10 +115,10 @@ export default function Home() {
       <section id="feedback" className="mt-24 md:mt-32 scroll-mt-20">
         <div className="text-center mb-12">
           <h2 className="font-headline text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-            <Translate text="Feedback Forum" />
+            Feedback Forum
           </h2>
           <p className="mt-2 text-lg text-muted-foreground">
-            <Translate text="Share your thoughts, suggestions, and help us improve NovaPath together." />
+            Share your thoughts, suggestions, and help us improve NovaPath together.
           </p>
         </div>
 
@@ -128,10 +128,10 @@ export default function Home() {
               <MessageSquare className="h-8 w-8 text-primary" />
             </div>
             <h3 className="font-headline text-xl font-bold mb-2">
-              <Translate text="Share Feedback" />
+              Share Feedback
             </h3>
             <p className="text-muted-foreground text-sm">
-              <Translate text="Tell us what you think about NovaPath and how we can improve your experience." />
+              Tell us what you think about NovaPath and how we can improve your experience.
             </p>
           </Card>
 
@@ -140,10 +140,10 @@ export default function Home() {
               <ThumbsUp className="h-8 w-8 text-primary" />
             </div>
             <h3 className="font-headline text-xl font-bold mb-2">
-              <Translate text="Vote on Ideas" />
+              Vote on Ideas
             </h3>
             <p className="text-muted-foreground text-sm">
-              <Translate text="Vote for the features and improvements that matter most to you." />
+              Vote for the features and improvements that matter most to you.
             </p>
           </Card>
 
@@ -152,10 +152,10 @@ export default function Home() {
               <AlertCircle className="h-8 w-8 text-primary" />
             </div>
             <h3 className="font-headline text-xl font-bold mb-2">
-              <Translate text="Report Issues" />
+              Report Issues
             </h3>
             <p className="text-muted-foreground text-sm">
-              <Translate text="Found a bug or something not working? Let us know so we can fix it quickly." />
+              Found a bug or something not working? Let us know so we can fix it quickly.
             </p>
           </Card>
         </div>
@@ -167,7 +167,7 @@ export default function Home() {
             className="shadow-primary/50 shadow-lg hover:shadow-primary/50 hover:shadow-2xl transition-shadow"
           >
             <Link href="/feedback-forum">
-              <Translate text="Join the Discussion" />{" "}
+              Join the Discussion{" "}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
@@ -193,10 +193,10 @@ function FeatureCard({
     <Card className="glass-card p-8 text-center items-center flex flex-col h-full hover:border-accent/50 transition-all duration-300 transform hover:-translate-y-2">
       <div className="mb-4">{icon}</div>
       <h3 className="font-headline text-2xl font-bold mb-2">
-        <Translate text={title} />
+        {title}
       </h3>
       <p className="text-muted-foreground flex-grow">
-        <Translate text={description} />
+        {description}
       </p>
     </Card>
   );
