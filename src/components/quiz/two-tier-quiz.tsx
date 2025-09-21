@@ -33,7 +33,7 @@ import {
 } from "@/lib/quiz-system";
 import { useSimpleTranslation } from "@/hooks/use-simple-translation";
 
-type QuizStage = 'start' | 'general' | 'general-results' | 'subject-selection' | 'subject-quiz' | 'subject-results' | 'personalized' | 'personalized-results' | 'career-recommendations' | 'completed';
+type QuizStage = 'start' | 'general' | 'general-results' | 'personalized' | 'personalized-results' | 'subject-selection' | 'subject-quiz' | 'subject-results' | 'career-recommendations' | 'completed';
 
 export function TwoTierQuiz() {
   const { user, loading } = useAuth();
@@ -72,6 +72,10 @@ export function TwoTierQuiz() {
   
   // Career recommendations state
   const [careerRecommendations, setCareerRecommendations] = useState<CareerRecommendation[]>([]);
+  
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10); // Show 10 recommendations per page
 
   // Check user's quiz progress on load
   useEffect(() => {
@@ -178,6 +182,45 @@ export function TwoTierQuiz() {
   const startSubjectSelection = () => {
     setCurrentStage('subject-selection');
     setSelectedSubjects([]);
+  };
+
+  const generateFinalRecommendations = async () => {
+    if (!generalResults || !subjectResults || !user) return;
+    
+    setSavingResults(true);
+    try {
+      // Generate enhanced career recommendations with all quiz data
+      const userInterests = generalResults.topDomains.slice(0, 3);
+      const userSkills = Object.entries(generalResults.domainScores)
+        .filter(([, score]) => score > 0.3) // Filter for decent scores
+        .map(([domain]) => domain);
+      const userSubjects = selectedSubjects;
+      
+      const recommendations = await quizSystem.generateCareerRecommendations(
+        userInterests,
+        userSkills,
+        userSubjects,
+        subjectResults
+      );
+      
+      setCareerRecommendations(recommendations);
+      setCurrentPage(1); // Reset to first page when new recommendations are generated
+      
+      // Save enhanced career suggestions
+      await quizSystem.saveCareerSuggestions(
+        user.uid,
+        userInterests,
+        userSkills,
+        recommendations,
+        userSubjects
+      );
+      
+      setCurrentStage('career-recommendations');
+    } catch (error) {
+      console.error('Failed to generate final recommendations:', error);
+    } finally {
+      setSavingResults(false);
+    }
   };
 
   const handleSubjectToggle = (subject: string) => {
@@ -332,31 +375,8 @@ export function TwoTierQuiz() {
           results.skillCompetency
         );
         
-        // Generate enhanced career recommendations with subject data
-        const userInterests = generalResults!.topDomains.slice(0, 3);
-        const userSkills = Object.entries(results.skillCompetency)
-          .filter(([, competency]) => competency > 0.3) // Filter for decent competency
-          .map(([domain]) => domain);
-        const userSubjects = selectedSubjects; // From subject quiz
-        
-        const recommendations = await quizSystem.generateCareerRecommendations(
-          userInterests,
-          userSkills,
-          userSubjects
-        );
-        
-        setCareerRecommendations(recommendations);
-        
-        // Save enhanced career suggestions
-        await quizSystem.saveCareerSuggestions(
-          user!.uid,
-          userInterests,
-          userSkills,
-          recommendations,
-          userSubjects
-        );
-        
-        setCurrentStage('career-recommendations');
+        // Move to subject selection after personalized quiz
+        setCurrentStage('personalized-results');
       } catch (error) {
         console.error('Failed to process personalized quiz results:', error);
       } finally {
@@ -384,6 +404,29 @@ export function TwoTierQuiz() {
     setPersonalizedSelectedOption(null);
     setSelectedDomains([]);
     setCareerRecommendations([]);
+    setCurrentPage(1); // Reset pagination
+  };
+
+  // Pagination helper functions
+  const totalPages = Math.ceil(careerRecommendations.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentRecommendations = careerRecommendations.slice(startIndex, endIndex);
+
+  const goToPage = (page: number) => {
+    setCurrentPage(Math.max(1, Math.min(page, totalPages)));
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
 
   // Show loading state
@@ -447,7 +490,7 @@ export function TwoTierQuiz() {
               <div className="p-4 border rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50">
                 <div className="flex items-center gap-2 mb-2">
                   <Target className="h-4 w-4 text-blue-600" />
-                  <h3 className="font-semibold text-blue-900 dark:text-blue-100 text-sm">Level 1: Interest Assessment</h3>
+                  <h3 className="font-semibold text-blue-900 dark:text-blue-100 text-sm">Level 1: General Assessment</h3>
                 </div>
                 <p className="text-xs text-blue-700 dark:text-blue-200 mb-2">
                   25 questions across 5 domains to gauge your natural interests
@@ -464,10 +507,10 @@ export function TwoTierQuiz() {
               <div className="p-4 border rounded-lg bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/50 dark:to-pink-950/50">
                 <div className="flex items-center gap-2 mb-2">
                   <BookOpen className="h-4 w-4 text-purple-600" />
-                  <h3 className="font-semibold text-purple-900 dark:text-purple-100 text-sm">Level 2: Subject Testing</h3>
+                  <h3 className="font-semibold text-purple-900 dark:text-purple-100 text-sm">Level 2: Personalized Assessment</h3>
                 </div>
                 <p className="text-xs text-purple-700 dark:text-purple-200 mb-2">
-                  Choose subjects of interest and answer specific questions
+                  Targeted questions based on your strengths to evaluate skills
                 </p>
                 <div className="flex flex-wrap gap-1">
                   <Badge variant="secondary" className="text-xs">Arts</Badge>
@@ -482,10 +525,10 @@ export function TwoTierQuiz() {
               <div className="p-4 border rounded-lg bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/50 dark:to-emerald-950/50">
                 <div className="flex items-center gap-2 mb-2">
                   <Sparkles className="h-4 w-4 text-green-600" />
-                  <h3 className="font-semibold text-green-900 dark:text-green-100 text-sm">Level 3: Skill Assessment</h3>
+                  <h3 className="font-semibold text-green-900 dark:text-green-100 text-sm">Level 3: Subject-Specific Assessment</h3>
                 </div>
                 <p className="text-xs text-green-700 dark:text-green-200 mb-2">
-                  Deep dive into your top domains to evaluate skill competency
+                  Choose subjects of interest and answer specific questions
                 </p>
                 <div className="mt-2">
                   <Badge variant="secondary" className="text-xs">Personalized to your interests</Badge>
@@ -536,7 +579,7 @@ export function TwoTierQuiz() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Target className="h-5 w-5 text-blue-600" />
-              <span className="text-sm font-medium text-blue-600">{t('level_1_interest')}</span>
+              <span className="text-sm font-medium text-blue-600">{t('level_1_general')}</span>
             </div>
             <span className="text-sm text-primary font-semibold">
               {Math.round(progress)}% Complete
@@ -658,16 +701,16 @@ export function TwoTierQuiz() {
 
           <div className="text-center">
             <p className="text-sm text-muted-foreground mb-4">
-              Ready for Level 2? Choose your subject interests and we'll assess your skills accordingly.
+              Ready for Level 2? We'll now conduct a personalized assessment based on your interests.
             </p>
             <Button 
-              onClick={startSubjectSelection} 
+              onClick={startPersonalizedQuiz} 
               size="lg"
               disabled={savingResults}
               className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700"
             >
               <Sparkles className="mr-2 h-5 w-5" />
-              {t('continue_to_subject')}
+              {t('continue_to_personalized')}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
@@ -683,7 +726,7 @@ export function TwoTierQuiz() {
         <CardHeader>
           <CardTitle className="text-center text-2xl font-headline flex items-center justify-center gap-2">
             <BookOpen className="h-6 w-6 text-purple-500" />
-            Level 2: Subject Interest Selection
+            Level 3: Subject Interest Selection
           </CardTitle>
         </CardHeader>
         <CardContent className="p-8">
@@ -755,7 +798,7 @@ export function TwoTierQuiz() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-purple-600" />
-              <span className="text-sm font-medium text-purple-600">{t('level_2_subject')}</span>
+              <span className="text-sm font-medium text-purple-600">{t('level_3_subject')}</span>
             </div>
             <span className="text-sm text-primary font-semibold">
               {Math.round(progress)}% Complete
@@ -875,16 +918,16 @@ export function TwoTierQuiz() {
 
           <div className="text-center">
             <p className="text-sm text-muted-foreground mb-4">
-              Now let's assess your skills in your strongest domains from Level 1.
+              Ready to see your personalized career recommendations?
             </p>
             <Button 
-              onClick={startPersonalizedQuiz} 
+              onClick={generateFinalRecommendations} 
               size="lg"
               disabled={savingResults}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+              className="bg-gradient-to-r from-purple-600 to-gold-600 hover:from-purple-700 hover:to-gold-700"
             >
-              <Target className="mr-2 h-5 w-5" />
-              Start Level 3: Skill Assessment
+              <Trophy className="mr-2 h-5 w-5" />
+              Generate Career Recommendations
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
@@ -904,7 +947,7 @@ export function TwoTierQuiz() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-green-600" />
-              <span className="text-sm font-medium text-green-600">{t('level_3_skill')}</span>
+              <span className="text-sm font-medium text-green-600">{t('level_2_personalized')}</span>
             </div>
             <span className="text-sm text-primary font-semibold">
               {Math.round(progress)}% Complete
@@ -974,9 +1017,53 @@ export function TwoTierQuiz() {
           >
             {personalizedCurrentIndex < personalizedQuestions.length - 1
               ? t('next_question')
-              : "Generate Career Recommendations"}
+              : "Complete Level 2"}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  // Show personalized quiz results
+  if (currentStage === 'personalized-results') {
+    return (
+      <Card className="glass-card max-w-2xl mx-auto">
+        <CardHeader>
+          <CardTitle className="text-center text-2xl font-headline flex items-center justify-center gap-2">
+            <CheckCircle className="h-6 w-6 text-green-500" />
+            Level 2 Complete!
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-8">
+          <div className="text-center mb-8">
+            <p className="text-lg text-muted-foreground mb-6">
+              Excellent! You've completed your personalized assessment. Now let's explore your subject-specific interests.
+            </p>
+            <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20 rounded-lg p-6 mb-6">
+              <h3 className="font-semibold text-lg mb-2">What's Next?</h3>
+              <p className="text-sm text-muted-foreground">
+                In Level 3, you'll select subjects you're interested in and answer questions specific to those areas. 
+                This will help us provide more targeted career recommendations.
+              </p>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <p className="text-sm text-muted-foreground mb-4">
+              Ready for Level 3? Choose your subject interests for detailed assessment.
+            </p>
+            <Button 
+              onClick={startSubjectSelection} 
+              size="lg"
+              disabled={savingResults}
+              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+            >
+              <BookOpen className="mr-2 h-5 w-5" />
+              {t('continue_to_subject')}
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
         </CardContent>
       </Card>
     );
@@ -1006,24 +1093,65 @@ export function TwoTierQuiz() {
             <>
               <div className="text-center mb-6">
                 <p className="text-lg text-muted-foreground mb-2">
-                  Found {careerRecommendations.length} career paths that match your profile!
+                  Found {careerRecommendations.length} career paths ranked for your profile!
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  These recommendations are based on your interests and demonstrated skills.
+                  Comprehensive ranking from strongest to weakest match • Page {currentPage} of {totalPages}
                 </p>
+                <div className="mt-2 text-xs text-muted-foreground">
+                  Showing positions {startIndex + 1}-{Math.min(endIndex, careerRecommendations.length)} of {careerRecommendations.length} total recommendations
+                </div>
               </div>
 
+              {/* Display user's subject scores */}
+              {subjectResults && Object.keys(subjectResults).length > 0 && (
+                <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 rounded-lg border">
+                  <h3 className="font-semibold text-lg mb-3 text-center">Your Subject Quiz Scores</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    {Object.entries(subjectResults)
+                      .sort(([, a], [, b]) => b - a)
+                      .map(([subject, score], index) => (
+                      <div key={subject} className="text-center p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                        <div className={cn(
+                          "text-2xl font-bold mb-1",
+                          index === 0 ? "text-gold-500" :
+                          index === 1 ? "text-gray-500" :
+                          index === 2 ? "text-amber-600" :
+                          "text-gray-400"
+                        )}>
+                          {score}
+                        </div>
+                        <div className="text-xs font-medium text-muted-foreground">
+                          {subject}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <div className="grid gap-4 mb-8">
-                {careerRecommendations.slice(0, 10).map((recommendation, index) => (
+                {currentRecommendations.map((recommendation, index) => (
                   <div
                     key={recommendation.course.course_id}
                     className="p-6 border rounded-lg bg-gradient-to-r from-background/50 to-primary/5 hover:shadow-lg transition-shadow"
                   >
                     <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <h3 className="font-semibold text-lg mb-1">
-                          {recommendation.course.course_name}
-                        </h3>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-1">
+                          <div className={cn(
+                            "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white",
+                            (recommendation.ranking_position || (startIndex + index + 1)) === 1 ? "bg-gold-500" :
+                            (recommendation.ranking_position || (startIndex + index + 1)) === 2 ? "bg-gray-400" :
+                            (recommendation.ranking_position || (startIndex + index + 1)) === 3 ? "bg-amber-600" :
+                            "bg-gray-300"
+                          )}>
+                            {recommendation.ranking_position || (startIndex + index + 1)}
+                          </div>
+                          <h3 className="font-semibold text-lg">
+                            {recommendation.course.course_name}
+                          </h3>
+                        </div>
                         <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                           <Badge variant="outline" className="text-xs">
                             {recommendation.course.level}
@@ -1034,14 +1162,34 @@ export function TwoTierQuiz() {
                           <Badge variant="outline" className="text-xs">
                             {recommendation.course.stream}
                           </Badge>
+                          {recommendation.subject_matched && recommendation.course.subject_interest && (
+                            <Badge variant="default" className="text-xs bg-green-600">
+                              {recommendation.course.subject_interest}
+                            </Badge>
+                          )}
                         </div>
                       </div>
-                      <div className="text-right">
-                        <div className="text-2xl font-bold text-primary">
-                          {Math.round(recommendation.match_score * 100)}%
+                      {recommendation.user_subject_scores && Object.keys(recommendation.user_subject_scores).length > 0 && (
+                        <div className="text-right ml-4">
+                          <div className="text-xs text-muted-foreground mb-1">Your scores:</div>
+                          <div className="space-y-1">
+                            {Object.entries(recommendation.user_subject_scores)
+                              .sort(([, a], [, b]) => b - a)
+                              .map(([subject, score]) => (
+                              <div key={subject} className="flex items-center gap-2">
+                                <span className="text-xs text-muted-foreground">{subject}:</span>
+                                <span className={cn(
+                                  "text-sm font-bold",
+                                  recommendation.course.subject_interest === subject ? 
+                                    "text-green-600" : "text-gray-500"
+                                )}>
+                                  {score}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                        <div className="text-xs text-muted-foreground">match</div>
-                      </div>
+                      )}
                     </div>
 
                     <div className="mb-3">
@@ -1079,6 +1227,75 @@ export function TwoTierQuiz() {
                   </div>
                 ))}
               </div>
+
+              {/* Pagination Controls */}
+              {totalPages > 1 && (
+                <div className="flex items-center justify-center gap-4 mb-8">
+                  <Button 
+                    onClick={prevPage} 
+                    disabled={currentPage === 1}
+                    variant="outline"
+                    size="sm"
+                  >
+                    Previous
+                  </Button>
+                  
+                  <div className="flex items-center gap-2">
+                    {/* Show first page */}
+                    {currentPage > 3 && (
+                      <>
+                        <Button
+                          onClick={() => goToPage(1)}
+                          variant={currentPage === 1 ? "default" : "outline"}
+                          size="sm"
+                        >
+                          1
+                        </Button>
+                        {currentPage > 4 && <span className="text-muted-foreground">...</span>}
+                      </>
+                    )}
+                    
+                    {/* Show pages around current page */}
+                    {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                      const page = Math.max(1, Math.min(totalPages - 4, currentPage - 2)) + i;
+                      if (page > totalPages) return null;
+                      return (
+                        <Button
+                          key={page}
+                          onClick={() => goToPage(page)}
+                          variant={currentPage === page ? "default" : "outline"}
+                          size="sm"
+                        >
+                          {page}
+                        </Button>
+                      );
+                    })}
+                    
+                    {/* Show last page */}
+                    {currentPage < totalPages - 2 && (
+                      <>
+                        {currentPage < totalPages - 3 && <span className="text-muted-foreground">...</span>}
+                        <Button
+                          onClick={() => goToPage(totalPages)}
+                          variant={currentPage === totalPages ? "default" : "outline"}
+                          size="sm"
+                        >
+                          {totalPages}
+                        </Button>
+                      </>
+                    )}
+                  </div>
+                  
+                  <Button 
+                    onClick={nextPage} 
+                    disabled={currentPage === totalPages}
+                    variant="outline"
+                    size="sm"
+                  >
+                    Next
+                  </Button>
+                </div>
+              )}
 
               <div className="text-center">
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

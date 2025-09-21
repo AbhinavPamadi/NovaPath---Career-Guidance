@@ -132,8 +132,11 @@ export interface Course {
 
 export interface CareerRecommendation {
   course: Course;
-  match_score: number;
   matching_skills: string[];
+  subject_matched?: boolean;
+  user_subject_scores?: { [subject: string]: number };
+  primary_subject_score?: number; // Score for the course's main subject
+  ranking_position?: number; // Ordinal ranking position
 }
 
 // Firestore storage interfaces
@@ -266,11 +269,11 @@ export class AdaptiveThreeTierQuizSystem {
 
     // Group answers by subject and aggregate scores
     answers.forEach(answer => {
-      const subject = answer.subject;
-      Object.entries(answer.domain_weights).forEach(([domain, weight]) => {
-        const normalizedSubject = this.normalizeSubjectName(subject);
-        subjectScores[normalizedSubject] = (subjectScores[normalizedSubject] || 0) + weight;
-      });
+      const normalizedSubject = this.normalizeSubjectName(answer.subject);
+      
+      // Sum all domain weights for this subject answer
+      const totalWeight = Object.values(answer.domain_weights).reduce((sum, weight) => sum + weight, 0);
+      subjectScores[normalizedSubject] = (subjectScores[normalizedSubject] || 0) + totalWeight;
     });
 
     return subjectScores;
@@ -819,7 +822,8 @@ export class AdaptiveThreeTierQuizSystem {
   async generateCareerRecommendations(
     userInterests: string[],
     userSkills: string[],
-    userSubjects?: string[]
+    userSubjects?: string[],
+    userSubjectScores?: { [subject: string]: number }
   ): Promise<CareerRecommendation[]> {
     try {
       const response = await fetch('/courses1.json');
@@ -829,65 +833,87 @@ export class AdaptiveThreeTierQuizSystem {
       const recommendations: CareerRecommendation[] = [];
 
       courses.forEach(course => {
+        // Enhanced subject-aware filtering
+        let subjectRelevance = 0;
+        let subjectMatch = false;
+        
+        if (userSubjects && userSubjects.length > 0 && course.subject_interest) {
+          subjectMatch = userSubjects.includes(course.subject_interest);
+          if (subjectMatch) {
+            subjectRelevance = 1.0; // Perfect match
+          } else {
+            // Check if course has any relation to selected subjects (partial relevance)
+            // This allows some flexibility for interdisciplinary courses
+            subjectRelevance = 0.1; // Minimal relevance for non-matching but potentially related courses
+          }
+        } else if (!userSubjects || userSubjects.length === 0) {
+          // If no subjects selected, all courses are equally relevant
+          subjectRelevance = 0.5;
+        }
+
+        // Calculate skill matching
         let matchingSkills = course.skill_labels.filter(skill => 
           userInterests.includes(skill) || userSkills.includes(skill)
         );
 
-        // Enhanced matching: Also check subject interest alignment
-        let subjectMatch = false;
-        if (userSubjects && userSubjects.length > 0 && course.subject_interest) {
-          subjectMatch = userSubjects.includes(course.subject_interest);
+        // Calculate comprehensive ranking score for ALL courses
+        let rankingScore = 0;
+
+        // 1. Subject relevance contribution (40% of score)
+        rankingScore += subjectRelevance * 0.4;
+        
+        // Add bonus for subject quiz performance
+        if (subjectMatch && userSubjectScores && course.subject_interest) {
+          const subjectScore = userSubjectScores[course.subject_interest] || 0;
+          const maxSubjectScore = Math.max(...Object.values(userSubjectScores), 1);
+          const normalizedSubjectScore = subjectScore / maxSubjectScore;
+          rankingScore += normalizedSubjectScore * 0.2; // Up to 20% bonus
         }
 
-        // Prioritized recommendation logic:
-        // 1. Courses that match both skills (≥2) AND subjects get highest priority
-        // 2. Courses that match skills only (≥2) get second priority
-        let shouldRecommend = false;
-        let matchScore = 0;
-        let priority = 0;
-
-        if (matchingSkills.length >= 2) {
-          shouldRecommend = true;
-          const skillMatchScore = matchingSkills.length / course.skill_labels.length;
-          
-          if (subjectMatch) {
-            // Subject + skill match: highest priority
-            priority = 3;
-            matchScore = skillMatchScore * 1.2; // 20% bonus for subject match
-          } else {
-            // Skill-only match: lower priority
-            priority = 2;
-            matchScore = skillMatchScore;
-          }
-        } else if (subjectMatch && matchingSkills.length >= 1) {
-          // Subject match with at least 1 skill: moderate priority
-          shouldRecommend = true;
-          priority = 1;
-          matchScore = 0.5 + (matchingSkills.length / course.skill_labels.length) * 0.3;
+        // 2. Skill match contribution (35% of score)
+        if (course.skill_labels.length > 0) {
+          const skillMatchRatio = matchingSkills.length / course.skill_labels.length;
+          rankingScore += skillMatchRatio * 0.35;
         }
 
-        if (shouldRecommend) {
-          recommendations.push({
-            course,
-            match_score: Math.min(matchScore, 1.0), // Cap at 1.0
-            matching_skills: matchingSkills,
-            priority // Add for sorting
-          } as any);
+        // 3. Interest alignment contribution (25% of score)
+        if (course.skill_labels.length > 0) {
+          const interestMatchCount = course.skill_labels.filter(skill => userInterests.includes(skill)).length;
+          const interestMatchRatio = interestMatchCount / course.skill_labels.length;
+          rankingScore += interestMatchRatio * 0.25;
         }
+
+        // Include ALL courses with some ranking score
+        recommendations.push({
+          course,
+          match_score: Math.min(rankingScore, 1.0), // For internal ranking, not displayed
+          matching_skills: matchingSkills,
+          subject_matched: subjectMatch,
+          subject_relevance: subjectRelevance,
+          user_subject_scores: userSubjectScores || {},
+          primary_subject_score: userSubjectScores && course.subject_interest ? 
+            userSubjectScores[course.subject_interest] || 0 : 0
+        } as any);
       });
 
-      // Sort by priority first, then by match score (descending)
+      // Sort by match score (descending) to create comprehensive ranked list
       return recommendations
         .sort((a: any, b: any) => {
-          if (a.priority !== b.priority) {
-            return b.priority - a.priority; // Higher priority first
+          // Primary sort by match score
+          if (Math.abs(a.match_score - b.match_score) > 0.001) {
+            return b.match_score - a.match_score;
           }
-          return b.match_score - a.match_score; // Higher score first
+          // Secondary sort by subject relevance for ties
+          return b.subject_relevance - a.subject_relevance;
         })
-        .map((rec: any) => {
-          const { priority, ...cleanRec } = rec;
-          return cleanRec as CareerRecommendation;
-        }); // Remove priority from final result
+        .map((rec: any, index: number) => {
+          // Remove internal scoring fields and add ranking
+          const { match_score, subject_relevance, ...cleanRec } = rec;
+          return {
+            ...cleanRec,
+            ranking_position: index + 1 // Add ordinal ranking
+          } as CareerRecommendation;
+        });
     } catch (error) {
       console.error('Failed to load courses or generate recommendations:', error);
       return [];
@@ -1186,7 +1212,8 @@ export class AdaptiveThreeTierQuizSystem {
       const careerRecommendations = await this.generateCareerRecommendations(
         userInterests, 
         userSkills,
-        userSubjects
+        userSubjects,
+        subjectScores // Pass subject scores
       );
       
       await this.saveCareerSuggestions(uid, userInterests, userSkills, careerRecommendations, userSubjects);
