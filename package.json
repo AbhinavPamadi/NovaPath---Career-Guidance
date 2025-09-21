@@ -11,7 +11,8 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "deploy": "npm run build && firebase deploy --only hosting",
-    "deploy:all": "npm run build && firebase deploy"
+    "deploy:all": "npm run build && firebase deploy",
+    "setup-env": "node setup-env.js"
   },
   "dependencies": {
     "@dataconnect/generated": "file:src/dataconnect-generated",
