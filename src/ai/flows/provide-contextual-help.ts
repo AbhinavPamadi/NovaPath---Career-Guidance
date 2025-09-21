@@ -1,5 +1,3 @@
-"use server";
-
 import { ChatGroq } from "@langchain/groq";
 import { HumanMessage } from "@langchain/core/messages";
 
