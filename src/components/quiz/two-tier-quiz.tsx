@@ -31,11 +31,13 @@ import {
   CareerRecommendation,
   type NormalizedDomain
 } from "@/lib/quiz-system";
+import { useSimpleTranslation } from "@/hooks/use-simple-translation";
 
 type QuizStage = 'start' | 'general' | 'general-results' | 'personalized' | 'personalized-results' | 'subject-selection' | 'subject-quiz' | 'subject-results' | 'career-recommendations' | 'completed';
 
 export function TwoTierQuiz() {
   const { user, loading } = useAuth();
+  const { t } = useSimpleTranslation();
   
   // Quiz state
   const [currentStage, setCurrentStage] = useState<QuizStage>('start');
@@ -513,7 +515,7 @@ export function TwoTierQuiz() {
         <CardHeader>
           <CardTitle className="text-center text-3xl font-headline flex items-center justify-center gap-3">
             <Brain className="h-8 w-8 text-primary" />
-            Enhanced Career Discovery
+            {t('enhanced_career_discovery')}
           </CardTitle>
         </CardHeader>
         <CardContent className="p-8">
@@ -592,7 +594,7 @@ export function TwoTierQuiz() {
               className="animate-pulse-glow bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
             >
               <Brain className="mr-2 h-5 w-5" />
-              Start Assessment
+              {t('start_assessment')}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <p className="text-xs text-muted-foreground mt-2">
@@ -616,7 +618,7 @@ export function TwoTierQuiz() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Target className="h-5 w-5 text-blue-600" />
-              <span className="text-sm font-medium text-blue-600">Level 1: General</span>
+              <span className="text-sm font-medium text-blue-600">{t('level_1_general')}</span>
             </div>
             <span className="text-sm text-primary font-semibold">
               {Math.round(progress)}% Complete
@@ -675,7 +677,7 @@ export function TwoTierQuiz() {
             size="lg"
           >
             {generalCurrentIndex < generalQuestions.length - 1
-              ? "Next Question"
+              ? t('next_question')
               : "Complete Level 1"}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
@@ -747,7 +749,7 @@ export function TwoTierQuiz() {
               className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700"
             >
               <Sparkles className="mr-2 h-5 w-5" />
-              Continue to Personalized
+              {t('continue_to_personalized')}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
@@ -813,7 +815,7 @@ export function TwoTierQuiz() {
                 </>
               ) : (
                 <>
-                  Start Subject Quiz
+                  {t('start_subject_quiz')}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </>
               )}
@@ -835,7 +837,7 @@ export function TwoTierQuiz() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-purple-600" />
-              <span className="text-sm font-medium text-purple-600">Level 3: Subject</span>
+              <span className="text-sm font-medium text-purple-600">{t('level_3_subject')}</span>
             </div>
             <span className="text-sm text-primary font-semibold">
               {Math.round(progress)}% Complete
@@ -890,7 +892,7 @@ export function TwoTierQuiz() {
             size="lg"
           >
             {subjectCurrentIndex < subjectQuestions.length - 1
-              ? "Next Question"
+              ? t('next_question')
               : "Complete Subject Assessment"}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
@@ -984,7 +986,7 @@ export function TwoTierQuiz() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-green-600" />
-              <span className="text-sm font-medium text-green-600">Level 2: Personalized</span>
+              <span className="text-sm font-medium text-green-600">{t('level_2_personalized')}</span>
             </div>
             <span className="text-sm text-primary font-semibold">
               {Math.round(progress)}% Complete
@@ -1053,7 +1055,7 @@ export function TwoTierQuiz() {
             size="lg"
           >
             {personalizedCurrentIndex < personalizedQuestions.length - 1
-              ? "Next Question"
+              ? t('next_question')
               : "Complete Level 2"}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
@@ -1097,7 +1099,7 @@ export function TwoTierQuiz() {
               className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
             >
               <BookOpen className="mr-2 h-5 w-5" />
-              Continue to Subject
+              {t('continue_to_subject')}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
