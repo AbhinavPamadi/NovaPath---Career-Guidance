@@ -10,7 +10,6 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Footer } from "@/components/layout/footer";
 import { Providers } from "@/components/layout/auth-provider";
 import { LanguageProvider } from "@/contexts/language-context";
-import { Logo } from "../components/icons/logo";
 import ErrorBoundary from "@/components/error-boundary";
 
 export const metadata: Metadata = {

@@ -73,7 +73,12 @@ body {
 
 @layer components {
   .holographic-text {
-    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
+    background: linear-gradient(
+      90deg,
+      hsl(var(--primary)),
+      hsl(var(--accent)),
+      hsl(var(--primary))
+    );
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
@@ -105,7 +110,8 @@ body {
   }
 
   .animate-pulse-glow {
-    box-shadow: 0 0 10px 0 hsl(var(--primary)), 0 0 20px 0 hsla(var(--primary), 0.5);
+    box-shadow: 0 0 10px 0 hsl(var(--primary)),
+      0 0 20px 0 hsla(var(--primary), 0.5);
     animation: pulse-glow-animation 2s infinite;
   }
 }
@@ -119,28 +125,31 @@ body {
 @keyframes pulse-glow-animation {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 10px 0 hsl(var(--primary)), 0 0 20px 0 hsla(var(--primary), 0.5);
+    box-shadow: 0 0 10px 0 hsl(var(--primary)),
+      0 0 20px 0 hsla(var(--primary), 0.5);
   }
   50% {
     transform: scale(1.05);
-    box-shadow: 0 0 20px 10px hsla(var(--primary), 0.2), 0 0 30px 10px hsla(var(--primary), 0.1);
+    box-shadow: 0 0 20px 10px hsla(var(--primary), 0.2),
+      0 0 30px 10px hsla(var(--primary), 0.1);
   }
   100% {
     transform: scale(1);
-    box-shadow: 0 0 10px 0 hsl(var(--primary)), 0 0 20px 0 hsla(var(--primary), 0.5);
+    box-shadow: 0 0 10px 0 hsl(var(--primary)),
+      0 0 20px 0 hsla(var(--primary), 0.5);
   }
 }
 
 @keyframes float {
-	0% {
-		transform: translatey(0px);
-	}
-	50% {
-		transform: translatey(-20px);
-	}
-	100% {
-		transform: translatey(0px);
-	}
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
 }
 
 /* College Map Specific Styles */
@@ -161,7 +170,7 @@ body {
   .college-map-wrapper {
     height: 400px;
   }
-  
+
   .college-map-container {
     min-height: auto;
   }

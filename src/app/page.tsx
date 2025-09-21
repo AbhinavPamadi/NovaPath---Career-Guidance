@@ -15,7 +15,7 @@ import { QuizWidget } from "@/components/quiz/quiz-widget";
 
 export default function Home() {
   return (
-    <div className="container mx-auto px-4 py-12 sm:py-24 overflow-hidden">
+    <div className="w-full mx-auto px-4 py-12 sm:py-24 overflow-hidden">
       {/* Hero Section */}
       <div className="relative">
         <div className="absolute top-[-5rem] -left-24 w-72 h-72 bg-primary rounded-full mix-blend-lighten filter blur-3xl opacity-20 animate-float"></div>
@@ -25,7 +25,7 @@ export default function Home() {
         ></div>
       </div>
 
-      <section className="text-center relative z-10">
+      <section className="text-center relative z-12">
         <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70 mb-6">
           Navigate Your Future with
           <span className="block bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary mt-2">
@@ -33,7 +33,8 @@ export default function Home() {
           </span>
         </h1>
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-10">
-          An ultra-modern guidance platform using AI to illuminate your career and educational journey. Step into the future of decision-making.
+          An ultra-modern guidance platform using AI to illuminate your career
+          and educational journey. Step into the future of decision-making.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Button
@@ -42,14 +43,11 @@ export default function Home() {
             className="shadow-primary/50 shadow-lg hover:shadow-primary/50 hover:shadow-2xl transition-shadow"
           >
             <Link href="/quiz">
-              Find Your Path{" "}
-              <ArrowRight className="ml-2 h-5 w-5" />
+              Find Your Path <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <Link href="/timeline">
-              Explore Timeline
-            </Link>
+            <Link href="/timeline">Explore Timeline</Link>
           </Button>
         </div>
       </section>
@@ -118,7 +116,8 @@ export default function Home() {
             Feedback Forum
           </h2>
           <p className="mt-2 text-lg text-muted-foreground">
-            Share your thoughts, suggestions, and help us improve NovaPath together.
+            Share your thoughts, suggestions, and help us improve NovaPath
+            together.
           </p>
         </div>
 
@@ -131,7 +130,8 @@ export default function Home() {
               Share Feedback
             </h3>
             <p className="text-muted-foreground text-sm">
-              Tell us what you think about NovaPath and how we can improve your experience.
+              Tell us what you think about NovaPath and how we can improve your
+              experience.
             </p>
           </Card>
 
@@ -155,7 +155,8 @@ export default function Home() {
               Report Issues
             </h3>
             <p className="text-muted-foreground text-sm">
-              Found a bug or something not working? Let us know so we can fix it quickly.
+              Found a bug or something not working? Let us know so we can fix it
+              quickly.
             </p>
           </Card>
         </div>
@@ -167,8 +168,7 @@ export default function Home() {
             className="shadow-primary/50 shadow-lg hover:shadow-primary/50 hover:shadow-2xl transition-shadow"
           >
             <Link href="/feedback-forum">
-              Join the Discussion{" "}
-              <ArrowRight className="ml-2 h-5 w-5" />
+              Join the Discussion <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
@@ -192,12 +192,8 @@ function FeatureCard({
   const CardContent = (
     <Card className="glass-card p-8 text-center items-center flex flex-col h-full hover:border-accent/50 transition-all duration-300 transform hover:-translate-y-2">
       <div className="mb-4">{icon}</div>
-      <h3 className="font-headline text-2xl font-bold mb-2">
-        {title}
-      </h3>
-      <p className="text-muted-foreground flex-grow">
-        {description}
-      </p>
+      <h3 className="font-headline text-2xl font-bold mb-2">{title}</h3>
+      <p className="text-muted-foreground flex-grow">{description}</p>
     </Card>
   );
 

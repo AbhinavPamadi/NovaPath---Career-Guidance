@@ -177,7 +177,7 @@ export function AIAvatar() {
                   </div>
                   <div>
                     <p className="font-bold text-lg font-headline">Nova AI</p>
-                    <p className="text-xs text-blue-400">Onlin</p>
+                    <p className="text-xs text-blue-400">Online</p>
                   </div>
                 </div>
                 <Button
