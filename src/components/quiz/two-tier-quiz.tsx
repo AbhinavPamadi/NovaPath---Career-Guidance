@@ -99,12 +99,33 @@ export function TwoTierQuiz() {
             setSelectedSubjects(progress.subjectResults.selected_subjects);
           }
         } else if (progress.hasCompletedGeneral) {
-          setCurrentStage('general-results');
+          // Skip general-results and directly prepare for personalized quiz
           if (progress.generalResults) {
             setGeneralResults({
               domainScores: progress.generalResults.domain_scores,
               topDomains: progress.generalResults.top_domains
             });
+            
+            try {
+              const domains = quizSystem.selectPersonalizedQuizDomains(
+                progress.generalResults.top_domains,
+                progress.generalResults.domain_scores
+              );
+              setSelectedDomains(domains);
+              
+              const questions = await quizSystem.loadPersonalizedQuizQuestions(domains);
+              setPersonalizedQuestions(questions);
+              setCurrentStage('personalized');
+              setPersonalizedCurrentIndex(0);
+              setPersonalizedAnswers([]);
+              setPersonalizedSelectedOption(null);
+            } catch (error) {
+              console.error('Failed to load personalized quiz:', error);
+              // Fallback to general-results if loading fails
+              setCurrentStage('general-results');
+            }
+          } else {
+            setCurrentStage('general-results');
           }
         }
       } catch (error) {
@@ -156,7 +177,7 @@ export function TwoTierQuiz() {
       setGeneralCurrentIndex(generalCurrentIndex + 1);
       setGeneralSelectedOption(null);
     } else {
-      // Process general quiz results
+      // Process general quiz results and directly proceed to level 2
       setSavingResults(true);
       try {
         const results = quizSystem.processGeneralQuizResults(updatedAnswers);
@@ -170,7 +191,19 @@ export function TwoTierQuiz() {
           results.topDomains
         );
         
-        setCurrentStage('general-results');
+        // Skip general-results display and directly start personalized quiz
+        const domains = quizSystem.selectPersonalizedQuizDomains(
+          results.topDomains,
+          results.domainScores
+        );
+        setSelectedDomains(domains);
+        
+        const questions = await quizSystem.loadPersonalizedQuizQuestions(domains);
+        setPersonalizedQuestions(questions);
+        setCurrentStage('personalized');
+        setPersonalizedCurrentIndex(0);
+        setPersonalizedAnswers([]);
+        setPersonalizedSelectedOption(null);
       } catch (error) {
         console.error('Failed to process general quiz results:', error);
       } finally {
