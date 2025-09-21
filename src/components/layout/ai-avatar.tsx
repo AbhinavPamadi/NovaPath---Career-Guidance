@@ -23,10 +23,13 @@ export function AIAvatar() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [messageCounter, setMessageCounter] = useState(0);
+  const [isRecording, setIsRecording] = useState(false);
+
   const pathname = usePathname();
   const { toast } = useToast();
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const recognitionRef = useRef<any>(null);
 
   const predictiveMessages = [
     "What can you do?",
@@ -40,7 +43,6 @@ export function AIAvatar() {
       const userMsgId = `user-${messageCounter}`;
       setMessageCounter((prev) => prev + 1);
 
-      // Add user message
       const newMessage: Message = {
         id: userMsgId,
         text: message,
@@ -50,7 +52,6 @@ export function AIAvatar() {
       setInputValue("");
 
       try {
-        // 🔑 Call API helper
         const result = await provideContextualHelp({
           userActivity: message,
           pageContent: `The user is on the ${pathname} page.`,
@@ -89,12 +90,53 @@ export function AIAvatar() {
     [pathname, toast, messageCounter]
   );
 
+  // ✅ Scroll to bottom on new messages
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop =
         chatContainerRef.current.scrollHeight;
     }
   }, [messages]);
+
+  // ✅ Speech recognition toggle
+  const toggleListening = () => {
+    const SpeechRecognition =
+      (window as any).SpeechRecognition ||
+      (window as any).webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      toast({
+        variant: "destructive",
+        title: "Not Supported",
+        description: "Your browser does not support speech recognition.",
+      });
+      return;
+    }
+
+    if (isRecording && recognitionRef.current) {
+      recognitionRef.current.stop();
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognitionRef.current = recognition;
+    recognition.continuous = false;
+    recognition.interimResults = true;
+    recognition.lang = "en-US";
+
+    recognition.onstart = () => setIsRecording(true);
+    recognition.onend = () => setIsRecording(false);
+
+    recognition.onresult = (event: any) => {
+      const transcript = Array.from(event.results)
+        .map((result) => (result as SpeechRecognitionResult)[0].transcript)
+        .join("");
+
+      setInputValue(transcript);
+    };
+
+    recognition.start();
+  };
 
   const handleSendMessage = (message: string) => {
     if (message.trim()) {
@@ -135,7 +177,7 @@ export function AIAvatar() {
                   </div>
                   <div>
                     <p className="font-bold text-lg font-headline">Nova AI</p>
-                    <p className="text-xs text-blue-400">Online</p>
+                    <p className="text-xs text-blue-400">Onlin</p>
                   </div>
                 </div>
                 <Button
@@ -243,7 +285,13 @@ export function AIAvatar() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-8 w-8 text-muted-foreground"
+                      onClick={toggleListening}
+                      className={cn(
+                        "h-8 w-8",
+                        isRecording
+                          ? "text-red-500 animate-pulse"
+                          : "text-muted-foreground"
+                      )}
                     >
                       <Mic className="h-4 w-4" />
                     </Button>
