@@ -856,7 +856,9 @@ export class AdaptiveThreeTierQuizSystem {
     userInterests: string[],
     userSkills: string[],
     userSubjects?: string[],
-    userSubjectScores?: { [subject: string]: number }
+    userSubjectScores?: { [subject: string]: number },
+    userDomainScores?: { [domain: string]: number },
+    personalizedResults?: any
   ): Promise<CareerRecommendation[]> {
     try {
       const response = await fetch('/courses1.json');
@@ -871,14 +873,17 @@ export class AdaptiveThreeTierQuizSystem {
           userInterests, 
           userSkills, 
           userSubjects, 
-          userSubjectScores
+          userSubjectScores,
+          userDomainScores,
+          personalizedResults
         );
         
         recommendations.push(analysis);
       });
 
-      // Sort by overall fit score and assign final rankings
+      // Filter recommendations with minimum 75% fit score and sort by overall fit score
       return recommendations
+        .filter(rec => rec.overall_fit_score >= 75) // Only show courses with 75+ fit score
         .sort((a, b) => b.overall_fit_score - a.overall_fit_score)
         .map((rec, index) => ({
           ...rec,
@@ -898,7 +903,9 @@ export class AdaptiveThreeTierQuizSystem {
     userInterests: string[],
     userSkills: string[],
     userSubjects?: string[],
-    userSubjectScores?: { [subject: string]: number }
+    userSubjectScores?: { [subject: string]: number },
+    userDomainScores?: { [domain: string]: number },
+    personalizedResults?: any
   ): CareerRecommendation {
     
     // 1. Calculate Interest Alignment (0-100)
@@ -923,21 +930,20 @@ export class AdaptiveThreeTierQuizSystem {
     // 6. Determine Recommendation Tier
     const recommendationTier = this.determineRecommendationTier(overallFitScore, confidenceLevel);
     
-    // 7. Generate Explanations
-    const explanation = this.generateRecommendationExplanation(
+    // 7. Generate Growth Area Analysis
+    const explanation = this.generateGrowthAreaAnalysis(
       course, 
       userInterests, 
       userSkills, 
-      interestAlignment, 
-      aptitudeMatch, 
-      subjectRelevance
+      userDomainScores,
+      personalizedResults
     );
     
     // 8. Find matching skills for backward compatibility
     const matchingSkills = course.skill_labels.filter(skill => 
-      userInterests.includes(skill) || userSkills.includes(skill)
-    );
-    
+          userInterests.includes(skill) || userSkills.includes(skill)
+        );
+
     return {
       course,
       matching_skills: matchingSkills,
@@ -1020,8 +1026,8 @@ export class AdaptiveThreeTierQuizSystem {
     // Perfect match - check performance if available
     if (!userSubjectScores) return 80; // Good relevance without performance data
     
-    const subjectScore = userSubjectScores[course.subject_interest] || 0;
-    const maxSubjectScore = Math.max(...Object.values(userSubjectScores), 1);
+          const subjectScore = userSubjectScores[course.subject_interest] || 0;
+          const maxSubjectScore = Math.max(...Object.values(userSubjectScores), 1);
     const normalizedPerformance = subjectScore / maxSubjectScore;
     
     // Combine subject match with performance (80% base + 20% performance bonus)
@@ -1050,38 +1056,39 @@ export class AdaptiveThreeTierQuizSystem {
 
   /**
    * Determine recommendation tier based on fit score and confidence
+   * Note: Only courses with 75+ scores are shown, so tiers are within that range
    */
   private determineRecommendationTier(
     overallFitScore: number, 
     confidenceLevel: number
   ): 'perfect_match' | 'strong_candidate' | 'growth_opportunity' | 'alternative_path' | 'backup_option' {
     
+    // Since we only show 75+ scores, adjust tier thresholds accordingly
     // High confidence recommendations
     if (confidenceLevel >= 70) {
-      if (overallFitScore >= 85) return 'perfect_match';
-      if (overallFitScore >= 70) return 'strong_candidate';
-      if (overallFitScore >= 55) return 'growth_opportunity';
-      if (overallFitScore >= 40) return 'alternative_path';
-      return 'backup_option';
+      if (overallFitScore >= 90) return 'perfect_match';    // 90-100: Exceptional fit
+      if (overallFitScore >= 85) return 'strong_candidate'; // 85-89: Excellent fit  
+      if (overallFitScore >= 80) return 'growth_opportunity'; // 80-84: Very good fit
+      if (overallFitScore >= 75) return 'alternative_path';  // 75-79: Good fit
+      return 'backup_option'; // This shouldn't happen with 75+ filter
     }
     
-    // Medium/Low confidence - be more conservative
-    if (overallFitScore >= 75) return 'strong_candidate';
-    if (overallFitScore >= 60) return 'growth_opportunity';
-    if (overallFitScore >= 45) return 'alternative_path';
-    return 'backup_option';
+    // Medium/Low confidence - be more conservative with tier assignment
+    if (overallFitScore >= 85) return 'strong_candidate';   // Only highest scores get top tier
+    if (overallFitScore >= 80) return 'growth_opportunity'; // 80-84: Good with development potential
+    if (overallFitScore >= 75) return 'alternative_path';   // 75-79: Minimum acceptable fit
+    return 'backup_option'; // This shouldn't happen with 75+ filter
   }
 
   /**
-   * Generate human-readable explanations for recommendations
+   * Generate focused growth area analysis based on interest vs competency gaps
    */
-  private generateRecommendationExplanation(
+  private generateGrowthAreaAnalysis(
     course: Course,
     userInterests: string[],
     userSkills: string[],
-    interestAlignment: number,
-    aptitudeMatch: number,
-    subjectRelevance: number
+    userDomainScores?: { [domain: string]: number },
+    personalizedResults?: any
   ): {
     why_recommended: string[];
     strengths: string[];
@@ -1089,53 +1096,64 @@ export class AdaptiveThreeTierQuizSystem {
     success_factors: string[];
   } {
     
-    const whyRecommended: string[] = [];
-    const strengths: string[] = [];
     const growthAreas: string[] = [];
-    const successFactors: string[] = [];
+    const strengths: string[] = [];
     
-    // Generate why recommended
-    if (interestAlignment >= 70) {
-      whyRecommended.push(`Strong alignment with your interests in ${userInterests.slice(0, 2).join(' and ')}`);
-    }
-    if (aptitudeMatch >= 70) {
-      whyRecommended.push(`Your skills in ${userSkills.slice(0, 2).join(' and ')} match course requirements well`);
-    }
-    if (subjectRelevance >= 70) {
-      whyRecommended.push(`Good match with your academic background`);
+    // Get user's competency scores (from quiz 2/personalized quiz)
+    const userCompetencies = personalizedResults?.skill_competency || {};
+    
+    // Analyze each skill required by the course
+    course.skill_labels.forEach(skill => {
+      const hasInterest = userInterests.includes(skill);
+      const hasSkill = userSkills.includes(skill);
+      
+      // Get normalized domain name for this skill
+      const normalizedDomain = this.normalizeDomainName(skill);
+      const competencyScore = userCompetencies[normalizedDomain] || 0;
+      const domainScore = userDomainScores?.[normalizedDomain] || 0;
+      
+      // Check if user shows interest but lacks competency
+      if (hasInterest && (!hasSkill || competencyScore < 0.6)) {
+        // High interest but low competency = growth area
+        if (domainScore > 0.3) { // Shows some interest from quiz 1
+          growthAreas.push(`${skill} - You show interest but need to develop stronger competency`);
+        }
+      } else if (hasInterest && hasSkill && competencyScore >= 0.6) {
+        // High interest and good competency = strength
+        strengths.push(`${skill} - Strong interest and competency alignment`);
+      } else if (!hasInterest && hasSkill) {
+        // Low interest but good skill = potential strength to build on
+        strengths.push(`${skill} - Good foundation to build upon`);
+      }
+    });
+    
+    // Add subject-specific growth areas
+    if (course.subject_interest && userDomainScores) {
+      const subjectDomainScore = userDomainScores[course.subject_interest] || 0;
+      const hasSubjectInterest = subjectDomainScore > 0.3;
+      const hasSubjectSkill = userSkills.some(skill => skill.toLowerCase().includes(course.subject_interest?.toLowerCase() || ''));
+      
+      if (hasSubjectInterest && !hasSubjectSkill) {
+        growthAreas.push(`${course.subject_interest} knowledge - Build expertise in this subject area`);
+      }
     }
     
-    // Identify strengths
-    const matchingSkills = course.skill_labels.filter(skill => 
-      userInterests.includes(skill) || userSkills.includes(skill)
-    );
-    
-    if (matchingSkills.length > 0) {
-      strengths.push(`Strong foundation in ${matchingSkills.slice(0, 3).join(', ')}`);
-    }
-    
-    // Identify growth areas
-    const nonMatchingSkills = course.skill_labels.filter(skill => 
-      !userInterests.includes(skill) && !userSkills.includes(skill)
-    );
-    
-    if (nonMatchingSkills.length > 0) {
-      growthAreas.push(`Opportunity to develop ${nonMatchingSkills.slice(0, 2).join(' and ')} skills`);
-    }
-    
-    // Success factors
-    if (aptitudeMatch >= 60) {
-      successFactors.push('Good skill alignment increases likelihood of academic success');
-    }
-    if (interestAlignment >= 60) {
-      successFactors.push('High interest level supports long-term engagement and motivation');
+    // If no specific growth areas identified, provide general guidance
+    if (growthAreas.length === 0) {
+      const nonMatchingSkills = course.skill_labels.filter(skill => 
+        !userInterests.includes(skill) && !userSkills.includes(skill)
+      );
+      
+      if (nonMatchingSkills.length > 0) {
+        growthAreas.push(`Consider developing: ${nonMatchingSkills.slice(0, 2).join(', ')}`);
+      }
     }
     
     return {
-      why_recommended: whyRecommended.length > 0 ? whyRecommended : ['Based on overall profile compatibility'],
-      strengths: strengths.length > 0 ? strengths : ['Solid foundation for this field'],
-      growth_areas: growthAreas.length > 0 ? growthAreas : ['Well-prepared for course requirements'],
-      success_factors: successFactors.length > 0 ? successFactors : ['Good match for your profile']
+      why_recommended: [], // Removed as requested
+      strengths: strengths.length > 0 ? strengths : ['Good foundational alignment with this field'],
+      growth_areas: growthAreas.length > 0 ? growthAreas : ['Well-matched to current skill set'],
+      success_factors: [] // Simplified to focus on growth areas
     };
   }
 

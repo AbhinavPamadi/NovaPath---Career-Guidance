@@ -69,6 +69,7 @@ export function TwoTierQuiz() {
   const [personalizedAnswers, setPersonalizedAnswers] = useState<PersonalizedQuizAnswer[]>([]);
   const [personalizedSelectedOption, setPersonalizedSelectedOption] = useState<number | null>(null);
   const [selectedDomains, setSelectedDomains] = useState<string[]>([]);
+  const [personalizedResults, setPersonalizedResults] = useState<any>(null);
   
   // Career recommendations state
   const [careerRecommendations, setCareerRecommendations] = useState<CareerRecommendation[]>([]);
@@ -233,7 +234,9 @@ export function TwoTierQuiz() {
         userInterests,
         userSkills,
         userSubjects,
-        subjectResults
+        subjectResults,
+        generalResults.domainScores,  // Pass domain scores from quiz 1
+        personalizedResults            // Pass personalized quiz results
       );
       
       setCareerRecommendations(recommendations);
@@ -398,6 +401,9 @@ export function TwoTierQuiz() {
       setSavingResults(true);
       try {
         const results = quizSystem.processPersonalizedQuizResults(updatedAnswers);
+        
+        // Store personalized results for recommendation generation
+        setPersonalizedResults(results);
         
         // Save personalized quiz results
         await quizSystem.savePersonalizedQuizResults(
@@ -1111,6 +1117,9 @@ export function TwoTierQuiz() {
             <Trophy className="h-6 w-6 text-gold-500" />
             Your Career Recommendations
           </CardTitle>
+          <p className="text-center text-sm text-muted-foreground mt-2">
+            Showing only high-quality matches (75%+ fit score) for optimal career guidance
+          </p>
         </CardHeader>
         <CardContent className="p-8">
           {savingResults && (
@@ -1282,44 +1291,39 @@ export function TwoTierQuiz() {
                       </div>
                     )}
 
-                    {/* Recommendation Explanations */}
+                    {/* Growth Area Analysis */}
                     {recommendation.explanation && (
-                      <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                        <h4 className="text-sm font-semibold mb-2 text-blue-900 dark:text-blue-100">
-                          Why This is Recommended:
-                        </h4>
-                        <div className="space-y-2 text-xs">
-                          {recommendation.explanation.why_recommended.length > 0 && (
-                            <div>
-                              <span className="font-medium text-green-700 dark:text-green-300">✓ Key Reasons:</span>
-                              <ul className="mt-1 space-y-1 ml-2">
-                                {recommendation.explanation.why_recommended.map((reason, idx) => (
-                                  <li key={idx} className="text-gray-700 dark:text-gray-300">• {reason}</li>
-                                ))}
-                              </ul>
+                      <div className="mb-4 space-y-3">
+                        {/* Strengths Section */}
+                        {recommendation.explanation.strengths.length > 0 && (
+                          <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                            <h4 className="text-sm font-semibold mb-2 text-green-900 dark:text-green-100 flex items-center gap-1">
+                              <span className="text-green-600">💪</span> Your Strengths
+                            </h4>
+                            <ul className="space-y-1 text-xs">
+                              {recommendation.explanation.strengths.map((strength, idx) => (
+                                <li key={idx} className="text-green-700 dark:text-green-300">• {strength}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        
+                        {/* Growth Areas Section */}
+                        {recommendation.explanation.growth_areas.length > 0 && (
+                          <div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                            <h4 className="text-sm font-semibold mb-2 text-orange-900 dark:text-orange-100 flex items-center gap-1">
+                              <span className="text-orange-600">📈</span> Growth Areas
+                            </h4>
+                            <div className="text-xs text-orange-700 dark:text-orange-300 mb-2">
+                              Skills where you show interest but need to develop competency:
                             </div>
-                          )}
-                          {recommendation.explanation.strengths.length > 0 && (
-                            <div>
-                              <span className="font-medium text-blue-700 dark:text-blue-300">💪 Your Strengths:</span>
-                              <ul className="mt-1 space-y-1 ml-2">
-                                {recommendation.explanation.strengths.map((strength, idx) => (
-                                  <li key={idx} className="text-gray-700 dark:text-gray-300">• {strength}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
-                          {recommendation.explanation.growth_areas.length > 0 && (
-                            <div>
-                              <span className="font-medium text-purple-700 dark:text-purple-300">📈 Growth Areas:</span>
-                              <ul className="mt-1 space-y-1 ml-2">
-                                {recommendation.explanation.growth_areas.map((area, idx) => (
-                                  <li key={idx} className="text-gray-700 dark:text-gray-300">• {area}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
-                        </div>
+                            <ul className="space-y-1 text-xs">
+                              {recommendation.explanation.growth_areas.map((area, idx) => (
+                                <li key={idx} className="text-orange-700 dark:text-orange-300">• {area}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                       </div>
                     )}
 
@@ -1445,13 +1449,36 @@ export function TwoTierQuiz() {
             </>
           ) : (
             <div className="text-center">
-              <p className="text-muted-foreground mb-4">
-                No career recommendations found. This might be due to incomplete assessment data.
-              </p>
-              <Button onClick={restartQuiz} variant="outline">
-                <RotateCcw className="h-4 w-4 mr-2" />
-                Retake Assessment
-              </Button>
+              <div className="p-6 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg mb-6">
+                <h3 className="text-lg font-semibold text-orange-800 dark:text-orange-200 mb-2">
+                  No High-Quality Matches Found
+                </h3>
+                <p className="text-orange-700 dark:text-orange-300 mb-4">
+                  We only show career recommendations with a fit score of 75% or higher to ensure quality. 
+                  Your current assessment didn't produce any matches meeting this threshold.
+                </p>
+                <div className="bg-orange-100 dark:bg-orange-900/40 p-4 rounded-lg text-sm text-orange-800 dark:text-orange-200">
+                  <p className="font-medium mb-2">To get better recommendations, try:</p>
+                  <ul className="text-left space-y-1">
+                    <li>• Retaking the assessment with more thoughtful responses</li>
+                    <li>• Selecting different subjects that better match your interests</li>
+                    <li>• Ensuring you complete all quiz sections thoroughly</li>
+                    <li>• Consider that your profile might be unique - explore alternative career paths</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <Button onClick={restartQuiz} variant="outline" className="mr-3">
+                  <RotateCcw className="h-4 w-4 mr-2" />
+                  Retake Assessment
+                </Button>
+                <Button 
+                  onClick={() => setCurrentStage('subject-selection')} 
+                  variant="secondary"
+                >
+                  Try Different Subjects
+                </Button>
+              </div>
             </div>
           )}
         </CardContent>

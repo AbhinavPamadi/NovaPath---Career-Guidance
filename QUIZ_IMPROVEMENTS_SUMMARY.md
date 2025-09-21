@@ -94,9 +94,10 @@ Overall Fit = (Interest Alignment × 35%) + (Aptitude Match × 40%) + (Subject R
 
 ### Immediate Benefits:
 1. **50-70% more accurate recommendations** due to multi-factor scoring
-2. **Reduced user confusion** with clear explanations and confidence levels
-3. **Better decision-making** through tier-based categorization
-4. **Increased trust** via transparent recommendation reasoning
+2. **75% minimum quality threshold** - only high-quality matches shown
+3. **Reduced user confusion** with clear explanations and confidence levels
+4. **Better decision-making** through tier-based categorization
+5. **Increased trust** via transparent recommendation reasoning
 
 ### Long-term Benefits:
 1. **Higher user satisfaction** with more relevant career suggestions
@@ -142,6 +143,26 @@ Consider these future improvements:
 
 ---
 
-**All improvements are now live and working!** 🎉
+## 🎯 **Quality Threshold Implementation**
 
-Users will immediately experience much more accurate, explainable, and trustworthy career recommendations.
+### 75% Minimum Fit Score Filter
+- **Purpose**: Ensure only high-quality career matches are shown to users
+- **Implementation**: Automatic filtering of all recommendations below 75% fit score
+- **Adjusted Tier Thresholds** (within 75-100% range):
+  - Perfect Match: 90-100% (Exceptional fit)
+  - Strong Candidate: 85-89% (Excellent fit)  
+  - Growth Opportunity: 80-84% (Very good fit)
+  - Alternative Path: 75-79% (Good fit)
+  - Backup Option: Not shown (below 75%)
+
+### No Recommendations Fallback
+- **Enhanced messaging** when no courses meet the 75% threshold
+- **Actionable guidance** for improving recommendation quality
+- **Options to retake** assessment or try different subjects
+- **Clear explanation** of quality standards
+
+---
+
+**All improvements including the 75% quality threshold are now live and working!** 🎉
+
+Users will immediately experience much more accurate, explainable, and trustworthy career recommendations with guaranteed minimum quality standards.
